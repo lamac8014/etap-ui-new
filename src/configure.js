@@ -1,5 +1,5 @@
 const config = {
-  basename: "/elite-able/react",
+  basename: "/etrack",
   defaultPath: "/dashboard/default",
   collapseMenu: false,
   layout: "vertical", // vertical, horizontal
