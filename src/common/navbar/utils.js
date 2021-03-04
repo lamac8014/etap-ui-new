@@ -1,0 +1,221 @@
+const menus = {
+  items: [
+    {
+      id: "navigation",
+      title: "Navigation",
+      type: "group",
+      icon: "icon-navigation",
+      children: [
+        {
+          id: "eTrack",
+          title: "E-Track",
+          type: "collapse",
+          icon: "feather icon-home",
+          children: [
+            {
+              id: "structMgmt",
+              title: "Structure Management",
+              type: "collapse",
+              children: [
+                {
+                  id: "create",
+                  title: "Create",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/structure/assignStructure",
+                },
+                {
+                  id: "modify",
+                  title: "Modify",
+                  type: "item",
+                  url: "/structure/assignStructure",
+                },
+                {
+                  id: "view",
+                  title: "View",
+                  type: "item",
+                  url: "/structure/viewStructure",
+                },
+              ],
+            },
+            {
+              id: "requirementMgmt",
+              title: "Require Management",
+              type: "collapse",
+              children: [
+                {
+                  id: "reqCreation",
+                  title: "Request Creation",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/requirementmgmt/create",
+                },
+                {
+                  id: "reqApproval",
+                  title: "Request Approve",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/requirementmgmt/approve",
+                },
+              ],
+            },
+            {
+              id: "fabricationMgmt",
+              title: "Fabrication Management",
+              type: "collapse",
+              children: [
+                {
+                  id: "built",
+                  title: "As Built Details",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/fabricationMgmt/builtDetails",
+                },
+              ],
+            },
+            {
+              id: "costMgmt",
+              title: "Cost Management",
+              type: "collapse",
+              children: [
+                {
+                  id: "fabCost",
+                  title: "Fabrication Cost",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/cost/fabCost",
+                },
+                {
+                  id: "hireChange",
+                  title: "Monthly Hire Change",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/cost/hire",
+                },
+                {
+                  id: "bvDpr",
+                  title: "BV. & DPR",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/requirementmgmt/approve",
+                },
+              ],
+            },
+            {
+              id: "lifeCycle",
+              title: "Life cycle Management",
+              type: "collapse",
+              children: [],
+            },
+            {
+              id: "dispatchMgmt",
+              title: "Dispatch Management",
+              type: "collapse",
+              children: [
+                {
+                  id: "dispatch",
+                  title: "Dispatch",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/dispatch/twccDispatch",
+                },
+                {
+                  id: "procurement",
+                  title: "Procurement",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/dispatch/procurement",
+                },
+                {
+                  id: "vendor",
+                  title: "Vendor",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/dispatch/vendor",
+                },
+              ],
+            },
+            {
+              id: "masters",
+              title: "Masters",
+              type: "collapse",
+              children: [
+                {
+                  id: "ic",
+                  title: "IC",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/ic",
+                },
+                {
+                  id: "bu",
+                  title: "BU",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/bu",
+                },
+                {
+                  id: "project",
+                  title: "Project",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/project",
+                },
+                {
+                  id: "wbs",
+                  title: "WBS",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/wbs",
+                },
+                {
+                  id: "users",
+                  title: "Users",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/users",
+                },
+                {
+                  id: "cost",
+                  title: "Cost Management",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/bu",
+                },
+                {
+                  id: "structureFmly",
+                  title: "Structure Family",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/structureFmly",
+                },
+                {
+                  id: "structure",
+                  title: "Structure",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/structure",
+                },
+                {
+                  id: "compType",
+                  title: "Component Type",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/component",
+                },
+                {
+                  id: "vendors",
+                  title: "Vendors",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/vendors",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+export default menus;
