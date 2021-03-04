@@ -11,7 +11,9 @@ class NavLogo extends Component {
         <Link to={Path.defaultPath} className="b-brand">
           {/* <div className="b-bg">F</div>
           <span className="b-title">Folder Structure</span> */}
-          <img src={LOGO} alt="" />
+          <div>
+            <img src={LOGO} alt="" />
+          </div>
         </Link>
         <Link
           to="#"
