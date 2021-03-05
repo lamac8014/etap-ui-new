@@ -18,17 +18,17 @@ const UserProfile = () => (
           </Link>
         </div>
         <ul className="pro-body">
-          <li>
+          {/* <li>
             <Link to="#" className="dropdown-item">
               <i className="feather icon-settings" /> Settings
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="#" className="dropdown-item">
               <i className="feather icon-user" /> Profile
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="#" className="dropdown-item">
               <i className="feather icon-mail" /> My Messages
             </Link>
@@ -37,7 +37,7 @@ const UserProfile = () => (
             <Link to="#" className="dropdown-item">
               <i className="feather icon-lock" /> Lock Screen
             </Link>
-          </li>
+          </li> */}
         </ul>
       </DropdownMenu>
     </UncontrolledDropdown>

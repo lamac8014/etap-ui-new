@@ -1,9 +1,9 @@
 import { lazy } from "react";
 
 const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+// const Login = lazy(() => import("./containers/login/login"));
 
 const RouteList = [
-  /* Dashboard */
   {
     exact: true,
     path: "/dashboard/default",
