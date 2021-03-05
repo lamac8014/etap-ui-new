@@ -37,9 +37,26 @@ class Header extends Component {
             <span></span>
           </Link>
           <Link to={Path.defaultPath} className="b-brand">
-            {/* <div className="b-bg">F</div>
-            <span className="b-title">Elite Able</span> */}
-            <img src={LOGO} alt="" />
+            <div
+              className="b-bg"
+              style={{
+                background: "transparent",
+              }}
+            >
+              <img src={LOGO} alt="" />
+            </div>
+            {/* <span className="b-title">
+              <img
+                src={LOGOTEXT}
+                alt=""
+                style={{
+                  width: "80%",
+                  height: "80%",
+                  objectFit: "cover",
+                  overflow: "hidden",
+                }}
+              />
+            </span> */}
           </Link>
         </div>
         <Link to="#" className="mobile-menu" id="mobile-header">

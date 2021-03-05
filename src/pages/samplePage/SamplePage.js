@@ -4,6 +4,7 @@ import Col6 from "../../common/forms/Col6";
 import ConfirmModal from "../../common/forms/ConfirmModal";
 import SimpleRow from "../../common/forms/SimpleRow";
 import DataTable from "../../common/DataTable";
+import { LOGO } from "../../assets/images";
 
 class SamplePage extends Component {
   constructor() {
@@ -18,13 +19,30 @@ class SamplePage extends Component {
         <h1>this is the demo page</h1>
         <DataTable
           metaData={[
-            { text: "Column 1", dataField: "" },
-            { text: "Column 2", dataField: "" },
-            { text: "Column 3", dataField: "" },
-            { text: "Column 4", dataField: "" },
-            { text: "Column 5", dataField: "" },
+            { text: "Column 1", dataField: "col1" },
+            { text: "Column 2", dataField: "col2" },
+            { text: "Column 3", dataField: "col3" },
+            { text: "Column 4", dataField: "col4" },
+            { text: "Column 5", dataField: "col5" },
           ]}
-          bodyData={[{}, {}]}
+          bodyData={[
+            {
+              id: "1",
+              col1: "sample 1",
+              col2: "sample 2",
+              col3: "sample 3",
+              col4: "sample 4",
+              col5: "sample 5",
+            },
+            {
+              id: "2",
+              col1: "sample 1",
+              col2: "sample 2",
+              col3: "sample 3",
+              col4: "sample 4",
+              col5: "sample 5",
+            },
+          ]}
           showButton={true}
           btnText="Add Structure"
           onClick={() => this.setState({ showModal: true })}
