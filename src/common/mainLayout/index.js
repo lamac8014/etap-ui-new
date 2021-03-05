@@ -11,7 +11,7 @@ class MainLayout extends Component {
         <Navbar />
         <Header />
         <ContentWrapper {...this.props} />
-        <Footer />
+        {/* <Footer /> */}
       </Fragment>
     );
   }

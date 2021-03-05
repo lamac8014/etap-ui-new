@@ -40,7 +40,7 @@ const menus = {
             },
             {
               id: "requirementMgmt",
-              title: "Require Management",
+              title: "Requirement Management",
               type: "collapse",
               children: [
                 {

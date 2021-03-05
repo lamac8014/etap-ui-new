@@ -3,9 +3,9 @@ import ViewScrap from "./pages/scrap/ViewScrap";
 import ViewSurplus from "./pages/surplus/ViewSurplus";
 
 const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+// const Login = lazy(() => import("./containers/login/login"));
 
 const RouteList = [
-  /* Dashboard */
   {
     exact: true,
     path: "/dashboard/default",
