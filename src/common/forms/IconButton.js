@@ -22,6 +22,7 @@ class IconButton extends Component {
         color={this.buttonType()}
         className={`${this.props.rounded && "btn-rounded"} btn-icon`}
         onClick={this.props.onClick}
+        
       >
         <FaIcon
           iconname={this.props.iconname}
