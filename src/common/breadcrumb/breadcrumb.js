@@ -82,7 +82,7 @@ class Breadcrumb extends Component {
       }
     }
 
-    document.title = title + " | Elite Able Premium React Redux Admin Template";
+    document.title = title + " | E-Track";
 
     return breadcrumb;
   }

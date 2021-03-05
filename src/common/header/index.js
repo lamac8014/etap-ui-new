@@ -24,19 +24,7 @@ class Header extends Component {
   }
   render() {
     return (
-      <header
-        className={classnames(
-          "navbar pcoded-header navbar-expand-lg navbar-light",
-          {
-            "headerpos-fixed": this.props.headerFixed,
-            "header-blue": this.props.bgHeader === "blue",
-            "header-red": this.props.bgHeader === "red",
-            "header-purple": this.props.bgHeader === "purple",
-            "header-info": this.props.bgHeader === "info",
-            "header-dark": this.props.bgHeader === "dark",
-          }
-        )}
-      >
+      <header className="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
         <div className="m-header">
           <Link
             to="#"
@@ -81,9 +69,9 @@ class Header extends Component {
                 className="navbar-nav ml-auto"
                 style={{ display: `${this.state.navOpen ? `none` : `block`}` }}
               >
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <MainSearch />
-                </li>
+                </li> */}
                 <li>
                   <UserProfile />
                 </li>
@@ -105,10 +93,10 @@ class Header extends Component {
                 </ul>
               ) : null}
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <MainSearch />
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link
                     to="#"
                     className="displayChatbox"
@@ -116,7 +104,7 @@ class Header extends Component {
                   >
                     <i className="icon feather icon-mail"></i>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <UserProfile />
                 </li>
