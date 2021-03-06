@@ -10,30 +10,33 @@ const menus = {
           id: "eTrack",
           title: "E-Track",
           type: "collapse",
-          icon: "feather icon-home",
+          icon: "feather icon-box",
           children: [
             {
               id: "structMgmt",
               title: "Structure Management",
               type: "collapse",
+              icon: "feather icon-home",
               children: [
                 {
                   id: "create",
                   title: "Create",
                   type: "item",
-                  // icon: "feather icon-home",
+                  icon: "feather icon-plus-circle",
                   url: "/structure/assignStructure",
                 },
                 {
                   id: "modify",
                   title: "Modify",
                   type: "item",
+                  icon: "feather icon-edit-1",
                   url: "/structure/assignStructure",
                 },
                 {
                   id: "view",
                   title: "View",
                   type: "item",
+                  icon: "feather icon-eye",
                   url: "/structure/viewStructure",
                 },
               ],
@@ -42,11 +45,13 @@ const menus = {
               id: "requirementMgmt",
               title: "Requirement Management",
               type: "collapse",
+              icon: "feather icon-clock",
               children: [
                 {
                   id: "reqCreation",
                   title: "Request Creation",
                   type: "item",
+                  icon: "feather icon-file-plus",
                   // icon: "feather icon-home",
                   url: "/requirementmgmt/create",
                 },
@@ -54,6 +59,7 @@ const menus = {
                   id: "reqApproval",
                   title: "Request Approve",
                   type: "item",
+                  icon: "feather icon-navigation",
                   // icon: "feather icon-home",
                   url: "/requirementmgmt/approve",
                 },
@@ -63,11 +69,13 @@ const menus = {
               id: "fabricationMgmt",
               title: "Fabrication Management",
               type: "collapse",
+              icon: "feather icon-link",
               children: [
                 {
                   id: "built",
                   title: "As Built Details",
                   type: "item",
+                  icon: "feather icon-info",
                   // icon: "feather icon-home",
                   url: "/fabricationMgmt/builtDetails",
                 },
@@ -77,12 +85,14 @@ const menus = {
               id: "costMgmt",
               title: "Cost Management",
               type: "collapse",
+              icon: "feather icon-award",
               children: [
                 {
                   id: "fabCost",
                   title: "Fabrication Cost",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-tag",
                   url: "/cost/fabCost",
                 },
                 {
@@ -90,6 +100,7 @@ const menus = {
                   title: "Monthly Hire Change",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-list",
                   url: "/cost/hire",
                 },
                 {
@@ -97,6 +108,7 @@ const menus = {
                   title: "BV. & DPR",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-briefcase",
                   url: "/requirementmgmt/approve",
                 },
               ],
@@ -105,18 +117,21 @@ const menus = {
               id: "lifeCycle",
               title: "Life cycle Management",
               type: "collapse",
+              icon: "feather icon-refresh-ccw",
               children: [],
             },
             {
               id: "dispatchMgmt",
               title: "Dispatch Management",
               type: "collapse",
+              icon: "feather icon-server",
               children: [
                 {
                   id: "dispatch",
                   title: "Dispatch",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "truck",
                   url: "/dispatch/twccDispatch",
                 },
                 {
@@ -124,6 +139,7 @@ const menus = {
                   title: "Procurement",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-shopping-cart",
                   url: "/dispatch/procurement",
                 },
                 {
@@ -131,6 +147,7 @@ const menus = {
                   title: "Vendor",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-user-check",
                   url: "/dispatch/vendor",
                 },
               ],
@@ -139,12 +156,14 @@ const menus = {
               id: "masters",
               title: "Masters",
               type: "collapse",
+              icon: "feather icon-alert-triangle",
               children: [
                 {
                   id: "ic",
                   title: "IC",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "faIndustry",
                   url: "/masters/ic",
                 },
                 {
@@ -152,6 +171,7 @@ const menus = {
                   title: "BU",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-globe",
                   url: "/masters/bu",
                 },
                 {
@@ -159,6 +179,7 @@ const menus = {
                   title: "Project",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-share-2",
                   url: "/masters/project",
                 },
                 {
@@ -166,6 +187,7 @@ const menus = {
                   title: "WBS",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-copy",
                   url: "/masters/wbs",
                 },
                 {
@@ -173,6 +195,7 @@ const menus = {
                   title: "Users",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-users",
                   url: "/masters/users",
                 },
                 {
@@ -180,6 +203,7 @@ const menus = {
                   title: "Cost Management",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-credit-card",
                   url: "/masters/bu",
                 },
                 {
@@ -187,6 +211,7 @@ const menus = {
                   title: "Structure Family",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-layers",
                   url: "/masters/structureFmly",
                 },
                 {
@@ -194,6 +219,7 @@ const menus = {
                   title: "Structure",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "archive",
                   url: "/masters/structure",
                 },
                 {
@@ -201,6 +227,7 @@ const menus = {
                   title: "Component Type",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "feather icon-grid",
                   url: "/masters/component",
                 },
                 {
@@ -208,6 +235,7 @@ const menus = {
                   title: "Vendors",
                   type: "item",
                   // icon: "feather icon-home",
+                  icon: "database",
                   url: "/masters/vendors",
                 },
               ],

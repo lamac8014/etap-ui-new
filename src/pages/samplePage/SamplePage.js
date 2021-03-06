@@ -5,6 +5,8 @@ import ConfirmModal from "../../common/forms/ConfirmModal";
 import SimpleRow from "../../common/forms/SimpleRow";
 import DataTable from "../../common/DataTable";
 import { LOGO } from "../../assets/images";
+import Checkbox from "../../common/forms/Checkbox";
+import ExportExcel from "../../common/ExportExcel";
 
 class SamplePage extends Component {
   constructor() {
@@ -17,6 +19,8 @@ class SamplePage extends Component {
     return (
       <div>
         <h1>this is the demo page</h1>
+        <Checkbox color="primary" id="1" onChange={() => {}} />
+        <Checkbox color="danger" id="2" outline onChange={() => {}} />
         <DataTable
           metaData={[
             { text: "Column 1", dataField: "col1" },
