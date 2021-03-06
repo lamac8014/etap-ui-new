@@ -23,13 +23,13 @@ class ViewMoreCmpcReuse extends Component {
                 {console.log("isLoading", this.props.isLoading)}
                 {this.props.isLoading && <Loader />}
 
+                <p>Structure Attributes</p>
                 <FormRow>
                     <TextInput disabled
                         size="col-md-4"
-                        label="Vendor"
                         fieldSize="col-md-12"
-                        name="vendor"
-                        id="vendor"
+                        name="attr1"
+                        id="attr1"
                         // onChange={e =>
                         //   this.props.handleChangeStructureFamily(e.target.value)
                         // }
@@ -38,25 +38,39 @@ class ViewMoreCmpcReuse extends Component {
                     />
                     <TextInput disabled
                         size="col-md-4"
-                        label="Scrap Rate"
                         fieldSize="col-md-12"
-                        name="scrapRate"
-                        id="scrapRate"
+                        name="attr2"
+                        id="attr2"
                         // onChange={e =>
                         //   this.props.handleChangeStructureName(e.target.value)
                         // }
                         //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
                         placeholder="Auto Fetch"
                     />
-                    <InputGroupButton
+                    <TextInput disabled
                         size="col-md-4"
-                        label="Dr.No"
-                        labelSize="col-md-3"
-                        fieldSize="col-md-9"
-                        onChange={() => { }}
-                        value="O17078-Q-BR-CM-FB-1713"
-                        btnText={<FaIcon iconName="faFileAlt" />}
-                        onClick={() => this.fileInputRef.current.click()}
+                        fieldSize="col-md-12"
+                        name="attr3"
+                        id="attr3"
+                        // onChange={e =>
+                        //   this.props.handleChangeStructureName(e.target.value)
+                        // }
+                        //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
+                        placeholder="Auto Fetch"
+                    />
+
+                </FormRow>
+                <FormRow>
+                    <TextInput
+                        size="col-md-4"
+                        fieldSize="col-md-12"
+                        name="quantity"
+                        id="quantity"
+                        // onChange={e =>
+                        //   this.props.handleChangeStructureName(e.target.value)
+                        // }
+                        //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
+                        placeholder="Auto Fetch"
                     />
                 </FormRow>
 

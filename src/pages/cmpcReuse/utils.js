@@ -1,8 +1,22 @@
 import React from "react";
+import Checkbox from "../../common/forms/Checkbox";
 import IconButton from "../../common/forms/IconButton";
 
 export const listUsersMetaData = (handleViewMore) => {
   return [
+    {
+
+      formatter: (cell, row) => {
+        return (
+          <div key={row.userId}>
+            <>
+              <Checkbox color="primary" checked={true} id="i-in-fill" outline />
+
+            </>
+          </div>
+        );
+      },
+    },
     {
       text: "DC No",
       dataField: "dcNo",
@@ -39,7 +53,7 @@ export const listUsersMetaData = (handleViewMore) => {
                 size="1x"
                 onClick={() => handleViewMore(row.id)}
               />
-             
+
             </>
           </div>
         );
