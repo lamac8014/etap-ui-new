@@ -14,6 +14,12 @@
     font-size: 18px;
     color: #fff;
   }
+  .b-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: "cover";
+    overflow: "hidden";
+  }
 
   .b-title {
     margin-left: 10px;
@@ -23,6 +29,12 @@
   }
 }
 
+.b-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: "cover";
+  overflow: "hidden";
+}
 .navbar-collapsed {
   .b-brand .b-title {
     transform: rotateY(-90deg);
@@ -677,14 +689,14 @@
         }
 
         > .pcoded-micon {
-          font-size: 14px;
-          padding: 4px 7px;
-          margin-right: 2px;
+          font-size: 18px;
+          // padding: 4px 7px;
+          margin-right: 8px;
           border-radius: 4px;
-          width: 30px;
+          // width: 30px;
           display: inline-flex;
           align-items: center;
-          height: 30px;
+          // height: 30px;
           text-align: center;
 
           + .pcoded-mtext {
@@ -740,7 +752,7 @@
           li {
             > a {
               text-align: left;
-              padding: 7px 7px 7px 60px;
+              padding: 7px 7px 7px 45px;
               margin: 0;
               display: block;
 
@@ -4210,7 +4222,7 @@ body {
                   }
 
                   .pcoded-submenu > li > a {
-                    padding: 7px 7px 7px 60px;
+                    padding: 7px 7px 7px 45px;
 
                     &:before {
                       left: 40px;
@@ -4391,7 +4403,7 @@ body {
             > a {
               border-radius: 0 20px 20px 0;
               margin-right: 15px;
-              padding: 4px 15px;
+              // padding: 4px 15px;
 
               &:after {
                 top: 8px;

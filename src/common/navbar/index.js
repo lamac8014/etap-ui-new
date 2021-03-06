@@ -49,11 +49,11 @@ class Sidebar extends Component {
     }
   };
   componentDidMount() {
-    if (this.props.windowWidth < 1200 && this.props.windowWidth > 991) {
-      if (!this.props.meunCol) {
-        this.props.collapseMenu();
-      }
-    }
+    // if (this.props.windowWidth < 1200 && this.props.windowWidth > 991) {
+    //   if (!this.props.meunCol) {
+    //     this.props.collapseMenu();
+    //   }
+    // }
   }
   render() {
     let mainContent = "";
