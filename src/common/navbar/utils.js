@@ -198,14 +198,7 @@ const menus = {
                   icon: "feather icon-users",
                   url: "/masters/users",
                 },
-                {
-                  id: "cost",
-                  title: "Cost Management",
-                  type: "item",
-                  // icon: "feather icon-home",
-                  icon: "feather icon-credit-card",
-                  url: "/masters/bu",
-                },
+               
                 {
                   id: "structureFmly",
                   title: "Structure Family",

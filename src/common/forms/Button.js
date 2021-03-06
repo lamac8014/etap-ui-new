@@ -12,13 +12,14 @@ class Button extends Component {
     } else if (!this.props.gradient && !this.props.type) {
       return "primary";
     }
+    
   }
   render() {
     return (
       <ButtonComponent
         className={this.props.className}
-        // color={this.buttonType()}
-        outline color={this.props.outlineColor}
+        color={this.buttonType()}
+        outline ={this.props.outline}
         disabled={this.props.disabled}
         onClick={this.props.onClick}
       >
