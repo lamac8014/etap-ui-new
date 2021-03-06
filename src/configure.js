@@ -1,5 +1,6 @@
 const config = {
   // basename: "/etrack",
+  basename: "",
   defaultPath: "/dashboard/default",
   // collapseMenu: false,
   // layout: "vertical", // vertical, horizontal

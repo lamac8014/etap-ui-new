@@ -13,6 +13,11 @@ class MainLayout extends Component {
         <ContentWrapper {...this.props} />
         {/* <Footer /> */}
       </Fragment>
+      // <div style={{ maxHeight: "100% !important" }}>
+      //   <Navbar />
+      //   <Header />
+      //   <ContentWrapper {...this.props} />
+      // </div>
     );
   }
 }
