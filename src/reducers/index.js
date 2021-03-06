@@ -29,6 +29,9 @@ import createDispatchReducer from "./createDispatchReducer";
 import physicalVerificationReducer from "./physicalVerificationReducer";
 import fabricationcostReducer from "./fabricationCostReducer";
 import builtReducer from "./builtReducer";
+import scrapPageReducer from "./scrapPageReducer";
+import surplusPageReducer from "./surplusPageReducer";
+import cmpcReuseReducer from "./cmpcReuseReducer";
 
 const rootReducer = combineReducers({
   config,
@@ -48,7 +51,8 @@ const rootReducer = combineReducers({
   // scr: structCompReducer,
   auth: authReducer,
   // surplus: surplusReducer,
-  scrap: scrapReducer,
+  // scrap: scrapReducer,
+  scrap: scrapPageReducer,
   siteDispatch: siteDispatchReducer,
   procurement: procurementReducer,
   siteApproval: siteApprovalReducer,
@@ -61,6 +65,9 @@ const rootReducer = combineReducers({
   physicalVerification: physicalVerificationReducer,
   fabCost: fabricationcostReducer,
   built: builtReducer,
+  surplus:surplusPageReducer,
+  cmpcReuse:cmpcReuseReducer
+  
 });
 
 export default rootReducer;

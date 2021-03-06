@@ -10,6 +10,12 @@ export const getProjectList = () => {
         payload: axios.get(config.BASE_URL + '/api/Project/projCodeList')
     }
 }
+export const surplusList = () => {
+    return {
+        type: LIST_PROJECT_CODES,
+        payload: axios.get(config.BASE_URL + '/api/Project/projCodeList')
+    }
+}
 
 export const getWBSList = () => {
     return {
