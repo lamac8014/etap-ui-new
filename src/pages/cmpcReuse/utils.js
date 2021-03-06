@@ -1,9 +1,12 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 
-export const listUsersMetaData = (handleViewMore,handleEdit) => {
+export const listUsersMetaData = (handleViewMore) => {
   return [
-
+    {
+      text: "DC No",
+      dataField: "dcNo",
+    },
     {
       text: "Struct. Name",
       dataField: "structureName",
@@ -17,25 +20,26 @@ export const listUsersMetaData = (handleViewMore,handleEdit) => {
       dataField: "numberOfComponents",
     },
     {
+      text: "Required By",
+      dataField: "ReqBy",
+    },
+    {
+      text: "Quantity",
+      dataField: "qty",
+    },
+    {
       text: "Actions",
       formatter: (cell, row) => {
         return (
           <div key={row.userId}>
-
             <>
-            <IconButton
+              <IconButton
                 compKey={row.userId}
                 iconname="faEye"
                 size="1x"
                 onClick={() => handleViewMore(row.id)}
               />
-              <IconButton
-                compKey={row.userId}
-                iconname="faEdit"
-                size="1x"
-                onClick={() => handleEdit(row.id)}
-              />
-
+             
             </>
           </div>
         );

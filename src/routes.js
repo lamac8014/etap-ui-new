@@ -1,8 +1,9 @@
 import { lazy } from "react";
-import ViewScrap from "./pages/scrap/ViewScrap";
-import ViewSurplus from "./pages/surplus/ViewSurplus";
 
 const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
+const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
+const ViewCmpcReuse = lazy(() => import("./containers/cmpcReuse/viewCmpcReuse"));
 // const Login = lazy(() => import("./containers/login/login"));
 
 const RouteList = [
@@ -23,6 +24,12 @@ const RouteList = [
     path: "/masters/surplusDeclaration",
     name: "Surplus",
     component: ViewSurplus,
+  },
+  {
+    exact: true,
+    path: "/masters/cmpcReuse",
+    name: "CMPC Reuse",
+    component: ViewCmpcReuse,
   },
 ];
 

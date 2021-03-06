@@ -23,6 +23,15 @@ export const getConditionAssessmentDetails = () => {
         ),
     };
 };
+export const cmpcList = () => {
+    const roleName = getUserDetails().roleName;
+    return {
+        type: SET_CONDITION_ASSESSMENT_DETAILS,
+        payload: axios.get(
+            `${config.BASE_URL}/api/SiteDispatch/getSiteDispatchDetails?role_name=${roleName}`
+        ),
+    };
+};
 
 // export const conditionAssessmentAction = (id, action) => {
 //     const ROLE_NAME = getUserDetails().roleName;

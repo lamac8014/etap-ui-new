@@ -1,7 +1,7 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 
-export const listUsersMetaData = (handleDelete, handleEdit) => {
+export const listUsersMetaData = (handleViewMore, handleEdit) => {
   return [
     {
       text: "DC No",
@@ -24,12 +24,20 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
       formatter: (cell, row) => {
         return (
           <div key={row.userId}>
-            <IconButton
-              compKey={row.userId}
-              iconname="faEdit"
-              size="1x"
-              onClick={() => handleEdit(row.id)}
-            />
+            <>
+              <IconButton
+                compKey={row.userId}
+                iconname="faEye"
+                size="1x"
+                onClick={() => handleViewMore(row.id)}
+              />
+              <IconButton
+                compKey={row.userId}
+                iconname="faEdit"
+                size="1x"
+                onClick={() => handleEdit(row.id)}
+              />
+            </>
           </div>
         );
       },

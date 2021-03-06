@@ -224,6 +224,13 @@ const menus = {
                   // icon: "feather icon-home",
                   url: "/masters/surplusDeclaration",
                 },
+                {
+                  id: "cmpc",
+                  title: "CMPC Reuse",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  url: "/masters/cmpcReuse",
+                },
               ],
             },
           ],

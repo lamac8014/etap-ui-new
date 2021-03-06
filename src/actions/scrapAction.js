@@ -10,6 +10,12 @@ export const getProjectList = () => {
         payload: axios.get(config.BASE_URL + '/api/Project/projCodeList')
     }
 }
+export const scrapList = () => {
+    return {
+        type: LIST_PROJECT_CODES,
+        payload: axios.get(config.BASE_URL + '/api/Project/projCodeList')
+    }
+}
 
 export const getVendorList = () => {
     return {
