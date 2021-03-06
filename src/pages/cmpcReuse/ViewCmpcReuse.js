@@ -5,7 +5,8 @@ import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import ViewMoreCmpcReuse from "../../containers/cmpcReuse/viewMoreCmpcReuse";
-import Checkbox from "../../common/forms/Checkbox";
+import Radio from "../../common/forms/Radio";
+import Button from "../../common/forms/Button";
 
 class ViewCmpcReuse extends Component {
   constructor(props) {
@@ -23,9 +24,9 @@ class ViewCmpcReuse extends Component {
 
 
   render() {
-    let tableData = [{ dcNo: "", structureName: "Launching Griders", structureCode: "111", numberOfComponents: "",ReqBy:"",Qty:"" },
-                     { dcNo: "", structureName: "Launching Griders", structureCode: "123", numberOfComponents: "",ReqBy:"",Qty:"" },
-                     { dcNo: "", structureName: "Trestles", structureCode: "124", numberOfComponents: "",ReqBy:"",Qty:"" }
+    let tableData = [{ dcNo: "", structureName: "Launching Griders", structureCode: "111", numberOfComponents: "", ReqBy: "", Qty: "" },
+                     { dcNo: "", structureName: "Launching Griders", structureCode: "123", numberOfComponents: "", ReqBy: "", Qty: "" },
+                     { dcNo: "", structureName: "Trestles", structureCode: "124", numberOfComponents: "", ReqBy: "", Qty: "" }
                     ]
     return (
 
@@ -42,11 +43,33 @@ class ViewCmpcReuse extends Component {
             bodyData={tableData}
           />
           {/* )} */}
-
-          <Checkbox color="info" checked={true} id="i-in-fill"  inline />
-
+          <Radio 
+          label="With Modification"
+          color="success"
+          
+          />
+          <Radio 
+          label="Without Modification"
+          
+          />
+          <Radio 
+          label="Reject"
+          
+          />
+         
 
         </SimpleCard>
+        <Button
+          btnText="Submit"
+          className="center-block"
+          outlineColor="success"
+
+        />
+        <Button
+          btnText="Discard"
+          className=""
+          outlineColor="danger"
+        />
       </PageContainer>
     );
   }
