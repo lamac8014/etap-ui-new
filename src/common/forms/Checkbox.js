@@ -32,7 +32,7 @@ class Checkbox extends Component {
             `checkbox d-inline ${
               this.props.color
                 ? `checkbox-${this.props.color}`
-                : "checkbox-primary"
+                : "checkbox-success"
             }`,
             {
               "checkbox-fill": this.props.outline === true,

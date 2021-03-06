@@ -108,6 +108,12 @@ class ViewCmpcReuse extends Component {
             />
           </ButtonRow>
         </SimpleCard>
+        <Button
+          btnText="Submit"
+          className="center-block"
+          outlineColor="success"
+        />
+        <Button btnText="Discard" className="" outlineColor="danger" />
       </PageContainer>
     );
   }
