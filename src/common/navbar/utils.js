@@ -204,7 +204,7 @@ const menus = {
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-credit-card",
-                  url: "/etrack/masters/bu",
+                  url: "/etrack/masters/bu2",
                 },
                 {
                   id: "structureFmly",

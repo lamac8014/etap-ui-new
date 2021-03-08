@@ -6,14 +6,19 @@ const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
 const ViewCmpcReuse = lazy(() =>
   import("./containers/cmpcReuse/viewCmpcReuse")
 );
-// const Login = lazy(() => import("./containers/login/login"));
+const NotFound = lazy(() => import("./pages/maintenance/404NotFound"));
+const Login = lazy(() => import("./containers/login/login"));
+const Ic = lazy(() =>
+  import("./containers/independentCompany/viewIndependentCompany")
+);
+const Bu = lazy(() => import("./containers/businessUnit/viewBusinessUnit"));
 
 const RouteList = [
   {
     exact: true,
-    path: "/dashboard/default",
-    name: "Sample Page",
-    component: SamplePage,
+    path: "/notFound",
+    name: "404",
+    component: NotFound,
   },
   {
     exact: true,
@@ -33,6 +38,23 @@ const RouteList = [
     name: "CMPC Reuse",
     component: ViewCmpcReuse,
   },
+  {
+    exact: true,
+    path: "/",
+    name: "CMPC Reuse",
+    component: Login,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/ic",
+    name: "IC",
+    component: Ic,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/bu",
+    name: "BU",
+    component: Bu,
+  },
 ];
-
 export default RouteList;
