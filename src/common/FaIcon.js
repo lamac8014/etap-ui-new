@@ -10,6 +10,7 @@ class FaIcon extends Component {
         size={this.props.size}
         icon={fa[this.props.iconname]}
         fontWeight={100}
+        color={this.props.color}
         {...this.props}
       />
     );
