@@ -6,7 +6,7 @@ import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import { businessUnitRoles } from "./utils";
 import { transformDropDownData } from "../../utils/dataTransformer";
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import BUList from "./buList";
 import IconTextButton from "../../common/forms/IconTextButton";
 

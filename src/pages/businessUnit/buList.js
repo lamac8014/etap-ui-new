@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FaIcon from "../../common/FaIcon";
 import IconButton from "../../common/forms/IconButton";
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
 import { transformDropDownData } from "../../utils/dataTransformer";
 import Col6 from "../../common/forms/Col6";
 import TextInput from "../../common/forms/TextInput";
