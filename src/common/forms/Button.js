@@ -17,8 +17,8 @@ class Button extends Component {
     return (
       <ButtonComponent
         className={this.props.className}
-        // color={this.buttonType()}
-        outline color={this.props.outlineColor}
+        color={this.buttonType()}
+        outline={this.props.outline ? true : false}
         disabled={this.props.disabled}
         onClick={this.props.onClick}
       >
