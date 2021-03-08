@@ -20,7 +20,7 @@ const menus = {
               children: [
                 {
                   id: "create",
-                  title: "Create",
+                  title: "Create Structure",
                   type: "item",
                   icon: "feather icon-plus-circle",
                   url: "/etrack/structure/assignStructure",
@@ -30,11 +30,11 @@ const menus = {
                   title: "Modify",
                   type: "item",
                   icon: "feather icon-edit-1",
-                  url: "/etrack/structure/assignStructure",
+                  url: "/etrack/structure/assignStructures",
                 },
                 {
                   id: "view",
-                  title: "View",
+                  title: "View Structure",
                   type: "item",
                   icon: "feather icon-eye",
                   url: "/etrack/structure/viewStructure",
