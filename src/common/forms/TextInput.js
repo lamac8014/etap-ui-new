@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FaIcon from "../FaIcon";
 import Col6 from "./Col6";
 class TextInput extends Component {
   render() {
@@ -49,9 +50,22 @@ class TextInput extends Component {
           >
             {input}
           </div>
-          <div class={this.props.iconSize ? this.props.iconSize : "col-sm-3"}>
-            {this.props.rightIcon}
-          </div>
+          {this.props.iconSize && (
+            <div class={this.props.iconSize ? this.props.iconSize : "col-sm-3"}>
+              <span
+                onClick={this.props.onClick}
+                className="d-flex align-items-center justify-content-center"
+                style={{ cursor: "pointer" }}
+              >
+                <FaIcon
+                  iconname={this.props.iconname}
+                  className={this.props.iconClass}
+                  size={this.props.size}
+                  color={this.props.iconColor}
+                />
+              </span>
+            </div>
+          )}
         </div>
       </Col6>
     );
