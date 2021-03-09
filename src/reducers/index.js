@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import config from "./templateConfigReducer";
 import Navigation from "./navigationsReducer";
 import componentReducer from "./componentReducer";
-// import structureReducer from "./structureReducer";
+import structureReducer from "./structureReducer";
 import transferPriceReducer from "./transferPriceReducer";
 import wbsReducer from "./wbsReducer";
 import projReducer from "./projectReducer";
@@ -36,7 +36,7 @@ import cmpcReuseReducer from "./cmpcReuseReducer";
 const rootReducer = combineReducers({
   config,
   Navigation,
-  // structure: structureReducer,
+  structure: structureReducer,
   transferPrice: transferPriceReducer,
   component: componentReducer,
   wbs: wbsReducer,

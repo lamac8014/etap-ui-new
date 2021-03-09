@@ -122,7 +122,7 @@ export const dispatchStructureMetaData = (setSelectedStructures) => {
   return [
     {
       sortable: true,
-      cell: row => {
+      formatter: row => {
         return (
           <>
             { (
@@ -138,35 +138,35 @@ export const dispatchStructureMetaData = (setSelectedStructures) => {
       width: '2%',
     },
     {
-      name: "Structure Name",
-      selector: "structureName",
+      text: "Structure Name",
+      dataField: "structureName",
       sortable: true,
     },
     {
-      name: "Structure ID",
-      selector: "structureCode",
+      text: "Structure ID",
+      dataField: "structureCode",
       sortable: true,
     },
     {
-      name: "Project",
-      selector: "projectName",
+      text: "Project",
+      dataField: "projectName",
       sortable: true,
     },
     {
-      name: "Availability",
-      sortable: true,
-      cell: (row) => {
+      text: "Availability",
+      dataField: true,
+      formatter: (row) => {
         return row.availProjectId === null ? "NO" : "YES";
       },
     },
     {
-      name: "Dispatch Structure Status",
-      selector: "dispStructureStatus",
+      text: "Dispatch Structure Status",
+      dataField: "dispStructureStatus",
       sortable: true,
     },
     {
-      name: "Available Project",
-      selector: "availProjectName",
+      text: "Available Project",
+      dataField: "availProjectName",
       sortable: true,
     },
   ];
@@ -175,7 +175,7 @@ export const twccdispatchStructureMetaData = (setSelectedStructures, handleMore)
   return [
     {
       sortable: true,
-      cell: row => {
+      formatter: row => {
         return (
           <>
             { (
@@ -191,42 +191,42 @@ export const twccdispatchStructureMetaData = (setSelectedStructures, handleMore)
       width: '2%',
     },
     {
-      name: "Structure Name",
-      selector: "structureName",
+      text: "Structure Name",
+      dataField: "structureName",
       sortable: true,
     },
     {
-      name: "Availability",
-      selector: "availability",
+      text: "Availability",
+      dataField: "availability",
       sortable: true,
-      cell: (row) => {
+      formatter: (row) => {
         return row.availProjectId === null ? "NO" : "YES";
       },
     },
     {
-      name: "Avail.Site",
-      selector: "site",
+      text: "Avail.Site",
+      dataField: "site",
       sortable: true,
     },
     {
-      name: "Avail.Date",
-      sortable: true,
+      text: "Avail.Date",
+      dataField: true,
       selector: "date",
 
     },
     {
-      name: "Attribute",
-      selector: "attr",
+      text: "Attribute",
+      dataField: "attr",
       sortable: true,
     },
     {
-      name: "Actions",
-      sortable: true,
-      cell: (row) => {
+      text: "Actions",
+      dataField: true,
+      formatter: (row) => {
         return (
           <>
             <IconButton
-              iconName="faEye"
+              iconname="faEye"
               onClick={() => handleMore(row.id)}
             />
           </>
@@ -240,13 +240,13 @@ export const twccdispatchStructureMetaData = (setSelectedStructures, handleMore)
 export const lstVerifyStructureQtyMetaData = () => {
   return [
     {
-      name: "Structure Name",
-      selector: "structureName",
+      text: "Structure Name",
+      dataField: "structureName",
       sortable: true,
     },
     {
-      name: "Quantity",
-      selector: "quantity",
+      text: "Quantity",
+      dataField: "quantity",
       sortable: true,
     },
   ];

@@ -6,29 +6,29 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
     return [
    
       {
-        name: 'First Name',
-        selector: 'firstName',
+        text: 'First Name',
+        dataField: 'firstName',
         sortable: true,
       },
       {
-        name: 'Last Name',
-        selector: 'lastName',
+        text: 'Last Name',
+        dataField: 'lastName',
         sortable: true,
       },
       {
-        name: 'PS No',
-        selector: 'userName',
+        text: 'PS No',
+        dataField: 'userName',
         sortable: true,
       },
       {
-        name: 'Email',
-        selector: 'email',
+        text: 'Email',
+        dataField: 'email',
         sortable: true,
       },      
       {
-        name: 'Actions',
+        text: 'Actions',
         sortable: true,
-        cell: row => {
+        formatter: row => {
           return (
             <>
               {(
