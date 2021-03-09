@@ -26,10 +26,16 @@ const Ic = lazy(() =>
   import("./containers/independentCompany/viewIndependentCompany")
 );
 const Bu = lazy(() => import("./containers/businessUnit/viewBusinessUnit"));
-const ViewStructureFamily = lazy(() => import("./containers/structureFamily/viewStructureFamily"));
-const CreateDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
+const ViewStructureFamily = lazy(() =>
+  import("./containers/structureFamily/viewStructureFamily")
+);
+const CreateDispatch = lazy(() =>
+  import("./containers/createDispatch/createDispatch")
+);
 const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
-const ViewSubContractor = lazy(() => import("./containers/subContractor/viewSubContractor"));
+const ViewSubContractor = lazy(() =>
+  import("./containers/subContractor/viewSubContractor")
+);
 
 const RouteList = [
   {
@@ -111,7 +117,7 @@ const RouteList = [
     component: CreateDispatch,
   },
   {
-    exact:true,
+    exact: true,
     path: "/etrack/masters/project",
     name: "Project",
     component: ViewProject,
@@ -121,6 +127,12 @@ const RouteList = [
     path: "/etrack/masters/viewSubContractors",
     name: "Dispatch",
     component: ViewSubContractor,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/wbs",
+    name: "WBS",
+    component: Wbs,
   },
 ];
 export default RouteList;
