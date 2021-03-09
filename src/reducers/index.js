@@ -9,7 +9,7 @@ import projReducer from "./projectReducer";
 import independentCompanyReducer from "./independentCompanyReducer";
 // import usersReducer from "./userReducer";
 import structureFamilyReducer from "./structureFamilyReducer";
-// import vendorReducer from "./vendorReducer";
+import vendorReducer from "./vendorReducer";
 import businessUnitReducer from "./businessUnitReducer";
 import requirementReducer from "./requirementReducer";
 import assignStructureReducer from "./assignStructureReducer";
@@ -44,7 +44,7 @@ const rootReducer = combineReducers({
   icbu: independentCompanyReducer,
   // users: usersReducer,
   structureFamily: structureFamilyReducer,
-  // vendor: vendorReducer,
+  vendor: vendorReducer,
   businessUnit: businessUnitReducer,
   requirement: requirementReducer,
   assignStructure: assignStructureReducer,

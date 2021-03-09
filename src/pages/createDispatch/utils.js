@@ -30,7 +30,7 @@ export const createDispatchMetaData = (handleEditIconPress) => {
           <>
             <IconButton
               id={row.id}
-              iconName="faEdit"
+              iconname="faEdit"
               onClick={() => handleEditIconPress(row.id)}
             />
           </>
@@ -95,7 +95,7 @@ export const twccDispatchMetaData = (
         return (
           <>
             <IconButton
-              iconName="faEye"
+              iconname="faEye"
               onClick={() => handleMore(row.id)}
             />
           </>

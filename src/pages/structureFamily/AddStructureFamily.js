@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
+import SimpleRow from "../../common/forms/SimpleRow"
+
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
@@ -30,7 +31,7 @@ class AddStructureFamily extends Component {
         isShowFooter={true}
       >
         {this.props.isLoading && <Loader />}
-        <FormRow>
+        <SimpleRow>
           <TextInput
             label="Structure Family"
             name="structureFamily"
@@ -54,7 +55,7 @@ class AddStructureFamily extends Component {
             onChange={(obj) => this.props.handleStructureFamilyTypeStatus(obj)}
             value={this.props.structureFamily.structureFamilyTypeStatus}
           />
-        </FormRow>
+        </SimpleRow>
 
         {this.props.structureFamily.isModalMsg && (
           <p className="text-danger">{this.props.structureFamily.message}</p>
