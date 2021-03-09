@@ -6,6 +6,7 @@ import CustomDataTable from "../../common/DataTable";
 import AddStructure from "../../containers/structure/addStructure";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import ConfirmModal from "../../common/forms/ConfirmModal";
 
 class ViewStructure extends Component {
   constructor(props) {
@@ -22,19 +23,22 @@ class ViewStructure extends Component {
     this.props.structureFamilyList();
   }
 
-
-
   filteredItems = (data) => {
-
     if (data) {
       console.log(data);
       return data.filter((item) => {
         for (let key in item) {
-          if (item[key] && item[key].toString().toLowerCase().includes(this.state.filterText.toLowerCase())) {
+          if (
+            item[key] &&
+            item[key]
+              .toString()
+              .toLowerCase()
+              .includes(this.state.filterText.toLowerCase())
+          ) {
             return true;
           }
         }
-      })
+      });
     }
   };
 
@@ -51,6 +55,21 @@ class ViewStructure extends Component {
           <AddStructure
             showAddComponentModal={this.props.structure.showAddStructureModal}
           />
+          {this.state.showDeleteModal && (
+            <ConfirmModal
+              closeAction={() =>
+                this.setState({ showDeleteModal: false, activeId: null })
+              }
+              title="Delete User"
+              deleteAction={() => {
+                this.props.handleConfirmDelete(this.state.activeId);
+                this.setState({ showDeleteModal: false, activeId: null });
+              }}
+              frontText="Are you sure you want to delete the component?"
+              confirmText="Component Deleted"
+              cancelText="Cancelled!"
+            />
+          )}
           <CustomDataTable
             metaData={listStructureMetaData(
               (id) => this.props.handleDelete(id),
@@ -63,13 +82,9 @@ class ViewStructure extends Component {
             showButton={true}
             btnText="Create New Structure"
             onClick={this.props.showAddStructureModal}
-
           />
         </SimpleCard>
       </PageContainer>
-
-
-
     );
   }
 }

@@ -1,75 +1,75 @@
-import React from 'react';
-import IconButton from '../../common/forms/IconButton';
+import React from "react";
+import IconButton from "../../common/forms/IconButton";
 import { getSelectedValue } from "../../utils/dataTransformer";
 
 export const listStructureMetaData = (handleDelete, handleEdit) => {
-    return [
-      {
-        sortable: true,
-        formatter: row => {
-          return (
-            <>
-              { (
-                <IconButton
-                  iconname="faTimes"
-                  className={'table-delete-icon'}
-                  onClick={() => handleDelete(row.id)}
-                />
-              )}
-            </>
-          );
-        },
-        width: '2%',
+  return [
+    {
+      formatter: (cell, row) => {
+        return (
+          <>
+            {
+              <IconButton
+                iconname="faTimes"
+                className={"table-delete-icon"}
+                onClick={() => handleDelete(row.id)}
+              />
+            }
+          </>
+        );
       },
-      {
-        text: 'Structure Name',
-        dataField: 'structureName',
-        sortable: true,
+    },
+    {
+      text: "Structure Name",
+      dataField: "structureName",
+      sortable: true,
+    },
+    {
+      text: "Structure Family",
+      dataField: "structureType",
+      sortable: true,
+    },
+    {
+      text: "Actions",
+      sortable: true,
+      formatter: (cell, row) => {
+        return (
+          <>
+            {
+              <IconButton
+                iconname="faEdit"
+                onClick={() => handleEdit(row.id)}
+              />
+            }
+          </>
+        );
       },
-      {
-        text: 'Structure Family',
-        dataField: 'structureType',
-        sortable: true,
-      },
-      {
-        text: 'Actions',
-        sortable: true,
-        formatter: row => {
-          return (
-            <>
-              {(
-                <IconButton
-                  iconname="faEdit"
-                  onClick={() => handleEdit(row.id)}
-                />
-              )}
-            </>
-          );
-        },
-      },
-    ];
-  };
+    },
+  ];
+};
 
-  export const transformStructureList = (structureList,structureFamilyList) => {
-    let tmpArr = [];
-    let isActiveValue;
-    structureList &&
-    structureList.map(structure => {
-        if(structure.isActive){
-          isActiveValue="Active"
-        }
-        else{
-          isActiveValue="inActive"
-        }
+export const transformStructureList = (structureList, structureFamilyList) => {
+  let tmpArr = [];
+  let isActiveValue;
+  structureList &&
+    structureList.map((structure) => {
+      if (structure.isActive) {
+        isActiveValue = "Active";
+      } else {
+        isActiveValue = "inActive";
+      }
 
-        const structureFamilyValue=getSelectedValue(structureFamilyList,structure.structureTypeId)
-        let tmpObj = {
-          id: structure.id,
-          structureName: structure.name,
-          structureType: structureFamilyValue.label,
-          status: isActiveValue
-        };
-        tmpArr.push(tmpObj);
-      });
-    return tmpArr;
-  };
+      const structureFamilyValue = getSelectedValue(
+        structureFamilyList,
+        structure.structureTypeId
+      );
+      let tmpObj = {
+        id: structure.id,
+        structureName: structure.name,
+        structureType: structureFamilyValue.label,
+        status: isActiveValue,
+      };
+      tmpArr.push(tmpObj);
+    });
+  return tmpArr;
+};

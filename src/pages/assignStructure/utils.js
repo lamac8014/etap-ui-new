@@ -57,7 +57,8 @@ export const getAssignExcelHeaders = () => {
 };
 
 export const getExcelData = (scr) => {
-  let data = scr.uploadData;
+  // let data = scr.uploadData;
+  let data = [];
   let dataArr = [];
   dataArr.push(getAssignExcelHeaders());
   if (data && data.length > 0) {
@@ -86,12 +87,12 @@ export const getExcelData = (scr) => {
     });
   } else {
     let tmpArr = [];
-    tmpArr.push(scr.ic);
-    tmpArr.push(scr.bu);
-    tmpArr.push(scr.projName.label);
-    tmpArr.push(scr.strcutureType);
-    tmpArr.push(scr.structName.label);
-    tmpArr.push(scr.structName.value);
+    // tmpArr.push(scr.ic);
+    // tmpArr.push(scr.bu);
+    // tmpArr.push(scr.projName.label);
+    // tmpArr.push(scr.strcutureType);
+    // tmpArr.push(scr.structName.label);
+    // tmpArr.push(scr.structName.value);
     dataArr.push(tmpArr);
   }
   return dataArr;
@@ -160,56 +161,56 @@ export const structAttriMetaData = (onChangeValue) => {
 export const componentsMetaData = (onChangeValue) => {
   return [
     {
-      name: "Component",
+      text: "Component",
       dataField: "component",
     },
     {
-      name: "Component Type",
-      selector: "compType",
+      text: "Component Type",
+      seletext: "compType",
     },
     {
-      name: "Component ID",
+      text: "Component ID",
       dataField: "compType",
     },
     {
-      name: "Component No",
+      text: "Component No",
       dataField: "compNum",
     },
     {
-      name: "Group",
+      text: "Group",
       dataField: "group",
     },
 
     {
-      name: "Drawing No",
+      text: "Drawing No",
       dataField: "drawingNum",
     },
     {
-      name: "Length",
+      text: "Length",
       dataField: "length",
     },
     {
-      name: "Breadth",
+      text: "Breadth",
       dataField: "breadth",
     },
     {
-      name: "Height",
+      text: "Height",
       dataField: "height",
     },
     {
-      name: "Thickness",
+      text: "Thickness",
       dataField: "thickness",
     },
     {
-      name: "Weight",
+      text: "Weight",
       dataField: "weight",
     },
     {
-      name: "Type",
+      text: "Type",
       dataField: "type",
     },
     {
-      name: "Tag",
+      text: "Tag",
       dataField: "tag",
     },
   ];
@@ -293,7 +294,7 @@ export const listAssignedStructureMetaData = (
     {
       text: "Structure Code",
       dataField: "structureCode",
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
           <>
             {
@@ -310,7 +311,7 @@ export const listAssignedStructureMetaData = (
         );
       },
     },
-   
+
     {
       text: "No of Comp",
       dataField: "componentsCount",
@@ -328,10 +329,10 @@ export const listAssignedStructureMetaData = (
       text: "Status",
       dataField: "currentStatus",
     },
-   
+
     {
       text: "Actions",
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
           <>
             {
@@ -404,15 +405,15 @@ export const listAssignedComponentMetaData = (handleDelete, handleMore) => {
     },
     {
       text: "Actions",
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
           <>
             {
               <IconButton
-              compKey={row.userId}
-              iconname="faEdit"
-              size="1x"
-              onClick={() => handleMore(row.id)}
+                compKey={row.userId}
+                iconname="faEdit"
+                size="1x"
+                onClick={() => handleMore(row.id)}
               />
             }
           </>

@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import FaIcon from "../../common/FaIcon";
 import FormRow from "../../common/forms/FormRow";
 import IconButton from "../../common/forms/IconButton";
-import Popup from "../../common/forms/Popup";
+// import Popup from "../../common/forms/Popup";
 
 class StructureAttributesTable extends Component {
   constructor() {
@@ -79,12 +79,12 @@ class StructureAttributesTable extends Component {
                 <td>{attribute.uom}</td>
                 <td>{attribute.value}</td>
                 <td>
-                  <IconButton iconName="faEdit" onClick={() => {}} />
+                  <IconButton iconname="faEdit" onClick={() => {}} />
                 </td>
               </tr>
             ))}
           </tbody>
-          {this.state.error && (
+          {/* {this.state.error && (
             <Popup
               type="error"
               message="Type Of Input is Incorrect"
@@ -95,7 +95,7 @@ class StructureAttributesTable extends Component {
                 });
               }}
             />
-          )}
+          )} */}
         </Table>
       </>
     );

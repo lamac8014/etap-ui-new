@@ -9,7 +9,7 @@ class IconTextButton extends Component {
         onClick={this.props.onClick}
       >
         <FaIcon
-          iconName={this.props.iconName ? this.props.iconName : "faPlusCircle"}
+          iconname={this.props.iconName ? this.props.iconName : "faPlusCircle"}
           size={this.props.size ? this.props.size : "lg"}
         />
         {" " + this.props.btnText}
