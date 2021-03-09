@@ -68,6 +68,7 @@
     "react-loki": "^1.2.0",
     "react-nestable": "^1.1.0",
     "react-numeric": "^0.4.1",
+    "react-papaparse": "^3.11.1",
     "react-perfect-scrollbar": "^1.4.4",
     "react-rating": "^1.6.2",
     "react-redux": "^7.2.2",

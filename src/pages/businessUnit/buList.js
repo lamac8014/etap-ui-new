@@ -18,15 +18,17 @@ class BUList extends Component {
           onChange={(e) => this.props.onBUNameChange(e, this.props.index)}
           value={this.props.buName}
           readonly
-          iconSize="col-md-2"
-          rightIcon={
-            <IconButton
-              className="px-0"
-              iconName="faTimesCircle"
-              index={this.props.index}
-              onClick={() => this.props.onBUNameRemove(this.props.index)}
-            />
-          }
+          iconSize="col-md-2 d-flex justify-content-center"
+          iconname="faTimesCircle"
+          onClick={() => this.props.onBUNameRemove(this.props.index)}
+          // rightIcon={
+          //   <IconButton
+          //     className="px-0"
+          //     iconName="faTimesCircle"
+          //     index={this.props.index}
+          //     onClick={() => this.props.onBUNameRemove(this.props.index)}
+          //   />
+          // }
         />
       </Col6>
     );
