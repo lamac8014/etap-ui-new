@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 

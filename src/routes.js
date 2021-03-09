@@ -22,6 +22,8 @@ const Ic = lazy(() =>
   import("./containers/independentCompany/viewIndependentCompany")
 );
 const Bu = lazy(() => import("./containers/businessUnit/viewBusinessUnit"));
+const ViewStructureFamily = lazy(() => import("./containers/structureFamily/viewStructureFamily"));
+const CreateDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
 
 const RouteList = [
   {
@@ -90,5 +92,18 @@ const RouteList = [
     name: "Vendor",
     component: ViewVendor,
   },
+  {
+    exact: true,
+    path: "/etrack/masters/structureFmly",
+    name: "Structure Family",
+    component: ViewStructureFamily,
+  },
+  {
+    exact: true,
+    path: "/etrack/dispatch/twccDispatch",
+    name: "Dispatch",
+    component: CreateDispatch,
+  },
+  
 ];
 export default RouteList;

@@ -1,34 +1,31 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
-import CheckBox from "../../common/forms/CheckBox";
+import CheckBox from "../../common/forms/Checkbox";
 
 export const createDispatchMetaData = (handleEditIconPress) => {
   return [
     {
-      name: "MR Number",
-      selector: "mrNo",
-      sortable: true,
+      text: "MR Number",
+      dataField: "mrNo",
+      
     },
 
     {
-      name: "Project",
-      selector: "projectName",
-      sortable: true,
+      text: "Project",
+      dataField: "projectName",
     },
     {
-      name: "Project ID",
-      selector: "projectId",
-      sortable: true,
+      text: "Project ID",
+      dataField: "projectId",
     },
     {
-      name: "Status",
-      selector: "status",
-      sortable: true,
+      text: "Status",
+      dataField: "status",
     },
     {
-      name: "Actions",
+      text: "Actions",
       sortable: true,
-      cell: (row) => {
+      formatter: (row) => {
         return (
           <>
             <IconButton
@@ -48,17 +45,17 @@ export const twccDispatchMetaData = (
 ) => {
   return [
     {
-      name: "MR Number",
-      selector: "mrNo",
-      sortable: true,
+      text: "MR Number",
+      dataField: "mrNo",
+
     },
 
     {
-      name: "Structure Name",
-      selector: "structureName",
-      sortable: true,
+      text: "Structure Name",
+      dataField: "structureName",
 
-      cell: (row) => {
+
+      formatter: (cell, row) => {
         return (
           <>
             {
@@ -68,32 +65,33 @@ export const twccDispatchMetaData = (
                   redirectToDispatchStructure(row.projectId);
                 }}
               >
-                {row.structureName}
+                {row.structureCode}
               </a>
             }
           </>
         );
       },
+
     },
     {
-      name: "Req By",
-      selector: "projectId",
-      sortable: true,
+      text: "Req By",
+      dataField: "requiredBy",
+
     },
     {
-      name: "Raised By",
-      selector: "projectId",
-      sortable: true,
+      text: "Raised By",
+      dataField: "raisedBy",
+
     },
     {
-      name: "Status",
-      selector: "status",
-      sortable: true,
+      text: "Status",
+      dataField: "status",
+
     },
     {
-      name: "Actions",
-      sortable: true,
-      cell: (row) => {
+      text: "Actions",
+
+      formatter: (cell, row) => {
         return (
           <>
             <IconButton
@@ -173,7 +171,7 @@ export const dispatchStructureMetaData = (setSelectedStructures) => {
     },
   ];
 };
-export const twccdispatchStructureMetaData = (setSelectedStructures , handleMore) => {
+export const twccdispatchStructureMetaData = (setSelectedStructures, handleMore) => {
   return [
     {
       sortable: true,
