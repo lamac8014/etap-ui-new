@@ -37,9 +37,8 @@ const CreateDispatch = lazy(() =>
   import("./containers/createDispatch/createDispatch")
 );
 const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
-const ViewSubContractor = lazy(() =>
-  import("./containers/subContractor/viewSubContractor")
-);
+const ViewSubContractor = lazy(() => import("./containers/subContractor/viewSubContractor"));
+const Users = lazy(() => import("./containers/users/viewUsers"));
 
 const RouteList = [
   {
@@ -150,5 +149,11 @@ const RouteList = [
     name: "Fabrication Cost",
     component: ViewFabricationCost,
   },
+  {
+    exact: true,
+    path: "/etrack/masters/users",
+    name: "Users",
+    component: Users,
+  }
 ];
 export default RouteList;

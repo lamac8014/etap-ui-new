@@ -29,9 +29,9 @@ class ViewScrap extends Component {
     return (
 
       <PageContainer>
-        <ViewMoreScrap showScrapViewMoreModel={this.props.scrap.showScrapViewMoreModel} />
 
         <SimpleCard>
+          <ViewMoreScrap showScrapViewMoreModel={this.props.scrap.showScrapViewMoreModel} />
 
           {/* {this.props.users.scrapList && ( */}
           <DataTable
