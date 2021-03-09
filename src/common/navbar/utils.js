@@ -176,7 +176,7 @@ const menus = {
                 },
                 {
                   id: "project",
-                  title: "Project",
+                  title: "Project Management",
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-share-2",
@@ -184,7 +184,7 @@ const menus = {
                 },
                 {
                   id: "wbs",
-                  title: "WBS",
+                  title: "WBS ",
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-copy",
