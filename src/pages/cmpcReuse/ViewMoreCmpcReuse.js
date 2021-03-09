@@ -5,6 +5,8 @@ import InputGroupButton from "../../common/forms/InputGroupButton";
 import Loader from "../../common/Loader";
 import FaIcon from "../../common/FaIcon";
 import Modal from "../../common/Modal";
+import SimpleRow from "../../common/forms/SimpleRow";
+import Col6 from "../../common/forms/Col6";
 
 class ViewMoreCmpcReuse extends Component {
     constructor(props) {
@@ -24,7 +26,8 @@ class ViewMoreCmpcReuse extends Component {
                 {this.props.isLoading && <Loader />}
 
                 <p>Structure Attributes</p>
-                <FormRow>
+                <SimpleRow>
+                <Col6 size="col-md-12">
                     <TextInput disabled
                         size="col-md-4"
                         fieldSize="col-md-12"
@@ -58,9 +61,11 @@ class ViewMoreCmpcReuse extends Component {
                         //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
                         placeholder="Auto Fetch"
                     />
+                    </Col6>
 
-                </FormRow>
-                <FormRow>
+                </SimpleRow>
+                <SimpleRow>
+                <Col6 size="col-md-12">
                     <TextInput
                         size="col-md-4"
                         fieldSize="col-md-12"
@@ -72,7 +77,9 @@ class ViewMoreCmpcReuse extends Component {
                         //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
                         placeholder="Auto Fetch"
                     />
-                </FormRow>
+                    </Col6>
+
+                </SimpleRow>
 
 
             </Modal>

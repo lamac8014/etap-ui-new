@@ -118,7 +118,30 @@ const menus = {
               title: "Life cycle Management",
               type: "collapse",
               icon: "feather icon-refresh-ccw",
-              children: [],
+              children: [
+                {
+                  id: "scrap",
+                  title: "Scrap",
+                  type: "item",
+                  icon: "feather icon-trash",
+                  url: "/etrack/lifeCycle/scrap",
+                },
+                {
+                  id: "surplus",
+                  title: "Surplus",
+                  type: "item",
+                  icon: "feather icon-package",
+                  url: "/etrack/lifeCycle/surplusDeclaration",
+                },
+                {
+                  id: "cmpc",
+                  title: "CMPC Reuse",
+                  type: "item",
+                  icon: "feather icon-repeat",
+                  url: "/etrack/lifeCycle/cmpcReuse",
+                },
+
+              ],
             },
             {
               id: "dispatchMgmt",
@@ -238,27 +261,7 @@ const menus = {
                   icon: "database",
                   url: "/etrack/masters/vendors",
                 },
-                {
-                  id: "scrap",
-                  title: "Scrap",
-                  type: "item",
-                  icon: "feather icon-trash",
-                  url: "/etrack/masters/scrap",
-                },
-                {
-                  id: "surplus",
-                  title: "Surplus",
-                  type: "item",
-                  icon: "feather icon-package",
-                  url: "/etrack/masters/surplusDeclaration",
-                },
-                {
-                  id: "cmpc",
-                  title: "CMPC Reuse",
-                  type: "item",
-                  icon: "feather icon-repeat",
-                  url: "/etrack/masters/cmpcReuse",
-                },
+                
               ],
             },
           ],

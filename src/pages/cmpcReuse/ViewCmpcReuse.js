@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { listUsersMetaData } from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
@@ -99,15 +98,23 @@ class ViewCmpcReuse extends Component {
             </Col6>
           </SimpleRow>
           <ButtonRow>
-            <Button btnText="Save" onClick={() => {}} gradient type="success" />
+
+            <Button
+              btnText="Submit"
+              onClick={() => { }}
+              outline={true}
+              type="success"
+
+            />
             <Button
               btnText="Discard"
-              onClick={() => {}}
-              gradient
+              onClick={() => { }}
+              outline={true}
               type="danger"
             />
           </ButtonRow>
         </SimpleCard>
+       
       </PageContainer>
     );
   }
