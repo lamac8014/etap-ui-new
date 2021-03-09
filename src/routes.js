@@ -17,7 +17,9 @@ const ViewProject = lazy(() =>
   import("./containers/project/viewProjectContainer")
 );
 // const ViewDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
-const ViewFabricationCost = lazy(() => import("./containers/fabricationCost/fabricationCost"));
+const ViewFabricationCost = lazy(() =>
+  import("./containers/fabricationCost/fabricationCost")
+);
 
 const ViewCmpcReuse = lazy(() =>
   import("./containers/cmpcReuse/viewCmpcReuse")
@@ -28,10 +30,16 @@ const Ic = lazy(() =>
   import("./containers/independentCompany/viewIndependentCompany")
 );
 const Bu = lazy(() => import("./containers/businessUnit/viewBusinessUnit"));
-const ViewStructureFamily = lazy(() => import("./containers/structureFamily/viewStructureFamily"));
-const CreateDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
+const ViewStructureFamily = lazy(() =>
+  import("./containers/structureFamily/viewStructureFamily")
+);
+const CreateDispatch = lazy(() =>
+  import("./containers/createDispatch/createDispatch")
+);
 const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
-const ViewSubContractor = lazy(() => import("./containers/subContractor/viewSubContractor"));
+const ViewSubContractor = lazy(() =>
+  import("./containers/subContractor/viewSubContractor")
+);
 
 const RouteList = [
   {
@@ -113,7 +121,7 @@ const RouteList = [
     component: CreateDispatch,
   },
   {
-    exact:true,
+    exact: true,
     path: "/etrack/masters/project",
     name: "Project",
     component: ViewProject,
@@ -123,6 +131,12 @@ const RouteList = [
     path: "/etrack/masters/viewSubContractors",
     name: "Dispatch",
     component: ViewSubContractor,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/wbs",
+    name: "WBS",
+    component: Wbs,
   },
   // {
   //   exact: true,
@@ -136,6 +150,5 @@ const RouteList = [
     name: "Fabrication Cost",
     component: ViewFabricationCost,
   },
-
 ];
 export default RouteList;
