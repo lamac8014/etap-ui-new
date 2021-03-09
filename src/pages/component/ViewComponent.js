@@ -5,6 +5,7 @@ import CreateComponent from "../../containers/component/addComponent";
 import CustomDataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import ConfirmModal from "../../common/forms/ConfirmModal";
 
 class ViewComponent extends Component {
   constructor(props) {
@@ -20,25 +21,27 @@ class ViewComponent extends Component {
     this.props.componentList();
   }
 
-
   filteredItems = (data) => {
-
     if (data) {
       return data.filter((item) => {
         for (let key in item) {
-          if (item[key] && item[key].toString().toLowerCase().includes(this.state.filterText.toLowerCase())) {
+          if (
+            item[key] &&
+            item[key]
+              .toString()
+              .toLowerCase()
+              .includes(this.state.filterText.toLowerCase())
+          ) {
             return true;
           }
         }
-      })
+      });
     }
   };
-
 
   render() {
     return (
       <PageContainer>
-
         <SimpleCard>
           {this.props.component.isAddComponentMsg && (
             <CustomAlert
@@ -46,45 +49,43 @@ class ViewComponent extends Component {
               message={this.props.component.message}
             />
           )}
-          <CreateComponent showAddComponentModal={this.props.component.showAddComponentModal} />
-
-          {this.props.component.componentTypeList && (
-            <CustomDataTable
-              metaData={listComponentTypeMetaData(
-                (id) => this.setState({ activeId: id, showDeleteModal: true }),
-                (id) => this.props.handleEdit(id),
-              )}
-              bodyData={transformComponentList(
-                this.filteredItems(this.props.component.componentTypeList.reverse())
-              )}
-
-              showButton={true}
-              btnText="Add Component Type"
-              onClick={this.props.showAddComponentModal}
-
-
+          <CreateComponent
+            showAddComponentModal={this.props.component.showAddComponentModal}
+          />
+          {/* {this.props.component.componentTypeList && ( */}
+          <CustomDataTable
+            metaData={listComponentTypeMetaData(
+              (id) => this.setState({ activeId: id, showDeleteModal: true }),
+              (id) => this.props.handleEdit(id)
+            )}
+            // bodyData={transformComponentList(
+            //   this.filteredItems(
+            //     this.props.component.componentTypeList.reverse()
+            //   )
+            // )}
+            bodyData={[{ id: 1, componentType: "COMP1", status: "Active" }]}
+            showButton={true}
+            btnText="Add Component Type"
+            onClick={this.props.showAddComponentModal}
+          />
+          {/* )} */}
+          {this.state.showDeleteModal && (
+            <ConfirmModal
+              closeAction={() =>
+                this.setState({ showDeleteModal: false, activeId: null })
+              }
+              title="Delete User"
+              deleteAction={() => {
+                this.props.handleConfirmDelete(this.state.activeId);
+                this.setState({ showDeleteModal: false, activeId: null });
+              }}
+              frontText="Are you sure you want to delete the component?"
+              confirmText="Component Deleted"
+              cancelText="Cancelled!"
             />
           )}
-
-          {/* <ConfirmModal
-            showModal={this.state.showDeleteModal}
-            handleClose={() =>
-              this.setState({ showDeleteModal: false, activeId: null })
-            }
-            title="Delete User"
-            handleConfirm={() => {
-              this.props.handleConfirmDelete(this.state.activeId);
-              this.setState({ showDeleteModal: false, activeId: null });
-            }}
-          >
-            <h6 className="text-danger">
-              Are you sure you want to delete this User?
-            </h6>
-          </ConfirmModal> */}
         </SimpleCard>
       </PageContainer>
-
-
     );
   }
 }
