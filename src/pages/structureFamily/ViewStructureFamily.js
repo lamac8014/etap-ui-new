@@ -48,7 +48,7 @@ class ViewStructureFamily extends Component {
             />
           )}
           <AddStructureFamily showAddStructureFamilyModal={this.props.structureFamily.showAddStructureFamilyModal} />
-          {this.props.structureFamily.structureFamilyTypeList && (
+          {/* {this.props.structureFamily.structureFamilyTypeList && ( */}
             <CustomDataTable
               metaData={structureFamilyMetaData(
                 // (id) => this.setState({ activeId: id, showStructureFamilyDeleteModal: true }),
@@ -65,7 +65,7 @@ class ViewStructureFamily extends Component {
                 },
               ]}
             />
-          )}
+          {/* )} */}
 
         </SimpleCard>
       </PageContainer>

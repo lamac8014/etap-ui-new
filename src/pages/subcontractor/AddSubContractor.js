@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import CheckBox from "../../common/forms/Checkbox";
-
+import SimpleRow from "../../common/forms/SimpleRow"
 class AddSubContractor extends Component {
 
     
@@ -24,7 +23,7 @@ class AddSubContractor extends Component {
                 size="lg"
                 isShowFooter={true}
             >
-                <FormRow>
+                <SimpleRow>
                     <TextInput
                         labelSize="col-md-5 pr-0"
                         fieldSize="col-md-7 pl-0"
@@ -43,8 +42,8 @@ class AddSubContractor extends Component {
                         onChange={(e) => this.props.handleChangeVendorCode(e.target.value)}
                         value={this.props.vendor.vendorCode}
                     />
-                </FormRow>
-                <FormRow>
+                </SimpleRow>
+                <SimpleRow>
                     <TextInput
                         labelSize="col-md-5 pr-0"
                         fieldSize="col-md-7 pl-0"
@@ -63,8 +62,8 @@ class AddSubContractor extends Component {
                         onChange={(e) => this.props.handleChangeVendorContactNumber(e.target.value)}
                         value={this.props.vendor.contactNumber}
                     />
-                </FormRow>
-                <FormRow>
+                </SimpleRow>
+                <SimpleRow>
                     <SimpleDropDown
                         labelSize="col-md-5 pr-0"
                         fieldSize="col-md-7 pl-0"
@@ -73,8 +72,8 @@ class AddSubContractor extends Component {
                         onChange={(obj) => this.props.handleChangeVendorStatus(obj)}
                         value={this.props.vendor.vendorStatus}
                     />
-                </FormRow>
-                <FormRow>
+                </SimpleRow>
+                <SimpleRow>
                     {this.props.vendor.venServList.map((dt, i) => {
                         return (
                             <CheckBox
@@ -85,7 +84,7 @@ class AddSubContractor extends Component {
                             />
                         )
                     })}
-                </FormRow>
+                </SimpleRow>
                 {this.props.vendor.isModalMsg && (
                     <p className="text-danger">{this.props.vendor.component.message}</p>
                 )}
