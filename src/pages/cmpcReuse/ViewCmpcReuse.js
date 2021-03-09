@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { listUsersMetaData } from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
@@ -115,12 +114,7 @@ class ViewCmpcReuse extends Component {
             />
           </ButtonRow>
         </SimpleCard>
-        <Button
-          btnText="Submit"
-          className="center-block"
-          outlineColor="success"
-        />
-        <Button btnText="Discard" className="" outlineColor="danger" />
+       
       </PageContainer>
     );
   }
