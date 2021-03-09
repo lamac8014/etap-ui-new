@@ -16,6 +16,10 @@ const ViewVendor = lazy(() => import("./containers/siteDispatch/siteDispatch"));
 const ViewProject = lazy(() =>
   import("./containers/project/viewProjectContainer")
 );
+// const ViewDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
+const ViewFabricationCost = lazy(() =>
+  import("./containers/fabricationCost/fabricationCost")
+);
 
 const ViewCmpcReuse = lazy(() =>
   import("./containers/cmpcReuse/viewCmpcReuse")
@@ -133,6 +137,18 @@ const RouteList = [
     path: "/etrack/masters/wbs",
     name: "WBS",
     component: Wbs,
+  },
+  // {
+  //   exact: true,
+  //   path: "/etrack/dispatch/viewdispatch",
+  //   name: "Dispatch",
+  //   component: ViewDispatch,
+  // },
+  {
+    exact: true,
+    path: "/etrack/cost/fabcost",
+    name: "Fabrication Cost",
+    component: ViewFabricationCost,
   },
 ];
 export default RouteList;
