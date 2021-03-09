@@ -64,6 +64,10 @@ class ViewStructureFamily extends Component {
                   
                 },
               ]}
+              showButton={true}
+              btnText="Add Structure Family"
+              onClick={this.props.showAddStructureFamilyModal}
+
             />
           {/* )} */}
 

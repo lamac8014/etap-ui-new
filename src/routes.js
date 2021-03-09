@@ -30,6 +30,7 @@ const ViewStructureFamily = lazy(() => import("./containers/structureFamily/view
 const CreateDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
 const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
 const ViewSubContractor = lazy(() => import("./containers/subContractor/viewSubContractor"));
+const Users = lazy(() => import("./containers/users/viewUsers"));
 
 const RouteList = [
   {
@@ -121,6 +122,12 @@ const RouteList = [
     path: "/etrack/masters/viewSubContractors",
     name: "Dispatch",
     component: ViewSubContractor,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/users",
+    name: "Users",
+    component: Users,
   },
 ];
 export default RouteList;

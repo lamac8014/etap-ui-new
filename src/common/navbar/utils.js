@@ -199,7 +199,7 @@ const menus = {
                 },
                 {
                   id: "project",
-                  title: "Project Management",
+                  title: "Project",
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-share-2",
@@ -217,18 +217,10 @@ const menus = {
                   id: "users",
                   title: "Users",
                   type: "item",
-                  // icon: "feather icon-home",
                   icon: "feather icon-users",
                   url: "/etrack/masters/users",
                 },
-                {
-                  id: "cost",
-                  title: "Cost Management",
-                  type: "item",
-                  // icon: "feather icon-home",
-                  icon: "feather icon-credit-card",
-                  url: "/etrack/masters/bu2",
-                },
+               
                 {
                   id: "structureFmly",
                   title: "Structure Family",
@@ -261,7 +253,7 @@ const menus = {
                   icon: "database",
                   url: "/etrack/masters/viewSubContractors",
                 },
-                
+
               ],
             },
           ],
