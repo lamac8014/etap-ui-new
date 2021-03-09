@@ -259,7 +259,7 @@ const menus = {
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "database",
-                  url: "/etrack/masters/vendors",
+                  url: "/etrack/masters/viewSubContractors",
                 },
                 
               ],
