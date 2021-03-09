@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+// const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
 const ViewStructure = lazy(() =>
@@ -13,6 +13,10 @@ const ViewProcurement = lazy(() =>
   import("./containers/procurement/procurement")
 );
 const ViewVendor = lazy(() => import("./containers/siteDispatch/siteDispatch"));
+const ViewProject = lazy(() =>
+  import("./containers/project/viewProjectContainer")
+);
+
 const ViewCmpcReuse = lazy(() =>
   import("./containers/cmpcReuse/viewCmpcReuse")
 );
@@ -24,6 +28,7 @@ const Ic = lazy(() =>
 const Bu = lazy(() => import("./containers/businessUnit/viewBusinessUnit"));
 const ViewStructureFamily = lazy(() => import("./containers/structureFamily/viewStructureFamily"));
 const CreateDispatch = lazy(() => import("./containers/createDispatch/createDispatch"));
+const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
 
 const RouteList = [
   {
@@ -104,6 +109,17 @@ const RouteList = [
     name: "Dispatch",
     component: CreateDispatch,
   },
-  
+  {
+    exact:true,
+    path: "/etrack/masters/project",
+    name: "Project",
+    component: ViewProject,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/wbs",
+    name: "WBS",
+    component: Wbs,
+  },
 ];
 export default RouteList;

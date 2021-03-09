@@ -5,7 +5,7 @@ import componentReducer from "./componentReducer";
 // import structureReducer from "./structureReducer";
 import transferPriceReducer from "./transferPriceReducer";
 import wbsReducer from "./wbsReducer";
-// import projReducer from "./projectReducer";
+import projReducer from "./projectReducer";
 import independentCompanyReducer from "./independentCompanyReducer";
 // import usersReducer from "./userReducer";
 import structureFamilyReducer from "./structureFamilyReducer";
@@ -40,7 +40,7 @@ const rootReducer = combineReducers({
   transferPrice: transferPriceReducer,
   component: componentReducer,
   wbs: wbsReducer,
-  // proj: projReducer,
+  proj: projReducer,
   icbu: independentCompanyReducer,
   // users: usersReducer,
   structureFamily: structureFamilyReducer,
