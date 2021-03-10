@@ -18,7 +18,7 @@ import TextInput from "../../common/forms/TextInput"
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import SimpleRow from "../../common/forms/SimpleRow";
-
+import PieChartCard from "../../common/cards/PieChartCard";
 
 
 
@@ -41,6 +41,47 @@ class ViewAssignComponent extends Component {
       // <ContentLoader>
       <PageContainer>
         <SimpleCard>
+          <SimpleRow>
+            <Col6>
+            <PieChartCard
+              // isLoading={this.props.summary.pieLoading1}
+              height={250}
+              title="Components assigned vs Total Components "
+              data={
+                {
+                  labels: ["Assigned", "Total"],
+                  datasets: [
+                    {
+                      data: [35,100],
+                      backgroundColor: ["#F15850","#EDE03E"],
+                      hoverBackgroundColor:["#F15850","#EDE03E"],
+                    },
+                  ],
+                }
+              }
+              
+            />
+            </Col6>
+            <Col6>
+            <PieChartCard
+              // isLoading={this.props.summary.pieLoading1}
+              height={250}
+              title="Scanned Components vs Dispatched Components"
+              data={
+                {
+                  labels: ["Scanned", "Dispatched"],
+                  datasets: [
+                    {
+                      data: [6,35],
+                      backgroundColor: ["#F15850","#EDE03E"],
+                      hoverBackgroundColor:["#F15850","#EDE03E"],
+                    },
+                  ],
+                }
+              }
+            />
+            </Col6>
+          </SimpleRow>
         {this.props.assignStructure.isAddComponentMsg && (
           <CustomAlert
             variant="success"
