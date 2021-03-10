@@ -337,7 +337,7 @@ export const listAssignedStructureMetaData = (
           <>
             {
               <IconButton
-                iconName="faEdit"
+                iconname="faEdit"
                 onClick={() => handleMore(row.id)}
               />
             }

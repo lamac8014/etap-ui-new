@@ -34,7 +34,6 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
     },
     {
       text: "Actions",
-      sortable: true,
       formatter: (cell, row) => {
         return (
           <>
