@@ -9,34 +9,40 @@ export const siteDispatchMetaData = (handleUpdate) => {
     //   selector: "mrNo",
     //   sortable: false,
     // },
+    
     {
-      text: "DC Number",
+      text: "MR No",
+      dataField: "mrNo",
+      
+    },
+    {
+      text: "DC No",
       dataField: "dispatchNo",
       
     },
     {
-      text: "Structure Name",
+      text: "Struct.",
       dataField: "structureName",
       
     },
     {
-      text: "Structure Code",
-      dataField: "structId",
+      text: "Struct. Code",
+      dataField: "structCode",
       
     },
     {
-      text: "No. of Components",
-      dataField: "structId",
+      text: "No. of Comp",
+      dataField: "compNo",
       
     },
     {
-      text: "Requested By",
-      dataField: "structId",
+      text: "Req By",
+      dataField: "reqBy",
       
     },
     {
-      text: "Quantity Requested",
-      dataField: "structId",
+      text: "Qty Req",
+      dataField: "qtyReq",
       
     },
     // {
@@ -53,7 +59,7 @@ export const siteDispatchMetaData = (handleUpdate) => {
             <div className="col-md-5">
               <IconButton
                 id={row.dispatchId}
-                iconName="faEdit"
+                iconname="faEdit"
                 onClick={() => handleUpdate(row.dispatchId)}
               />
             </div>
@@ -61,7 +67,7 @@ export const siteDispatchMetaData = (handleUpdate) => {
               {/* <Button btnText="View More" btnType="btn-primary btn-sm" /> */}
               <IconButton
                 id={row.dispatchId}
-                iconName="faList"
+                iconname="faList"
                 onClick={() => {}}
               />
             </div>
