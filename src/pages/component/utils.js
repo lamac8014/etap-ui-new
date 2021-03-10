@@ -18,7 +18,9 @@ export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
           </>
         );
       },
-      width: "2%",
+      headerStyle: (col, colIndex) => {
+        return { width: "2%" };
+      },
     },
     {
       text: "Component Type",

@@ -18,6 +18,9 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
           </>
         );
       },
+      headerStyle: (col, colIndex) => {
+        return { width: "2%" };
+      },
     },
     {
       text: "Structure Name",
@@ -31,7 +34,6 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
     },
     {
       text: "Actions",
-      sortable: true,
       formatter: (cell, row) => {
         return (
           <>
