@@ -40,7 +40,15 @@ class Procurement extends Component {
                   this.props.showAssignVendorModal
                 )}
                 // bodyData={this.props.procurement.siteDispatchDetails}
-                bodyData={[{}, {}]}
+                bodyData={[{
+                  mrNo:"1",
+                  dispatchNo:"3",
+                  structureName:"sample",
+                  structCode:"sample code",
+                  compNo:"3",
+                  reqBy:"sample data",
+                  qtyReq:"10",
+                }]}
                 progressPending={this.props.procurement.isLoading}
                 pagination={true}
                 paginationTotalRows={
