@@ -18,6 +18,9 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
           </>
         );
       },
+      headerStyle: (col, colIndex) => {
+        return { width: "2%" };
+      },
     },
     {
       text: "Structure Name",
