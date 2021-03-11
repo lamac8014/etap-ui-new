@@ -3,25 +3,25 @@ import IconButton from "../../common/forms/IconButton";
 
 export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
   return [
-    {
-      sortable: true,
-      formatter: (cell, row) => {
-        return (
-          <>
-            {
-              <IconButton
-                iconname="faTimes"
-                className={"table-delete-icon"}
-                onClick={() => handleDelete(row.id)}
-              />
-            }
-          </>
-        );
-      },
-      headerStyle: (col, colIndex) => {
-        return { width: "2%" };
-      },
-    },
+    // {
+    //   sortable: true,
+    //   formatter: (cell, row) => {
+    //     return (
+    //       <>
+    //         {
+    //           <IconButton
+    //             iconname="faTimes"
+    //             className={"table-delete-icon"}
+    //             onClick={() => handleDelete(row.id)}
+    //           />
+    //         }
+    //       </>
+    //     );
+    //   },
+    //   headerStyle: (col, colIndex) => {
+    //     return { width: "2%" };
+    //   },
+    // },
     {
       text: "Component Type",
       dataField: "componentType",

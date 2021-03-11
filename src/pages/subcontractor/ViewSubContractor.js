@@ -56,6 +56,9 @@ class ViewSubContractor extends Component {
                                         (id) => this.props.handleEdit(id),
                                     )}
                                     bodyData={this.filteredItems(this.props.vendor.vendorList)}
+                                    showButton={true}
+                                    btnText="Add Vendor"
+                                    onClick={this.props.showAddVendorModal}
 
                                 />
                             )}

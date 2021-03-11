@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
-import CheckBox from "../../common/forms/Checkbox";
+import Checkbox from "../../common/forms/Checkbox";
 import SimpleRow from "../../common/forms/SimpleRow"
 class AddSubContractor extends Component {
 
-    
+
     render() {
         console.log(`In vendor page: ${JSON.stringify(this.props.vendor.venServList)}`)
         return (
@@ -76,12 +76,18 @@ class AddSubContractor extends Component {
                 <SimpleRow>
                     {this.props.vendor.venServList.map((dt, i) => {
                         return (
-                            <CheckBox
+
+                            <Checkbox
                                 label={dt.name}
+                                color="primary"
+                                checked={true}
+                                id="i-in-fill"
+                                outline
                                 size="col-md-4"
                                 onChange={() => this.props.onServTypeChange(i)}
-                                checked={dt.checked}
+                               
                             />
+
                         )
                     })}
                 </SimpleRow>

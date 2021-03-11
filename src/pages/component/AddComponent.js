@@ -11,8 +11,8 @@ class CreateUser extends Component {
   render() {
     return (
       <Modal
-        title={`${this.props.component.isEditMode ? "Update" : "Create New"
-          } Component`}
+        title={`${this.props.component.isEditMode ? "Update" : "Add"
+          } Component Type`}
         showModal={this.props.showAddComponentModal}
         handleSave={
           this.props.component.isEditMode

@@ -4,24 +4,24 @@ import { getSelectedValue } from "../../utils/dataTransformer";
 
 export const listStructureMetaData = (handleDelete, handleEdit) => {
   return [
-    {
-      formatter: (cell, row) => {
-        return (
-          <>
-            {
-              <IconButton
-                iconname="faTimes"
-                className={"table-delete-icon"}
-                onClick={() => handleDelete(row.id)}
-              />
-            }
-          </>
-        );
-      },
-      headerStyle: (col, colIndex) => {
-        return { width: "2%" };
-      },
-    },
+    // {
+    //   formatter: (cell, row) => {
+    //     return (
+    //       <>
+    //         {
+    //           <IconButton
+    //             iconname="faTimes"
+    //             className={"table-delete-icon"}
+    //             onClick={() => handleDelete(row.id)}
+    //           />
+    //         }
+    //       </>
+    //     );
+    //   },
+    //   headerStyle: (col, colIndex) => {
+    //     return { width: "2%" };
+    //   },
+    // },
     {
       text: "Structure Name",
       dataField: "structureName",
@@ -30,6 +30,11 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
     {
       text: "Structure Family",
       dataField: "structureType",
+      sortable: true,
+    },
+    {
+      text: "Status",
+      dataField: "status",
       sortable: true,
     },
     {

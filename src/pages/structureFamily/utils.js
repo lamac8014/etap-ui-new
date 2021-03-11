@@ -6,8 +6,8 @@ export const structureFamilyMetaData = (handleEdit) => {
   return [
 
     {
-      text: 'Structure Family Type',
-      dataField: 'structureFamilyType',
+      text: 'Structure Family',
+      dataField: 'structureFamily',
     },
     {
       text: 'Status',
