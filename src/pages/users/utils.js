@@ -33,7 +33,7 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
             <>
               {(
                 <IconButton
-                  iconName="faEdit"
+                  iconname="faEdit"
                   onClick={() => handleEdit(row.id)}
                 />
               )}
