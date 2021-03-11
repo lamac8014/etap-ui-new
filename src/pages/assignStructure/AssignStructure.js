@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
+import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import MultiFileInput from "../../common/forms/MultiFileInput";
 import Button from "../../common/forms/Button";
-import CustomAlert from "../../common/forms/customAlert";
-import Loader from "../../common/Loader";
+// import CustomAlert from "../../common/forms/customAlert";
+// import Loader from "../../common/Loader";
 import CustomDataTable from "../../common/DataTable";
 
 import ExportExcel from "../../common/ExportExcel";
@@ -19,6 +19,9 @@ import IconTextButton from "../../common/forms/IconTextButton";
 import IconButton from "../../common/forms/IconButton";
 
 import InputGroupButton from "../../common/forms/InputGroupButton";
+import PageContainer from "../../common/forms/PageContainer";
+import SimpleCard from "../../common/cards/SimpleCard";
+import FormRow from "../../common/forms/FormRow";
 
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
@@ -43,13 +46,13 @@ class AssignStructure extends Component {
     ];
     return (
       <>
-        <ContentLoader>
-          {this.props.scr.isLoading && <Loader />}
+        <PageContainer>
+          {/* {this.props.scr.isLoading && <Loader />}
           {this.props.scr.isProjMsg && (
             <CustomAlert variant="success" message={this.props.proj.message} />
-          )}
-          <FormContainer formTitle={"Create Structure"}>
-            <FormRow>
+          )} */}
+          <SimpleCard>
+            <SimpleRow>
               <TextInput
                 size="col-md-4"
                 labelSize="col-md-4"
@@ -85,9 +88,8 @@ class AssignStructure extends Component {
                 value="PROJ0001"
                 disabled
               />
-
-            </FormRow>
-            <FormRow>
+            </SimpleRow>
+            <SimpleRow>
               <TextInput
                 size="col-md-4"
                 labelSize="col-md-4 pr-0"
@@ -122,11 +124,9 @@ class AssignStructure extends Component {
                 placeholder="Auto Fetch"
                 disabled
               />
+            </SimpleRow>
 
-
-            </FormRow>
-
-            <FormRow>
+            <SimpleRow>
               <TextInput
                 label="Component"
                 size="col-md-4"
@@ -141,7 +141,7 @@ class AssignStructure extends Component {
                 // }
                 // value={this.props.scr.drawingNum}
                 placeholder="No of Components"
-                onChange={() => { }}
+                onChange={() => {}}
               />
               <TextInput
                 size="col-md-4"
@@ -150,30 +150,30 @@ class AssignStructure extends Component {
                 label="Est. Weight"
                 name="estimatedWeight"
                 id="estimatedWeight"
-                onChange={(e) =>
-                  this.props.handleChangeEstimatedWeight(e.target.value)
-                }
-                value={this.props.scr.estimatedWeight}
+                // onChange={(e) =>
+                //   this.props.handleChangeEstimatedWeight(e.target.value)
+                // }
+                // value={this.props.scr.estimatedWeight}
               />
               <InputGroupButton
                 size="col-md-4"
                 label="Dr.No"
                 labelSize="col-md-3"
                 fieldSize="col-md-9"
-                onChange={() => { }}
+                onChange={() => {}}
                 value="O17078-Q-BR-CM-FB-1713"
-                btnText={<FaIcon iconName="faFileAlt" />}
+                btnText={<FaIcon iconname="faFileAlt" />}
                 onClick={() => this.fileInputRef.current.click()}
               />
-            </FormRow>
+            </SimpleRow>
             <MultiFileInput
               innerRef={this.fileInputRef}
               style={{ display: "none" }}
-              onChange={(e) => this.props.handleFileUpload(e.target.files)}
-              value={this.props.scr.fileInput}
+              // onChange={(e) => this.props.handleFileUpload(e.target.files)}
+              // value={this.props.scr.fileInput}
             />
-            <FormRow>
-              {this.getFiles(this.props.scr.files).map((file, index) => (
+            <SimpleRow>
+              {/* {this.getFiles(this.props.scr.files).map((file, index) => (
                 <Col6 size="col-md-3">
                   <div class="row mb-10">
                     <div class="col-md-2">
@@ -191,8 +191,8 @@ class AssignStructure extends Component {
                     </div>
                   </div>
                 </Col6>
-              ))}
-            </FormRow>
+              ))} */}
+            </SimpleRow>
             {/* table */}
             <hr />
             {/* {this.props.scr.structAttri.length > 0 ? ( */}
@@ -204,7 +204,7 @@ class AssignStructure extends Component {
             />
             {/* ) : null} */}
             <hr />
-            <FormRow className="row">
+            <SimpleRow className="row">
               <Col6 size="col-md-6 offset-md-3 d-flex justify-content-center">
                 <Button
                   btnText="SAVE"
@@ -218,7 +218,7 @@ class AssignStructure extends Component {
                 onClick={this.props.clearStrcutAttri}
                 btnType="btn-secondary"
               /> */}
-            </FormRow>
+            </SimpleRow>
             <br />
             <FormRow className="excel-upload-btn mb-2">
               <CSVReader
@@ -229,7 +229,7 @@ class AssignStructure extends Component {
                 onRemoveFile={this.handleOnRemoveFile}
                 className="test"
               >
-                <span class="btnText">
+                <span class="btnText loader-text">
                   <FaIcon iconName="faUpload" /> Upload Excel Template
                 </span>
               </CSVReader>
@@ -240,23 +240,16 @@ class AssignStructure extends Component {
                 // bodyData={getComponentTableData(this.props.scr)}
                 bodyData={[{}, {}]}
                 // progressPending={this.props.assignStructure.isLoading}
-                pagination={true}
-                paginationTotalRows={
-                  this.props.scr.uploadData && this.props.scr.uploadData.length
-                }
-                paginationPerPage={5}
-                noHeader={true}
-                style={{ margin: "0" }}
               />
             </FormRow>
-            <FormRow className="d-flex justify-content-center">
+            <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="SAVE"
                 onClick={this.props.saveAssignComp}
                 btnType="primary"
               />
-            </FormRow>
-            <FormRow className="mb-3">
+            </SimpleRow>
+            <SimpleRow className="mb-3">
               <ExportExcel
                 data={getExcelData(this.props.scr)}
                 // header={this.props.headers}
@@ -264,21 +257,23 @@ class AssignStructure extends Component {
                 className="download-btn"
                 iconName="faDownload"
               />
-            </FormRow>
-            <FormRow className="d-flex justify-content-center">
+            </SimpleRow>
+            <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Complete"
-                onClick={() => { }}
-                btnType="btn-primary mr-3"
+                onClick={() => {}}
+                type="success"
+                gradient
               />
               <Button
                 btnText="Discard"
-                onClick={() => { }}
-                btnType="btn-danger mr-3"
+                onClick={() => {}}
+                type="danger"
+                gradient
               />
-            </FormRow>
-          </FormContainer>
-        </ContentLoader>
+            </SimpleRow>
+          </SimpleCard>
+        </PageContainer>
       </>
     );
   }

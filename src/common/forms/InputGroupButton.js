@@ -19,6 +19,7 @@ class InputGroupButton extends Component {
             className={`input-group ${
               this.props.fieldSize ? this.props.fieldSize : "col-sm-9"
             }`}
+            style={{ background: "transparent" }}
           >
             {/* <div className="input-group "> */}
             <input

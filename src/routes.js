@@ -37,10 +37,18 @@ const CreateDispatch = lazy(() =>
   import("./containers/createDispatch/createDispatch")
 );
 const Wbs = lazy(() => import("./containers/workBreak/addWorkBreak"));
-const ViewSubContractor = lazy(() => import("./containers/subContractor/viewSubContractor"));
+const ViewSubContractor = lazy(() =>
+  import("./containers/subContractor/viewSubContractor")
+);
 const Users = lazy(() => import("./containers/users/viewUsers"));
 const Structure = lazy(() => import("./containers/structure/viewStructure"));
 const Component = lazy(() => import("./containers/component/viewComponent"));
+const AddRequirement = lazy(() =>
+  import("./containers/requirement/addRequirement")
+);
+const AssignStructure = lazy(() =>
+  import("./containers/assignStructure/assignStructure")
+);
 
 const RouteList = [
   {
@@ -168,6 +176,18 @@ const RouteList = [
     path: "/etrack/masters/component",
     name: "Component Type",
     component: Component,
+  },
+  {
+    exact: true,
+    path: "/etrack/requirementmgmt/create",
+    name: "Add Requirement",
+    component: AddRequirement,
+  },
+  {
+    exact: true,
+    path: "/etrack/structure/assignStructure",
+    name: "Create Structure",
+    component: AssignStructure,
   },
 ];
 export default RouteList;

@@ -1,79 +1,72 @@
-import React from 'react';
-import IconButton from '../../common/forms/IconButton';
-
+import React from "react";
+import IconButton from "../../common/forms/IconButton";
 
 export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
-    return [
-      {
-        sortable: true,
-        cell: row => {
-          return (
-            <>
-              { (
-                <IconButton
-                  iconname="faTimes"
-                  className={'table-delete-icon'}
-                  onClick={() => handleDelete(row.id)}
-                />
-              )}
-            </>
-          );
-        },
-        width: '2%',
+  return [
+    {
+      sortable: true,
+      formatter: (cell, row) => {
+        return (
+          <>
+            {
+              <IconButton
+                iconname="faTimes"
+                className={"table-delete-icon"}
+                onClick={() => handleDelete(row.id)}
+              />
+            }
+          </>
+        );
       },
-      {
-        text: 'Component Type',
-        dataField: 'componentType',
-        sortable: true,
+      headerStyle: (col, colIndex) => {
+        return { width: "2%" };
       },
-      {
-        text: 'Status',
-        dataField: 'status',
-        sortable: true,
+    },
+    {
+      text: "Component Type",
+      dataField: "componentType",
+    },
+    {
+      text: "Status",
+      dataField: "status",
+    },
+    {
+      text: "Actions",
+      formatter: (cell, row) => {
+        return (
+          <>
+            {
+              <IconButton
+                iconname="faEdit"
+                onClick={() => handleEdit(row.id)}
+              />
+            }
+          </>
+        );
       },
-      {
-        text: 'Actions',
-        sortable: true,
-        formatter: row => {
-          return (
-            <>
-              {(
-                <IconButton
-                  iconName="faEdit"
-                  onClick={() => handleEdit(row.id)}
-                />
-              )}
-            </>
-          );
-        },
-      },
-    ];
-  };
+    },
+  ];
+};
 
-  export const transformComponentList = componentList => {
-    let tmpArr = [];
-    let statusValue;
-    componentList &&
-    componentList.map(component => {
-        if (component.isActive){
-            statusValue = "Active"
-        }
-        else {
-            statusValue = "InActive"
-        }
-        let tmpObj = {
-            id: component.id,
-            componentType: component.name,
-            status: statusValue,
-        };
-        tmpArr.push(tmpObj);
-      });
-    return tmpArr;
-  };
-
-
-
-
+export const transformComponentList = (componentList) => {
+  let tmpArr = [];
+  let statusValue;
+  componentList &&
+    componentList.map((component) => {
+      if (component.isActive) {
+        statusValue = "Active";
+      } else {
+        statusValue = "InActive";
+      }
+      let tmpObj = {
+        id: component.id,
+        componentType: component.name,
+        status: statusValue,
+      };
+      tmpArr.push(tmpObj);
+    });
+  return tmpArr;
+};
 
 // export const _viewComponentData = ["IC", "BU", "Project", "Structure Family", "Structure", "Structure ID", "Component Type", "Component", "Component ID", "Group", "Component No", "Drawing No", "Length", "Breadth", "Height", "Thickness", "Weight", "Original/Modified", "Modification No", "Manufactured/Fabricated", "Tag", "QR Code", "Vendor/Site Name", "Fabrication Cost", "Component Status", "Current Status"];
 // export const _viewComponentBodyData = [
@@ -105,13 +98,13 @@ export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
 //         componentStatus: "",
 //         currentStatus: "",
 //     },
-    
+
 // ];
 
 // export const _viewComponentModificationHistoryData = [ "Structure ID", "Component Type", "Component", "Component ID", "Group", "Component No", "Drawing No", "Length", "Breadth", "Height", "Thickness", "Weight", "Original/Modified", "Modification No", "Manufactured/Fabricated", "Tag No", "QR Code"];
 // export const _viewComponentModificationHistoryBodyData = [
 //     {
-        
+
 //         structureId: "",
 //         componentType: "",
 //         component: "",
@@ -129,9 +122,7 @@ export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
 //         fabrication: "",
 //         tag: "",
 //         qrCode: "",
-        
-        
-//     },
-    
-// ];
 
+//     },
+
+// ];

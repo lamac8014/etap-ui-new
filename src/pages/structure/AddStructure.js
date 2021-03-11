@@ -71,7 +71,7 @@ class AddStructure extends Component {
           </div>
         </div>
         <div class="form-group row">
-          {this.props.structure.attributeList.map((e, i) => {
+          {/* {this.props.structure.attributeList.map((e, i) => {
             return (
               <AddAttributes
                 onNameChange={(e) => this.props.onNameChange(e.target.value, i)}
@@ -88,7 +88,7 @@ class AddStructure extends Component {
                 uomValue={this.props.structure.attributeList[i].uom}
               />
             );
-          })}
+          })} */}
         </div>
       </Modal>
     );
