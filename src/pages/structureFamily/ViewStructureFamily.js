@@ -59,7 +59,7 @@ class ViewStructureFamily extends Component {
               // )}
               bodyData={[
                 {
-                  structureFamilyType: "Sample Structure",
+                  structureFamily: "Sample Structure",
                   status: "Sample code",
                   
                 },

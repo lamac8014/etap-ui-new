@@ -92,7 +92,7 @@ class ViewBusinessUnit extends Component {
             btnText="Add Business Unit"
             onClick={this.props.showAddBusinessUnitModal}
           />
-          ){/* } */}
+          {/* } */}
           {/* <ConfirmModal
             showModal={this.state.showBusinessUnitDeleteModal}
             handleClose={() =>

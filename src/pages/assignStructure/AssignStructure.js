@@ -3,25 +3,18 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import MultiFileInput from "../../common/forms/MultiFileInput";
 import Button from "../../common/forms/Button";
-// import CustomAlert from "../../common/forms/customAlert";
-// import Loader from "../../common/Loader";
 import CustomDataTable from "../../common/DataTable";
-
 import ExportExcel from "../../common/ExportExcel";
 import StructureAttributesTable from "./StructureAttributesTable";
 import FaIcon from "../../common/FaIcon";
-
 import { componentsMetaData, getExcelData } from "./utils";
-
 import Col6 from "../../common/forms/Col6";
 import { CSVReader } from "react-papaparse";
-import IconTextButton from "../../common/forms/IconTextButton";
-import IconButton from "../../common/forms/IconButton";
-
 import InputGroupButton from "../../common/forms/InputGroupButton";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import FormRow from "../../common/forms/FormRow";
+import SimpleDropDown from "../../common/forms/SimpleDropDown";
 
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
@@ -90,6 +83,17 @@ class AssignStructure extends Component {
               />
             </SimpleRow>
             <SimpleRow>
+              <SimpleDropDown
+                size="col-md-4"
+                labelSize="col-md-4 pr-0"
+                fieldSize="col-md-8 "
+                label="Structure"
+                name="structureName"
+                id="structureName"
+                // value={this.props.scr.structName}
+                value="Launching Girders"
+                
+              />
               <TextInput
                 size="col-md-4"
                 labelSize="col-md-4 pr-0"
@@ -101,17 +105,7 @@ class AssignStructure extends Component {
                 value="LG&Bridge Builders"
                 disabled
               />
-              <TextInput
-                size="col-md-4"
-                labelSize="col-md-4 pr-0"
-                fieldSize="col-md-8 "
-                label="Structure"
-                name="structureName"
-                id="structureName"
-                // value={this.props.scr.structName}
-                value="Launching Girders"
-                disabled
-              />
+
               <TextInput
                 size="col-md-4"
                 labelSize="col-md-4 pr-0"
@@ -141,7 +135,7 @@ class AssignStructure extends Component {
                 // }
                 // value={this.props.scr.drawingNum}
                 placeholder="No of Components"
-                onChange={() => {}}
+                onChange={() => { }}
               />
               <TextInput
                 size="col-md-4"
@@ -150,17 +144,17 @@ class AssignStructure extends Component {
                 label="Est. Weight"
                 name="estimatedWeight"
                 id="estimatedWeight"
-                // onChange={(e) =>
-                //   this.props.handleChangeEstimatedWeight(e.target.value)
-                // }
-                // value={this.props.scr.estimatedWeight}
+              // onChange={(e) =>
+              //   this.props.handleChangeEstimatedWeight(e.target.value)
+              // }
+              // value={this.props.scr.estimatedWeight}
               />
               <InputGroupButton
                 size="col-md-4"
                 label="Dr.No"
                 labelSize="col-md-3"
                 fieldSize="col-md-9"
-                onChange={() => {}}
+                onChange={() => { }}
                 value="O17078-Q-BR-CM-FB-1713"
                 btnText={<FaIcon iconname="faFileAlt" />}
                 onClick={() => this.fileInputRef.current.click()}
@@ -169,8 +163,8 @@ class AssignStructure extends Component {
             <MultiFileInput
               innerRef={this.fileInputRef}
               style={{ display: "none" }}
-              // onChange={(e) => this.props.handleFileUpload(e.target.files)}
-              // value={this.props.scr.fileInput}
+            // onChange={(e) => this.props.handleFileUpload(e.target.files)}
+            // value={this.props.scr.fileInput}
             />
             <SimpleRow>
               {/* {this.getFiles(this.props.scr.files).map((file, index) => (
@@ -239,7 +233,7 @@ class AssignStructure extends Component {
                 metaData={componentsMetaData()}
                 // bodyData={getComponentTableData(this.props.scr)}
                 bodyData={[{}, {}]}
-                // progressPending={this.props.assignStructure.isLoading}
+              // progressPending={this.props.assignStructure.isLoading}
               />
             </FormRow>
             <SimpleRow className="d-flex justify-content-center">
@@ -261,13 +255,13 @@ class AssignStructure extends Component {
             <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Complete"
-                onClick={() => {}}
+                onClick={() => { }}
                 type="success"
                 gradient
               />
               <Button
                 btnText="Discard"
-                onClick={() => {}}
+                onClick={() => { }}
                 type="danger"
                 gradient
               />

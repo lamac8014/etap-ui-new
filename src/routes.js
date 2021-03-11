@@ -49,6 +49,9 @@ const AddRequirement = lazy(() =>
 const AssignStructure = lazy(() =>
   import("./containers/assignStructure/assignStructure")
 );
+const Asbuilt = lazy(() =>
+  import("./containers/built/built")
+);
 
 const RouteList = [
   {
@@ -188,6 +191,12 @@ const RouteList = [
     path: "/etrack/structure/assignStructure",
     name: "Create Structure",
     component: AssignStructure,
+  },
+  {
+    exact: true,
+    path: "/etrack/fabricationMgmt/builtDetails",
+    name: "As Built Details",
+    component: Asbuilt,
   },
 ];
 export default RouteList;
