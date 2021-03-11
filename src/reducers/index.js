@@ -13,7 +13,7 @@ import vendorReducer from "./vendorReducer";
 import businessUnitReducer from "./businessUnitReducer";
 import requirementReducer from "./requirementReducer";
 import assignStructureReducer from "./assignStructureReducer";
-// import structCompReducer from "./structCompReducer";
+import structCompReducer from "./structCompReducer";
 import authReducer from "./authReducer";
 // import surplusReducer from "./surplusReducer";
 import scrapReducer from "./scrapReducer";
@@ -48,7 +48,7 @@ const rootReducer = combineReducers({
   businessUnit: businessUnitReducer,
   requirement: requirementReducer,
   assignStructure: assignStructureReducer,
-  // scr: structCompReducer,
+  scr: structCompReducer,
   auth: authReducer,
   // surplus: surplusReducer,
   // scrap: scrapReducer,
