@@ -15,6 +15,8 @@ import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import FormRow from "../../common/forms/FormRow";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
+import { transformDropDownData } from "../../utils/dataTransformer";
 
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
@@ -70,29 +72,41 @@ class AssignStructure extends Component {
                 placeholder="Auto Fetch"
                 disabled={true}
               />
-              <TextInput
+              <SearchableDropDown
                 size="col-md-4"
                 label="Project"
                 name="projectName"
                 id="projectName"
+                selectOptions={transformDropDownData(
+                  this.props.scr.projList,
+                  "id",
+                  "name"
+                )}
                 labelSize="col-sm-4"
                 fieldSize="col-sm-8"
-                // value={this.props.scr.projName}
-                value="PROJ0001"
-                disabled
+                onChange={(obj) =>
+                  this.props.handleChangeComponentProjectName(obj)
+                }
+                value={this.props.scr.projName}
               />
             </SimpleRow>
             <SimpleRow>
-              <SimpleDropDown
+              <SearchableDropDown
                 size="col-md-4"
                 labelSize="col-md-4 pr-0"
                 fieldSize="col-md-8 "
                 label="Structure"
                 name="structureName"
                 id="structureName"
-                // value={this.props.scr.structName}
-                value="Launching Girders"
-                
+                selectOptions={transformDropDownData(
+                  this.props.scr.structList,
+                  "id",
+                  "name"
+                )}
+                onChange={(obj) =>
+                  this.props.handleChangeComponentStructureName(obj)
+                }
+                value={this.props.scr.structName}
               />
               <TextInput
                 size="col-md-4"
@@ -113,8 +127,7 @@ class AssignStructure extends Component {
                 label="Struct. Code"
                 name="structureCode"
                 id="structureCode"
-                // value={this.props.scr.strcutureType}
-                value="STR000001"
+                value={this.props.scr.structureCode}
                 placeholder="Auto Fetch"
                 disabled
               />
@@ -135,7 +148,7 @@ class AssignStructure extends Component {
                 // }
                 // value={this.props.scr.drawingNum}
                 placeholder="No of Components"
-                onChange={() => { }}
+                onChange={() => {}}
               />
               <TextInput
                 size="col-md-4"
@@ -144,17 +157,17 @@ class AssignStructure extends Component {
                 label="Est. Weight"
                 name="estimatedWeight"
                 id="estimatedWeight"
-              // onChange={(e) =>
-              //   this.props.handleChangeEstimatedWeight(e.target.value)
-              // }
-              // value={this.props.scr.estimatedWeight}
+                // onChange={(e) =>
+                //   this.props.handleChangeEstimatedWeight(e.target.value)
+                // }
+                value={this.props.scr.estimatedWeight}
               />
               <InputGroupButton
                 size="col-md-4"
                 label="Dr.No"
                 labelSize="col-md-3"
                 fieldSize="col-md-9"
-                onChange={() => { }}
+                onChange={() => {}}
                 value="O17078-Q-BR-CM-FB-1713"
                 btnText={<FaIcon iconname="faFileAlt" />}
                 onClick={() => this.fileInputRef.current.click()}
@@ -163,8 +176,8 @@ class AssignStructure extends Component {
             <MultiFileInput
               innerRef={this.fileInputRef}
               style={{ display: "none" }}
-            // onChange={(e) => this.props.handleFileUpload(e.target.files)}
-            // value={this.props.scr.fileInput}
+              // onChange={(e) => this.props.handleFileUpload(e.target.files)}
+              // value={this.props.scr.fileInput}
             />
             <SimpleRow>
               {/* {this.getFiles(this.props.scr.files).map((file, index) => (
@@ -233,7 +246,7 @@ class AssignStructure extends Component {
                 metaData={componentsMetaData()}
                 // bodyData={getComponentTableData(this.props.scr)}
                 bodyData={[{}, {}]}
-              // progressPending={this.props.assignStructure.isLoading}
+                // progressPending={this.props.assignStructure.isLoading}
               />
             </FormRow>
             <SimpleRow className="d-flex justify-content-center">
@@ -255,13 +268,13 @@ class AssignStructure extends Component {
             <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Complete"
-                onClick={() => { }}
+                onClick={() => {}}
                 type="success"
                 gradient
               />
               <Button
                 btnText="Discard"
-                onClick={() => { }}
+                onClick={() => {}}
                 type="danger"
                 gradient
               />
