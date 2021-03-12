@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           payload: res.value.data,
         });
         setAuthTokens(res.value.data);
-        ownProps.history.push("/dashboard/default");
+        ownProps.history.push("/etrack/structure/assignStructure");
       });
     },
     handleUsernameChange({ value }) {
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     checkAuthStatus() {
       if (isUserLoggedIn()) {
-        ownProps.history.replace("/dashboard/default");
+        ownProps.history.replace("/etrack/structure/assignStructure");
       }
     },
   };
