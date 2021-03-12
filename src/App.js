@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route exact path="/login" component={Login} />
           <AuthorizedRoute path="/" component={MainLayout} exact={false} />
         </Switch>
       </Suspense>
