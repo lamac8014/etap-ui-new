@@ -6,6 +6,9 @@ import Col6 from "../../common/forms/Col6";
 import { InputGroup, InputGroupAddon, Input, Form } from "reactstrap";
 
 export default class Login extends Component {
+  componentDidMount() {
+    this.props.checkAuthStatus();
+  }
   render() {
     return (
       <>
