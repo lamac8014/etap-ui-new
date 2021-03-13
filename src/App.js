@@ -13,8 +13,9 @@ class App extends Component {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
+          <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
-          <AuthorizedRoute path="/" component={MainLayout} exact={false} />
+          <Route path="/etrack" component={MainLayout} exact={false} />
         </Switch>
       </Suspense>
     );

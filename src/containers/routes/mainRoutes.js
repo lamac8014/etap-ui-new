@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "../../routes";
 import Spinner from "../../common/Spinner";
+import { isUserLoggedIn } from "../../utils/auth";
 
 const Routes = (props) => (
   <Suspense fallback={<Spinner />}>
@@ -13,10 +14,14 @@ const Routes = (props) => (
             exact={obj.exact}
             path={obj.path}
             render={(matchProps) =>
-              obj.component ? (
-                <obj.component {...matchProps} />
+              isUserLoggedIn() ? (
+                obj.component ? (
+                  <obj.component {...matchProps} />
+                ) : (
+                  <h1>page not found</h1>
+                )
               ) : (
-                <h1>page not found</h1>
+                <Redirect to="/" />
               )
             }
           />
