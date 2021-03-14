@@ -7,7 +7,11 @@ import CustomDataTable from "../../common/DataTable";
 import ExportExcel from "../../common/ExportExcel";
 import StructureAttributesTable from "./StructureAttributesTable";
 import FaIcon from "../../common/FaIcon";
-import { componentsMetaData, getExcelData } from "./utils";
+import {
+  componentsMetaData,
+  getExcelData,
+  getComponentTableData,
+} from "./utils";
 import Col6 from "../../common/forms/Col6";
 import { CSVReader } from "react-papaparse";
 import InputGroupButton from "../../common/forms/InputGroupButton";
@@ -17,9 +21,15 @@ import FormRow from "../../common/forms/FormRow";
 import SimpleDropDown from "../../common/forms/SimpleDropDown";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { transformDropDownData } from "../../utils/dataTransformer";
+import IconButton from "../../common/forms/IconButton";
+import IconTextButton from "../../common/forms/IconTextButton";
+import ButtonRow from "../../common/forms/ButtonRow";
 
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
+  exportBtnRef = React.createRef();
+  downloadBtnRef = React.createRef();
+
   componentDidMount = () => {
     this.props.setInitialData();
   };
@@ -48,30 +58,6 @@ class AssignStructure extends Component {
           )} */}
           <SimpleCard>
             <SimpleRow>
-              <TextInput
-                size="col-md-4"
-                labelSize="col-md-4"
-                fieldSize="col-md-8 "
-                label="IC"
-                name="ic"
-                id="ic"
-                // value={this.props.scr.strcutureType}
-                value="BNF IC"
-                placeholder="Auto Fetch"
-                disabled
-              />
-              <TextInput
-                size="col-md-4"
-                labelSize="col-md-4 "
-                fieldSize="col-md-8 "
-                label="BU"
-                name="bu"
-                id="bu"
-                // value={this.props.scr.structureCode}
-                value="Metro"
-                placeholder="Auto Fetch"
-                disabled={true}
-              />
               <SearchableDropDown
                 size="col-md-4"
                 label="Project"
@@ -82,19 +68,17 @@ class AssignStructure extends Component {
                   "id",
                   "name"
                 )}
-                labelSize="col-sm-4"
-                fieldSize="col-sm-8"
+                labelSize="col-sm-3"
+                fieldSize="col-sm-9"
                 onChange={(obj) =>
                   this.props.handleChangeComponentProjectName(obj)
                 }
                 value={this.props.scr.projName}
               />
-            </SimpleRow>
-            <SimpleRow>
               <SearchableDropDown
                 size="col-md-4"
-                labelSize="col-md-4 pr-0"
-                fieldSize="col-md-8 "
+                labelSize="col-md-3 pr-0"
+                fieldSize="col-md-9 "
                 label="Structure"
                 name="structureName"
                 id="structureName"
@@ -110,8 +94,8 @@ class AssignStructure extends Component {
               />
               <TextInput
                 size="col-md-4"
-                labelSize="col-md-4 pr-0"
-                fieldSize="col-md-8 "
+                labelSize="col-md-3 pr-0"
+                fieldSize="col-md-9 "
                 label="Struct. Family"
                 name="structureName"
                 id="structureName"
@@ -119,11 +103,37 @@ class AssignStructure extends Component {
                 value="LG&Bridge Builders"
                 disabled
               />
+            </SimpleRow>
+            <SimpleRow>
+              <TextInput
+                size="col-md-4"
+                labelSize="col-md-3"
+                fieldSize="col-md-9 "
+                label="IC"
+                name="ic"
+                id="ic"
+                // value={this.props.scr.strcutureType}
+                value="BNF IC"
+                placeholder="Auto Fetch"
+                disabled
+              />
+              <TextInput
+                size="col-md-4"
+                labelSize="col-md-3 "
+                fieldSize="col-md-9 "
+                label="BU"
+                name="bu"
+                id="bu"
+                // value={this.props.scr.structureCode}
+                value="Metro"
+                placeholder="Auto Fetch"
+                disabled={true}
+              />
 
               <TextInput
                 size="col-md-4"
-                labelSize="col-md-4 pr-0"
-                fieldSize="col-md-8 "
+                labelSize="col-md-3 pr-0"
+                fieldSize="col-md-9 "
                 label="Struct. Code"
                 name="structureCode"
                 id="structureCode"
@@ -137,29 +147,26 @@ class AssignStructure extends Component {
               <TextInput
                 label="Component"
                 size="col-md-4"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
+                labelSize="col-md-3 pr-0"
+                fieldSize="col-md-9"
                 name="noOfComponents"
                 id="noOfComponents"
-                // onChange={(e) =>
-                //   this.props.handleChangeComponentDrawingNumber(
-                //     e.target.value
-                //   )
-                // }
-                // value={this.props.scr.drawingNum}
+                onChange={(e) =>
+                  this.props.handleChangeNoOfComponents(e.target.value)
+                }
+                value={this.props.scr.noOfComponents}
                 placeholder="No of Components"
-                onChange={() => {}}
               />
               <TextInput
                 size="col-md-4"
-                labelSize="col-md-4"
-                fieldSize="col-md-8 "
+                labelSize="col-md-3"
+                fieldSize="col-md-9 "
                 label="Est. Weight"
                 name="estimatedWeight"
                 id="estimatedWeight"
-                // onChange={(e) =>
-                //   this.props.handleChangeEstimatedWeight(e.target.value)
-                // }
+                onChange={(e) =>
+                  this.props.handleChangeEstimatedWeight(e.target.value)
+                }
                 value={this.props.scr.estimatedWeight}
               />
               <InputGroupButton
@@ -167,8 +174,10 @@ class AssignStructure extends Component {
                 label="Dr.No"
                 labelSize="col-md-3"
                 fieldSize="col-md-9"
-                onChange={() => {}}
-                value="O17078-Q-BR-CM-FB-1713"
+                onChange={(e) => {
+                  this.props.handleChangeComponentDrawingNumber(e.target.value);
+                }}
+                value={this.props.scr.drawingNum}
                 btnText={<FaIcon iconname="faFileAlt" />}
                 onClick={() => this.fileInputRef.current.click()}
               />
@@ -176,77 +185,131 @@ class AssignStructure extends Component {
             <MultiFileInput
               innerRef={this.fileInputRef}
               style={{ display: "none" }}
-              // onChange={(e) => this.props.handleFileUpload(e.target.files)}
-              // value={this.props.scr.fileInput}
+              onChange={(e) => this.props.handleFileUpload(e.target.files)}
+              value={this.props.scr.fileInput}
             />
             <SimpleRow>
-              {/* {this.getFiles(this.props.scr.files).map((file, index) => (
+              {this.getFiles(this.props.scr.files).map((file, index) => (
                 <Col6 size="col-md-3">
-                  <div class="row mb-10">
-                    <div class="col-md-2">
-                      <IconButton
-                        iconName="faTimesCircle"
-                        onClick={() => this.props.removeFiles(file, index)}
-                      />
-                    </div>
-                    <div class="col-md-10">
-                      <IconTextButton
-                        iconName="faFile"
-                        size="lg"
-                        btnText={file.name}
-                      />
-                    </div>
-                  </div>
+                  <TextInput
+                    size="col-md-12"
+                    fieldSize="col-md-10 px-0"
+                    placeholder="BU Name"
+                    name={this.props.index}
+                    id={this.props.index}
+                    value={file.name}
+                    disabled
+                    iconSize="col-md-2 d-flex justify-content-center"
+                    iconname="faTimesCircle"
+                    onClick={() => this.props.removeFiles(file, index)}
+                  />
                 </Col6>
-              ))} */}
+              ))}
             </SimpleRow>
             {/* table */}
             <hr />
-            {/* {this.props.scr.structAttri.length > 0 ? ( */}
-            <StructureAttributesTable
-              onChange={(e, id) => this.props.handleChangeAssignStruct(e, id)}
-              // bodyData={this.props.scr.structAttri}
-              bodyData={tempArr}
-              title="Structure Attributes"
-            />
-            {/* ) : null} */}
-            <hr />
-            <SimpleRow className="row">
-              <Col6 size="col-md-6 offset-md-3 d-flex justify-content-center">
-                <Button
-                  btnText="SAVE"
-                  onClick={this.props.saveAssignStruct}
-                  btnType="primary"
+            {this.props.scr.structAttri.length > 0 ? (
+              <>
+                <StructureAttributesTable
+                  {...this.props}
+                  onChange={(e, id) =>
+                    this.props.handleChangeAssignStruct(e, id)
+                  }
+                  bodyData={this.props.scr.structAttri}
+                  title="Structure Attributes"
                 />
-              </Col6>
+                <SimpleRow className="row">
+                  <Col6 size="col-md-6 offset-md-3 d-flex justify-content-center">
+                    <Button
+                      btnText="Save"
+                      onClick={this.props.saveAssignStruct}
+                      type="primary"
+                      gradient
+                    />
+                  </Col6>
 
-              {/* <Button
+                  {/* <Button
                 btnText="Clear"
                 onClick={this.props.clearStrcutAttri}
                 btnType="btn-secondary"
               /> */}
-            </SimpleRow>
-            <br />
-            <FormRow className="excel-upload-btn mb-2">
-              <CSVReader
-                onDrop={this.props.handleOnDrop}
-                onError={this.handleOnError}
-                noDrag
-                addRemoveButton
-                onRemoveFile={this.handleOnRemoveFile}
-                className="test"
-              >
-                <span class="btnText loader-text">
-                  <FaIcon iconName="faUpload" /> Upload Excel Template
-                </span>
-              </CSVReader>
-            </FormRow>
+                </SimpleRow>
+                <hr />
+              </>
+            ) : null}
             <FormRow>
               <CustomDataTable
                 metaData={componentsMetaData()}
-                // bodyData={getComponentTableData(this.props.scr)}
-                bodyData={[{}, {}]}
+                bodyData={getComponentTableData(this.props.scr)}
+                // bodyData={[{}, {}]}
                 // progressPending={this.props.assignStructure.isLoading}
+              />
+            </FormRow>
+            <SimpleRow>
+              <Col6>
+                <ButtonRow className="excel-upload-btn mb-2" position="left">
+                  <div style={{ display: "none" }}>
+                    <ExportExcel
+                      data={getExcelData(this.props.scr)}
+                      compRef={this.downloadBtnRef}
+                      // header={this.props.headers}
+                      filename={"test"}
+                      className="download-btn"
+                      iconname="faDownload"
+                    />
+                  </div>
+                  <Button
+                    btnText={
+                      <>
+                        <FaIcon iconname="faDownload" /> Download As Excel
+                      </>
+                    }
+                    type="light"
+                    gradient
+                    onClick={() => this.downloadBtnRef.current.click()}
+                  />
+                </ButtonRow>
+              </Col6>
+              <Col6>
+                <ButtonRow>
+                  <div style={{ display: "none" }}>
+                    <CSVReader
+                      onDrop={this.props.handleOnDrop}
+                      onError={this.handleOnError}
+                      noDrag
+                      addRemoveButton
+                      onRemoveFile={this.handleOnRemoveFile}
+                      className="test"
+                    >
+                      <span ref={this.exportBtnRef}></span>
+                    </CSVReader>
+                  </div>
+                  <Button
+                    btnText={
+                      <>
+                        <FaIcon iconname="faUpload" /> Upload Excel Template
+                      </>
+                    }
+                    onClick={() => this.exportBtnRef.current.click()}
+                    gradient
+                  />
+                  <Button
+                    btnText="Save"
+                    onClick={this.props.saveAssignComp}
+                    type="primary"
+                    gradient
+                  />
+                </ButtonRow>
+              </Col6>
+            </SimpleRow>
+
+            {/* <FormRow className="mb-3">
+              <ExportExcel
+                data={getExcelData(this.props.scr)}
+                // header={this.props.headers}
+                filename={"test"}
+                className="download-btn"
+                iconname="faDownload"
               />
             </FormRow>
             <SimpleRow className="d-flex justify-content-center">
@@ -255,16 +318,8 @@ class AssignStructure extends Component {
                 onClick={this.props.saveAssignComp}
                 btnType="primary"
               />
-            </SimpleRow>
-            <SimpleRow className="mb-3">
-              <ExportExcel
-                data={getExcelData(this.props.scr)}
-                // header={this.props.headers}
-                filename={"test"}
-                className="download-btn"
-                iconName="faDownload"
-              />
-            </SimpleRow>
+            </SimpleRow> */}
+            <hr />
             <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Complete"

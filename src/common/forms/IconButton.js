@@ -4,14 +4,18 @@ import FaIcon from "../FaIcon";
 
 class IconButton extends Component {
   buttonType() {
-    if (this.props.gradient && this.props.type) {
-      return "gradient-" + this.props.type;
-    } else if (this.props.gradient && !this.props.type) {
-      return "gradient-primary";
-    } else if (!this.props.gradient && this.props.type) {
-      return this.props.type;
-    } else if (!this.props.gradient && !this.props.type) {
-      return "primary";
+    if (this.props.noBg) {
+      return "";
+    } else {
+      if (this.props.gradient && this.props.type) {
+        return "gradient-" + this.props.type;
+      } else if (this.props.gradient && !this.props.type) {
+        return "gradient-primary";
+      } else if (!this.props.gradient && this.props.type) {
+        return this.props.type;
+      } else if (!this.props.gradient && !this.props.type) {
+        return "primary";
+      }
     }
   }
 
@@ -22,7 +26,7 @@ class IconButton extends Component {
         color={this.buttonType()}
         className={`${this.props.rounded && "btn-rounded"} btn-icon`}
         onClick={this.props.onClick}
-        size="1x" 
+        size="1x"
       >
         <FaIcon
           iconname={this.props.iconname}
