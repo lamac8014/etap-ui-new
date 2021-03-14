@@ -14,13 +14,13 @@ const menus = {
           children: [
             {
               id: "structMgmt",
-              title: "Structure Management",
+              title: "Structure Mgmt",
               type: "collapse",
               icon: "feather icon-home",
               children: [
                 {
                   id: "create",
-                  title: "Create Structure",
+                  title: "Create",
                   type: "item",
                   icon: "feather icon-plus-circle",
                   url: "/etrack/structure/assignStructure",
@@ -34,7 +34,7 @@ const menus = {
                 },
                 {
                   id: "view",
-                  title: "View Structure",
+                  title: "View",
                   type: "item",
                   icon: "feather icon-eye",
                   url: "/etrack/structure/viewStructure",
@@ -43,7 +43,7 @@ const menus = {
             },
             {
               id: "requirementMgmt",
-              title: "Requirement Management",
+              title: "Requirement Mgmt",
               type: "collapse",
               icon: "feather icon-clock",
               children: [
@@ -61,13 +61,13 @@ const menus = {
                   type: "item",
                   icon: "feather icon-navigation",
                   // icon: "feather icon-home",
-                  url: "/etrack/requirementmgmt/approve",
+                  url: "/etrack/requirementmgmt/requirmentApprove",
                 },
               ],
             },
             {
               id: "fabricationMgmt",
-              title: "Fabrication Management",
+              title: "Fabrication Mgmt",
               type: "collapse",
               icon: "feather icon-link",
               children: [
@@ -83,7 +83,7 @@ const menus = {
             },
             {
               id: "costMgmt",
-              title: "Cost Management",
+              title: "Cost Mgmt",
               type: "collapse",
               icon: "feather icon-award",
               children: [
@@ -115,7 +115,7 @@ const menus = {
             },
             {
               id: "lifeCycle",
-              title: "Life cycle Management",
+              title: "Life cycle Mgmt",
               type: "collapse",
               icon: "feather icon-refresh-ccw",
               children: [
@@ -145,7 +145,7 @@ const menus = {
             },
             {
               id: "dispatchMgmt",
-              title: "Dispatch Management",
+              title: "Dispatch Mgmt",
               type: "collapse",
               icon: "feather icon-server",
               children: [
