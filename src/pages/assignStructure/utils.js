@@ -8,16 +8,11 @@ export const getComponentTableData = (scr) => {
   data &&
     data.map((data) => {
       tmpArr.push({
-        ic: scr.ic,
-        bu: scr.bu,
-        project: scr.projName.label,
-        structFamily: scr.strcutureType,
-        structure: scr.structName.label,
-        structureId: scr.structName.value,
         compType: data.compTypeName,
         component: data.componentName,
         group: data.isGroup.toString(),
-        compNum: data.compId,
+        compId: data.compId,
+        compNum: data.componentNo,
         drawingNum: data.drawingNo,
         length: data.leng,
         breadth: data.breath,
@@ -33,17 +28,11 @@ export const getComponentTableData = (scr) => {
 
 export const getAssignExcelHeaders = () => {
   const headers = [
-    "IC",
-    "BU",
-    "Project",
-    "Structure Family",
-    "Structure Name",
-    "Structure ID",
+    "Component",
     "Component Type",
-    "Component Name",
     "Component ID",
-    "Belong To A Group",
-    "Component Number",
+    "Component No",
+    "Group",
     "Drawing Number",
     "Length",
     "Breadth",
@@ -57,8 +46,7 @@ export const getAssignExcelHeaders = () => {
 };
 
 export const getExcelData = (scr) => {
-  // let data = scr.uploadData;
-  let data = [];
+  let data = scr.uploadData;
   let dataArr = [];
   dataArr.push(getAssignExcelHeaders());
   if (data && data.length > 0) {
@@ -87,12 +75,12 @@ export const getExcelData = (scr) => {
     });
   } else {
     let tmpArr = [];
-    // tmpArr.push(scr.ic);
-    // tmpArr.push(scr.bu);
-    // tmpArr.push(scr.projName.label);
-    // tmpArr.push(scr.strcutureType);
-    // tmpArr.push(scr.structName.label);
-    // tmpArr.push(scr.structName.value);
+    tmpArr.push(scr.ic);
+    tmpArr.push(scr.bu);
+    tmpArr.push(scr.projName.label);
+    tmpArr.push(scr.strcutureType);
+    tmpArr.push(scr.structName.label);
+    tmpArr.push(scr.structName.value);
     dataArr.push(tmpArr);
   }
   return dataArr;
@@ -166,11 +154,11 @@ export const componentsMetaData = (onChangeValue) => {
     },
     {
       text: "Component Type",
-      seletext: "compType",
+      dataField: "compType",
     },
     {
       text: "Component ID",
-      dataField: "compType",
+      dataField: "compId",
     },
     {
       text: "Component No",

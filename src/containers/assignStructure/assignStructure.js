@@ -15,6 +15,7 @@ import {
   ASSIGN_FILE_REMOVE,
   ASSIGN_STRUCT_EXCEL_UPLOAD,
   RESET_ASSIGN_COMP_FORM,
+  SET_SHOW_ATTRIBUTE_VALUE_MODAL,
 } from "../../actions/types";
 
 import AssignStructure from "../../pages/assignStructure/AssignStructure";
@@ -86,13 +87,13 @@ const mapDispatchToProps = (dispatch) => {
       data.forEach((a, i) => {
         console.log("index", i, a);
         if (i > 0 && a.data.length > 1) {
-          let start = 6;
+          let start = 0;
           let wbsSampleObject = {
-            compTypeName: a.data[start] ? a.data[start] : "",
-            componentName: a.data[start + 1] ? a.data[start + 1] : "",
+            componentName: a.data[start] ? a.data[start] : "",
+            compTypeName: a.data[start + 1] ? a.data[start + 1] : "",
             compId: a.data[start + 2] ? a.data[start + 2] : "",
-            isGroup: a.data[start + 3] ? Boolean(a.data[start + 3]) : "",
-            componentNo: a.data[start + 4] ? parseInt(a.data[start + 4]) : "",
+            componentNo: a.data[start + 3] ? a.data[start + 3] : "",
+            isGroup: a.data[start + 4] ? parseInt(a.data[start + 4]) : "",
             drawingNo: a.data[start + 5] ? a.data[start + 5] : "",
             leng: a.data[start + 6] ? parseFloat(a.data[start + 6]) : "",
             breath: a.data[start + 7] ? parseFloat(a.data[start + 7]) : "",
@@ -142,12 +143,12 @@ const mapDispatchToProps = (dispatch) => {
         payload: removeFiles,
       });
     },
-    handleChangeAssignStruct(e, id) {
+    handleChangeAssignStruct(value, id) {
       const as = store.getState().scr;
       let tmpArr = JSON.parse(JSON.stringify(as.structAttri));
       tmpArr.map((arr) => {
         if (arr.id === id) {
-          arr.value = e.target.value;
+          arr.value = value;
           // console.log("test in if arr, eval",arr, e.target.value);
         }
         // console.log("test",arr)
@@ -164,6 +165,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(saveAssignComp()).then(() => {
         dispatch({ type: RESET_ASSIGN_COMP_FORM });
         dispatch({ type: RESET_ASSIGN_STRUCT_FORM });
+      });
+    },
+    showAttributeValueModal(value) {
+      dispatch({
+        type: SET_SHOW_ATTRIBUTE_VALUE_MODAL,
+        payload: value,
       });
     },
   };

@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import FaIcon from "../../common/FaIcon";
 import FormRow from "../../common/forms/FormRow";
 import IconButton from "../../common/forms/IconButton";
+import AddAttributeValueModal from "./AddAttributeValueModal";
 // import Popup from "../../common/forms/Popup";
 
 class StructureAttributesTable extends Component {
@@ -11,47 +12,24 @@ class StructureAttributesTable extends Component {
     this.state = {
       error: false,
       errorType: "",
+      currentAttr: {},
     };
   }
   renderTableHeaders = () => {
     return this.props.metaData.map((header) => <th>{header}</th>);
   };
 
-  isNumbers = (value) => {
-    const regex = /^\d+$/;
-    return regex.test(value) ? true : false;
-  };
-
-  isAlphabets = (value) => {
-    const regex = /^[A-Za-z]+$/;
-    return regex.test(value) ? true : false;
-  };
-
-  handleOnChange = (e, attribute) => {
-    if (e.target.value !== "") {
-      if (attribute.typeOfInput.id === "numeric") {
-        if (this.isNumbers(e.target.value)) {
-          this.props.onChange(e, attribute.id);
-        } else {
-          this.setState({ error: true, errorType: "numeric" });
-        }
-      } else if (attribute.typeOfInput.id === "alphabetic") {
-        if (this.isAlphabets(e.target.value)) {
-          this.props.onChange(e, attribute.id);
-        } else {
-          this.setState({ error: true, errorType: "alphabetic" });
-        }
-      } else {
-        this.props.onChange(e, attribute.id);
-      }
-    } else {
-      this.props.onChange(e, attribute.id);
-    }
-  };
-
   render() {
     return (
       <>
+        <AddAttributeValueModal
+          showModal={this.props.scr.showAttributeValueModal}
+          handleClose={() => {
+            this.props.showAttributeValueModal(false);
+          }}
+          currentAttr={this.state.currentAttr}
+          handleValueChange={this.props.onChange}
+        />
         <FormRow>
           <h4 className="card-title mr-auto ml-3 mb-4">{this.props.title}</h4>
         </FormRow>
@@ -77,9 +55,15 @@ class StructureAttributesTable extends Component {
               <tr key={attribute.id}>
                 <td>{attribute.name}</td>
                 <td>{attribute.uom}</td>
-                <td>{attribute.value}</td>
+                <td>{attribute.value ? attribute.value : 0}</td>
                 <td>
-                  <IconButton iconname="faEdit" onClick={() => {}} />
+                  <IconButton
+                    iconname="faEdit"
+                    onClick={() => {
+                      this.setState({ currentAttr: attribute });
+                      this.props.showAttributeValueModal(true);
+                    }}
+                  />
                 </td>
               </tr>
             ))}

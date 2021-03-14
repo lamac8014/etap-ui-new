@@ -12,7 +12,7 @@ class ExportExcel extends Component {
         className={`btn btn-primary ${this.props.className}`}
       >
         <span ref={this.props.compRef}>
-          {this.props.iconName && <FaIcon iconName={this.props.iconName} />}{" "}
+          {this.props.iconname && <FaIcon iconname={this.props.iconname} />}{" "}
           Download As Excel
         </span>
       </CSVLink>
