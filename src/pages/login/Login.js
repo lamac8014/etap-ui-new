@@ -16,7 +16,7 @@ export default class Login extends Component {
         <div className="auth-wrapper">
           <div className="auth-content container">
             <SimpleRow className="align-items-center">
-              <Col6 size="col-md-6 offset-md-3">
+              <Col6 size="col-md-4 offset-md-8">
                 <LoginCard className="shadow-lg rounded">
                   <SimpleRow>
                     <Col6 size="col-md-12">

@@ -1,7 +1,7 @@
 import logoImage from "./Larsen&Toubro_logo.jpg";
 import fullLogo from "./mainlogo_updated.png";
-import mainLogo from "./mainlogo.jpg";
-import loginBg from "./pexels-pixabay-257700.jpg";
+import mainLogo from "./logo.jpg";
+import loginBg from "./lnt.jpg";
 import loginBg2 from "./loginBg2.jpg";
 
 export const LOGO = logoImage;

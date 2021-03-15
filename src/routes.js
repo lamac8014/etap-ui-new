@@ -52,6 +52,9 @@ const AssignStructure = lazy(() =>
 const Asbuilt = lazy(() =>
   import("./containers/built/built")
 );
+const RequirmentApproval = lazy(() =>
+  import("./containers/requirmentApproval/viewRequirmentApproval")
+);
 
 const RouteList = [
   {
@@ -197,6 +200,12 @@ const RouteList = [
     path: "/etrack/fabricationMgmt/builtDetails",
     name: "As Built Details",
     component: Asbuilt,
+  },
+  {
+    exact: true,
+    path: "/etrack/requirementmgmt/requirmentApprove",
+    name: "Request Approve",
+    component: RequirmentApproval,
   },
 ];
 export default RouteList;
