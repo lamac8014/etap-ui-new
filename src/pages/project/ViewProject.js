@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import ContentLoader from "../../common/ContentLoader";
-// import FormContainer from "../../common/forms/FormContainer";
 // import CustomAlert from "../../common/forms/customAlert";
 import { listProjectMetaData, transformProjectList } from "./utils";
 import AddProjModal from "./AddProject";
@@ -83,18 +81,7 @@ class ViewProject extends Component {
               (id) => this.setState({ activeId: id, showDeleteModal: true }),
               (id) => this.props.handleEdit(id)
             )}
-            // bodyData={transformProjectList(
-            //   this.filteredItems(this.props.proj.projectList)
-            // )}
-            bodyData={[
-              {
-                name: "BMRC RT 02",
-                projCode: "PROJ001",
-                icName: "HCIC",
-                buName: "Metros",
-                area: "200",
-              },
-            ]}
+            bodyData={transformProjectList(this.props.proj.projectList)}
             showButton={true}
             btnText="Create New Project"
             onClick={this.props.showAddProjModal}

@@ -9,13 +9,20 @@ import { CSVReader } from "react-papaparse";
 import CustomDataTable from "../../common/DataTable";
 import TableFilter from "../../common/TableFilter";
 import Col6 from "../../common/forms/Col6";
-import { transformWBSData, listWBSMetaData, CSVLoaderStyles } from "./utils";
+import {
+  transformWBSData,
+  listWBSMetaData,
+  CSVLoaderStyles,
+  getDownloadWbsTemplateData,
+} from "./utils";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { transformDropDownData } from "../../utils/dataTransformer";
 import { Link } from "react-router-dom";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import SimpleRow from "../../common/forms/SimpleRow";
+import ExportExcel from "../../common/ExportExcel";
+import reactDom from "react-dom";
 
 class AddWorkBreak extends Component {
   constructor(props) {
@@ -27,6 +34,7 @@ class AddWorkBreak extends Component {
       resetPaginationToggle: false,
     };
   }
+  downloadBtnRef = React.createRef();
 
   handleOnError = (err, file, inputElem, reason) => {
     console.log(err);
@@ -102,9 +110,22 @@ class AddWorkBreak extends Component {
             </FormRow>
             <SimpleRow>
               <Col6>
-                <Link to="/wbs.csv" target="_blank" download>
+                <div style={{ display: "none" }}>
+                  <ExportExcel
+                    data={getDownloadWbsTemplateData()}
+                    compRef={this.downloadBtnRef}
+                    // header={this.props.headers}
+                    filename="wbs"
+                    className="download-btn"
+                    iconname="faDownload"
+                  />
+                </div>
+                <span
+                  className="download-wbs"
+                  onClick={() => this.downloadBtnRef.current.click()}
+                >
                   Download WBS Template
-                </Link>
+                </span>
               </Col6>
               <Col6 size="col-md-6 d-flex justify-content-end">
                 <Button
