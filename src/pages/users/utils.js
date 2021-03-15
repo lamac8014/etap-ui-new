@@ -26,7 +26,7 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
     {
       text: "Actions",
       sortable: true,
-      formatter: (row) => {
+      formatter: (cell,row) => {
         return (
           <>
             {
