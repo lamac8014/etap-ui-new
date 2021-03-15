@@ -9,6 +9,7 @@ import UserProfile from "./component/settings";
 import MainSearch from "./component/search";
 import Breadcrumb from "../breadcrumb/breadcrumb";
 import { LOGO } from "../../assets/images";
+import { logout } from "../../utils/auth";
 
 class Header extends Component {
   state = {
@@ -23,6 +24,7 @@ class Header extends Component {
     }
   }
   render() {
+    // console.log("props.....", this.props);
     return (
       <header className="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
         <div className="m-header">
@@ -90,7 +92,7 @@ class Header extends Component {
                   <MainSearch />
                 </li> */}
                 <li>
-                  <UserProfile />
+                  <UserProfile logout={() => logout(this.props.history)} />
                 </li>
               </ul>
             </React.Fragment>
@@ -123,7 +125,7 @@ class Header extends Component {
                   </Link>
                 </li> */}
                 <li>
-                  <UserProfile />
+                  <UserProfile {...this.props} />
                 </li>
               </ul>
             </React.Fragment>
