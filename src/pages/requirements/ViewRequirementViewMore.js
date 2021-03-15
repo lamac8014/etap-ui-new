@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import ContentLoader from '../../common/ContentLoader';
-import FormContainer from '../../common/forms/FormContainer';
-import SearchableDropDown from "../../common/forms/SearchableDropDown";
+
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
-import { transformUserRoles } from "./utils";
-import { transformDropDownData } from "../../utils/dataTransformer";
-import DataTable from '../../common/DataTable';
-import IconTextButton from '../../common/forms/IconTextButton';
-import Button from '../../common/forms/Button';
+
 
 class ViewRequirementViewMore extends Component {
   constructor(props) {
