@@ -1,25 +1,33 @@
 import { connect } from 'react-redux';
 import store from '../../store';
-import { requirmentApprovalList } from '../../actions/requirmentApprovalAction';
+import {
+  
+  requirmentApprovalList,
+  requirementAction,
+  singleRequirementFetch,
+ 
+
+} from '../../actions/requirmentApprovalAction';
 
 import {
-    REQUIRMENT_APPROVAL_MORE_PAGE,
-    CHANGE_REQUIRMENT_APPROVAL_MORE_MODAL_STATUS,
-    REQUIRMENT_APPROVAL,
-    REQUIRMENT_REJECT,
+  REQUIRMENT_APPROVAL_MORE_PAGE,
+  CHANGE_REQUIRMENT_APPROVAL_MORE_MODAL_STATUS,
+ 
 
 } from '../../actions/types';
 import ViewRequirmentApproval from '../../pages/requirmentApproval/ViewRequirmentApproval';
 
-const mapDispatchToProps = (dispatch,props) => {
+
+const mapDispatchToProps = (dispatch, props) => {
   return {
     requirmentApprovalList() {
       dispatch(requirmentApprovalList());
     },
 
- 
+
 
     handleMore(id) {
+      // dispatch(singleRequirementFetch(id));
       dispatch({
         type: REQUIRMENT_APPROVAL_MORE_PAGE,
         payload: true,
@@ -30,26 +38,21 @@ const mapDispatchToProps = (dispatch,props) => {
       })
     },
     handleApprove(id) {
-      dispatch({
-        type: REQUIRMENT_APPROVAL,
-        payload: true,
+      let requirementList = store.getState().requirement.requirementsList;
+      let singleRequirement = requirementList[id];
+      console.log(singleRequirement)
+      console.log(`ID: ${id}`)
+      dispatch(requirementAction(id, "Approval")).then(() => {
+        dispatch(requirmentApprovalList());
       });
-      dispatch({
-        type: CHANGE_REQUIRMENT_APPROVAL_MORE_MODAL_STATUS,
-        payload: true,
-      })
     },
     handleReject(id) {
-      dispatch({
-        type: REQUIRMENT_REJECT,
-        payload: true,
+      console.log(`ID: ${id}`)
+      dispatch(requirementAction(id, "Rejection")).then(() => {
+        dispatch(requirmentApprovalList());
       });
-      dispatch({
-        type: CHANGE_REQUIRMENT_APPROVAL_MORE_MODAL_STATUS,
-        payload: true,
-      })
     },
- 
+
   };
 };
 

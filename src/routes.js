@@ -55,6 +55,9 @@ const Asbuilt = lazy(() =>
 const RequirmentApproval = lazy(() =>
   import("./containers/requirmentApproval/viewRequirmentApproval")
 );
+const Requirment = lazy(() =>
+  import("./containers/requirement/viewRequirementAction")
+);
 
 const RouteList = [
   {

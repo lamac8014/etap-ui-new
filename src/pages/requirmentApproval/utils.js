@@ -2,8 +2,8 @@ import React from "react";
 import IconButton from "../../common/forms/IconButton";
 
 export const listBuiltTypeMetaData = (
- 
-  handleMore,handleApprove,handleReject
+
+  handleMore, handleApprove, handleReject
 ) => {
   return [
     {
@@ -45,17 +45,46 @@ export const listBuiltTypeMetaData = (
     },
 
     {
-      text: "Actions",
-      dataField: true,
-      formatter: (cell, row) => {
-        return (
-          <>
-           
-            {<IconButton iconname="faEye" onClick={() => handleMore(row.id)} />}
-            {<IconButton iconname="faThumbsUp" onClick={() => handleApprove(row.id)} />}
-            {<IconButton iconname="faThumbsDown" onClick={() => handleReject(row.id)} />}
-          </>
-        );
+      text: "Action",
+      sortable: true,
+      formatter: (cell,row) => {
+        if (row.isAction == "1") {
+          return (
+            <>
+              {
+                <IconButton
+                  iconname="faEdit"
+                  onClick={() => handleMore(row.id)}
+                />
+              }
+              {
+                <IconButton
+                  iconname="faThumbsUp"
+                  onClick={() => handleApprove(row.id)}
+                />
+
+              }
+              {
+                <IconButton
+                  iconname="faThumbsDown"
+                  onClick={() => handleReject(row.id)}
+                />
+              }
+
+            </>
+          );
+        } else {
+          return (
+            <>
+              {
+                <IconButton
+                  iconname="faEdit"
+                  onClick={() => handleMore(row.id)}
+                />
+              }
+            </>
+          );
+        }
       },
     },
   ];
