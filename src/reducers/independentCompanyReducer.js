@@ -142,7 +142,7 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: false,
         icName: "",
-        icDescription: {},
+        icDescription: "",
       };
     case SHOW_ERR_MSG:
       return {
