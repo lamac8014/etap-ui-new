@@ -44,19 +44,19 @@ class ViewRequirementAction extends Component {
 
         {this.state.showApproveModal && (
           <ConfirmModal
-            handleClose={() => {
-              this.setState({ showApproveModal: false, activeId: null });
-            }}
+            closeAction={() =>
+              this.setState({ showApproveModal: false, activeId: null })
+            }
             title="Approve Requirement"
-            handleConfirm={() => {
+            deleteAction={() => {
               this.props.handleApprove(this.state.activeId);
               this.setState({ showApproveModal: false, activeId: null });
             }}
-          >
-            <h6 className="text-danger">
-              Are you sure you want to Approve this request?
-            </h6>
-          </ConfirmModal>
+            frontText="Are you sure you want to Approve the Requirement?"
+            confirmText="Requirement Approved"
+            cancelText="Canceled!"
+          />
+
         )}
         {/* )} */}
         {/* {this.props.requirement.requirementsList && ( */}
