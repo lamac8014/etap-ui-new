@@ -24,6 +24,7 @@ import { transformDropDownData } from "../../utils/dataTransformer";
 import IconButton from "../../common/forms/IconButton";
 import IconTextButton from "../../common/forms/IconTextButton";
 import ButtonRow from "../../common/forms/ButtonRow";
+import Loader from "../../common/Loader";
 
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
@@ -56,6 +57,7 @@ class AssignStructure extends Component {
           {this.props.scr.isProjMsg && (
             <CustomAlert variant="success" message={this.props.proj.message} />
           )} */}
+          <Loader />
           <SimpleCard>
             <SimpleRow>
               <SearchableDropDown

@@ -2,7 +2,10 @@ import React, { Component } from "react";
 
 import ConfirmModal from "../../common/forms/ConfirmModal";
 import CustomAlert from "../../common/forms/customAlert";
-import { listViewRequirementsMetaData, transformViewRequirementList } from "./utils";
+import {
+  listViewRequirementsMetaData,
+  transformViewRequirementList,
+} from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import RequirementsViewMore from "../../containers/requirement/requirementsViewMore";
 import PageContainer from "../../common/forms/PageContainer";
@@ -32,16 +35,18 @@ class ViewRequirementAction extends Component {
             message={this.props.requirement.message}
           />
         )}
-        <RequirementsViewMore showAddComponentModal={this.props.requirement.showrequirementMoreModal} />
+        <RequirementsViewMore
+          showAddComponentModal={
+            this.props.requirement.showrequirementMoreModal
+          }
+        />
         {/* {this.props.requirement.requirementsList && ( */}
 
+        {this.state.showApproveModal && (
           <ConfirmModal
-            showModal={this.state.showApproveModal}
             handleClose={() => {
-              this.setState({ showApproveModal: false, activeId: null })
-            }
-
-            }
+              this.setState({ showApproveModal: false, activeId: null });
+            }}
             title="Approve Requirement"
             handleConfirm={() => {
               this.props.handleApprove(this.state.activeId);
@@ -52,9 +57,11 @@ class ViewRequirementAction extends Component {
               Are you sure you want to Approve this request?
             </h6>
           </ConfirmModal>
+        )}
         {/* )} */}
         {/* {this.props.requirement.requirementsList && ( */}
 
+        {this.state.showDeleteModal && (
           <ConfirmModal
             closeAction={() =>
               this.setState({ showDeleteModal: false, activeId: null })
@@ -68,6 +75,7 @@ class ViewRequirementAction extends Component {
             confirmText="Requirement Rejected"
             cancelText="Rejected!"
           />
+        )}
 
         {/* )} */}
         <SimpleCard>
@@ -75,16 +83,12 @@ class ViewRequirementAction extends Component {
             <CustomDataTable
               metaData={listViewRequirementsMetaData(
                 (id) => this.props.handleMore(id),
-                (id) => this.setState({ activeId: (id), showApproveModal: true }),
-                (id) => this.setState({ activeId: (id), showDeleteModal: true }),
-
-
+                (id) => this.setState({ activeId: id, showApproveModal: true }),
+                (id) => this.setState({ activeId: id, showDeleteModal: true })
               )}
               bodyData={transformViewRequirementList(
                 this.props.requirement.requirementsList
               )}
-
-
             />
           )}
         </SimpleCard>
