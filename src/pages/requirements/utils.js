@@ -52,57 +52,77 @@ export const _siteViewRequirementsInputBodyData = [
 ];
 
 export const listViewRequirementsMetaData = (
+  handleMore,
   handleApprove,
   handleReject,
-  handleMore
+
 ) => {
   return [
     {
-      name: "MR Number",
-      selector: "mrNo",
+      text: "Mr No",
+      dataField: "mrNo",
+      sortable: true,
+    },
+
+    {
+      text: "Project",
+      dataField: "projectName",
+      sortable: true,
+    },
+
+    {
+      text: "Structure Id",
+      dataField: "projectId",
       sortable: true,
     },
     {
-      name: "Project",
-      selector: "project",
+      text: "Structure Family",
+      dataField: "structureName",
       sortable: true,
     },
     {
-      name: "Structure Name",
-      selector: "structureName",
+      text: "Quantity",
+      dataField: "projectId",
       sortable: true,
     },
     {
-      name: "Status",
-      selector: "status",
+      text: "Required By",
+      dataField: "projectId",
       sortable: true,
     },
     {
-      name: "Action",
+      text: "status",
+      dataField: "status",
       sortable: true,
-      cell: (row) => {
+    },
+
+    {
+      text: "Action",
+      sortable: true,
+      formatter: (cell, row) => {
         if (row.isAction == "1") {
           return (
             <>
               {
                 <IconButton
-                  iconName="faThumbsUp"
+                  iconname="faEdit"
+                  onClick={() => handleMore(row.id)}
+                />
+              }
+              {
+                <IconButton
+                  iconname="faThumbsUp"
                   onClick={() => handleApprove(row.id)}
                 />
 
               }
               {
                 <IconButton
-                  iconName="faThumbsDown"
+                  iconname="faThumbsDown"
                   onClick={() => handleReject(row.id)}
                 />
               }
-              {
-                <IconButton
-                  iconName="faEdit"
-                  onClick={() => handleMore(row.id)}
-                />
-              }
+
             </>
           );
         } else {
@@ -110,7 +130,7 @@ export const listViewRequirementsMetaData = (
             <>
               {
                 <IconButton
-                  iconName="faEdit"
+                  iconname="faEdit"
                   onClick={() => handleMore(row.id)}
                 />
               }

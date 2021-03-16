@@ -33,47 +33,51 @@ class ViewRequirementAction extends Component {
           />
         )}
         <RequirementsViewMore showAddComponentModal={this.props.requirement.showrequirementMoreModal} />
-        {/* <ConfirmModal
-          showModal={this.state.showApproveModal}
-          handleClose={() => {
-            this.setState({ showApproveModal: false, activeId: null })
-          }
+        {/* {this.props.requirement.requirementsList && ( */}
 
-          }
-          title="Approve Requirement"
-          handleConfirm={() => {
-            this.props.handleApprove(this.state.activeId);
-            this.setState({ showApproveModal: false, activeId: null });
-          }}
-        >
-          <h6 className="text-danger">
-            Are you sure you want to Approve this request?
-            </h6>
-        </ConfirmModal>
+          <ConfirmModal
+            showModal={this.state.showApproveModal}
+            handleClose={() => {
+              this.setState({ showApproveModal: false, activeId: null })
+            }
 
-        <ConfirmModal
-          showModal={this.state.showDeleteModal}
-          handleClose={() => {
-            this.setState({ showDeleteModal: false, activeId: null })
-          }
-          }
-          title="Reject Requirement"
-          handleConfirm={() => {
-            this.props.handleReject(this.state.activeId);
-            this.setState({ showDeleteModal: false, activeId: null });
-          }}
-        >
-          <h6 className="text-danger">
-            Are you sure you want to Reject this request?
+            }
+            title="Approve Requirement"
+            handleConfirm={() => {
+              this.props.handleApprove(this.state.activeId);
+              this.setState({ showApproveModal: false, activeId: null });
+            }}
+          >
+            <h6 className="text-danger">
+              Are you sure you want to Approve this request?
             </h6>
-        </ConfirmModal> */}
+          </ConfirmModal>
+        {/* )} */}
+        {/* {this.props.requirement.requirementsList && ( */}
+
+          <ConfirmModal
+            closeAction={() =>
+              this.setState({ showDeleteModal: false, activeId: null })
+            }
+            title="Reject Requirement"
+            deleteAction={() => {
+              this.props.handleReject(this.state.activeId);
+              this.setState({ showDeleteModal: false, activeId: null });
+            }}
+            frontText="Are you sure you want to Reject the Requirement?"
+            confirmText="Requirement Rejected"
+            cancelText="Rejected!"
+          />
+
+        {/* )} */}
         <SimpleCard>
           {this.props.requirement.requirementsList && (
             <CustomDataTable
               metaData={listViewRequirementsMetaData(
-                id => this.setState({ activeId: id, showApproveModal: true }),
-                id => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.handleMore(id),
+                (id) => this.setState({ activeId: (id), showApproveModal: true }),
+                (id) => this.setState({ activeId: (id), showDeleteModal: true }),
+
 
               )}
               bodyData={transformViewRequirementList(
