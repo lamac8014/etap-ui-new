@@ -50,7 +50,7 @@ class ViewIndependentCompany extends Component {
               )}
               bodyData={icbuList(this.props.icbu.icbuList)}
               showButton={true}
-              btnText="Add IC"
+              btnText="Add Independent Company"
               onClick={this.props.showAddIcbuModal}
             />
           )}
