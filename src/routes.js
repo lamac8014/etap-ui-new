@@ -208,7 +208,7 @@ const RouteList = [
     exact: true,
     path: "/etrack/requirementmgmt/requirmentApprove",
     name: "Request Approve",
-    component: RequirmentApproval,
+    component: Requirment,
   },
 ];
 export default RouteList;
