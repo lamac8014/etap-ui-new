@@ -3,10 +3,26 @@ import IconButton from "../../common/forms/IconButton";
 import { Link } from "react-router";
 import { getUserDetails } from "../../utils/auth";
 
-export const _viewRequirementsInputData = ["Project", "Structure Family", "Structure ID", "Drawing No", "Quantity", "Required By", "Required for WBS", "Planned Start Date", "Planned Release Date", "Actual Start Date", "Actual WBS", "Expected Release Date", "Remarks", "MR No", "BU", "TWCC"];
+export const _viewRequirementsInputData = [
+  "Project",
+  "Structure Family",
+  "Structure ID",
+  "Drawing No",
+  "Quantity",
+  "Required By",
+  "Required for WBS",
+  "Planned Start Date",
+  "Planned Release Date",
+  "Actual Start Date",
+  "Actual WBS",
+  "Expected Release Date",
+  "Remarks",
+  "MR No",
+  "BU",
+  "TWCC",
+];
 export const _viewRequirementsInputBodyData = [
   {
-
     project: "",
     structureFamily: "",
     structureId: "",
@@ -23,16 +39,28 @@ export const _viewRequirementsInputBodyData = [
     mrNumber: "",
     bu: "Approved",
     twcc: "Approved",
-
-
   },
-
-
 ];
-export const _siteViewRequirementsInputData = ["Project", "Structure Family", "Structure ID", "Drawing No", "Quantity", "Required By", "Required for WBS", "Planned Start Date", "Planned Release Date", "Actual Start Date", "Actual WBS", "Expected Release Date", "Remarks", "MR No", "Status", "Action"];
+export const _siteViewRequirementsInputData = [
+  "Project",
+  "Structure Family",
+  "Structure ID",
+  "Drawing No",
+  "Quantity",
+  "Required By",
+  "Required for WBS",
+  "Planned Start Date",
+  "Planned Release Date",
+  "Actual Start Date",
+  "Actual WBS",
+  "Expected Release Date",
+  "Remarks",
+  "MR No",
+  "Status",
+  "Action",
+];
 export const _siteViewRequirementsInputBodyData = [
   {
-
     project: "",
     structureFamily: "",
     structureId: "",
@@ -54,75 +82,60 @@ export const _siteViewRequirementsInputBodyData = [
 export const listViewRequirementsMetaData = (
   handleMore,
   handleApprove,
-  handleReject,
-
+  handleReject
 ) => {
   return [
     {
       text: "Mr No",
       dataField: "mrNo",
-      sortable: true,
     },
 
     {
       text: "Project",
       dataField: "projectName",
-      sortable: true,
     },
 
     {
       text: "Structure Id",
       dataField: "projectId",
-      sortable: true,
     },
     {
       text: "Structure Family",
       dataField: "structureName",
-      sortable: true,
     },
     {
       text: "Quantity",
       dataField: "projectId",
-      sortable: true,
     },
     {
       text: "Required By",
       dataField: "projectId",
-      sortable: true,
     },
     {
       text: "status",
       dataField: "status",
-      sortable: true,
     },
 
     {
       text: "Action",
-      sortable: true,
       formatter: (cell, row) => {
         if (row.isAction == "1") {
           return (
             <>
-              {
-                <IconButton
-                  iconname="faEdit"
-                  onClick={() => handleMore(row.id)}
-                />
-              }
-              {
-                <IconButton
-                  iconname="faThumbsUp"
-                  onClick={() => handleApprove(row.id)}
-                />
+              <IconButton
+                iconname="faEdit"
+                onClick={() => handleMore(row.id)}
+              />
 
-              }
-              {
-                <IconButton
-                  iconname="faThumbsDown"
-                  onClick={() => handleReject(row.id)}
-                />
-              }
+              <IconButton
+                iconname="faThumbsUp"
+                onClick={() => handleApprove(row.id)}
+              />
 
+              <IconButton
+                iconname="faThumbsDown"
+                onClick={() => handleReject(row.id)}
+              />
             </>
           );
         } else {
@@ -152,7 +165,7 @@ export const transformViewRequirementList = (requirementsList) => {
         structureName: requirement.structureName,
         status: requirement.status,
         id: i,
-        isAction: requirement.isAction
+        isAction: requirement.isAction,
       };
       tmpArr.push(tmpObj);
     });
@@ -161,29 +174,32 @@ export const transformViewRequirementList = (requirementsList) => {
 
 export const transformProjectValue = () => {
   const userDetails = getUserDetails();
-  return userDetails.projectName
+  return userDetails.projectName;
 };
 
-
-// export const _requestCreationMetaData = (handleEdit) => {
-//   return [
-
-//     {
-//       text: "Structure Name",
-//       dataField: "structName"
-//     },
-//     {
-//       text: "Quantity",
-//       dataField: "quantity"
-//     },
-//     {
-//       text: "Actions",
-//       formatter: ( row) => {
-//         return (
-//           <IconButton iconname="faEdit" onClick={() => handleEdit(row.id)} />
-//         );
-//       },
-//     },
-//   ];
-
-// };
+export const requestCreationMetaData = (handleViewMore) => {
+  return [
+    {
+      text: "Structure Name",
+      dataField: "structName",
+    },
+    {
+      text: "Quantity",
+      dataField: "quantity",
+    },
+    {
+      text: "Actions",
+      formatter: (cell, row) => {
+        return (
+          <IconButton
+            iconname="faList"
+            onClick={() => {
+              handleViewMore(row.id);
+            }}
+            rounded
+          />
+        );
+      },
+    },
+  ];
+};

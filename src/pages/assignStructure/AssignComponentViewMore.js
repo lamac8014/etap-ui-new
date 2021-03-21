@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
+import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import { transformUserRoles } from "./utils";
 import { transformDropDownData } from "../../utils/dataTransformer";
-import IconTextButton from '../../common/forms/IconTextButton';
-import Button from '../../common/forms/Button';
-import AddAttributes from './AddAttributes';
+import IconTextButton from "../../common/forms/IconTextButton";
+import Button from "../../common/forms/Button";
+import AddAttributes from "./AddAttributes";
 class AssignComponentViewMore extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +25,9 @@ class AssignComponentViewMore extends Component {
       >
         {console.log("isLoading", this.props.isLoading)}
         {this.props.isLoading && <Loader />}
-        <FormRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -39,6 +40,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentList.structureId}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -52,6 +54,7 @@ class AssignComponentViewMore extends Component {
           />
 
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -61,12 +64,14 @@ class AssignComponentViewMore extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.assignStructure.assignComponentList.strcutureTypeName}
+            value={
+              this.props.assignStructure.assignComponentList.strcutureTypeName
+            }
           />
-        </FormRow>
-        <FormRow>
-
+        </SimpleRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -79,6 +84,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentList.structureCode}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -88,6 +94,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentList.buName}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -96,10 +103,11 @@ class AssignComponentViewMore extends Component {
             id="icName"
             value={this.props.assignStructure.assignComponentList.icName}
           />
-        </FormRow>
+        </SimpleRow>
 
-        <FormRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -109,36 +117,45 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.compId}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
             label="Component Number"
             name="componentNO"
             id="componentNO"
-            value={this.props.assignStructure.assignComponentViewMore.componentNo}
+            value={
+              this.props.assignStructure.assignComponentViewMore.componentNo
+            }
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
             label="Component Status"
             name="compStatus"
             id="compStatus"
-            value={this.props.assignStructure.assignComponentViewMore.compStatus}
+            value={
+              this.props.assignStructure.assignComponentViewMore.compStatus
+            }
           />
-        </FormRow>
-        <FormRow>
-
+        </SimpleRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
             label="Component Type"
             name="compTypeId"
             id="compTypeId"
-            value={this.props.assignStructure.assignComponentViewMore.compTypeName}
+            value={
+              this.props.assignStructure.assignComponentViewMore.compTypeName
+            }
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -148,6 +165,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.drawingNo}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -156,10 +174,11 @@ class AssignComponentViewMore extends Component {
             id="projectId"
             value={this.props.assignStructure.assignComponentList.projectId}
           />
-        </FormRow>
+        </SimpleRow>
 
-        <FormRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -169,6 +188,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.breath}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -178,6 +198,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.height}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -186,9 +207,10 @@ class AssignComponentViewMore extends Component {
             id="leng"
             value={this.props.assignStructure.assignComponentViewMore.leng}
           />
-        </FormRow>
-        <FormRow>
+        </SimpleRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -198,6 +220,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.width}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -207,6 +230,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.makeType}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -215,10 +239,11 @@ class AssignComponentViewMore extends Component {
             id="thickness"
             value={this.props.assignStructure.assignComponentViewMore.thickness}
           />
-        </FormRow>
+        </SimpleRow>
 
-        <FormRow>
+        <SimpleRow>
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -228,6 +253,7 @@ class AssignComponentViewMore extends Component {
             value={this.props.assignStructure.assignComponentViewMore.isTag}
           />
           <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -236,7 +262,7 @@ class AssignComponentViewMore extends Component {
             id="qrCode"
             value={this.props.assignStructure.assignComponentViewMore.qrCode}
           />
-        </FormRow>
+        </SimpleRow>
       </Modal>
     );
   }

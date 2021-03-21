@@ -7,6 +7,7 @@ import Loader from "../../common/Loader";
 class AddAttributeValueModal extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.currentAttr);
     this.state = {
       value: this.props.currentAttr.value,
       error: false,
@@ -25,34 +26,34 @@ class AddAttributeValueModal extends Component {
   };
 
   changeValue = () => {
-    if (this.state.value !== "") {
-      if (this.props.currentAttr.typeOfInput.id === "numeric") {
-        if (this.isNumbers(this.state.value)) {
-          this.props.handleValueChange(
-            this.state.value,
-            this.props.currentAttr.id
-          );
-        } else {
-          this.setState({ error: true, errorType: "numeric" });
-        }
-      } else if (this.props.currentAttr.typeOfInput.id === "alphabetic") {
-        if (this.isAlphabets(this.state.value)) {
-          this.props.handleValueChange(
-            this.state.value,
-            this.props.currentAttr.id
-          );
-        } else {
-          this.setState({ error: true, errorType: "alphabetic" });
-        }
-      } else {
-        this.props.handleValueChange(
-          this.state.value,
-          this.props.currentAttr.id
-        );
-      }
-    } else {
-      this.props.handleValueChange(this.state.value, this.props.currentAttr.id);
-    }
+    // if (this.state.value !== "") {
+    //   if (this.props.currentAttr.typeOfInput.id === "numeric") {
+    //     if (this.isNumbers(this.state.value)) {
+    //       this.props.handleValueChange(
+    //         this.state.value,
+    //         this.props.currentAttr.id
+    //       );
+    //     } else {
+    //       this.setState({ error: true, errorType: "numeric" });
+    //     }
+    //   } else if (this.props.currentAttr.typeOfInput.id === "alphabetic") {
+    //     if (this.isAlphabets(this.state.value)) {
+    //       this.props.handleValueChange(
+    //         this.state.value,
+    //         this.props.currentAttr.id
+    //       );
+    //     } else {
+    //       this.setState({ error: true, errorType: "alphabetic" });
+    //     }
+    //   } else {
+    //     this.props.handleValueChange(
+    //       this.state.value,
+    //       this.props.currentAttr.id
+    //     );
+    //   }
+    // } else {
+    this.props.handleValueChange(this.state.value, this.props.currentAttr.id);
+    // }
   };
   render() {
     return (

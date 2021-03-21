@@ -34,7 +34,9 @@ class ViewAssignComponent extends Component {
     };
   }
   componentDidMount() {
-    this.props.assignComponentList();
+    let structId = window.atob(this.props.match.params.structId);
+    let projectId = window.atob(this.props.match.params.projectId);
+    this.props.assignComponentList(structId, projectId);
   }
 
   render() {
@@ -105,8 +107,7 @@ class ViewAssignComponent extends Component {
               // label="IC"
               name="ic"
               id="ic"
-              // value={this.state.projectName}
-              value="HCIC"
+              value={this.props.assignStructure.assignComponentList.icName}
               disabled={true}
             />
             <TextInput
@@ -116,8 +117,7 @@ class ViewAssignComponent extends Component {
               // label="BU"
               name="bu"
               id="bu"
-              // value={this.state.projectName}
-              value="metro"
+              value={this.props.assignStructure.assignComponentList.buName}
               disabled={true}
             />
             <TextInput
@@ -127,8 +127,7 @@ class ViewAssignComponent extends Component {
               name="Project"
               // label="Project"
               id="project"
-              // value={this.state.projectName}
-              value="BMRC RT 02"
+              value={this.props.assignStructure.assignComponentList.projectName}
               disabled={true}
             />
             <TextInput
@@ -138,8 +137,9 @@ class ViewAssignComponent extends Component {
               // label="Structure"
               name="Structure"
               id="structure"
-              // value={this.state.projectName}
-              value="Launching girders"
+              value={
+                this.props.assignStructure.assignComponentList.strcutureName
+              }
               disabled={true}
             />
             <TextInput
@@ -149,8 +149,9 @@ class ViewAssignComponent extends Component {
               // label="Structure id"
               name="Structure id"
               id="structure id"
-              // value={this.state.projectName}
-              value="STR000001"
+              value={
+                this.props.assignStructure.assignComponentList.structureCode
+              }
               disabled={true}
             />
           </SimpleRow>
@@ -199,21 +200,21 @@ class ViewAssignComponent extends Component {
               (id) => this.props.handleMore(id)
             )}
             bodyData={
-              [
-                {
-                  componentNo: "1",
-                  component: "sample",
-                  componentID: "3",
-                  componentFamily: "sample family",
-                  totalWeight: "100",
-                  drawingNumber: "2",
-                  oM: "sample",
-                  modNo: "2",
-                },
-              ]
-              //   transformAssignedComponentList(
-              //   this.props.assignStructure.assignComponentList.components
-              // )
+              // [
+              //   {
+              //     componentNo: "1",
+              //     component: "sample",
+              //     componentID: "3",
+              //     componentFamily: "sample family",
+              //     totalWeight: "100",
+              //     drawingNumber: "2",
+              //     oM: "sample",
+              //     modNo: "2",
+              //   },
+              // ]
+              transformAssignedComponentList(
+                this.props.assignStructure.assignComponentList.components
+              )
             }
           />
 

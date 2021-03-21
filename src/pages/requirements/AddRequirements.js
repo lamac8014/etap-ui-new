@@ -5,7 +5,7 @@ import IconTextButton from "../../common/forms/IconTextButton";
 import Col6 from "../../common/forms/Col6";
 import TextArea from "../../common/forms/TextArea";
 import SiteRequirementStructure from "./SiteRequirementStructure";
-import { transformProjectValue ,} from "./utils";
+import { transformProjectValue, requestCreationMetaData } from "./utils";
 import SiteRequirementsModal from "./SiteRequirementsModal";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -13,6 +13,7 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import CustomDataTable from "../../common/DataTable";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
+import AddRequirementViewMore from "./AddRequirementViewmore";
 
 class AddRequirement extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class AddRequirement extends Component {
     this.props.getProjectList();
     this.props.getWBSList();
     this.props.getStructureData();
+    this.props.resetRequirement();
   }
 
   render() {
@@ -75,9 +77,6 @@ class AddRequirement extends Component {
                       onStructureIDChange={(e) =>
                         this.props.onStructureIDChange(e.target.value, i)
                       }
-                      ondrawingNumberChange={(e) =>
-                        this.props.ondrawingNumberChange(e.target.value, i)
-                      }
                       onQuantityChange={(e) =>
                         this.props.onQuantityChange(e.target.value, i)
                       }
@@ -92,13 +91,6 @@ class AddRequirement extends Component {
                         this.props.requirement.siteRequirementList[i]
                           .structFamily
                       }
-                      componentsCount={
-                        this.props.requirement.siteRequirementList[i]
-                          .componentsCount
-                      }
-                      drawingNumber={
-                        this.props.requirement.siteRequirementList[i].drawingNo
-                      }
                       quantity={
                         this.props.requirement.siteRequirementList[i].quantity
                       }
@@ -111,28 +103,22 @@ class AddRequirement extends Component {
                   </Col6>
                 );
               })}
-              <SiteRequirementsModal
-                showModal={this.props.requirement.showModal}
-                {...this.props}
-              />
             </div>
             <FormRow>
               <CustomDataTable
-                // metaData={listStructureMetaData(
-                //   (id) => this.props.handleDelete(id),
-                //   (id) => this.props.handleEdit(id)
-                // )}
-                // bodyData={transformStructureList(
-                //   this.filteredItems(this.props.structure.structureList),
-                //   this.props.structure.structureFamilyList
-                // )}
-                metaData={[
-                  { text: "Structure Name", dataField: "sample" },
-                  { text: "Quantity", dataField: "smaple" },
-                  { text: "Actions" },
-                ]}
-                bodyData={[]}
+                metaData={requestCreationMetaData((id) =>
+                  this.props.openViewMoreModal(id)
+                )}
+                bodyData={this.props.requirement.savedRequirementList}
               />
+              <SiteRequirementsModal
+                {...this.props}
+                showModal={this.props.requirement.showModal}
+              />
+              {/* <AddRequirementViewMore
+                {...this.props}
+                showModalViewMore={this.props.requirement.showViewMoreModal}
+              /> */}
             </FormRow>
             <SimpleRow>
               <TextArea

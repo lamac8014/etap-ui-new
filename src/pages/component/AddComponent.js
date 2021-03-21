@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
-import SearchableDropDown from "../../common/forms/SimpleDropDown";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 
 class CreateUser extends Component {
   constructor(props) {
@@ -11,8 +11,9 @@ class CreateUser extends Component {
   render() {
     return (
       <Modal
-        title={`${this.props.component.isEditMode ? "Update" : "Add"
-          } Component Type`}
+        title={`${
+          this.props.component.isEditMode ? "Update" : "Add"
+        } Component Type`}
         showModal={this.props.showAddComponentModal}
         handleSave={
           this.props.component.isEditMode
@@ -27,7 +28,6 @@ class CreateUser extends Component {
         size="lg"
         isShowFooter={true}
       >
-
         <SimpleRow>
           <TextInput
             size="col-md-7"

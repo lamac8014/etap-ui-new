@@ -90,7 +90,7 @@ class AddWorkBreak extends Component {
                   onError={this.handleOnError}
                   noDrag
                   addRemoveButton
-                  onRemoveFile={this.handleOnRemoveFile}
+                  onRemoveFile={() => this.props.handleOnDrop([])}
                   style={CSVLoaderStyles}
                 >
                   <span className="loader-text">Click to upload WBS File</span>

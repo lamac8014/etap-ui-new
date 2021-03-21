@@ -56,7 +56,6 @@ class ViewRequirementAction extends Component {
             confirmText="Requirement Approved"
             cancelText="Canceled!"
           />
-
         )}
         {/* )} */}
         {/* {this.props.requirement.requirementsList && ( */}
@@ -89,6 +88,7 @@ class ViewRequirementAction extends Component {
               bodyData={transformViewRequirementList(
                 this.props.requirement.requirementsList
               )}
+              // bodyData={[{ mrNo: "mr001" }]}
             />
           )}
         </SimpleCard>

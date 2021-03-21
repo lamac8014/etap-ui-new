@@ -1,6 +1,9 @@
-import { connect } from 'react-redux';
-import store from '../../store';
-import {assignStructureList,assignStructureFetch} from '../../actions/assignStructureAction';
+import { connect } from "react-redux";
+import store from "../../store";
+import {
+  assignStructureList,
+  assignStructureFetch,
+} from "../../actions/assignStructureAction";
 import { withRouter } from "react-router-dom";
 
 import {
@@ -8,11 +11,11 @@ import {
   SHOW_ADD_STRUCTURE_MSG,
   SET_PROJECT_STRUCTURE_ID,
   ASSIGN_STRUCTURE_MORE_PAGE,
-  CHANGE_ASSIGN_STRUCTURE_MORE_MODAL_STATUS
-} from '../../actions/types';
-import ViewAssignStructure from '../../pages/assignStructure/ViewAssignStructure';
+  CHANGE_ASSIGN_STRUCTURE_MORE_MODAL_STATUS,
+} from "../../actions/types";
+import ViewAssignStructure from "../../pages/assignStructure/ViewAssignStructure";
 
-const mapDispatchToProps = (dispatch,props) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     assignStructureList() {
       dispatch(assignStructureList());
@@ -27,28 +30,30 @@ const mapDispatchToProps = (dispatch,props) => {
     //     payload: false,
     //   })
     // },
-    handleMore(id){
+    handleMore(id) {
       dispatch(assignStructureFetch(id));
-        dispatch({
-          type: ASSIGN_STRUCTURE_MORE_PAGE,
-          payload: true,
-        });
-        dispatch({
-          type: CHANGE_ASSIGN_STRUCTURE_MORE_MODAL_STATUS,
-          payload: true,
-        })
+      dispatch({
+        type: ASSIGN_STRUCTURE_MORE_PAGE,
+        payload: true,
+      });
+      dispatch({
+        type: CHANGE_ASSIGN_STRUCTURE_MORE_MODAL_STATUS,
+        payload: true,
+      });
     },
-    handleComponentCheck(structID,projectID){
-      
+    handleComponentCheck(structID, projectID) {
       dispatch({
         type: SET_PROJECT_STRUCTURE_ID,
         payload: { structureID: structID, projectID },
-      })
-      props.history.push('/etrack/structure/viewComponent');
-
+      });
+      props.history.push(
+        `/etrack/structure/viewComponent/${window.btoa(structID)}/${window.btoa(
+          projectID
+        )}`
+      );
     },
-    handleGetComponent(structID,projectID){
-      dispatch(assignStructureFetch(structID,projectID)).then(() => {
+    handleGetComponent(structID, projectID) {
+      dispatch(assignStructureFetch(structID, projectID)).then(() => {
         dispatch({
           type: ASSIGN_STRUCTURE_MORE_PAGE,
           payload: true,
@@ -56,17 +61,19 @@ const mapDispatchToProps = (dispatch,props) => {
         dispatch({
           type: CHANGE_ASSIGN_STRUCTURE_MORE_MODAL_STATUS,
           payload: true,
-        })
+        });
       });
     },
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const assignStructure = store.getState().assignStructure;
   return {
     assignStructure,
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ViewAssignStructure));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ViewAssignStructure)
+);

@@ -147,6 +147,7 @@ export default function (state = initialState, action) {
         structAttri: transformAttri(JSON.parse(scr.structureAttributes)),
         files: transformDocs(scr.structureDocs),
         uploadData: scr.components,
+        noOfComponents: scr.componentsCount,
       };
     case ASSIGN_FILE_REMOVE:
       return {
@@ -166,6 +167,9 @@ export default function (state = initialState, action) {
         removeFiles: [],
         fileInput: null,
         structName: {},
+        ic: "",
+        bu: "",
+        noOfComponents: "",
       };
     case RESET_ASSIGN_COMP_FORM:
       return {

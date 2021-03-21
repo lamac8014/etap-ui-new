@@ -11,6 +11,7 @@ import {
   componentsMetaData,
   getExcelData,
   getComponentTableData,
+  CSVLoaderStyles,
 } from "./utils";
 import Col6 from "../../common/forms/Col6";
 import { CSVReader } from "react-papaparse";
@@ -44,12 +45,6 @@ class AssignStructure extends Component {
   };
 
   render() {
-    let tempArr = [
-      { id: "1", name: "Capacity", uom: "MT", value: "2509" },
-      { id: "2", name: "Capacity", uom: "MT", value: "2509" },
-      { id: "3", name: "Capacity", uom: "MT", value: "2509" },
-      { id: "4", name: "Capacity", uom: "MT", value: "2509" },
-    ];
     return (
       <>
         <PageContainer>
@@ -101,8 +96,8 @@ class AssignStructure extends Component {
                 label="Struct. Family"
                 name="structureName"
                 id="structureName"
-                // value={this.props.scr.structName}
-                value="LG&Bridge Builders"
+                value={this.props.scr.strcutureType}
+                // value="LG&Bridge Builders"
                 disabled
               />
             </SimpleRow>
@@ -114,9 +109,9 @@ class AssignStructure extends Component {
                 label="IC"
                 name="ic"
                 id="ic"
-                // value={this.props.scr.strcutureType}
-                value="BNF IC"
-                placeholder="Auto Fetch"
+                value={this.props.scr.ic}
+                // value="BNF IC"
+                // placeholder="Auto Fetch"
                 disabled
               />
               <TextInput
@@ -126,9 +121,9 @@ class AssignStructure extends Component {
                 label="BU"
                 name="bu"
                 id="bu"
-                // value={this.props.scr.structureCode}
-                value="Metro"
-                placeholder="Auto Fetch"
+                value={this.props.scr.bu}
+                // value="Metro"
+                // placeholder="Auto Fetch"
                 disabled={true}
               />
 
@@ -144,7 +139,6 @@ class AssignStructure extends Component {
                 disabled
               />
             </SimpleRow>
-
             <SimpleRow>
               <TextInput
                 label="Component"
@@ -209,7 +203,6 @@ class AssignStructure extends Component {
               ))}
             </SimpleRow>
             {/* table */}
-            <hr />
             {this.props.scr.structAttri.length > 0 ? (
               <>
                 <StructureAttributesTable
@@ -220,26 +213,42 @@ class AssignStructure extends Component {
                   bodyData={this.props.scr.structAttri}
                   title="Structure Attributes"
                 />
-                <SimpleRow className="row">
-                  <Col6 size="col-md-6 offset-md-3 d-flex justify-content-center">
-                    <Button
-                      btnText="Save"
-                      onClick={this.props.saveAssignStruct}
-                      type="primary"
-                      gradient
-                    />
-                  </Col6>
 
-                  {/* <Button
+                {/* <Button
                 btnText="Clear"
                 onClick={this.props.clearStrcutAttri}
                 btnType="btn-secondary"
               /> */}
-                </SimpleRow>
-                <hr />
               </>
             ) : null}
+            <ButtonRow position="center">
+              <Button
+                btnText="Save"
+                onClick={this.props.saveAssignStruct}
+                type="primary"
+                gradient
+              />
+            </ButtonRow>
+            <hr />
+
             <FormRow>
+              <Col6 size="col-md-6 offset-md-3 mb-3">
+                <div>
+                  <CSVReader
+                    onDrop={this.props.handleOnDrop}
+                    onError={this.handleOnError}
+                    noDrag
+                    addRemoveButton
+                    onRemoveFile={() => this.props.handleOnDrop([])}
+                    className="test"
+                  >
+                    <span className="loader-text">
+                      <FaIcon iconname="faUpload" />
+                      &nbsp;Upload Excel Template
+                    </span>
+                  </CSVReader>
+                </div>
+              </Col6>
               <CustomDataTable
                 metaData={componentsMetaData()}
                 bodyData={getComponentTableData(this.props.scr)}
@@ -274,37 +283,21 @@ class AssignStructure extends Component {
               </Col6>
               <Col6>
                 <ButtonRow>
-                  <div style={{ display: "none" }}>
-                    <CSVReader
-                      onDrop={this.props.handleOnDrop}
-                      onError={this.handleOnError}
-                      noDrag
-                      addRemoveButton
-                      onRemoveFile={this.handleOnRemoveFile}
-                      className="test"
-                    >
-                      <span ref={this.exportBtnRef}></span>
-                    </CSVReader>
-                  </div>
-                  <Button
-                    btnText={
-                      <>
-                        <FaIcon iconname="faUpload" /> Upload Excel Template
-                      </>
-                    }
-                    onClick={() => this.exportBtnRef.current.click()}
-                    gradient
-                  />
                   <Button
                     btnText="Save"
                     onClick={this.props.saveAssignComp}
                     type="primary"
                     gradient
+                    disabled={
+                      this.props.scr.projName.value &&
+                      this.props.scr.structName.value
+                        ? false
+                        : true
+                    }
                   />
                 </ButtonRow>
               </Col6>
             </SimpleRow>
-
             {/* <FormRow className="mb-3">
               <ExportExcel
                 data={getExcelData(this.props.scr)}

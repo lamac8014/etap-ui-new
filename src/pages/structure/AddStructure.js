@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
-import SearchableDropDown from "../../common/forms/SimpleDropDown";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import { transformDropDownData } from "../../utils/dataTransformer";
@@ -72,26 +72,27 @@ class AddStructure extends Component {
         </div>
         <div class="form-group row">
           <div className="col-md-12">
-          {this.props.structure.attributeList.map((e, i) => {
-            return (
-              <AddAttributes
-                onNameChange={(e) => this.props.onNameChange(e.target.value, i)}
-                onTypeOfInputChange={(obj) =>
-                  this.props.onTypeOfInputChange(obj.label, i)
-                }
-                onUoMChange={(e) => this.props.onUoMChange(e.target.value, i)}
-                onAttributeRemove={(i) => this.props.onAttributeRemove(i)}
-                index={i}
-                nameValue={this.props.structure.attributeList[i].name}
-                typeOfInputValue={
-                  this.props.structure.attributeList[i].typeOfInput
-                }
-                uomValue={this.props.structure.attributeList[i].uom}
-              />
-            );
-          })}
+            {this.props.structure.attributeList.map((e, i) => {
+              return (
+                <AddAttributes
+                  onNameChange={(e) =>
+                    this.props.onNameChange(e.target.value, i)
+                  }
+                  onTypeOfInputChange={(obj) =>
+                    this.props.onTypeOfInputChange(obj.label, i)
+                  }
+                  onUoMChange={(e) => this.props.onUoMChange(e.target.value, i)}
+                  onAttributeRemove={(i) => this.props.onAttributeRemove(i)}
+                  index={i}
+                  nameValue={this.props.structure.attributeList[i].name}
+                  typeOfInputValue={
+                    this.props.structure.attributeList[i].typeOfInput
+                  }
+                  uomValue={this.props.structure.attributeList[i].uom}
+                />
+              );
+            })}
           </div>
-          
         </div>
       </Modal>
     );

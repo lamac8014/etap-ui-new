@@ -18,7 +18,7 @@ export const getComponentTableData = (scr) => {
         breadth: data.breath,
         height: data.height,
         thickness: data.thickness,
-        weight: data.width,
+        weight: data.weight,
         type: data.makeType,
         tag: data.isTag,
       });
@@ -52,20 +52,14 @@ export const getExcelData = (scr) => {
   if (data && data.length > 0) {
     data.map((dt, i) => {
       let tmpArr = [];
-      tmpArr.push(scr.ic);
-      tmpArr.push(scr.bu);
-      tmpArr.push(scr.projName.label);
-      tmpArr.push(scr.strcutureType);
-      tmpArr.push(scr.structName.label);
-      tmpArr.push(scr.structName.value);
-      tmpArr.push(dt.compTypeName);
       tmpArr.push(dt.componentName);
+      tmpArr.push(dt.compTypeName);
       tmpArr.push(dt.compId);
-      tmpArr.push(dt.isGroup);
       tmpArr.push(dt.componentNo);
+      tmpArr.push(dt.isGroup);
       tmpArr.push(dt.drawingNo);
       tmpArr.push(dt.leng);
-      tmpArr.push(dt.breadth);
+      tmpArr.push(dt.breath);
       tmpArr.push(dt.height);
       tmpArr.push(dt.thickness);
       tmpArr.push(dt.weight);
@@ -307,11 +301,11 @@ export const listAssignedStructureMetaData = (
 
     {
       text: "Est. Weight",
-      dataField: "totalWeight",
+      dataField: "estimatedWeight",
     },
     {
       text: "Dr. No",
-      dataField: "drawingNumber",
+      dataField: "drawingNo",
     },
     {
       text: "Status",
@@ -341,6 +335,8 @@ export const transformAssignedStructureList = (assignStructureList) => {
   assignStructureList &&
     assignStructureList.map((assignStructure, i) => {
       let tmpObj = {
+        estimatedWeight: assignStructure.estimatedWeight,
+        drawingNo: assignStructure.drawingNo,
         projectID: assignStructure.projectId,
         structureName: assignStructure.strcutureName,
         structureId: assignStructure.structureId,
@@ -431,4 +427,11 @@ export const transformAssignedComponentList = (assignComponentList) => {
       tmpArr.push(tmpObj);
     });
   return tmpArr;
+};
+
+export const CSVLoaderStyles = {
+  dropArea: {
+    border: "none",
+    padding: 0,
+  },
 };

@@ -7,6 +7,11 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import { transformDropDownData } from "../../utils/dataTransformer";
 
 class SiteRequirementStructure extends Component {
+  componentDidMount() {
+    this.props.requirement.siteRequirementList[
+      this.props.index
+    ].id = this.props.index;
+  }
   render() {
     return (
       <>
@@ -87,13 +92,24 @@ class SiteRequirementStructure extends Component {
                 <IconButton
                   iconname="faEdit"
                   index={this.props.index}
-                  onClick={() => this.props.showModalOpen()}
+                  rounded
+                  onClick={() =>
+                    this.props.requirement.siteRequirementList[this.props.index]
+                      .structId
+                      ? this.props.showModalOpen(
+                          this.props.requirement.siteRequirementList[
+                            this.props.index
+                          ].structId
+                        )
+                      : alert("Select a structure first")
+                  }
                 />
               </div>
               <div class="col-sm-1">
                 <IconButton
                   iconname="faTimesCircle"
                   index={this.props.index}
+                  rounded
                   onClick={() =>
                     this.props.onSiteRequirementRemove(this.props.index)
                   }

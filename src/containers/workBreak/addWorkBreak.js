@@ -24,8 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     handleOnDrop(data) {
       console.log("---------------------------");
       let wbsDataArr = [];
+      console.log("data....", data);
       data.forEach((a, i) => {
-        if (i > 0) {
+        if (i > 0 && a.data.length === 4) {
           let wbsSampleObject = {
             workBreakDownCode: a.data[0],
             segment: a.data[1],

@@ -48,6 +48,8 @@ export const saveAssignStruct = () => {
   postData.append("projectId", scr.projName.value);
   postData.append("drawingNo", scr.drawingNum);
   postData.append("estimatedWeight", scr.estimatedWeight);
+  postData.append("compCount", scr.noOfComponents);
+  postData.append("structureCode", scr.structureCode);
   scr.structAttri.map((attr) => {
     delete attr.id;
   });
