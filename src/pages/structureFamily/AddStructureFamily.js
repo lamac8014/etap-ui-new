@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import SimpleRow from "../../common/forms/SimpleRow"
+import SimpleRow from "../../common/forms/SimpleRow";
 
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
+import SearchableDropdown from "../../common/forms/SearchableDropdown";
 
 class AddStructureFamily extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class AddStructureFamily extends Component {
             value={this.props.structureFamily.structureFamilyType}
           />
 
-          <TextInput
+          <SearchableDropdown
             label="Status"
             labelSize="col-md-3 text-right"
             fieldSize="col-md-7"

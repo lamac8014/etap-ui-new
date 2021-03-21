@@ -69,20 +69,20 @@ class ViewAssignStructure extends Component {
                 },
                 (id) => this.props.handleMore(id)
               )}
-              // bodyData={transformAssignedStructureList(
-              //   this.filteredItems(this.props.assignStructure.assignStructureList)
-              // )}
-              bodyData={[
-                {
-                  structureName: "Sample Structure",
-                  structureCode: "Sample code",
-                  componentsCount: "5",
-                  totalWeight: "100",
-                  drawingNumber: "9",
-                  currentStatus: "success",
-                  id: "1",
-                },
-              ]}
+              bodyData={transformAssignedStructureList(
+                this.props.assignStructure.assignStructureList
+              )}
+              // bodyData={[
+              //   {
+              //     structureName: "Sample Structure",
+              //     structureCode: "Sample code",
+              //     componentsCount: "5",
+              //     totalWeight: "100",
+              //     drawingNumber: "9",
+              //     currentStatus: "success",
+              //     id: "1",
+              //   },
+              // ]}
             />
           )}
         </SimpleCard>
