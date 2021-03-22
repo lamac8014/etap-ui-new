@@ -262,7 +262,7 @@ export default function (state = initialState, action) {
         showrequirementMoreModal: action.payload,
       };
     case RESET_REQUIREMENT_MODAL:
-      return { ...state, activeItem: {} };
+      return { ...state, viewMoreActiveItem: {} };
     case RESET_REQUIREMENT_FORM:
       return {
         ...state,
