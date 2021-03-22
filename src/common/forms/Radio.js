@@ -21,6 +21,7 @@ class Radio extends Component {
             id={this.props.id}
             value={this.props.value}
             onChange={this.props.onChange}
+            checked={this.props.checked}
           />
           <Label for={this.props.id} className="cr">
             {this.props.label}
