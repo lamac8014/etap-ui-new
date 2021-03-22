@@ -234,10 +234,22 @@ export default function (state = initialState, action) {
         isSuccess: false,
         message: action.payload.data.message,
       };
-    case GET_REQUIREMENT_DATA_SINGLE:
+    case `${GET_REQUIREMENT_DATA_SINGLE}_PENDING`:
       return {
         ...state,
-        requirementViewMore: action.payload,
+        isLoading: true,
+      };
+    case `${GET_REQUIREMENT_DATA_SINGLE}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: action.payload.data.message,
+      };
+    case `${GET_REQUIREMENT_DATA_SINGLE}_FULFILLED`:
+      return {
+        ...state,
+        requirementViewMore: action.payload.data,
       };
     case VIEW_REQUIREMENTS_MORE_PAGE:
       return {

@@ -59,8 +59,8 @@ class ViewComponent extends Component {
               (id) => this.props.handleEdit(id)
             )}
             bodyData={transformComponentList(
-              this.props.component.componentTypeList.reverse()
-            )}
+              this.props.component.componentTypeList
+           )}
             // bodyData={[{ id: 1, componentType: "COMP1", status: "Active" }]}
             showButton={true}
             btnText="Add Component Type"
