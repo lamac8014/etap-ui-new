@@ -131,11 +131,10 @@ export const requirementAction = (id, action) => {
 };
 
 export const singleRequirementFetch = (id) => {
-  const requirement = store.getState().requirement;
-  const data = requirement.requirementsList[id];
-  console.log(`Single Requirement Data: ${JSON.stringify(data)}`);
   return {
     type: GET_REQUIREMENT_DATA_SINGLE,
-    payload: data,
+    payload: axios.get(
+      `${config.BASE_URL}/api/SiteRequirement/getSiteReqDetailsById/${id}`
+    ),
   };
 };

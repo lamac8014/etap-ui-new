@@ -35,11 +35,14 @@ class ViewRequirementAction extends Component {
             message={this.props.requirement.message}
           />
         )}
-        <RequirementsViewMore
-          showAddComponentModal={
-            this.props.requirement.showrequirementMoreModal
-          }
-        />
+        {this.props.requirement.requirementViewMore
+          .siteRequirementStructures && (
+          <RequirementsViewMore
+            showAddComponentModal={
+              this.props.requirement.showrequirementMoreModal
+            }
+          />
+        )}
         {/* {this.props.requirement.requirementsList && ( */}
 
         {this.state.showApproveModal && (

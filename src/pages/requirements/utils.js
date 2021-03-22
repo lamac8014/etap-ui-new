@@ -89,37 +89,24 @@ export const listViewRequirementsMetaData = (
       text: "Mr No",
       dataField: "mrNo",
     },
-
     {
       text: "Project",
       dataField: "projectName",
     },
-
     {
-      text: "Structure Id",
-      dataField: "projectId",
-    },
-    {
-      text: "Structure Family",
+      text: "Structure",
       dataField: "structureName",
-    },
-    {
-      text: "Quantity",
-      dataField: "projectId",
-    },
-    {
-      text: "Required By",
-      dataField: "projectId",
     },
     {
       text: "status",
       dataField: "status",
     },
-
     {
       text: "Action",
+      dataField: "actions",
       formatter: (cell, row) => {
         if (row.isAction == "1") {
+          console.log(row.id);
           return (
             <>
               <IconButton
@@ -161,7 +148,8 @@ export const transformViewRequirementList = (requirementsList) => {
     requirementsList.map((requirement, i) => {
       let tmpObj = {
         mrNo: requirement.mrNo,
-        project: requirement.projectName,
+        projectName: requirement.projectName,
+        structureId: requirement.projectId,
         structureName: requirement.structureName,
         status: requirement.status,
         id: i,
