@@ -8,8 +8,8 @@ class MainLayout extends Component {
   render() {
     return (
       <Fragment>
-        <Navbar />
         <Header {...this.props} />
+        <Navbar />
         <ContentWrapper {...this.props} />
         {/* <Footer /> */}
       </Fragment>

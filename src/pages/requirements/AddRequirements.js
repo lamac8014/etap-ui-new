@@ -115,10 +115,10 @@ class AddRequirement extends Component {
                 {...this.props}
                 showModal={this.props.requirement.showModal}
               />
-              {/* <AddRequirementViewMore
+              <AddRequirementViewMore
                 {...this.props}
                 showModalViewMore={this.props.requirement.showViewMoreModal}
-              /> */}
+              />
             </FormRow>
             <SimpleRow>
               <TextArea

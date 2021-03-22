@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import store from '../../store';
+import { connect } from "react-redux";
+import store from "../../store";
 
 import {
   COMPONENT_TYPE,
@@ -8,52 +8,58 @@ import {
   COMPONENT_TYPE_STATUS,
   SET_COMPONENT_EDIT_MODE,
   RESET_CREATE_COMPONENT_TYPE_FORM,
-  COMPONENT_TYPE_LOADING
-} from '../../actions/types';
-import {addComponent,updateComponentType,componentList} from '../../actions/componentAction'
-import AddComponent from '../../pages/component/AddComponent';
+  COMPONENT_TYPE_LOADING,
+} from "../../actions/types";
+import {
+  addComponent,
+  updateComponentType,
+  componentList,
+} from "../../actions/componentAction";
+import AddComponent from "../../pages/component/AddComponent";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     resetStructureData() {
       dispatch({ type: RESET_STRUCTURE_FORM });
     },
-    addComponentType(){
+    addComponentType() {
       dispatch(addComponent()).then(() => {
         dispatch(componentList());
         dispatch({
           type: SET_COMPONENT_EDIT_MODE,
           payload: false,
-        })
+        });
         dispatch({ type: RESET_CREATE_COMPONENT_TYPE_FORM });
         dispatch({
           type: CHANGE_ADD_COMPONENT_MODAL_STATUS,
           payload: false,
-        })
-        
-      });;
+        });
+      });
     },
-    updateComponentType(){
+    updateComponentType() {
       dispatch(updateComponentType()).then(() => {
         dispatch(componentList());
         dispatch({
           type: SET_COMPONENT_EDIT_MODE,
           payload: false,
-        })
+        });
         dispatch({ type: RESET_CREATE_COMPONENT_TYPE_FORM });
         dispatch({
           type: CHANGE_ADD_COMPONENT_MODAL_STATUS,
           payload: false,
-        })
-        
+        });
       });
     },
-    closeAddComponentModal(){
+    closeAddComponentModal() {
       dispatch({
         type: CHANGE_ADD_COMPONENT_MODAL_STATUS,
         payload: false,
-      })
-      dispatch({ type: RESET_CREATE_COMPONENT_TYPE_FORM })
+      });
+      dispatch({
+        type: SET_COMPONENT_EDIT_MODE,
+        payload: false,
+      });
+      dispatch({ type: RESET_CREATE_COMPONENT_TYPE_FORM });
     },
     handleChangeComponentType(value) {
       dispatch({
@@ -70,7 +76,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const component = store.getState().component;
   return {
     component,

@@ -118,7 +118,7 @@ class SiteRequirementsModal extends Component {
                 onChange={(e) =>
                   this.props.handleChangeRequirementRequiredBy(e.target.value)
                 }
-                value={this.props.requirement.activeItem.requiredBy}
+                value={this.props.requirement.activeItem.requireByDate}
               />
             </SimpleRow>
             <SimpleRow>

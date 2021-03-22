@@ -113,16 +113,18 @@ export const listViewRequirementsMetaData = (
                 iconname="faEdit"
                 onClick={() => handleMore(row.id)}
               />
-
-              <IconButton
-                iconname="faThumbsUp"
-                onClick={() => handleApprove(row.id)}
-              />
-
-              <IconButton
-                iconname="faThumbsDown"
-                onClick={() => handleReject(row.id)}
-              />
+              {row.status !== "REJECTED" && (
+                <>
+                  <IconButton
+                    iconname="faThumbsUp"
+                    onClick={() => handleApprove(row.id)}
+                  />
+                  <IconButton
+                    iconname="faThumbsDown"
+                    onClick={() => handleReject(row.id)}
+                  />
+                </>
+              )}
             </>
           );
         } else {

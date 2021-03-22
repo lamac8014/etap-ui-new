@@ -20,11 +20,7 @@ class CreateUser extends Component {
             ? this.props.updateComponentType
             : this.props.addComponentType
         }
-        handleClose={
-          this.props.component.isEditMode
-            ? this.props.closeAddComponentModal
-            : this.props.closeAddComponentModal
-        }
+        handleClose={this.props.closeAddComponentModal}
         size="lg"
         isShowFooter={true}
       >
