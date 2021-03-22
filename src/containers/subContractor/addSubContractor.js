@@ -1,16 +1,22 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import store from '../../store';
+import { connect } from "react-redux";
+import store from "../../store";
 
-import { VENDOR_CODE, VENDOR_CONTACT_NUMBER, VENDOR_EMAIL, VENDOR_NAME,VENDOR_STATUS } from '../../actions/types';
+import {
+  VENDOR_CODE,
+  VENDOR_CONTACT_NUMBER,
+  VENDOR_EMAIL,
+  VENDOR_NAME,
+  VENDOR_STATUS,
+} from "../../actions/types";
 
-import AddSubContractor from '../../pages/subcontractor/AddSubContractor';
+import AddSubContractor from "../../pages/subcontractor/AddSubContractor";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    resetStructureData() {
-      dispatch({ type: RESET_STRUCTURE_FORM });
-    },
+    // resetStructureData() {
+    //   dispatch({ type: RESET_STRUCTURE_FORM });
+    // },
 
     handleChangeVendorName(value) {
       dispatch({
@@ -42,11 +48,10 @@ const mapDispatchToProps = dispatch => {
         payload: value,
       });
     },
- 
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const vendor = store.getState().vendor;
   return {
     vendor,

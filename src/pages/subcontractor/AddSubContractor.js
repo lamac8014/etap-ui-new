@@ -86,9 +86,10 @@ class AddSubContractor extends Component {
                 color="success"
                 label={dt.name}
                 id={i}
-                value="withMod"
+                value={dt.name}
                 name="cmpcRadio"
-                onChange={(e) => this.props.onServTypeChange(i)}
+                onChange={(e) => this.props.onServTypeChange(e.target.value)}
+                checked={dt.checked}
               />
             );
           })}
