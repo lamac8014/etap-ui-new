@@ -16,11 +16,22 @@
 .auth-link:hover {
   color: #2196f3;
 }
-.download-wbs{
+.download-wbs {
   color: #2196f3;
 }
-.download-wbs:hover{
+.download-wbs:hover {
   cursor: pointer;
   color: #2196f3;
   text-decoration: underline;
+}
+
+.sort-icon {
+  margin-left: 1em;
+}
+.sort-icon:hover {
+  cursor: pointer;
+}
+.sort-icon:active {
+  position: relative;
+  top: 0.5px;
 }

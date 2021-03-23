@@ -105,6 +105,7 @@ class DataTable extends Component {
                 </Col>
               </Row>
               <BootstrapTable
+                {...this.props}
                 keyField="id"
                 HeaderCell=""
                 data={this.props.bodyData}
