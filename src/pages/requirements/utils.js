@@ -2,6 +2,7 @@ import React from "react";
 import IconButton from "../../common/forms/IconButton";
 import { Link } from "react-router";
 import { getUserDetails } from "../../utils/auth";
+import { sortCaret } from "../../utils/common";
 
 export const _viewRequirementsInputData = [
   "Project",
@@ -88,14 +89,20 @@ export const listViewRequirementsMetaData = (
     {
       text: "Mr No",
       dataField: "mrNo",
+      sort: true,
+      sortCaret,
     },
     {
       text: "Project",
       dataField: "projectName",
+      sort: true,
+      sortCaret,
     },
     {
       text: "Structure",
       dataField: "structureName",
+      sort: true,
+      sortCaret,
     },
     {
       text: "status",
@@ -130,12 +137,10 @@ export const listViewRequirementsMetaData = (
         } else {
           return (
             <>
-              {
-                <IconButton
-                  iconname="faEdit"
-                  onClick={() => handleMore(row.id)}
-                />
-              }
+              <IconButton
+                iconname="faEdit"
+                onClick={() => handleMore(row.id)}
+              />
             </>
           );
         }
@@ -192,4 +197,22 @@ export const requestCreationMetaData = (handleViewMore) => {
       },
     },
   ];
+};
+
+export const tableRowStyles = (row, rowIndex) => {
+  console.log(row);
+  switch (row.status) {
+    case "REJECTED":
+      return {
+        backgroundColor: "#FEC1C1", // red
+      };
+    case "READYTODISPATCH":
+      return {
+        backgroundColor: "#CFFEC1", // green
+      };
+    default:
+      return {
+        backgroundColor: "#FCF9BC",
+      };
+  }
 };

@@ -5,6 +5,7 @@ import CustomAlert from "../../common/forms/customAlert";
 import {
   listViewRequirementsMetaData,
   transformViewRequirementList,
+  tableRowStyles,
 } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import RequirementsViewMore from "../../containers/requirement/requirementsViewMore";
@@ -83,6 +84,7 @@ class ViewRequirementAction extends Component {
         <SimpleCard>
           {this.props.requirement.requirementsList && (
             <CustomDataTable
+              rowStyle={tableRowStyles}
               metaData={listViewRequirementsMetaData(
                 (id) => this.props.handleMore(id),
                 (id) => this.setState({ activeId: id, showApproveModal: true }),
