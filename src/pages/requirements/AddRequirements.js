@@ -13,7 +13,7 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import CustomDataTable from "../../common/DataTable";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
-
+import { listStructureMetaData, transformStructureList } from "../structure/utils";
 class AddRequirement extends Component {
   constructor(props) {
     super(props);
@@ -118,20 +118,20 @@ class AddRequirement extends Component {
             </div>
             <FormRow>
               <CustomDataTable
-                // metaData={listStructureMetaData(
-                //   (id) => this.props.handleDelete(id),
-                //   (id) => this.props.handleEdit(id)
-                // )}
-                // bodyData={transformStructureList(
-                //   this.filteredItems(this.props.structure.structureList),
-                //   this.props.structure.structureFamilyList
-                // )}
-                metaData={[
-                  { text: "Structure Name", dataField: "sample" },
-                  { text: "Quantity", dataField: "smaple" },
-                  { text: "Actions" },
-                ]}
-                bodyData={[]}
+                metaData={listStructureMetaData(
+                  (id) => this.props.handleDelete(id),
+                  (id) => this.props.handleEdit(id)
+                )}
+                bodyData={transformStructureList(
+                  (this.props.requirement.structureList),
+                  (this.props.requirement.structureFamilyList)
+                )}
+                // metaData={[
+                //   { text: "Structure Name", dataField: "sample" },
+                //   { text: "Quantity", dataField: "smaple" },
+                //   { text: "Actions" },
+                // ]}
+                // bodyData={[]}
               />
             </FormRow>
             <SimpleRow>
