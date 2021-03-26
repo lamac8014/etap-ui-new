@@ -98,3 +98,7 @@ export const CSVLoaderStyles = {
     background: "#ccc",
   },
 };
+
+export const getDownloadWbsTemplateData = () => {
+  return [["WBS", "Segment", "Subsegment", "Element"], []];
+};

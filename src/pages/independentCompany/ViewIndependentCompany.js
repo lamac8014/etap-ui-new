@@ -48,10 +48,7 @@ class ViewIndependentCompany extends Component {
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.handleEdit(id)
               )}
-              // bodyData={icbuList(
-              //   this.filteredItems(this.props.icbu.icbuList.reverse())
-              // )}
-              bodyData={[{ independentCompanyName: "HCIC" }]}
+              bodyData={icbuList(this.props.icbu.icbuList)}
               showButton={true}
               btnText="Add IC"
               onClick={this.props.showAddIcbuModal}

@@ -16,6 +16,8 @@ import {
   ON_CHANGE_ASSIGN_STRUCT,
   SAVE_ASSIGN_COMP,
   RESET_ASSIGN_COMP_FORM,
+  SET_SHOW_ATTRIBUTE_VALUE_MODAL,
+  RESET_SHOW_ATTRIBUTE_VALUE_MODAL,
 } from "../actions/types";
 
 import {
@@ -43,6 +45,7 @@ const initialState = {
   structureCode: "",
   components: [],
   fileInput: "",
+  showAttributeValueModal: false,
 };
 
 export default function (state = initialState, action) {
@@ -137,9 +140,10 @@ export default function (state = initialState, action) {
         ic: scr.icName,
         bu: scr.buName,
         drawingNum: scr.drawingNo,
-        strcutureType: scr.strcutureTypeName!== null? scr.strcutureTypeName:"" ,
+        strcutureType:
+          scr.strcutureTypeName !== null ? scr.strcutureTypeName : "",
         estimatedWeight: scr.estimatedWeight ? scr.estimatedWeight : "",
-        structureCode: scr.structureCode !== null? scr.structureCode:"" ,
+        structureCode: scr.structureCode !== null ? scr.structureCode : "",
         structAttri: transformAttri(JSON.parse(scr.structureAttributes)),
         files: transformDocs(scr.structureDocs),
         uploadData: scr.components,
@@ -207,6 +211,8 @@ export default function (state = initialState, action) {
         ...state,
         structAttri: action.payload,
       };
+    case SET_SHOW_ATTRIBUTE_VALUE_MODAL:
+      return { ...state, showAttributeValueModal: action.payload };
     default:
       return state;
   }

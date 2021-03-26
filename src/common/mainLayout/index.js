@@ -9,7 +9,7 @@ class MainLayout extends Component {
     return (
       <Fragment>
         <Navbar />
-        <Header />
+        <Header {...this.props} />
         <ContentWrapper {...this.props} />
         {/* <Footer /> */}
       </Fragment>

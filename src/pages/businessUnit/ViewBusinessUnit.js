@@ -34,23 +34,6 @@ class ViewBusinessUnit extends Component {
   //   );
   // };
 
-  filteredItems = (data) => {
-    if (data) {
-      return data.filter((item) => {
-        for (let key in item) {
-          if (
-            item[key] &&
-            item[key]
-              .toString()
-              .toLowerCase()
-              .includes(this.state.filterText.toLowerCase())
-          ) {
-            return true;
-          }
-        }
-      });
-    }
-  };
   render() {
     return (
       <PageContainer>
@@ -71,28 +54,28 @@ class ViewBusinessUnit extends Component {
               this.props.businessUnit.showEditBusinessUnitModal
             }
           />
-          {/* {this.props.businessUnit.businessUnitTypeList && ( */}
-          <CustomDataTable
-            metaData={businessUnitMetaData(
-              (id) =>
-                this.setState({
-                  activeId: id,
-                  showBusinessUnitDeleteModal: true,
-                }),
-              (id) => this.props.handleEdit(id)
-            )}
-            // bodyData={businessUnitBodyData(
-            //   this.filteredItems(this.props.businessUnit.businessUnitTypeList)
-            // )}
-            bodyData={[
-              { businessUnit: "sample", icName: "HCIC" },
-              { businessUnit: "sample two", icName: "HCIC" },
-            ]}
-            showButton={true}
-            btnText="Add Business Unit"
-            onClick={this.props.showAddBusinessUnitModal}
-          />
-          {/* } */}
+          {this.props.businessUnit.businessUnitTypeList && (
+            <CustomDataTable
+              metaData={businessUnitMetaData(
+                (id) =>
+                  this.setState({
+                    activeId: id,
+                    showBusinessUnitDeleteModal: true,
+                  }),
+                (id) => this.props.handleEdit(id)
+              )}
+              bodyData={businessUnitBodyData(
+                this.props.businessUnit.businessUnitTypeList
+              )}
+              // bodyData={[
+              //   { businessUnit: "sample", icName: "HCIC" },
+              //   { businessUnit: "sample two", icName: "HCIC" },
+              // ]}
+              showButton={true}
+              btnText="Add Business Unit"
+              onClick={this.props.showAddBusinessUnitModal}
+            />
+          )}
           {/* <ConfirmModal
             showModal={this.state.showBusinessUnitDeleteModal}
             handleClose={() =>

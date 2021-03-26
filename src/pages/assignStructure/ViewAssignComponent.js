@@ -98,18 +98,7 @@ class ViewAssignComponent extends Component {
             </div>
           </FormRow>
           <SimpleRow className="mt-5 mb-4">
-            <TextInput
-              size="col-md-2"
-              fieldSize="col-md-12"
-              // labelSize="col-md-4"
-              // label="IC"
-              name="ic"
-              id="ic"
-              // value={this.state.projectName}
-              value="HCIC"
-              disabled={true}
-            />
-            <TextInput
+          <TextInput
               size="col-md-2"
               fieldSize="col-md-12"
               // labelsize="col-md-4"
@@ -120,6 +109,17 @@ class ViewAssignComponent extends Component {
               value="metro"
               disabled={true}
             />
+            <TextInput
+              size="col-md-2"
+              fieldSize="col-md-12"
+              // labelSize="col-md-4"
+              // label="IC"
+              name="ic"
+              id="ic"
+              // value={this.state.projectName}
+              value="HCIC"
+              disabled={true}
+            /> 
             <TextInput
               size="col-md-2"
               fieldSize="col-md-12"

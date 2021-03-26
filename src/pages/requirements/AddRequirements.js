@@ -1,24 +1,19 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-// import FileInput from "../../common/forms/FileInput";
 import IconTextButton from "../../common/forms/IconTextButton";
-import Button from "../../common/forms/Button";
-// import SimpleDropDown from "../../common/forms/SimpleDropDown";
-// import CheckBox from "../../common/forms/CheckBox";
-// import CustomAlert from "../../common/forms/customAlert";
-// import Loader from "../../common/Loader";
-// import DataTable from "../../common/DataTable";
 import Col6 from "../../common/forms/Col6";
 import TextArea from "../../common/forms/TextArea";
 import SiteRequirementStructure from "./SiteRequirementStructure";
-import { transformProjectValue } from "./utils";
+import { transformProjectValue ,} from "./utils";
 import SiteRequirementsModal from "./SiteRequirementsModal";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import SimpleRow from "../../common/forms/SimpleRow";
 import CustomDataTable from "../../common/DataTable";
-
+import ButtonRow from "../../common/forms/ButtonRow";
+import Button from "../../common/forms/Button";
+import { listStructureMetaData, transformStructureList } from "../structure/utils";
 class AddRequirement extends Component {
   constructor(props) {
     super(props);
@@ -45,8 +40,8 @@ class AddRequirement extends Component {
             <SimpleRow>
               <TextInput
                 size="col-md-6"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
+                labelSize="col-md-2"
+                fieldSize="col-md-9"
                 label="Project"
                 name="projectName"
                 id="projectName"
@@ -55,16 +50,23 @@ class AddRequirement extends Component {
                 disabled={true}
               />
             </SimpleRow>
-
-            <div class="form-group row">
+            <ButtonRow position="left">
+              <IconTextButton
+                btnText="Requirement"
+                onClick={this.props.addSiteRequirement}
+                gradient
+              />
+            </ButtonRow>
+            {/* <div class="form-group row">
               <div class="col-sm-8">
                 <IconTextButton
                   btnText="Requirement"
                   onClick={this.props.addSiteRequirement}
+                  gradient
                 />
               </div>
-            </div>
-            <div class="form-group row">
+            </div> */}
+            <div class="form-group row my-4">
               {this.props.requirement.siteRequirementList.map((e, i) => {
                 return (
                   <Col6>
@@ -116,20 +118,20 @@ class AddRequirement extends Component {
             </div>
             <FormRow>
               <CustomDataTable
-                // metaData={listStructureMetaData(
-                //   (id) => this.props.handleDelete(id),
-                //   (id) => this.props.handleEdit(id)
-                // )}
-                // bodyData={transformStructureList(
-                //   this.filteredItems(this.props.structure.structureList),
-                //   this.props.structure.structureFamilyList
-                // )}
-                metaData={[
-                  { text: "Structure Name", dataField: "sample" },
-                  { text: "Quantity", dataField: "smaple" },
-                  { text: "Actions" },
-                ]}
-                bodyData={[]}
+                metaData={listStructureMetaData(
+                  (id) => this.props.handleDelete(id),
+                  (id) => this.props.handleEdit(id)
+                )}
+                bodyData={transformStructureList(
+                  (this.props.requirement.structureList),
+                  (this.props.requirement.structureFamilyList)
+                )}
+                // metaData={[
+                //   { text: "Structure Name", dataField: "sample" },
+                //   { text: "Quantity", dataField: "smaple" },
+                //   { text: "Actions" },
+                // ]}
+                // bodyData={[]}
               />
             </FormRow>
             <SimpleRow>
@@ -146,16 +148,21 @@ class AddRequirement extends Component {
                 placeholder="Remarks"
               />
             </SimpleRow>
-            <Button
-              btnText="SAVE"
-              onClick={this.props.saveRequirement}
-              btnType="primary"
-            />
-            <Button
-              btnText="DISCARD"
-              btnType="cancel"
-              onClick={this.props.resetRequirement}
-            />
+            <hr />
+            <ButtonRow position="center">
+              <Button
+                btnText="SAVE"
+                onClick={this.props.saveRequirement}
+                type="success"
+                gradient
+              />
+              <Button
+                btnText="DISCARD"
+                type="danger"
+                gradient
+                onClick={this.props.resetRequirement}
+              />
+            </ButtonRow>
           </SimpleCard>
         </PageContainer>
       </>

@@ -32,6 +32,7 @@ import builtReducer from "./builtReducer";
 import scrapPageReducer from "./scrapPageReducer";
 import surplusPageReducer from "./surplusPageReducer";
 import cmpcReuseReducer from "./cmpcReuseReducer";
+import requirmentApprovalReducer from "./requirmentApprovalReducer";
 
 const rootReducer = combineReducers({
   config,
@@ -67,6 +68,7 @@ const rootReducer = combineReducers({
   built: builtReducer,
   surplus: surplusPageReducer,
   cmpcReuse: cmpcReuseReducer,
+  requirmentApproval:requirmentApprovalReducer
 });
 
 export default rootReducer;

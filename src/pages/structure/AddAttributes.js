@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IconButton from "../../common/forms/IconButton";
-import SearchableDropDown from "../../common/forms/SimpleDropDown";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
+
 import SimpleRow from "../../common/forms/SimpleRow";
 
 class AddAttributes extends Component {

@@ -5,7 +5,7 @@ import AddStructureFamily from "../../containers/structureFamily/addStructureFam
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import {
-  structureFamilyMetaData,
+  structureFamilyMetaData,structureFamilyBodyData
   
 } from "./utils";
 
@@ -54,16 +54,16 @@ class ViewStructureFamily extends Component {
                 // (id) => this.setState({ activeId: id, showStructureFamilyDeleteModal: true }),
                 (id) => this.props.handleEdit(id),
               )}
-              // bodyData={structureFamilyBodyData(
-              //   this.filteredItems(this.props.structureFamily.structureFamilyTypeList)
-              // )}
-              bodyData={[
-                {
-                  structureFamily: "Sample Structure",
-                  status: "Sample code",
+              bodyData={structureFamilyBodyData(
+               (this.props.structureFamily.structureFamilyTypeList)
+              )}
+              // bodyData={[
+              //   {
+              //     structureFamily: "Sample Structure",
+              //     status: "Sample code",
                   
-                },
-              ]}
+              //   },
+              
               showButton={true}
               btnText="Add Structure Family"
               onClick={this.props.showAddStructureFamilyModal}
