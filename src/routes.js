@@ -49,9 +49,7 @@ const AddRequirement = lazy(() =>
 const AssignStructure = lazy(() =>
   import("./containers/assignStructure/assignStructure")
 );
-const Asbuilt = lazy(() =>
-  import("./containers/built/built")
-);
+const Asbuilt = lazy(() => import("./containers/built/built"));
 const RequirmentApproval = lazy(() =>
   import("./containers/requirmentApproval/viewRequirmentApproval")
 );
@@ -110,7 +108,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/structure/viewComponent",
+    path: "/etrack/structure/viewComponent/:structId/:projectId",
     name: "View Component",
     component: ViewComponent,
   },
@@ -208,7 +206,7 @@ const RouteList = [
     exact: true,
     path: "/etrack/requirementmgmt/requirmentApprove",
     name: "Request Approve",
-    component: RequirmentApproval,
+    component: Requirment,
   },
 ];
 export default RouteList;

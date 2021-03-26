@@ -21,59 +21,35 @@ class SiteRequirementsModal extends Component {
     };
   }
   render() {
-    let tempArr = [
-      {
-        name: "Capacity",
-        uom: "MT",
-        value: "5",
-        typeOfInput: { id: "numeric", label: "numeric" },
-      },
-      {
-        name: "Overall Length",
-        uom: "m",
-        value: "6",
-        typeOfInput: { id: "numeric", label: "numeric" },
-      },
-      {
-        name: "Weight",
-        uom: "MT",
-        value: "7",
-        typeOfInput: { id: "numeric", label: "numeric" },
-      },
-      {
-        name: "Underslung/Overslung",
-        typeOfInput: { id: "alphabetic", label: "alphabetic" },
-        uom: "MT",
-      },
-    ];
-
     return (
-      <Modal
-        title="Site Requirements"
-        showModal={this.props.showModal}
-        handleSave={() => {}}
-        handleClose={this.props.showModalClose}
-        size="lg"
-        isShowFooter={true}
-      >
-        <SimpleRow>
-          <SearchableDropDown
-            size="col-md-6"
-            labelSize="col-md-4"
-            fieldSize="col-md-8"
-            label="Required for WBS"
-            name="requiredWorkBreak"
-            selectOptions={transformDropDownData(
-              this.props.requirement.wbsCodesList,
-              "id",
-              "name"
-            )}
-            onChange={(obj) =>
-              this.props.handleChangeRequirementRequiredWorkBreak(obj)
-            }
-            value={this.props.requirement.requiredWorkBreak}
-          />
-          {/* <SearchableDropDown
+      <>
+        {this.props.requirement.activeItem.structId && (
+          <Modal
+            title="Site Requirements"
+            showModal={this.props.showModal}
+            handleSave={this.props.onRequirementModalSave}
+            handleClose={this.props.showModalClose}
+            size="lg"
+            isShowFooter={true}
+          >
+            <SimpleRow>
+              <SearchableDropDown
+                size="col-md-6"
+                labelSize="col-md-4"
+                fieldSize="col-md-8"
+                label="Required for WBS"
+                name="requiredWorkBreak"
+                selectOptions={transformDropDownData(
+                  this.props.requirement.wbsCodesList,
+                  "id",
+                  "name"
+                )}
+                onChange={(obj) =>
+                  this.props.handleChangeRequirementRequiredWorkBreak(obj)
+                }
+                value={this.props.requirement.activeItem.reqWbs}
+              />
+              {/* <SearchableDropDown
                 size="col-md-4"
                 labelSize="col-md-4"
                 fieldSize="col-md-8"
@@ -89,22 +65,24 @@ class SiteRequirementsModal extends Component {
                 }
                 value={this.props.requirement.actualWorkBreak}
               /> */}
-          <DateInput
-            size="col-md-6"
-            labelSize="col-md-4"
-            fieldSize="col-md-8"
-            label="Planned Start Date"
-            name="plannedStartDate"
-            id="plannedStartDate"
-            onChange={(e) =>
-              this.props.handleChangeRequirementPlannedStartDate(e.target.value)
-            }
-            value={this.props.requirement.planedStartDate}
-          />
-        </SimpleRow>
+              <DateInput
+                size="col-md-6"
+                labelSize="col-md-4"
+                fieldSize="col-md-8"
+                label="Planned Start Date"
+                name="plannedStartDate"
+                id="plannedStartDate"
+                onChange={(e) =>
+                  this.props.handleChangeRequirementPlannedStartDate(
+                    e.target.value
+                  )
+                }
+                value={this.props.requirement.activeItem.planStartdate}
+              />
+            </SimpleRow>
 
-        <SimpleRow>
-          {/* <DateInput
+            <SimpleRow>
+              {/* <DateInput
                 size="col-md-4"
                 labelSize="col-md-4"
                 fieldSize="col-md-8"
@@ -118,76 +96,83 @@ class SiteRequirementsModal extends Component {
                 }
                 value={this.props.requirement.actualStartDateOfUsage}
               /> */}
-          <DateInput
-            size="col-md-6"
-            labelSize="col-md-4"
-            fieldSize="col-md-8"
-            label="Planned Release"
-            name="plannedReleaseDate"
-            id="plannedReleaseDate"
-            onChange={(e) =>
-              this.props.handleChangeRequirementPlannedReleaseDate(
-                e.target.value
-              )
-            }
-            value={this.props.requirement.expectedReleaseDate}
-          />
-          <DateInput
-            size="col-md-6"
-            labelSize="col-md-4"
-            fieldSize="col-md-8"
-            label="Required By"
-            name="expectedReleaseDate"
-            id="expectedReleaseDate"
-            onChange={(e) =>
-              this.props.handleChangeRequirementExpectedReleaseDate(
-                e.target.value
-              )
-            }
-            value={this.props.requirement.expectedReleaseDate}
-          />
-        </SimpleRow>
-        <SimpleRow>
-          {tempArr.map((structure, index) => (
-            <Col6>
-              <div className="row" key={index}>
-                <div className="col-md-6  pr-0">
-                  <TextInput
-                    size="col-md-12"
-                    fieldSize="col-md-12 px-0 "
-                    // label="Attributes"
-                    name="attributes"
-                    id="attributes"
-                    value={structure.name}
-                    disabled
-                  />
-                </div>
-                <div className="col-md-3  pr-0">
-                  <TextInput
-                    size="col-md-12"
-                    fieldSize="col-md-12 px-0"
-                    // label="UoM"
-                    name="uom"
-                    id="uom"
-                    value={structure.uom}
-                    disabled={true}
-                  />
-                </div>
-                <div className="col-md-3">
-                  <TextInput
-                    size="col-md-12"
-                    fieldSize="col-md-12 px-0"
-                    placeholder="Value"
-                    name="value"
-                    id="value"
-                    value={structure.value}
-                  />
-                </div>
-              </div>
-            </Col6>
-          ))}
-        </SimpleRow>
-      </Modal>
+              <DateInput
+                size="col-md-6"
+                labelSize="col-md-4"
+                fieldSize="col-md-8"
+                label="Planned Release"
+                name="plannedReleaseDate"
+                id="plannedReleaseDate"
+                onChange={(e) =>
+                  this.props.handleChangeRequirementPlannedReleaseDate(
+                    e.target.value
+                  )
+                }
+                value={this.props.requirement.activeItem.planReleasedate}
+              />
+              <DateInput
+                size="col-md-6"
+                labelSize="col-md-4"
+                fieldSize="col-md-8"
+                label="Required By"
+                onChange={(e) =>
+                  this.props.handleChangeRequirementRequiredBy(e.target.value)
+                }
+                value={this.props.requirement.activeItem.requireByDate}
+              />
+            </SimpleRow>
+            <SimpleRow>
+              {this.props.requirement.activeItem.structId &&
+                this.props.requirement.activeItem.structureAttributesVal.map(
+                  (structure, index) => (
+                    <Col6>
+                      <div className="row" key={index}>
+                        <div className="col-md-6  pr-0">
+                          <TextInput
+                            size="col-md-12"
+                            fieldSize="col-md-12 px-0 "
+                            // label="Attributes"
+                            name="attributes"
+                            id="attributes"
+                            value={structure.name}
+                            disabled
+                          />
+                        </div>
+                        <div className="col-md-3  pr-0">
+                          <TextInput
+                            size="col-md-12"
+                            fieldSize="col-md-12 px-0"
+                            // label="UoM"
+                            name="uom"
+                            id="uom"
+                            value={structure.uom}
+                            disabled={true}
+                          />
+                        </div>
+                        <div className="col-md-3">
+                          <TextInput
+                            size="col-md-12"
+                            fieldSize="col-md-12 px-0"
+                            placeholder="Value"
+                            name="value"
+                            id="value"
+                            value={structure.value}
+                            onChange={(e) =>
+                              this.props.handleChangeRequirementAttributeValue(
+                                e.target.value,
+                                index
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    </Col6>
+                  )
+                )}
+            </SimpleRow>
+          </Modal>
+        )}
+      </>
     );
   }
 }

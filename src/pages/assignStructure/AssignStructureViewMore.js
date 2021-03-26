@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
+import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
-import FormContainer from '../../common/forms/FormContainer';
+import FormContainer from "../../common/forms/FormContainer";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import { transformUserRoles } from "./utils";
 import { transformDropDownData } from "../../utils/dataTransformer";
-import DataTable from '../../common/DataTable';
-import IconTextButton from '../../common/forms/IconTextButton';
-import Button from '../../common/forms/Button';
-import AddAttributes from './AddAttributes';
+import DataTable from "../../common/DataTable";
+import IconTextButton from "../../common/forms/IconTextButton";
+import Button from "../../common/forms/Button";
+import AddAttributes from "./AddAttributes";
 class AddStructure extends Component {
   constructor(props) {
     super(props);
@@ -28,8 +28,9 @@ class AddStructure extends Component {
         {console.log("isLoading", this.props.isLoading)}
         {this.props.isLoading && <Loader />}
 
-        <FormRow>
-          <TextInput disabled
+        <SimpleRow>
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -39,9 +40,12 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.structureId}
+            value={
+              this.props.assignStructure.assignStructureViewMore.structureId
+            }
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -51,9 +55,12 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureFamily(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.strcutureName}
+            value={
+              this.props.assignStructure.assignStructureViewMore.strcutureName
+            }
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -63,12 +70,15 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
+            value={
+              this.props.assignStructure.assignStructureViewMore
+                .strcutureTypeName
+            }
           />
-        </FormRow>
-        <FormRow>
-
-          <TextInput disabled
+        </SimpleRow>
+        <SimpleRow>
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -78,9 +88,12 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureFamily(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.totalWeight}
+            value={
+              this.props.assignStructure.assignStructureViewMore.totalWeight
+            }
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -92,7 +105,8 @@ class AddStructure extends Component {
             // }
             value={this.props.assignStructure.assignStructureViewMore.status}
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -102,12 +116,15 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureFamily(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.currentStatus}
+            value={
+              this.props.assignStructure.assignStructureViewMore.currentStatus
+            }
           />
-        </FormRow>
+        </SimpleRow>
 
-        <FormRow>
-          <TextInput disabled
+        <SimpleRow>
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -117,9 +134,12 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.projectName}
+            value={
+              this.props.assignStructure.assignStructureViewMore.projectName
+            }
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -131,7 +151,8 @@ class AddStructure extends Component {
             // }
             value={this.props.assignStructure.assignStructureViewMore.projectId}
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
@@ -141,12 +162,14 @@ class AddStructure extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.assignStructure.assignStructureViewMore.componentsCount}
+            value={
+              this.props.assignStructure.assignStructureViewMore.componentsCount
+            }
           />
-        </FormRow>
-        <FormRow>
-
-          <TextInput disabled
+        </SimpleRow>
+        <SimpleRow>
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8 "
             labelSize="col-sm-4"
@@ -158,7 +181,8 @@ class AddStructure extends Component {
             // }
             value={this.props.assignStructure.assignStructureViewMore.drawingNo}
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8 "
             labelSize="col-sm-4"
@@ -167,7 +191,8 @@ class AddStructure extends Component {
             id="buName"
             value={this.props.assignStructure.assignStructureViewMore.buName}
           />
-          <TextInput disabled
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8 "
             labelSize="col-sm-4"
@@ -176,43 +201,53 @@ class AddStructure extends Component {
             id="icName"
             value={this.props.assignStructure.assignStructureViewMore.icName}
           />
-        </FormRow>
+        </SimpleRow>
 
-        <FormRow>
-          <TextInput disabled
+        <SimpleRow>
+          <TextInput
+            disabled
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
             label="Estimated Weight"
             name="estimatedWeight"
             id="estimatedWeight"
-            value={this.props.assignStructure.assignStructureViewMore.estimatedWeight}
+            value={
+              this.props.assignStructure.assignStructureViewMore.estimatedWeight
+            }
           />
-        </FormRow>
+        </SimpleRow>
 
         <label>Structure Attributes</label>
         <div class="form-group row location-row">
-          {this.props.assignStructure.assignStructureViewMoreAttributes.map((e, i) => {
-            return (
-              <AddAttributes
-                onNameChange={e =>
-                  this.props.onNameChange(e.target.value, i)
-                }
-                onTypeOfInputChange={e =>
-                  this.props.onTypeOfInputChange(e.target.value, i)
-                }
-                onUoMChange={e =>
-                  this.props.onUoMChange(e.target.value, i)
-                }
-
-                index={i}
-                nameValue={this.props.assignStructure.assignStructureViewMoreAttributes[i].name}
-                typeOfInputValue={this.props.assignStructure.assignStructureViewMoreAttributes[i].typeOfInput}
-                uomValue={this.props.assignStructure.assignStructureViewMoreAttributes[i].uom}
-
-              />
-            );
-          })}
+          {this.props.assignStructure.assignStructureViewMoreAttributes.map(
+            (e, i) => {
+              return (
+                <AddAttributes
+                  onNameChange={(e) =>
+                    this.props.onNameChange(e.target.value, i)
+                  }
+                  onTypeOfInputChange={(e) =>
+                    this.props.onTypeOfInputChange(e.target.value, i)
+                  }
+                  onUoMChange={(e) => this.props.onUoMChange(e.target.value, i)}
+                  index={i}
+                  nameValue={
+                    this.props.assignStructure
+                      .assignStructureViewMoreAttributes[i].name
+                  }
+                  typeOfInputValue={
+                    this.props.assignStructure
+                      .assignStructureViewMoreAttributes[i].typeOfInput
+                  }
+                  uomValue={
+                    this.props.assignStructure
+                      .assignStructureViewMoreAttributes[i].uom
+                  }
+                />
+              );
+            }
+          )}
         </div>
       </Modal>
     );

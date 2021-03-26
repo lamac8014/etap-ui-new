@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { twccDispatchMetaData } from "./utils";
 import CustomAlert from "../../common/forms/customAlert";
-import CustomDataTable from "../../common/DataTable"; 
+import CustomDataTable from "../../common/DataTable";
 import TwccDispatchViewMore from "../../containers/createDispatch/twccDispatchViewMore";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -22,23 +22,33 @@ class CreateDispatch extends Component {
     if (data) {
       return data.filter((item) => {
         for (let key in item) {
-          if (item[key] && item[key].toString().toLowerCase().includes(this.state.filterText.toLowerCase())) {
+          if (
+            item[key] &&
+            item[key]
+              .toString()
+              .toLowerCase()
+              .includes(this.state.filterText.toLowerCase())
+          ) {
             return true;
           }
         }
-      })
+      });
     }
   };
 
-
-
   render() {
-     let dataBind=[{mrNo:"123",structureName:"arun",requiredBy:"321",raisedBy:"456",status:"Done"}];
+    let dataBind = [
+      {
+        mrNo: "123",
+        structureName: "arun",
+        requiredBy: "321",
+        raisedBy: "456",
+        status: "Done",
+      },
+    ];
     return (
-
       <PageContainer>
         <SimpleCard>
-          
           {this.props.createDispatch.message && (
             <CustomAlert
               type={this.props.createDispatch.isSuccess ? "success" : "error"}
@@ -46,24 +56,30 @@ class CreateDispatch extends Component {
               onClose={this.props.resetMessage}
             />
           )}
-          <TwccDispatchViewMore showAddComponentModal={this.props.createDispatch.showTwccDispatchMoreModal} />
+          <TwccDispatchViewMore
+            showAddComponentModal={
+              this.props.createDispatch.showTwccDispatchMoreModal
+            }
+          />
 
           {this.props.createDispatch.siteReqDetails && (
             <CustomDataTable
               metaData={twccDispatchMetaData(
-                (structureID, projectID) => { this.props.redirectToDispatchStructure(structureID, projectID) },
+                (structureID, projectID) => {
+                  this.props.redirectToDispatchStructure(
+                    structureID,
+                    projectID
+                  );
+                },
                 //this.props.redirectToDispatchStructure,
-                (id) => this.props.handleMore(id),
+                (id) => this.props.handleMore(id)
               )}
-              // bodyData={this.filteredItems(
-              //   this.props.createDispatch.siteReqDetails.reverse()
-              // )}
-              bodyData={dataBind}
+              bodyData={this.props.createDispatch.siteReqDetails}
+              // bodyData={dataBind}
             />
           )}
         </SimpleCard>
       </PageContainer>
-
     );
   }
 }

@@ -58,12 +58,10 @@ class ViewComponent extends Component {
               (id) => this.setState({ activeId: id, showDeleteModal: true }),
               (id) => this.props.handleEdit(id)
             )}
-            // bodyData={transformComponentList(
-            //   this.filteredItems(
-            //     this.props.component.componentTypeList.reverse()
-            //   )
-            // )}
-            bodyData={[{ id: 1, componentType: "COMP1", status: "Active" }]}
+            bodyData={transformComponentList(
+              this.props.component.componentTypeList
+           )}
+            // bodyData={[{ id: 1, componentType: "COMP1", status: "Active" }]}
             showButton={true}
             btnText="Add Component Type"
             onClick={this.props.showAddComponentModal}

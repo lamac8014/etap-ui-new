@@ -45,6 +45,10 @@ const mapDispatchToProps = (dispatch) => {
         type: SHOW_ADD_VENDOR_MODAL,
         payload: false,
       });
+      dispatch({
+        type: SET_EDIT_MODE,
+        payload: false,
+      });
       dispatch({ type: RESET_VENDOR_FORM });
     },
     //Add Vendor
@@ -78,10 +82,16 @@ const mapDispatchToProps = (dispatch) => {
         payload: obj,
       });
     },
-    onServTypeChange(i) {
+    onServTypeChange(value) {
       const ven = store.getState().vendor;
       let tmpArr = [...ven.venServList];
-      tmpArr[i].checked = !tmpArr[i].checked;
+      tmpArr.map((item) => {
+        if (item.name === value) {
+          item.checked = true;
+        } else {
+          item.checked = false;
+        }
+      });
       dispatch({
         type: ON_CHANGE_VEN_SERV_TYPES,
         payload: tmpArr,
@@ -95,20 +105,22 @@ const mapDispatchToProps = (dispatch) => {
         });
         dispatch({ type: RESET_PROJECT_FORM });
         dispatch(vendorList());
-      })
+      });
     },
     //Edit Vendor
     updateVendor() {
-      dispatch(updateVendor()).then(() => {
-        dispatch({
-          type: SHOW_ADD_VENDOR_MODAL,
-          payload: false,
+      dispatch(updateVendor())
+        .then(() => {
+          dispatch({
+            type: SHOW_ADD_VENDOR_MODAL,
+            payload: false,
+          });
+          dispatch({ type: RESET_PROJECT_FORM });
+          dispatch(vendorList());
+        })
+        .catch(() => {
+          dispatch({ type: SHOW_ERR_MSG, payload: true });
         });
-        dispatch({ type: RESET_PROJECT_FORM });
-        dispatch(vendorList());
-      }).catch(() => {
-        dispatch({ type: SHOW_ERR_MSG, payload: true });
-      })
     },
     handleEdit(id) {
       // dispatch(getVendorServiceList());

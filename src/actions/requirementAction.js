@@ -15,15 +15,15 @@ import {
 } from "./types";
 
 export const getProjectList = () => {
-  console.log("In Action")
+  console.log("In Action");
   const userDetails = getUserDetails();
   const projectName = userDetails ? userDetails.projectName : "";
   const projectID = userDetails ? userDetails.projectId : "";
-  let project={name: projectName, id: projectID}
-  console.log(`Project Name: ${projectName} ID: ${JSON.stringify(projectID)}`)
+  let project = { name: projectName, id: projectID };
+  console.log(`Project Name: ${projectName} ID: ${JSON.stringify(projectID)}`);
   return {
     type: LIST_PROJECT_CODES,
-    payload: project
+    payload: project,
   };
 };
 
@@ -38,12 +38,17 @@ export const addSiteRequirement = () => {
   const requirement = store.getState().requirement;
   let siteRequirementList = requirement.siteRequirementList;
   const asiteRequirementObj = {
-    structId: "",
-    drawingNo: "",
+    id: "",
     quantity: "",
+    structId: "",
     structName: "",
-    structFamily: "",
-    componentsCount: "",
+    planStartdate: "",
+    planReleasedate: "",
+    requireWbsId: "",
+    actualWbsId: "",
+    requireByDate: "",
+    wbsName: "",
+    structureAttributesVal: [],
   };
   siteRequirementList.push(asiteRequirementObj);
   return {
@@ -55,25 +60,21 @@ export const addSiteRequirement = () => {
 export const addRequirement = () => {
   const requirement = store.getState().requirement;
   const siteRequirementStructures = [];
-  requirement.siteRequirementList.map((dt) => {
+  requirement.savedRequirementList.map((dt) => {
     siteRequirementStructures.push({
-      componentsCount: dt.componentsCount,
-      drawingNo: dt.drawingNo,
       quantity: dt.quantity,
-      structFamily: dt.structFamily,
       structId: dt.structId,
-      structName: dt.structName.label,
+      structName: dt.structName,
+      planStartdate: dt.planStartdate + "T00:00:00.00Z",
+      planReleasedate: dt.planReleasedate + "T00:00:00.00Z",
+      requireByDate: dt.planReleasedate + "T00:00:00.00Z",
+      requireWbsId: dt.reqWbs.value,
+      structureAttributesVal: JSON.stringify(dt.structureAttributesVal),
     });
   });
   const userDetails = getUserDetails();
   const body = {
     projectId: userDetails.projectId,
-    planStartdate: requirement.planedStartDate + "T00:00:00.000Z",
-    planReleasedate: requirement.plannedReleaseDate + "T00:00:00.000Z",
-    actualStartdate: requirement.actualStartDateOfUsage + "T00:00:00.000Z",
-    actualReleasedate: requirement.expectedReleaseDate + "T00:00:00.000Z",
-    requireWbsId: requirement.requiredWorkBreak.value,
-    actualWbsId: requirement.actualWorkBreak.value,
     remarks: requirement.remarks,
     status: "NEW",
     statusInternal: "NEW",
@@ -99,7 +100,7 @@ export const getProjectStructureData = () => {
 
 export const getRequirementsList = () => {
   const userDetails = getUserDetails();
-  let ROLE_NAME=userDetails.roleName;
+  let ROLE_NAME = userDetails.roleName;
   return {
     type: LIST_REQUIREMENTS,
     payload: axios.get(
@@ -130,11 +131,10 @@ export const requirementAction = (id, action) => {
 };
 
 export const singleRequirementFetch = (id) => {
-  const requirement = store.getState().requirement;
-  const data = requirement.requirementsList[id];
-  console.log(`Single Requirement Data: ${JSON.stringify(data)}`);
   return {
     type: GET_REQUIREMENT_DATA_SINGLE,
-    payload: data,
+    payload: axios.get(
+      `${config.BASE_URL}/api/SiteRequirement/getSiteReqDetailsById/${id}`
+    ),
   };
 };

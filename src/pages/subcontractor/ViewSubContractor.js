@@ -51,12 +51,12 @@ class ViewSubContractor extends Component {
       <>
         <PageContainer>
           <SimpleCard>
-            {this.props.vendor.isVendorMsg && (
+            {/* {this.props.vendor.isVendorMsg && (
               <CustomAlert
                 variant="success"
                 message={this.props.vendor.message}
               />
-            )}
+            )} */}
             <AddSubContractor {...this.props} />
 
             {this.props.vendor.vendorList && (

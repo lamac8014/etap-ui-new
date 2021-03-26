@@ -9,16 +9,15 @@ import {
   GET_VENDOR_TYPE,
 } from "./types";
 
-
 //Add Vendor
 export const createVendor = () => {
   const vendor = store.getState().vendor;
-  let tmpArr = vendor.venServList.filter(dt => dt.checked === true);
-  let venServList = []
-  tmpArr.forEach(element => {
+  let tmpArr = vendor.venServList.filter((dt) => dt.checked === true);
+  let venServList = [];
+  tmpArr.forEach((element) => {
     venServList.push({
-      serviceTypeId: element.id
-    })
+      serviceTypeId: element.id,
+    });
   });
   const data = {
     name: vendor.vendorName,
@@ -36,23 +35,24 @@ export const createVendor = () => {
 
 export const updateVendor = () => {
   const vendor = store.getState().vendor;
-  const status=(vendor.vendorStatus.label === "Active")?true:false;
-  
+  const status = vendor.vendorStatus.label === "Active" ? true : false;
+
   const tranformServTypeList = (data) => {
     let tmpArr = [];
-    data && data.map(dt => {
-      if(dt.checked === true){
-        const ele = {
-          id: dt.serviceId,
-          vendorId: dt.vendorId, 
-          serviceTypeId: dt.serviceTypeId
-        };
-        tmpArr.push(ele);
-      }
-    })
-    console.log(`Converted Array ${JSON.stringify(tmpArr)}`)
+    data &&
+      data.map((dt) => {
+        if (dt.checked === true) {
+          const ele = {
+            id: dt.serviceId,
+            vendorId: dt.vendorId,
+            serviceTypeId: dt.id,
+          };
+          tmpArr.push(ele);
+        }
+      });
+    console.log(`Converted Array ${JSON.stringify(tmpArr)}`);
     return tmpArr;
-  }
+  };
 
   const data = {
     id: vendor.id,
@@ -61,11 +61,14 @@ export const updateVendor = () => {
     email: vendor.email,
     phoneNunmber: vendor.contactNumber,
     isStatus: status,
-    vendorServiceTypeDetails: tranformServTypeList(vendor.venServList)
+    vendorServiceTypeDetails: tranformServTypeList(vendor.venServList),
   };
   return {
     type: UPDATE_VENDOR,
-    payload: axios.put(config.BASE_URL + "/api/Vendor/updateVendor/" + vendor.id, data),
+    payload: axios.put(
+      config.BASE_URL + "/api/Vendor/updateVendor/" + vendor.id,
+      data
+    ),
   };
 };
 
@@ -88,7 +91,6 @@ export const getSingleVendor = (id) => {
 export const getVendorServiceList = () => {
   return {
     type: GET_VENDOR_TYPE,
-    payload: axios.get(
-      config.BASE_URL + "/api/Vendor/vendorCodeList"),
+    payload: axios.get(config.BASE_URL + "/api/Vendor/vendorCodeList"),
   };
 };

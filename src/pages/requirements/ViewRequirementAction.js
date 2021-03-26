@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import ConfirmModal from "../../common/forms/ConfirmModal";
 import CustomAlert from "../../common/forms/customAlert";
-import { listViewRequirementsMetaData, transformViewRequirementList } from "./utils";
+import {
+  listViewRequirementsMetaData,
+  transformViewRequirementList,
+  tableRowStyles,
+} from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import RequirementsViewMore from "../../containers/requirement/requirementsViewMore";
 import PageContainer from "../../common/forms/PageContainer";
@@ -32,55 +36,64 @@ class ViewRequirementAction extends Component {
             message={this.props.requirement.message}
           />
         )}
-        <RequirementsViewMore showAddComponentModal={this.props.requirement.showrequirementMoreModal} />
-        {/* <ConfirmModal
-          showModal={this.state.showApproveModal}
-          handleClose={() => {
-            this.setState({ showApproveModal: false, activeId: null })
-          }
+        {this.props.requirement.requirementViewMore
+          .siteRequirementStructures && (
+          <RequirementsViewMore
+            showAddComponentModal={
+              this.props.requirement.showrequirementMoreModal
+            }
+          />
+        )}
+        {/* {this.props.requirement.requirementsList && ( */}
 
-          }
-          title="Approve Requirement"
-          handleConfirm={() => {
-            this.props.handleApprove(this.state.activeId);
-            this.setState({ showApproveModal: false, activeId: null });
-          }}
-        >
-          <h6 className="text-danger">
-            Are you sure you want to Approve this request?
-            </h6>
-        </ConfirmModal>
+        {this.state.showApproveModal && (
+          <ConfirmModal
+            closeAction={() =>
+              this.setState({ showApproveModal: false, activeId: null })
+            }
+            title="Approve Requirement"
+            deleteAction={() => {
+              this.props.handleApprove(this.state.activeId);
+              this.setState({ showApproveModal: false, activeId: null });
+            }}
+            frontText="Are you sure you want to Approve the Requirement?"
+            confirmText="Requirement Approved"
+            cancelText="Canceled!"
+          />
+        )}
+        {/* )} */}
+        {/* {this.props.requirement.requirementsList && ( */}
 
-        <ConfirmModal
-          showModal={this.state.showDeleteModal}
-          handleClose={() => {
-            this.setState({ showDeleteModal: false, activeId: null })
-          }
-          }
-          title="Reject Requirement"
-          handleConfirm={() => {
-            this.props.handleReject(this.state.activeId);
-            this.setState({ showDeleteModal: false, activeId: null });
-          }}
-        >
-          <h6 className="text-danger">
-            Are you sure you want to Reject this request?
-            </h6>
-        </ConfirmModal> */}
+        {this.state.showDeleteModal && (
+          <ConfirmModal
+            closeAction={() =>
+              this.setState({ showDeleteModal: false, activeId: null })
+            }
+            title="Reject Requirement"
+            deleteAction={() => {
+              this.props.handleReject(this.state.activeId);
+              this.setState({ showDeleteModal: false, activeId: null });
+            }}
+            frontText="Are you sure you want to Reject the Requirement?"
+            confirmText="Requirement Rejected"
+            cancelText="Rejected!"
+          />
+        )}
+
+        {/* )} */}
         <SimpleCard>
           {this.props.requirement.requirementsList && (
             <CustomDataTable
+              rowStyle={tableRowStyles}
               metaData={listViewRequirementsMetaData(
-                id => this.setState({ activeId: id, showApproveModal: true }),
-                id => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.handleMore(id),
-
+                (id) => this.setState({ activeId: id, showApproveModal: true }),
+                (id) => this.setState({ activeId: id, showDeleteModal: true })
               )}
               bodyData={transformViewRequirementList(
                 this.props.requirement.requirementsList
               )}
-
-
+              // bodyData={[{ mrNo: "mr001" }]}
             />
           )}
         </SimpleCard>
