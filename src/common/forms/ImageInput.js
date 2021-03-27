@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Col6 from "./Col6";
 
-class FileInput extends Component {
+class ImageInput extends Component {
   render() {
     return (
       <Col6 size={this.props.size}>
@@ -13,10 +13,11 @@ class FileInput extends Component {
               ref={this.props.innerRef}
               type="file"
               name="img[]"
+              accept="image/*"
               // class="file-upload-default"
               onChange={(e) => this.props.onChange(e)}
               class="form-control"
-              style={this.props.style}
+              style={{ ...this.props.style, padding: 7 }}
             />
             {/* <span class="input-group-append">
               <button class="file-upload-browse btn btn-primary upload-btn-fix" type="button">
@@ -30,4 +31,4 @@ class FileInput extends Component {
   }
 }
 
-export default FileInput;
+export default ImageInput;

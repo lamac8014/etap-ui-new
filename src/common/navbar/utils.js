@@ -30,7 +30,7 @@ const menus = {
                   title: "Modify",
                   type: "item",
                   icon: "feather icon-edit-1",
-                  url: "/etrack/structure/assignStructures",
+                  url: "/etrack/structure/modify",
                 },
                 {
                   id: "view",
@@ -140,7 +140,6 @@ const menus = {
                   icon: "feather icon-repeat",
                   url: "/etrack/lifeCycle/cmpcReuse",
                 },
-
               ],
             },
             {
@@ -190,6 +189,13 @@ const menus = {
                   url: "/etrack/masters/ic",
                 },
                 {
+                  id: "sbg",
+                  title: "SBG",
+                  type: "item",
+                  icon: "book-open",
+                  url: "/etrack/masters/sbg",
+                },
+                {
                   id: "bu",
                   title: "BU",
                   type: "item",
@@ -220,7 +226,7 @@ const menus = {
                   icon: "feather icon-users",
                   url: "/etrack/masters/users",
                 },
-               
+
                 {
                   id: "structureFmly",
                   title: "Structure Family",
@@ -253,7 +259,6 @@ const menus = {
                   icon: "database",
                   url: "/etrack/masters/viewSubContractors",
                 },
-
               ],
             },
           ],

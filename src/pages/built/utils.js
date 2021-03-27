@@ -10,36 +10,33 @@ export const listBuiltTypeMetaData = (
     {
       text: "DC No",
       dataField: "dcNo",
-      sortable: true,
     },
 
     {
       text: "Structure Name",
       dataField: "structureName",
-      sortable: true,
-      formatter: (row) => {
+    },
+    {
+      text: "Structure Code",
+      formatter: (cell, row) => {
         return (
           <>
-            {
-              <a
-                href="#"
-                onClick={() => {
-                  redirectToBuiltMoreDetails(row.structureName);
-                }}
-              >
-                {row.structureName}
-              </a>
-            }
+            <a
+              href="#"
+              onClick={() => {
+                redirectToBuiltMoreDetails(row.structureName);
+              }}
+            >
+              {row.structureCode}
+            </a>
           </>
         );
       },
     },
     {
-      text: "Structure Code",
-      dataField: "structureCode",
-      sortable: true,
+      text: "Component Weight",
+      dataField: "weight",
     },
-
     {
       text: "Actions",
       dataField: true,
@@ -48,11 +45,10 @@ export const listBuiltTypeMetaData = (
           <>
             {
               <IconButton
-                iconname="faPlus"
-                onClick={() => handleEdit(row.id)}
+                iconname="faList"
+                onClick={() => handleMore(row.id)}
               />
             }
-            {<IconButton iconname="faEye" onClick={() => handleMore(row.id)} />}
           </>
         );
       },

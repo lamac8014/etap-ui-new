@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Row,Col } from 'reactstrap';
+import { Row, Col } from "reactstrap";
 // import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import DataTable from "../../common/DataTable";
@@ -100,71 +100,114 @@ class ViewAssignComponent extends Component {
           <PieChart2/>          */}
             </div>
           </FormRow>
-        <Row>
-        <Col sm={{ offset: 0 }} style={{marginRight:155,marginLeft:15}}>BU</Col>
-        <Col sm={{ offset: 0 }} style={{marginRight:155}}>IC</Col>
-        <Col sm={{ offset: 0 }} style={{marginRight:125}}>Project</Col>
-        <Col sm={{ offset: 0 }} style={{marginRight:205}}>Structure</Col>
-        <Col sm={{ offset: 0 }} style={{marginRight:0}}>Structure Id</Col>
-        </Row>
-        
+          {/* <Row>
+            <Col
+              sm={{ offset: 0 }}
+              style={{ marginRight: 155, marginLeft: 15 }}
+            >
+              BU
+            </Col>
+            <Col sm={{ offset: 0 }} style={{ marginRight: 155 }}>
+              IC
+            </Col>
+            <Col sm={{ offset: 0 }} style={{ marginRight: 125 }}>
+              Project
+            </Col>
+            <Col sm={{ offset: 0 }} style={{ marginRight: 205 }}>
+              Structure
+            </Col>
+            <Col sm={{ offset: 0 }} style={{ marginRight: 0 }}>
+              Structure Id
+            </Col>
+          </Row> */}
+
           <SimpleRow className="mt-2 mb-4">
-         
-         
-            <TextInput
-              size="col-md-2"
-              fieldSize="col-md-12"
-              // labelsize="col-md-4"
-              // label="BU"
-              name="bu"
-              id="bu"
-              value={this.props.assignStructure.assignComponentList.buName}
-              disabled={true}
-            />
-              <TextInput
-              size="col-md-2"
-              fieldSize="col-md-12"
-              // labelSize="col-md-4"
-              // label="IC"
-              name="ic"
-              id="ic"
-              value={this.props.assignStructure.assignComponentList.icName}
-              disabled={true}
-            />
-            <TextInput
-              size="col-md-2"
-              fieldSize="col-md-12"
-              // labelsize="col-md-8"
-              name="Project"
-              // label="Project"
-              id="project"
-              value={this.props.assignStructure.assignComponentList.projectName}
-              disabled={true}
-            />
-            <TextInput
-              size="col-md-3"
-              // labelSize="col-md-12"
-              fieldSize="col-md-12"
-              // label="Structure"
-              name="Structure"
-              id="structure"
-              value={
-                this.props.assignStructure.assignComponentList.strcutureName
-              }
-              disabled={true}
-            />
-            <TextInput
-              size="col-md-3"
-              fieldSize="col-md-12"
-              // labelSize="col-md-12"
-              // label="Structure id"
-              name="Structure id"
-              id="structure id"
-              value={
-                this.props.assignStructure.assignComponentList.structureCode
-              }
-              disabled={true}
-            />
+            <Col6 size="col-md-2 ">
+              <span>
+                <label className="mb-0">BU</label>
+                <br />
+                <TextInput
+                  size="col-md-12 px-0"
+                  fieldSize="col-md-12"
+                  // labelsize="col-md-4"
+                  // label="BU"
+                  name="bu"
+                  id="bu"
+                  value={this.props.assignStructure.assignComponentList.buName}
+                  disabled={true}
+                />
+              </span>
+            </Col6>
+            <Col6 size="col-md-2 ">
+              <span>
+                <label className="mb-0">IC</label>
+                <br />
+                <TextInput
+                  size="col-md-12 px-0"
+                  fieldSize="col-md-12"
+                  // labelSize="col-md-4"
+                  // label="IC"
+                  name="ic"
+                  id="ic"
+                  value={this.props.assignStructure.assignComponentList.icName}
+                  disabled={true}
+                />
+              </span>
+            </Col6>
+            <Col6 size="col-md-2 ">
+              <span>
+                <label className="mb-0">Project</label>
+                <br />
+                <TextInput
+                  size="col-md-12 px-0"
+                  fieldSize="col-md-12"
+                  // labelsize="col-md-8"
+                  name="Project"
+                  // label="Project"
+                  id="project"
+                  value={
+                    this.props.assignStructure.assignComponentList.projectName
+                  }
+                  disabled={true}
+                />
+              </span>
+            </Col6>
+            <Col6 size="col-md-3 ">
+              <span>
+                <label className="mb-0">Structure</label>
+                <br />
+                <TextInput
+                  size="col-md-12 px-0"
+                  // labelSize="col-md-12"
+                  fieldSize="col-md-12"
+                  // label="Structure"
+                  name="Structure"
+                  id="structure"
+                  value={
+                    this.props.assignStructure.assignComponentList.strcutureName
+                  }
+                  disabled={true}
+                />
+              </span>
+            </Col6>
+            <Col6 size="col-md-3 ">
+              <span>
+                <label className="mb-0">Structure Code</label>
+                <br />
+                <TextInput
+                  size="col-md-12 px-0"
+                  fieldSize="col-md-12"
+                  // labelSize="col-md-12"
+                  // label="Structure id"
+                  name="Structure id"
+                  id="structure id"
+                  value={
+                    this.props.assignStructure.assignComponentList.structureCode
+                  }
+                  disabled={true}
+                />
+              </span>
+            </Col6>
           </SimpleRow>
           {/* <FormRow>
           <TextInput
