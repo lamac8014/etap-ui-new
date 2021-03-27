@@ -1,6 +1,8 @@
 import React from "react";
 import Checkbox from "../../common/forms/Checkbox";
 import IconButton from "../../common/forms/IconButton";
+import {Input } from 'reactstrap';
+
 
 export const listUsersMetaData = (handleViewMore) => {
   return [
@@ -10,8 +12,9 @@ export const listUsersMetaData = (handleViewMore) => {
         return (
           <div key={row.userId}>
             <>
-              <Checkbox color="primary" checked={true} id="i-in-fill" outline />
-
+              {/* <Checkbox color="primary" checked={""} id="i-in-fill" outline /> */}
+              <Input type="checkbox" style={{marginLeft:0}} />{''}
+                  {/* Check me out */}
             </>
           </div>
         );

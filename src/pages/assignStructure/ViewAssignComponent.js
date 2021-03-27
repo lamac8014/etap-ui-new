@@ -100,15 +100,14 @@ class ViewAssignComponent extends Component {
           <PieChart2/>          */}
             </div>
           </FormRow>
-
-          <Row>
-              <Col>BU</Col>
-              <Col>IC</Col>
-              <Col>Project</Col>
-              <Col>Structure</Col>
-              <Col></Col>
-              <Col style={{textAlign:"left"}}>Structure Code</Col>
-         </Row>
+        <Row>
+        <Col sm={{ offset: 0 }} style={{marginRight:155,marginLeft:15}}>BU</Col>
+        <Col sm={{ offset: 0 }} style={{marginRight:155}}>IC</Col>
+        <Col sm={{ offset: 0 }} style={{marginRight:125}}>Project</Col>
+        <Col sm={{ offset: 0 }} style={{marginRight:205}}>Structure</Col>
+        <Col sm={{ offset: 0 }} style={{marginRight:0}}>Structure Id</Col>
+        </Row>
+        
           <SimpleRow className="mt-2 mb-4">
          
          
@@ -135,7 +134,7 @@ class ViewAssignComponent extends Component {
             <TextInput
               size="col-md-2"
               fieldSize="col-md-12"
-              // labelsize="col-md-4"
+              // labelsize="col-md-8"
               name="Project"
               // label="Project"
               id="project"
@@ -144,7 +143,7 @@ class ViewAssignComponent extends Component {
             />
             <TextInput
               size="col-md-3"
-              // labelSize="col-md-4"
+              // labelSize="col-md-12"
               fieldSize="col-md-12"
               // label="Structure"
               name="Structure"
@@ -157,7 +156,7 @@ class ViewAssignComponent extends Component {
             <TextInput
               size="col-md-3"
               fieldSize="col-md-12"
-              // labelSize="col-md-4"
+              // labelSize="col-md-12"
               // label="Structure id"
               name="Structure id"
               id="structure id"
