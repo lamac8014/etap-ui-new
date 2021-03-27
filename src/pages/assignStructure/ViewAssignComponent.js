@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Row,Col } from 'reactstrap';
 // import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import DataTable from "../../common/DataTable";
@@ -91,7 +92,7 @@ class ViewAssignComponent extends Component {
               this.props.assignStructure.showAssignComponentMoreModal
             }
           />
-          <FormRow>
+          <FormRow className="mb-5">
             <div className="col-md-6">
               {/* <PieChart/>         
            </div>
@@ -99,17 +100,18 @@ class ViewAssignComponent extends Component {
           <PieChart2/>          */}
             </div>
           </FormRow>
-          <SimpleRow className="mt-5 mb-4">
-            <TextInput
-              size="col-md-2"
-              fieldSize="col-md-12"
-              // labelSize="col-md-4"
-              // label="IC"
-              name="ic"
-              id="ic"
-              value={this.props.assignStructure.assignComponentList.icName}
-              disabled={true}
-            />
+
+          <Row>
+              <Col>BU</Col>
+              <Col>IC</Col>
+              <Col>Project</Col>
+              <Col>Structure</Col>
+              <Col></Col>
+              <Col style={{textAlign:"left"}}>Structure Code</Col>
+         </Row>
+          <SimpleRow className="mt-2 mb-4">
+         
+         
             <TextInput
               size="col-md-2"
               fieldSize="col-md-12"
@@ -120,17 +122,16 @@ class ViewAssignComponent extends Component {
               value={this.props.assignStructure.assignComponentList.buName}
               disabled={true}
             />
-            <TextInput
+              <TextInput
               size="col-md-2"
               fieldSize="col-md-12"
               // labelSize="col-md-4"
               // label="IC"
               name="ic"
               id="ic"
-              // value={this.state.projectName}
-              value="HCIC"
+              value={this.props.assignStructure.assignComponentList.icName}
               disabled={true}
-            /> 
+            />
             <TextInput
               size="col-md-2"
               fieldSize="col-md-12"

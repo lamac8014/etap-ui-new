@@ -13,12 +13,8 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import CustomDataTable from "../../common/DataTable";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
-<<<<<<< HEAD
-import { listStructureMetaData, transformStructureList } from "../structure/utils";
-=======
 import AddRequirementViewMore from "./AddRequirementViewmore";
 
->>>>>>> e9bd9de77fd71725e5c37793109ebb691b8063f3
 class AddRequirement extends Component {
   constructor(props) {
     super(props);
@@ -110,22 +106,6 @@ class AddRequirement extends Component {
             </div>
             <FormRow>
               <CustomDataTable
-<<<<<<< HEAD
-                metaData={listStructureMetaData(
-                  (id) => this.props.handleDelete(id),
-                  (id) => this.props.handleEdit(id)
-                )}
-                bodyData={transformStructureList(
-                  (this.props.requirement.structureList),
-                  (this.props.requirement.structureFamilyList)
-                )}
-                // metaData={[
-                //   { text: "Structure Name", dataField: "sample" },
-                //   { text: "Quantity", dataField: "smaple" },
-                //   { text: "Actions" },
-                // ]}
-                // bodyData={[]}
-=======
                 metaData={requestCreationMetaData((id) =>
                   this.props.openViewMoreModal(id)
                 )}
@@ -138,7 +118,6 @@ class AddRequirement extends Component {
               <AddRequirementViewMore
                 {...this.props}
                 showModalViewMore={this.props.requirement.showViewMoreModal}
->>>>>>> e9bd9de77fd71725e5c37793109ebb691b8063f3
               />
             </FormRow>
             <SimpleRow>
