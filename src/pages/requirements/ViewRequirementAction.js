@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+ import {Badge } from 'reactstrap';
 import ConfirmModal from "../../common/forms/ConfirmModal";
 import CustomAlert from "../../common/forms/customAlert";
 import {
@@ -11,6 +11,7 @@ import CustomDataTable from "../../common/DataTable";
 import RequirementsViewMore from "../../containers/requirement/requirementsViewMore";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import TextInput from "../../common/forms/TextInput";
 
 class ViewRequirementAction extends Component {
   constructor(props) {
@@ -63,7 +64,6 @@ class ViewRequirementAction extends Component {
         )}
         {/* )} */}
         {/* {this.props.requirement.requirementsList && ( */}
-
         {this.state.showDeleteModal && (
           <ConfirmModal
             closeAction={() =>
@@ -84,7 +84,7 @@ class ViewRequirementAction extends Component {
         <SimpleCard>
           {this.props.requirement.requirementsList && (
             <CustomDataTable
-              rowStyle={tableRowStyles}
+              // rowStyle={tableRowStyles}
               metaData={listViewRequirementsMetaData(
                 (id) => this.props.handleMore(id),
                 (id) => this.setState({ activeId: id, showApproveModal: true }),
@@ -98,6 +98,7 @@ class ViewRequirementAction extends Component {
           )}
         </SimpleCard>
       </PageContainer>
+      
     );
   }
 }
