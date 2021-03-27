@@ -83,26 +83,7 @@ class AssignComponentViewMore extends Component {
             // }
             value={this.props.assignStructure.assignComponentList.structureCode}
           />
-          <TextInput
-            disabled
-            size="col-md-4"
-            fieldSize="col-md-8"
-            labelSize="col-sm-4"
-            label="BU Name"
-            name="buName"
-            id="buName"
-            value={this.props.assignStructure.assignComponentList.buName}
-          />
-          <TextInput
-            disabled
-            size="col-md-4"
-            fieldSize="col-md-8"
-            labelSize="col-sm-4"
-            label="IC Name"
-            name="icName"
-            id="icName"
-            value={this.props.assignStructure.assignComponentList.icName}
-          />
+          
         </SimpleRow>
 
         <SimpleRow>
@@ -163,16 +144,6 @@ class AssignComponentViewMore extends Component {
             name="drawingNo"
             id="drawingNo"
             value={this.props.assignStructure.assignComponentViewMore.drawingNo}
-          />
-          <TextInput
-            disabled
-            size="col-md-4"
-            fieldSize="col-md-8"
-            labelSize="col-sm-4"
-            label="Project Id"
-            name="projectId"
-            id="projectId"
-            value={this.props.assignStructure.assignComponentList.projectId}
           />
         </SimpleRow>
 

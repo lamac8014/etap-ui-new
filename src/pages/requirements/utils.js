@@ -3,6 +3,8 @@ import IconButton from "../../common/forms/IconButton";
 import { Link } from "react-router";
 import { getUserDetails } from "../../utils/auth";
 import { sortCaret } from "../../utils/common";
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import FaIcon from "../../common/FaIcon";
 
 export const _viewRequirementsInputData = [
   "Project",
@@ -106,7 +108,17 @@ export const listViewRequirementsMetaData = (
     },
     {
       text: "status",
-      dataField: "status",
+      formatter:(cell,row) => {
+        return(
+            <span>
+              <p>
+              <FaIcon iconname="faCircle" color={tableRowStyles(row)} />
+               &nbsp;
+              {row.status}
+              </p>
+            </span>
+        );
+      }
     },
     {
       text: "Action",
@@ -200,19 +212,15 @@ export const requestCreationMetaData = (handleViewMore) => {
 };
 
 export const tableRowStyles = (row, rowIndex) => {
-  console.log(row);
   switch (row.status) {
     case "REJECTED":
-      return {
-        backgroundColor: "#FEC1C1", // red
-      };
+      return "#d41515";
+      
     case "READYTODISPATCH":
-      return {
-        backgroundColor: "#CFFEC1", // green
-      };
+      return "#39bf11";
+  
     default:
-      return {
-        backgroundColor: "#FCF9BC",
-      };
+      return "#e3d90e";
+    
   }
 };

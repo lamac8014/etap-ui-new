@@ -18,7 +18,7 @@ export const listUsersMetaData = (handleViewMore) => {
       },
     },
     {
-      text: "DC No",
+      text: "DA No",
       dataField: "dcNo",
     },
     {
