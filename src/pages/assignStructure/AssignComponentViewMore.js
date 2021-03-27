@@ -31,19 +31,6 @@ class AssignComponentViewMore extends Component {
             size="col-md-4"
             fieldSize="col-md-8"
             labelSize="col-sm-4"
-            label="Structure ID"
-            name="structureId"
-            id="structureId"
-            // onChange={e =>
-            //   this.props.handleChangeStructureName(e.target.value)
-            // }
-            value={this.props.assignStructure.assignComponentList.structureId}
-          />
-          <TextInput
-            disabled
-            size="col-md-4"
-            fieldSize="col-md-8"
-            labelSize="col-sm-4"
             label="Structure Name"
             name="strcutureName"
             id="strcutureName"
@@ -68,8 +55,6 @@ class AssignComponentViewMore extends Component {
               this.props.assignStructure.assignComponentList.strcutureTypeName
             }
           />
-        </SimpleRow>
-        <SimpleRow>
           <TextInput
             disabled
             size="col-md-4"
@@ -83,9 +68,7 @@ class AssignComponentViewMore extends Component {
             // }
             value={this.props.assignStructure.assignComponentList.structureCode}
           />
-          
         </SimpleRow>
-
         <SimpleRow>
           <TextInput
             disabled
@@ -145,9 +128,6 @@ class AssignComponentViewMore extends Component {
             id="drawingNo"
             value={this.props.assignStructure.assignComponentViewMore.drawingNo}
           />
-        </SimpleRow>
-
-        <SimpleRow>
           <TextInput
             disabled
             size="col-md-4"
@@ -158,6 +138,10 @@ class AssignComponentViewMore extends Component {
             id="breath"
             value={this.props.assignStructure.assignComponentViewMore.breath}
           />
+        </SimpleRow>
+
+        <SimpleRow>
+          
           <TextInput
             disabled
             size="col-md-4"
@@ -177,6 +161,16 @@ class AssignComponentViewMore extends Component {
             name="leng"
             id="leng"
             value={this.props.assignStructure.assignComponentViewMore.leng}
+          />
+              <TextInput
+            disabled
+            size="col-md-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
+            label="QR Code"
+            name="qrCode"
+            id="qrCode"
+            value={this.props.assignStructure.assignComponentViewMore.qrCode}
           />
         </SimpleRow>
         <SimpleRow>
@@ -223,16 +217,7 @@ class AssignComponentViewMore extends Component {
             id="tag"
             value={this.props.assignStructure.assignComponentViewMore.isTag}
           />
-          <TextInput
-            disabled
-            size="col-md-4"
-            fieldSize="col-md-8"
-            labelSize="col-sm-4"
-            label="QR Code"
-            name="qrCode"
-            id="qrCode"
-            value={this.props.assignStructure.assignComponentViewMore.qrCode}
-          />
+      
         </SimpleRow>
       </Modal>
     );
