@@ -1,5 +1,4 @@
 import { lazy } from "react";
-
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -20,7 +19,6 @@ const ViewProject = lazy(() =>
 const ViewFabricationCost = lazy(() =>
   import("./containers/fabricationCost/fabricationCost")
 );
-
 const ViewCmpcReuse = lazy(() =>
   import("./containers/cmpcReuse/viewCmpcReuse")
 );
@@ -50,6 +48,8 @@ const AssignStructure = lazy(() =>
   import("./containers/assignStructure/assignStructure")
 );
 const Asbuilt = lazy(() => import("./containers/built/built"));
+const AsbuiltMore = lazy(() => import("./containers/built/builtMoreDetails"));
+
 const RequirmentApproval = lazy(() =>
   import("./containers/requirmentApproval/viewRequirmentApproval")
 );
@@ -57,6 +57,13 @@ const Requirment = lazy(() =>
   import("./containers/requirement/viewRequirementAction")
 );
 
+const ViewSbg = lazy(() => import("./containers/sbg/viewSbg"));
+const CmpcModification = lazy(() =>
+  import("./containers/cmpcModification/viewStructures")
+);
+const ModifyComponents = lazy(() =>
+  import("./containers/cmpcModification/modifyComponents")
+);
 const RouteList = [
   {
     exact: true,
@@ -204,9 +211,33 @@ const RouteList = [
   },
   {
     exact: true,
+    path: "/etrack/built/asBuiltDetails/:siteReqId",
+    name: "Structure Details",
+    component: AsbuiltMore,
+  },
+  {
+    exact: true,
     path: "/etrack/requirementmgmt/requirmentApprove",
     name: "Request Approve",
     component: Requirment,
+  },
+  {
+    exact: true,
+    path: "/etrack/masters/sbg",
+    name: "Strategic Business Group",
+    component: ViewSbg,
+  },
+  {
+    exact: true,
+    path: "/etrack/structure/modify",
+    name: "Modify Structure",
+    component: CmpcModification,
+  },
+  {
+    exact: true,
+    path: "/etrack/structure/modifyComponent/:compId",
+    name: "Modify Components",
+    component: ModifyComponents,
   },
 ];
 export default RouteList;

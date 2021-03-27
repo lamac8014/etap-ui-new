@@ -3,7 +3,7 @@ import {
   getSiteReqDetailsById,
   createDispatch,
   setActiveItem,
-  setSelectedItem
+  setSelectedItem,
 } from "../../actions/createDispatchActions";
 import {
   SET_SELECTED_ITEMS,
@@ -15,7 +15,6 @@ import {
 } from "../../actions/types";
 import BuiltMoreDetails from "../../pages/built/BuiltMoreDetails";
 
-import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
 import store from "../../store";
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -28,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
       //   type: SET_SELECTED_ITEMS,
       //   payload: value,
       // });
-      dispatch(setSelectedItem(value))
+      dispatch(setSelectedItem(value));
     },
     showConfirmModal(message) {
       dispatch({

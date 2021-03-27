@@ -8,7 +8,7 @@ export const listBuiltTypeMetaData = (
 ) => {
   return [
     {
-      text: "DA No",
+      text: "DC No",
       dataField: "dcNo",
     },
 
