@@ -15,10 +15,11 @@ export const getSiteReqDetails = () => {
   return {
     type: GET_SITE_REQ_DETAILS,
     payload: axios.get(
-      `${config.BASE_URL}/api/SiteRequirement/getSiteReqDetails?role_name=TWCC&role_hierarchy=1`
+      `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchDetails`
     ),
   };
 };
+
 export const twccDispatchDataFetch = () => {
   // ! roleName is to be get from the userDetails
   return {
@@ -79,11 +80,11 @@ if (finder.length  == 0){
     fabOutResult:disableFabOut
   }
 }
-export const getSiteReqDetailsById = (siteReqId) => {
+export const getSiteReqDetailsById = (structId,siteReqId) => {
   return {
     type: GET_SITE_REQ_DETAILS_BY_ID,
     payload: axios.get(
-      `${config.BASE_URL}/api/SiteDispatch/GetReqmntStructureforDispatch/${siteReqId}`
+      `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchInnerStructurDetails?structureId=${structId}&siteRequirementId=${siteReqId}`
     ),
   };
 };
@@ -129,7 +130,7 @@ export const createDispatch = () => {
   return {
     type: CREATE_DISPATCH,
     payload: axios.post(
-      `${config.BASE_URL}/api/SiteDispatch/createDispatch`,
+      `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchDetails`,
       data
     ),
   };

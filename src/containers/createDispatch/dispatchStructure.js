@@ -18,9 +18,9 @@ import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
 import store from "../../store";
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPageLoad(id) {
-      dispatch(getSiteReqDetailsById(id));
-      dispatch(setActiveItem(id));
+    onPageLoad(structId,siteReqId) {
+      dispatch(getSiteReqDetailsById(structId,siteReqId));
+      // dispatch(setActiveItem(structId,siteReqId));
     },
     setSelectedStructures(value) {
       // dispatch({

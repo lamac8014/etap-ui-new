@@ -45,33 +45,32 @@ export const twccDispatchMetaData = (
   return [
     {
       text: "MR Number",
-      dataField: "mrNo",
+      dataField: "mrNumber",
     },
 
     {
       text: "Structure Name",
-      dataField: "structureName",
-
-      // formatter: (cell, row) => {
-      //   return (
-      //     <>
-      //       {
-      //         <a
-      //           href="#"
-      //           onClick={() => {
-      //             redirectToDispatchStructure(row.projectId);
-      //           }}
-      //         >
-      //           {row.structureCode}
-      //         </a>
-      //       }
-      //     </>
-      //   );
-      // },
+      // dataField: "structureName",
+      formatter: (cell, row) => {
+        return (
+          <>
+            {
+              <a
+                href=""
+                onClick={() => {
+                  redirectToDispatchStructure(row.structureId,row.siteRequirementId);
+                }}
+              >
+                {row.structureName}
+              </a>
+            }
+          </>
+        );
+      },
     },
     {
       text: "Req By",
-      dataField: "requiredBy",
+      dataField: "requestBy",
     },
     {
       text: "Raised By",
@@ -79,7 +78,7 @@ export const twccDispatchMetaData = (
     },
     {
       text: "Status",
-      dataField: "status",
+      dataField: "requestStatus",
     },
     {
       text: "Actions",
@@ -111,7 +110,7 @@ export const dispatchStructureMetaData = (setSelectedStructures) => {
   return [
     {
       sortable: true,
-      formatter: (row) => {
+      formatter: (cell,row) => {
         return (
           <>
             {
@@ -174,9 +173,9 @@ export const twccdispatchStructureMetaData = (
           <>
             {
               <CheckBox
-                checked={row.checked}
+                // checked={row.checked}
                 onChange={() => setSelectedStructures(row)}
-                disabled={row.availability === "No" ? true : false}
+                // disabled={row.availability === "No" ? true : false}
               />
             }
           </>
@@ -203,7 +202,7 @@ export const twccdispatchStructureMetaData = (
       sortable: true,
     },
     {
-      text: "Avail.Date",
+      text: "Avail.Dt",
       dataField: true,
       selector: "date",
     },
