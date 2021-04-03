@@ -69,12 +69,10 @@ export default (state = initialState, action) => {
         message: action.payload.response.data.message,
       };
     case `${GET_SITE_REQ_DETAILS_BY_ID}_FULFILLED`:
-      let lstStructforDispatchData = action.payload.data.lstStructforDispatch.map(obj => ({ ...obj, checked: false }))
       return {
         ...state,
         isLoading: false,
         siteReqDetailsById: action.payload.data,
-        lstStructforDispatch: lstStructforDispatchData
       };
     case `${CREATE_DISPATCH}_PENDING`:
       return {

@@ -6,17 +6,17 @@ import {
   lstVerifyStructureQtyMetaData,
   transformdispatchStructure
 } from "./utils";
-import CustomDataTable from "../../common/CustomDataTable";
+import CustomDataTable from "../../common/DataTable";
 import FormRow from "../../common/forms/FormRow";
 import Button from "../../common/forms/Button";
-import Popup from "../../common/forms/Popup";
+// import Popup from "../../common/forms/Popup";
 import TextInput from "../../common/forms/TextInput";
-import ConfirmModal from "../../common/ConfirmModal";
+import ConfirmModal from "../../common/forms/ConfirmModal";
 import Col6 from "../../common/forms/Col6";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import CustomAlert from "../../common/forms/customAlert";
-
+import SearchableDropDown from "../../common/forms/SearchableDropdown"
 class DispatchStructure extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +34,9 @@ class DispatchStructure extends Component {
   }
 
   componentDidMount = () => {
-    let id = window.atob(this.props.match.params.siteReqId);
-    this.props.onPageLoad(id);
+    let siteReqid = window.atob(this.props.match.params.siteReqId);
+    let structid = window.atob(this.props.match.params.structId);
+    this.props.onPageLoad(structid,siteReqid);
   };
 
   filteredItems = (data) => {
@@ -78,18 +79,18 @@ class DispatchStructure extends Component {
               onClose={() => this.props.setDispatchError(false, "")}
             />
           )}
-          <ConfirmModal
+          {/* <ConfirmModal
             showModal={this.props.createDispatch.showModal}
             handleClose={() => this.props.hideConfirmModal()}
             title="Confirm Dispatch"
             handleConfirm={() => {
               this.props.createDispatchApi();
             }}
-          >
-            <h6 className="text-danger">
+          > */}
+            {/* <h6 className="text-danger">
               {this.props.createDispatch.modalMessage}?
             </h6>
-          </ConfirmModal>
+          </ConfirmModal> */}
 
           {this.props.createDispatch.activeItem && (
             <>
@@ -99,7 +100,7 @@ class DispatchStructure extends Component {
                   label="MR No"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.mrNo}
+                  value={this.props.createDispatch.siteReqDetails.mrNumber}
                   disabled
                 />
                 <TextInput
@@ -107,7 +108,7 @@ class DispatchStructure extends Component {
                   label="Structure Name"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.projectName}
+                  value={this.props.createDispatch.siteReqDetails.structureName}
                   disabled
                 />
                 <TextInput
@@ -115,7 +116,7 @@ class DispatchStructure extends Component {
                   label="Req Site"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.projectName}
+                  value={this.props.createDispatch.siteReqDetails.requestBy}
                   disabled
                 />
               </FormRow>
@@ -125,24 +126,22 @@ class DispatchStructure extends Component {
                   label="Qty"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.quantity}
+                  value={this.props.createDispatch.siteReqDetails.quantity}
                   disabled
                 />
-                <TextInput
-                  size="col-md-4"
-                  label="Search By Rel.Date"
-                  fieldSize="col-md-8"
-                  labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.planStartdate}
-                  disabled
+                <SearchableDropDown 
+                label="Search By Rel.Date"
+                fieldSize="col-md-8"
+                size="col-md-4"
+                labelSize="col-sm-4"
+                value={this.props.createDispatch.activeItem.planStartdate}
                 />
-                <TextInput
-                  size="col-md-4"
-                  label="Search By Attributes"
-                  fieldSize="col-md-8"
-                  labelSize="col-sm-4"
-                  value={this.props.createDispatch.activeItem.projectName}
-                  disabled
+                 <SearchableDropDown 
+                label="Search By Attributes"
+                fieldSize="col-md-8"
+                size="col-md-4"
+                labelSize="col-sm-4"
+                value={this.props.createDispatch.activeItem.projectName}
                 />
               </FormRow>
             </>
@@ -157,7 +156,8 @@ class DispatchStructure extends Component {
 
             />
           )}
-          <FormRow className="d-flex justify-content-end">
+          <FormRow className="d-flex justify-content-center">
+          <Col6 size="col-md-2 offset-md-5 d-flex justify-content-center">
             <Button
               btnText="Reuse"
               btnType="btn-primary mx-2"
@@ -224,29 +224,28 @@ class DispatchStructure extends Component {
               }}
               disable={this.props.createDispatch.disableOutSourcing}
             />
+            </Col6>
           </FormRow><br />
           <FormRow className="row">
 
 
-            <Col6 size="col-md-2 offset-md-3 d-flex justify-content-center">
-              <div style={{ textAlign: "center", marginRight: "300px" }}>
+            <Col6 size="col-md-2 offset-md-5 d-flex justify-content-center">
+              {/* <div style={{ textAlign: "center", marginRight: "300px" }}>
                 <button className="btn btn-md btn-primary" onClick={(data) => this.previous(data)}>
                   <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                 </button>
-              </div>
+              </div> */}
 
-              <div style={{ textAlign: "center", marginRight: "50px" }}>
+              {/* <div style={{ textAlign: "center", marginRight: "50px" }}>
                 <button className="btn btn-md btn-primary" onClick={(data) => this.previous(data)}>
                   SAVE
                   </button>
-              </div>
-              <Button
+              </div> */}
+              <Button 
+                className="btn-success"
                 btnText="DISPATCH"
                 onClick={this.props.saveAssignStruct}
-                btnType="primary"
               />
-
-
             </Col6>
           </FormRow>
         </SimpleCard>

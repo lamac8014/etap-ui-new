@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch, props) => {
     getSiteReqDetails() {
       dispatch(getSiteReqDetails());
     },
-    redirectToDispatchStructure(id) {
+    redirectToDispatchStructure(structId,siteReqId) {
       props.history.push(
-        `/etrack/dispatch/createDispatch/dispatchStructure/${window.btoa(id)}`
+        `/etrack/dispatch/viewdispatch/${window.btoa(structId)}/${window.btoa(siteReqId)}`
       );
     },
 

@@ -56,6 +56,9 @@ const RequirmentApproval = lazy(() =>
 const Requirment = lazy(() =>
   import("./containers/requirement/viewRequirementAction")
 );
+const ViewDispatch = lazy(() =>
+  import("./containers/createDispatch/dispatchStructure")
+);
 
 const ViewSbg = lazy(() => import("./containers/sbg/viewSbg"));
 const CmpcModification = lazy(() =>
@@ -161,12 +164,12 @@ const RouteList = [
     name: "WBS",
     component: Wbs,
   },
-  // {
-  //   exact: true,
-  //   path: "/etrack/dispatch/viewdispatch",
-  //   name: "Dispatch",
-  //   component: ViewDispatch,
-  // },
+  {
+    exact: true,
+    path: "/etrack/dispatch/viewdispatch/:structId/:siteReqId",
+    name: "Dispatch",
+    component: ViewDispatch,
+  },
   {
     exact: true,
     path: "/etrack/cost/fabcost",
