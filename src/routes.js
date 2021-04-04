@@ -56,7 +56,7 @@ const RequirmentApproval = lazy(() =>
 const Requirment = lazy(() =>
   import("./containers/requirement/viewRequirementAction")
 );
-const ViewDispatch = lazy(() =>
+const DispatchStructure = lazy(() =>
   import("./containers/createDispatch/dispatchStructure")
 );
 
@@ -166,9 +166,9 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/dispatch/viewdispatch/:structId/:siteReqId",
-    name: "Dispatch",
-    component: ViewDispatch,
+    path: "/etrack/dispatch/dispatchStrt/:structId/:siteReqId",
+    name: "Dispatch Structure",
+    component: DispatchStructure,
   },
   {
     exact: true,
