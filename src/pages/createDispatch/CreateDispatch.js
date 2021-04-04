@@ -18,34 +18,7 @@ class CreateDispatch extends Component {
     this.props.getSiteReqDetails();
   }
 
-  filteredItems = (data) => {
-    if (data) {
-      return data.filter((item) => {
-        for (let key in item) {
-          if (
-            item[key] &&
-            item[key]
-              .toString()
-              .toLowerCase()
-              .includes(this.state.filterText.toLowerCase())
-          ) {
-            return true;
-          }
-        }
-      });
-    }
-  };
-
   render() {
-    let dataBind = [
-      {
-        mrNo: "123",
-        structureName: "arun",
-        requiredBy: "321",
-        raisedBy: "456",
-        status: "Done",
-      },
-    ];
     return (
       <PageContainer>
         <SimpleCard>
@@ -65,17 +38,17 @@ class CreateDispatch extends Component {
           {this.props.createDispatch.siteReqDetails && (
             <CustomDataTable
               metaData={twccDispatchMetaData(
-                (structureID, projectID) => {
+                (structureID, siteReqId) => {
                   this.props.redirectToDispatchStructure(
                     structureID,
-                    projectID
+                    siteReqId
                   );
+                  this.props.saveRequirementInfo(structureID, siteReqId);
                 },
-                //this.props.redirectToDispatchStructure,
-                (id) => this.props.handleMore(id)
+                (structId, siteReqId) =>
+                  this.props.handleMore(structId, siteReqId)
               )}
               bodyData={this.props.createDispatch.siteReqDetails}
-              // bodyData={dataBind}
             />
           )}
         </SimpleCard>

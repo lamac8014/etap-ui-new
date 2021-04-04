@@ -4,7 +4,7 @@ import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 
-class TwccDispatchViewMore extends Component {
+class DispatchStructureViewMore extends Component {
   constructor(props) {
     super(props);
   }
@@ -12,29 +12,15 @@ class TwccDispatchViewMore extends Component {
   render() {
     return (
       <Modal
-        title={`TWCC Dispatch - Details`}
-        showModal={this.props.showAddComponentModal}
-        handleClose={this.props.closeTwccDispatchViewMoreModal}
+        title={`Structure Attribute Details`}
+        showModal={this.props.createDispatch.showAttributeModal}
+        handleClose={this.props.hideAttributeViewMore}
         size="lg"
         isShowFooter={false}
       >
         {console.log("isLoading", this.props.isLoading)}
         {this.props.isLoading && <Loader />}
 
-        <SimpleRow>
-          <TextInput
-            disabled
-            size="col-md-4"
-            label="Quantity"
-            name="quantity"
-            id="quantity"
-            // onChange={e =>
-            //   this.props.handleChangeStructureName(e.target.value)
-            // }
-            value={this.props.createDispatch.activeItem.quantity}
-          />
-        </SimpleRow>
-        <h4>Structure Attributes :</h4>
         <table className="table my-3">
           <thead className="thead-light">
             <tr>
@@ -45,17 +31,17 @@ class TwccDispatchViewMore extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.createDispatch.activeItem.structureAttributes &&
-              JSON.parse(
-                this.props.createDispatch.activeItem.structureAttributes
-              ).map((item, index) => (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.name}</td>
-                  <td>{item.uom}</td>
-                  <td>{item.value}</td>
-                </tr>
-              ))}
+            {this.props.createDispatch.currentAttributeData &&
+              this.props.createDispatch.currentAttributeData.map(
+                (item, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item.name}</td>
+                    <td>{item.uom}</td>
+                    <td>{item.value}</td>
+                  </tr>
+                )
+              )}
           </tbody>
         </table>
         {/* <SimpleRow>
@@ -98,4 +84,4 @@ class TwccDispatchViewMore extends Component {
   }
 }
 
-export default TwccDispatchViewMore;
+export default DispatchStructureViewMore;

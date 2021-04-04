@@ -4,7 +4,7 @@ import {
   dispatchStructureMetaData,
   twccdispatchStructureMetaData,
   lstVerifyStructureQtyMetaData,
-  transformdispatchStructure
+  transformdispatchStructure,
 } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import FormRow from "../../common/forms/FormRow";
@@ -16,52 +16,35 @@ import Col6 from "../../common/forms/Col6";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import CustomAlert from "../../common/forms/customAlert";
-import SearchableDropDown from "../../common/forms/SearchableDropdown"
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
+import SimpleRow from "../../common/forms/SimpleRow";
+import DispatchStructureViewMore from "./DispatchStructureViewMore";
+import ButtonRow from "../../common/forms/ButtonRow";
+
 class DispatchStructure extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filterText: "",
       resetPaginationToggle: false,
-      dummy: [],
       flag: false,
     };
   }
 
-
-  previous(data) {
-    data.history.push('/etrack/dispatch/twccDispatch');
-  }
+  // previous(data) {
+  //   data.history.push("/etrack/dispatch/twccDispatch");
+  // }
 
   componentDidMount = () => {
     let siteReqid = window.atob(this.props.match.params.siteReqId);
     let structid = window.atob(this.props.match.params.structId);
-    this.props.onPageLoad(structid,siteReqid);
-  };
-
-  filteredItems = (data) => {
-    return (
-      data &&
-      data.filter(
-        (item) =>
-          item.structureName &&
-          item.structureName
-            .toLowerCase()
-            .includes(this.state.filterText.toLowerCase())
-      )
-    );
+    this.props.onPageLoad(structid, siteReqid);
   };
 
   render() {
-    console.log("+++++++++")
-    console.log(this.props.createDispatch.disableOutSourcing)
-    console.log(this.props.createDispatch.disableFabrication)
-    console.log(this.props.createDispatch.disableReuse)
-    console.log("+++++++++")
-    let tempArr = [{ structureName: "Launching Girders", availability: "Yes", date: "17/02/2021", attr: "Capacity", site: "Chennai" },
-    { structureName: "Launching Girders", availability: "No", date: "01/03/2021", attr: "Capacity", site: "" },
-    { structureName: "Launching Girders", availability: "Yes", date: "01/04/2021", attr: "Capacity", site: "Chennai" },
-    { structureName: "Launching Girders", availability: "No", date: "01/05/2021", attr: "Capacity", site: "" },]
+    const currentReqInfo = JSON.parse(
+      localStorage.getItem("currentRequirementInfo")
+    );
     return (
       <PageContainer>
         <SimpleCard>
@@ -87,20 +70,20 @@ class DispatchStructure extends Component {
               this.props.createDispatchApi();
             }}
           > */}
-            {/* <h6 className="text-danger">
+          {/* <h6 className="text-danger">
               {this.props.createDispatch.modalMessage}?
             </h6>
           </ConfirmModal> */}
 
           {this.props.createDispatch.activeItem && (
             <>
-              <FormRow>
+              <SimpleRow>
                 <TextInput
                   size="col-md-4"
                   label="MR No"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.siteReqDetails.mrNumber}
+                  value={currentReqInfo.mrNumber}
                   disabled
                 />
                 <TextInput
@@ -108,7 +91,7 @@ class DispatchStructure extends Component {
                   label="Structure Name"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.siteReqDetails.structureName}
+                  value={currentReqInfo.structureName}
                   disabled
                 />
                 <TextInput
@@ -116,51 +99,58 @@ class DispatchStructure extends Component {
                   label="Req Site"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.siteReqDetails.requestBy}
+                  value={currentReqInfo.requestBy}
                   disabled
                 />
-              </FormRow>
-              <FormRow>
+              </SimpleRow>
+              <SimpleRow>
                 <TextInput
                   size="col-md-4"
                   label="Qty"
                   fieldSize="col-md-8"
                   labelSize="col-sm-4"
-                  value={this.props.createDispatch.siteReqDetails.quantity}
+                  value={currentReqInfo.quantity}
                   disabled
                 />
-                <SearchableDropDown 
-                label="Search By Rel.Date"
-                fieldSize="col-md-8"
-                size="col-md-4"
-                labelSize="col-sm-4"
-                value={this.props.createDispatch.activeItem.planStartdate}
+                <SearchableDropDown
+                  label="Search By Rel.Date"
+                  fieldSize="col-md-8"
+                  size="col-md-4"
+                  labelSize="col-sm-4"
+                  // value={this.props.createDispatch.activeItem.planStartdate}
                 />
-                 <SearchableDropDown 
-                label="Search By Attributes"
-                fieldSize="col-md-8"
-                size="col-md-4"
-                labelSize="col-sm-4"
-                value={this.props.createDispatch.activeItem.projectName}
+                <SearchableDropDown
+                  label="Search By Attributes"
+                  fieldSize="col-md-8"
+                  size="col-md-4"
+                  labelSize="col-sm-4"
+                  // value={this.props.createDispatch.activeItem.projectName}
                 />
-              </FormRow>
+              </SimpleRow>
             </>
           )}
           <hr />
 
+          <DispatchStructureViewMore {...this.props} />
+
           {this.props.createDispatch.siteReqDetailsById && (
             <CustomDataTable
-              metaData={twccdispatchStructureMetaData((row) => this.props.setSelectedStructures(row))}
-              // bodyData={this.filteredItems(transformdispatchStructure(this.props.createDispatch.lstStructforDispatch))}
-              bodyData={tempArr}
-
+              metaData={twccdispatchStructureMetaData(
+                (row) => {
+                  this.props.setSelectedStructures(row);
+                },
+                (structCode) => {
+                  this.props.showAttributeViewMore(structCode);
+                }
+              )}
+              bodyData={this.props.createDispatch.transformedSiteReq}
+              // bodyData={tempArr}
             />
           )}
-          <FormRow className="d-flex justify-content-center">
-          <Col6 size="col-md-2 offset-md-5 d-flex justify-content-center">
+          <ButtonRow>
             <Button
               btnText="Reuse"
-              btnType="btn-primary mx-2"
+              gradient
               onClick={() => {
                 if (this.props.createDispatch.selectedItems.length === 0) {
                   this.props.setDispatchError(
@@ -177,7 +167,7 @@ class DispatchStructure extends Component {
                     this.props.showConfirmModal(
                       `Dispatch structure(s) for Reuse`
                     );
-                    this.props.setServiceTypeId(4);
+                    this.props.setStructuresForReuse(4);
                   } else {
                     this.props.setDispatchError(
                       true,
@@ -186,11 +176,11 @@ class DispatchStructure extends Component {
                   }
                 }
               }}
-              disable={this.props.createDispatch.disableReuse}
+              disabled={this.props.createDispatch.disableReuse}
             />
             <Button
               btnText="Fabrication"
-              btnType="btn-primary mx-2"
+              gradient
               onClick={() => {
                 if (this.props.createDispatch.selectedItems.length === 0) {
                   this.props.setDispatchError(
@@ -204,11 +194,11 @@ class DispatchStructure extends Component {
                   this.props.setServiceTypeId(1);
                 }
               }}
-              disable={this.props.createDispatch.disableFabrication}
+              disabled={this.props.createDispatch.disableFabrication}
             />
             <Button
               btnText="Outsourcing"
-              btnType="btn-primary mx-2"
+              gradient
               onClick={() => {
                 if (this.props.createDispatch.selectedItems.length === 0) {
                   this.props.setDispatchError(
@@ -222,35 +212,31 @@ class DispatchStructure extends Component {
                   this.props.setServiceTypeId(2);
                 }
               }}
-              disable={this.props.createDispatch.disableOutSourcing}
+              disabled={this.props.createDispatch.disableOutSourcing}
             />
-            </Col6>
-          </FormRow><br />
-          <FormRow className="row">
-
-
-            <Col6 size="col-md-2 offset-md-5 d-flex justify-content-center">
-              {/* <div style={{ textAlign: "center", marginRight: "300px" }}>
+          </ButtonRow>
+          <br />
+          <ButtonRow position="center">
+            {/* <div style={{ textAlign: "center", marginRight: "300px" }}>
                 <button className="btn btn-md btn-primary" onClick={(data) => this.previous(data)}>
                   <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                 </button>
               </div> */}
 
-              {/* <div style={{ textAlign: "center", marginRight: "50px" }}>
+            {/* <div style={{ textAlign: "center", marginRight: "50px" }}>
                 <button className="btn btn-md btn-primary" onClick={(data) => this.previous(data)}>
                   SAVE
                   </button>
               </div> */}
-              <Button 
-                className="btn-success"
-                btnText="DISPATCH"
-                onClick={this.props.saveAssignStruct}
-              />
-            </Col6>
-          </FormRow>
+            <Button
+              type="success"
+              gradient
+              btnText="Dispatch"
+              onClick={this.props.createDispatchApi}
+            />
+          </ButtonRow>
         </SimpleCard>
       </PageContainer>
-
     );
   }
 }

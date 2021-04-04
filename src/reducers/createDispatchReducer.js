@@ -3,7 +3,7 @@ import {
   GET_SITE_REQ_DETAILS,
   GET_SITE_REQ_DETAILS_BY_ID,
   RESET_MESSAGE,
-  SET_ACTIVE_ITEM,
+  CD_SET_ACTIVE_ITEM,
   SET_MODAL_DATA,
   RESET_SELECTION,
   SET_SERVICE_TYPE_ID,
@@ -11,6 +11,11 @@ import {
   CREATE_DISPATCH,
   TWCC_DISPATCH_MORE_PAGE,
   CHANGE_TWCC_DISPATCH_MORE_MODAL_STATUS,
+  SET_SHOW_ATTRIBUTE_MODAL,
+  SET_CURRENT_ATTRIBUTE_MODAL_DATA,
+  SET_STRUCTURES_FOR_REUSE,
+  DISABLE_SITE_REQUIREMENTS,
+  TRANSFORM_SITE_REQUIREMENTS,
 } from "../actions/types";
 
 const initialState = {
@@ -18,20 +23,24 @@ const initialState = {
   isError: false,
   isSuccess: false,
   showModal: false,
+  showAttributeModal: false,
   dispatchError: false,
   dispatchErrMsg: "",
   modalMessage: "",
   message: "",
   activeItem: {},
+  currentAttributeData: null,
   serviceTypeId: 0,
   siteReqDetails: [],
+  transformedSiteReq: [],
   siteReqDetailsById: [],
   selectedItems: [],
   lstStructforDispatch: [],
+  reuseStructures: [],
   disableReuse: true,
   disableFabrication: true,
   disableOutSourcing: true,
-  showTwccDispatchMoreModal:false,
+  showTwccDispatchMoreModal: false,
 };
 
 export default (state = initialState, action) => {
@@ -94,25 +103,17 @@ export default (state = initialState, action) => {
         isSuccess: true,
         message: action.payload.data.message,
       };
-    case `${SET_ACTIVE_ITEM}_PENDING`:
+    case CD_SET_ACTIVE_ITEM:
+      console.log("inside createDiaptchREducer.....");
+      let tempActiveItem = state.siteReqDetails.filter((item) => {
+        return (
+          item.structureId === action.payload.structId &&
+          item.siteRequirementId === action.payload.siteReqId
+        );
+      });
       return {
         ...state,
-        isLoading: true,
-      };
-    case `${SET_ACTIVE_ITEM}_REJECTED`:
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        isSuccess: false,
-        message: action.payload.response.data.message,
-      };
-    case `${SET_ACTIVE_ITEM}_FULFILLED`:
-      return {
-        ...state,
-        isLoading: false,
-        isSuccess: true,
-        activeItem: action.payload.data,
+        activeItem: tempActiveItem[0],
       };
     case SET_MODAL_DATA:
       return {
@@ -121,23 +122,20 @@ export default (state = initialState, action) => {
         modalMessage: action.payload.message,
       };
     case SET_SELECTED_ITEMS:
-
       return {
         ...state,
         selectedItems: action.payload,
         lstStructforDispatch: action.structureList,
         disableReuse: action.reuseResult,
         disableFabrication: action.fabOutResult,
-        disableOutSourcing: action.fabOutResult
+        disableOutSourcing: action.fabOutResult,
       };
 
-   
     case CHANGE_TWCC_DISPATCH_MORE_MODAL_STATUS:
       return {
         ...state,
-        showTwccDispatchMoreModal: action.payload
-      }
-
+        showTwccDispatchMoreModal: action.payload,
+      };
 
     case RESET_MESSAGE:
       return { ...state, message: "", isSuccess: false, isError: false };
@@ -156,6 +154,19 @@ export default (state = initialState, action) => {
         dispatchError: action.payload.flag,
         dispatchErrMsg: action.payload.message,
       };
+    case SET_CURRENT_ATTRIBUTE_MODAL_DATA:
+      return { ...state, currentAttributeData: action.payload };
+    case SET_SHOW_ATTRIBUTE_MODAL:
+      return { ...state, showAttributeModal: action.payload };
+    case SET_STRUCTURES_FOR_REUSE:
+      return {
+        ...state,
+        reuseStructures: action.payload,
+      };
+    case DISABLE_SITE_REQUIREMENTS:
+      return { ...state, transformedSiteReq: action.payload };
+    case TRANSFORM_SITE_REQUIREMENTS:
+      return { ...state, transformedSiteReq: action.payload };
     default:
       return state;
   }
