@@ -1,7 +1,7 @@
 import {
   SET_SHOW_EDIT_MODAL_FLAG,
   SET_SITE_DISPATCH_DETAILS,
-  SET_ACTIVE_ITEM,
+  PR_SET_ACTIVE_ITEM,
   SET_STRUCTURE_LIST_CODE,
   SET_FABRICATION_COST,
   SET_PLANNED_RELEASE_DATE,
@@ -103,7 +103,7 @@ export default (state = initialState, action) => {
       };
     case RESET_MESSAGE:
       return { ...state, message: "", isSuccess: false, isError: false };
-    case SET_ACTIVE_ITEM:
+    case PR_SET_ACTIVE_ITEM:
       const activeItem = state.siteDispatchDetails.filter((item) => {
         return item.dispatchId === action.payload;
       })[0];

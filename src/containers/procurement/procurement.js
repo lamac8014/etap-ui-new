@@ -12,7 +12,7 @@ import {
 import {
   SET_SHOW_EDIT_MODAL_FLAG,
   SET_SHOW_TABLE_FLAG,
-  SET_ACTIVE_ITEM,
+  PR_SET_ACTIVE_ITEM,
   SET_FABRICATION_COST,
   SET_PLANNED_RELEASE_DATE,
   SET_ACTUAL_START_DATE,
@@ -100,10 +100,10 @@ const mapDispatchToProps = (dispatch) => {
         payload: true,
       });
       dispatch({
-        type: SET_ACTIVE_ITEM,
+        type: PR_SET_ACTIVE_ITEM,
         payload: id,
       });
-      dispatch(getStructureListCode(id, "PROCUREMENT"));
+      dispatch(getStructureListCode(id));
       dispatch(getVendorCodeList());
     },
     closeAssignVendorModal() {
