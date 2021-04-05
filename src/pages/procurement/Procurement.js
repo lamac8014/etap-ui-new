@@ -13,55 +13,37 @@ class Procurement extends Component {
     super(props);
   }
   componentDidMount() {
-    // this.props.getSiteDispatchDetails();
+    this.props.getSiteDispatchDetails();
   }
 
   render() {
     return (
       <>
-         <PageContainer>
-           <SimpleCard>
-           {this.props.procurement.isLoading && <Loader />}
-          {/* {this.props.procurement.message && (
+        <PageContainer>
+          <SimpleCard>
+            {this.props.procurement.isLoading && <Loader />}
+            {/* {this.props.procurement.message && (
             <Popup
               type={this.props.procurement.isSuccess ? "success" : "danger"}
               message={this.props.procurement.message}
               onClose={this.props.resetMessage}
             />
           )} */}
-          <AssignVendorModal
-            {...this.props}
-            showModal={this.props.procurement.showEditModalFlag}
-          />
-          
+            <AssignVendorModal
+              {...this.props}
+              showModal={this.props.procurement.showEditModalFlag}
+            />
+
             {this.props.procurement.siteDispatchDetails && (
               <CustomDataTable
                 metaData={siteDispatchMetaData(
                   this.props.showAssignVendorModal
                 )}
-                // bodyData={this.props.procurement.siteDispatchDetails}
-                bodyData={[{
-                  mrNo:"1",
-                  dispatchNo:"3",
-                  structureName:"sample",
-                  structCode:"sample code",
-                  compNo:"3",
-                  reqBy:"sample data",
-                  qtyReq:"10",
-                }]}
-                progressPending={this.props.procurement.isLoading}
-                pagination={true}
-                paginationTotalRows={
-                  this.props.procurement.siteDispatchDetails &&
-                  this.props.procurement.siteDispatchDetails.length
-                }
-                paginationPerPage={5}
-                noHeader={true}
+                bodyData={this.props.procurement.siteDispatchDetails}
               />
             )}
-       
-           </SimpleCard>
-           </PageContainer>
+          </SimpleCard>
+        </PageContainer>
       </>
     );
   }

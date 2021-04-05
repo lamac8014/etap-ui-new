@@ -9,41 +9,26 @@ export const siteDispatchMetaData = (handleUpdate) => {
     //   selector: "mrNo",
     //   sortable: false,
     // },
-    
+
     {
       text: "MR No",
       dataField: "mrNo",
-      
     },
     {
       text: "DC No",
       dataField: "dispatchNo",
-      
     },
     {
-      text: "Struct.",
+      text: "Structure",
       dataField: "structureName",
-      
-    },
-    {
-      text: "Struct. Code",
-      dataField: "structCode",
-      
     },
     {
       text: "No. of Comp",
       dataField: "compNo",
-      
     },
     {
       text: "Req By",
       dataField: "reqBy",
-      
-    },
-    {
-      text: "Qty Req",
-      dataField: "qtyReq",
-      
     },
     // {
     //   name: "Created Date",
@@ -53,61 +38,52 @@ export const siteDispatchMetaData = (handleUpdate) => {
     {
       text: "Actions",
       center: true,
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
-          <div className="row">
-            <div className="col-md-5">
-              <IconButton
-                id={row.dispatchId}
-                iconname="faEdit"
-                onClick={() => handleUpdate(row.dispatchId)}
-              />
-            </div>
-            <div className="col-md-5">
-              {/* <Button btnText="View More" btnType="btn-primary btn-sm" /> */}
-              <IconButton
-                id={row.dispatchId}
-                iconname="faList"
-                onClick={() => {}}
-              />
-            </div>
-          </div>
+          <>
+            <IconButton
+              id={row.dispatchId}
+              iconname="faEdit"
+              onClick={() => handleUpdate(row.dispatchId)}
+            />
+            <IconButton
+              id={row.dispatchId}
+              iconname="faList"
+              onClick={() => {}}
+            />
+          </>
         );
       },
     },
   ];
 };
 
-export const fabricationTableMetaData = (handleDelete) => {
+export const assignVendorTableMetaData = (handleDelete) => {
   return [
     {
-      
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
           <>
             <IconButton
-              iconName="faTimes"
+              iconname="faTimes"
               className={"table-delete-icon"}
               onClick={() => handleDelete(row.structureId)}
+              size="lg"
+              iconColor="red"
+              noBg
             />
           </>
         );
       },
+      style: { width: "1%" },
     },
     {
       text: "Structure Name",
       dataField: "structureName",
-      
     },
     {
       text: "Vendor Name",
       dataField: "vendorName",
-      
-    },
-    {
-      text: "Fabrication cost",
-      dataField: "fabricationCost",
-      
     },
   ];
 };
@@ -115,8 +91,7 @@ export const fabricationTableMetaData = (handleDelete) => {
 export const outSourcingTableMetaData = (handleDelete) => {
   return [
     {
-      
-      formatter: (cell,row) => {
+      formatter: (cell, row) => {
         return (
           <>
             <IconButton
@@ -131,37 +106,30 @@ export const outSourcingTableMetaData = (handleDelete) => {
     {
       text: "Structure Name",
       dataField: "structureName",
-      
     },
     {
       text: "Vendor Name",
       dataField: "vendorName",
-      
     },
     {
       text: "Monthly Rent",
       dataField: "monthlyRent",
-      
     },
     {
       text: "Contract Years",
       dataField: "contractYears",
-      
     },
     {
       text: "Planned Release Date",
       dataField: "plannedReleaseDate",
-      
     },
     {
       text: "Actual Start Date",
       dataField: "actualStartDate",
-      
     },
     {
       text: "Expected Release Date",
       dataField: "expectedReleaseDate",
-      
     },
   ];
 };

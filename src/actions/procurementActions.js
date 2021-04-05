@@ -19,8 +19,7 @@ export const fbAssignVendor = () => {
   procurement.vendorStructures.map((structure) => {
     let tempObj = {
       subContId: structure.subContId,
-      structureId: structure.structureId,
-      fabricationCost: structure.fabricationCost,
+      projStructureId: structure.projStructureId,
     };
     tempArray.push(tempObj);
   });
@@ -50,26 +49,20 @@ export const osAssignVendor = () => {
   procurement.vendorStructures.map((structure) => {
     let tempObj = {
       subContId: structure.subContId,
-      structureId: structure.structureId,
-      monthlyRent: structure.monthlyRent,
-      contractYears: structure.contractYears,
-      planReleasedate: structure.plannedReleaseDate,
-      expectedReleasedate: structure.expectedReleaseDate,
-      actualStartdate: structure.actualStartDate,
+      projStructureId: structure.projStructureId,
     };
     tempArray.push(tempObj);
   });
   const data = {
     dispreqId: procurement.activeItem.dispatchId,
     dispatchNo: procurement.activeItem.dispatchNo,
-    isDelete: false,
     vendorStructures: tempArray,
   };
 
   return {
     type: POST_ASSIGN_VENDOR,
     payload: axios.post(
-      `${config.BASE_URL}/api/SiteDispatch/fbAssignVendor`,
+      `${config.BASE_URL}/api/SiteDispatch/osAssignVendor`,
       data,
       headers
     ),
