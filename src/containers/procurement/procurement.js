@@ -119,7 +119,7 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
     osAssignVendor() {
-      dispatch(osAssignVendor());
+      dispatch(osAssignVendor()).then(() => dispatch(getSiteDispatchDetails()));
       dispatch({
         type: SET_SHOW_EDIT_MODAL_FLAG,
         payload: false,
@@ -127,7 +127,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: RESET_ASSIGN_VENDOR_MODAL });
     },
     fbAssignVendor() {
-      dispatch(fbAssignVendor());
+      dispatch(fbAssignVendor()).then(() => dispatch(getSiteDispatchDetails()));
       dispatch({
         type: SET_SHOW_EDIT_MODAL_FLAG,
         payload: false,
