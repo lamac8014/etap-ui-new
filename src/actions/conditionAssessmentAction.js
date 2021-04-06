@@ -28,7 +28,7 @@ export const cmpcList = () => {
     return {
         type: SET_CONDITION_ASSESSMENT_DETAILS,
         payload: axios.get(
-            `${config.BASE_URL}/api/SiteDispatch/getSiteDispatchDetails?role_name=${roleName}`
+            `${config.BASE_URL}/api/SiteDispatch/getAvailStructureForReuse?role_name=${roleName}`
         ),
     };
 };

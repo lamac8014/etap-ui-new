@@ -2,8 +2,8 @@ import React from 'react';
 import {
     LIST_CMPC_DETAILS,
     CHANGE_CMPC_MORE_MODAL_STATUS,
-    SET_CMPC_EDIT_MODE
-
+    SET_CMPC_EDIT_MODE,
+    TRANSFORM_SITE_REQUIREMENTS
 } from '../actions/types';
 
 const initialState = {
@@ -34,7 +34,8 @@ export default function (state = initialState, action) {
                 isEditMode: action.payload,
             };
 
-
+            case TRANSFORM_SITE_REQUIREMENTS:
+                return { ...state, transformedSiteReq: action.payload };
         default:
             return state;
     }
