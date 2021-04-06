@@ -4,7 +4,7 @@ import IconButton from "../../common/forms/IconButton";
 import {Input } from 'reactstrap';
 
 
-export const listUsersMetaData = (handleViewMore) => {
+export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
   return [
     {
 
@@ -13,7 +13,10 @@ export const listUsersMetaData = (handleViewMore) => {
           <div key={row.userId}>
             <>
               {/* <Checkbox color="primary" checked={""} id="i-in-fill" outline /> */}
-              <Input type="checkbox" style={{marginLeft:0}} />{''}
+              <Input type="checkbox" style={{marginLeft:0}}
+              //  disabled={row.disabled}
+              //  onChange={() => setSelectedStructures(row)}
+                />{''}
                   {/* Check me out */}
             </>
           </div>

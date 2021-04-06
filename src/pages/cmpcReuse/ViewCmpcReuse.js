@@ -21,7 +21,7 @@ class ViewCmpcReuse extends Component {
     };
   }
   componentDidMount() {
-    //this.props.cmpcList();
+    this.props.cmpcList();
   }
 
   render() {
@@ -60,6 +60,7 @@ class ViewCmpcReuse extends Component {
           {/* {this.props.users.scrapList && ( */}
           <DataTable
             metaData={listUsersMetaData((id) => this.props.handleViewMore(id))}
+            // bodyData={this.props.cmpcReuse.conditionAssessmentDetails}
             bodyData={tableData}
           />
           {/* )} */}
