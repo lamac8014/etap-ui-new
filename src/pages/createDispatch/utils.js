@@ -182,7 +182,8 @@ export const transformdispatchStructure = (dispatchStructure) => {
   let tmpArr = [];
   let availability = "-",
     availDate = "-",
-    disabled = false;
+    disabled = false,
+    checked = false;
   let currentDate = new Date();
   dispatchStructure &&
     dispatchStructure.map((structure) => {
@@ -203,8 +204,58 @@ export const transformdispatchStructure = (dispatchStructure) => {
         availability,
         availDate,
         disabled,
+        checked,
       };
       tmpArr.push(tmpObj);
     });
   return tmpArr;
+};
+
+export const dispatchTableMetaData = (handleDelete) => {
+  return [
+    {
+      formatter: (cell, row) => {
+        return (
+          <IconButton
+            iconname="faTimes"
+            className={"table-delete-icon"}
+            onClick={() => handleDelete(row.structureId)}
+            size="lg"
+            iconColor="red"
+            noBg
+          />
+        );
+      },
+    },
+    { text: "Structure", dataField: "structureName" },
+    { text: "Quantity", dataField: "quantity" },
+    { text: "Service Type", dataField: "serviceType" },
+  ];
+};
+
+export const transformDispatchTableData = (data) => {
+  let tempArr = [];
+  data &&
+    data.map((item) => {
+      let tempObj = {
+        structureName: JSON.parse(
+          localStorage.getItem("currentRequirementInfo")
+        ).structureName,
+        quantity: item.quantity
+          ? item.quantity
+          : data.filter((struct) => {
+              return struct.serviceTypeId === item.serviceTypeId;
+            }).length,
+        serviceType:
+          item.serviceTypeId === 4
+            ? "Reuse"
+            : item.serviceTypeId === 1
+            ? "Fabrication"
+            : "Outsourcing",
+      };
+
+      tempArr.push(tempObj);
+    });
+
+  return tempArr;
 };

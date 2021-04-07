@@ -6,7 +6,7 @@ import {
   CD_SET_ACTIVE_ITEM,
   SET_MODAL_DATA,
   RESET_SELECTION,
-  SET_SERVICE_TYPE_ID,
+  CD_SET_SERVICE_TYPE_ID,
   SET_DISPATCH_ERROR,
   CREATE_DISPATCH,
   TWCC_DISPATCH_MORE_PAGE,
@@ -16,6 +16,10 @@ import {
   SET_STRUCTURES_FOR_REUSE,
   DISABLE_SITE_REQUIREMENTS,
   TRANSFORM_SITE_REQUIREMENTS,
+  SET_SHOW_QUANTITY_MODAL_FLAG,
+  SET_QUANTITY,
+  SET_NOTES,
+  SET_CONFIRMATION_MODAL_FLAG,
 } from "../actions/types";
 
 const initialState = {
@@ -31,16 +35,20 @@ const initialState = {
   activeItem: {},
   currentAttributeData: null,
   serviceTypeId: 0,
+  quantity: "",
+  notes: "",
   siteReqDetails: [],
   transformedSiteReq: [],
   siteReqDetailsById: [],
   selectedItems: [],
   lstStructforDispatch: [],
-  reuseStructures: [],
+  dispatchStructures: [],
   disableReuse: true,
-  disableFabrication: true,
-  disableOutSourcing: true,
+  disableFabrication: false,
+  disableOutSourcing: false,
   showTwccDispatchMoreModal: false,
+  showGetQuantityModal: false,
+  showConfirmationModal: false,
 };
 
 export default (state = initialState, action) => {
@@ -124,7 +132,7 @@ export default (state = initialState, action) => {
     case SET_SELECTED_ITEMS:
       return {
         ...state,
-        selectedItems: action.payload,
+        selectedItems: action.payload ? action.payload : state.selectedItems,
         lstStructforDispatch: action.structureList,
         disableReuse: action.reuseResult,
         disableFabrication: action.fabOutResult,
@@ -146,7 +154,7 @@ export default (state = initialState, action) => {
         showModal: false,
         selectedItems: [],
       };
-    case SET_SERVICE_TYPE_ID:
+    case CD_SET_SERVICE_TYPE_ID:
       return { ...state, serviceTypeId: action.payload };
     case SET_DISPATCH_ERROR:
       return {
@@ -161,12 +169,20 @@ export default (state = initialState, action) => {
     case SET_STRUCTURES_FOR_REUSE:
       return {
         ...state,
-        reuseStructures: action.payload,
+        dispatchStructures: action.payload,
       };
     case DISABLE_SITE_REQUIREMENTS:
       return { ...state, transformedSiteReq: action.payload };
     case TRANSFORM_SITE_REQUIREMENTS:
       return { ...state, transformedSiteReq: action.payload };
+    case SET_SHOW_QUANTITY_MODAL_FLAG:
+      return { ...state, showGetQuantityModal: action.payload };
+    case SET_QUANTITY:
+      return { ...state, quantity: action.payload };
+    case SET_NOTES:
+      return { ...state, notes: action.payload };
+    case SET_CONFIRMATION_MODAL_FLAG:
+      return { ...state, showConfirmationModal: action.payload };
     default:
       return state;
   }

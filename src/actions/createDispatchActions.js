@@ -45,6 +45,7 @@ export const setSelectedItem = (value) => {
   );
   console.log(`Finder: ${JSON.stringify(finder)}`);
   if (finder.length == 0) {
+    value.checked = true;
     selectedData.push(value);
   } else {
     // console.log(`Selected Data: ${JSON.stringify(selectedData)}`);
@@ -55,14 +56,17 @@ export const setSelectedItem = (value) => {
         a.projectName === value.projectName &&
         a.structureCode === value.structureCode
       ) {
+        a.checked = false;
         selectedData.splice(i, 1);
       }
     });
   }
   // let reuse=(selectedData && selectedData[0].availProjectId === null)? true: false;
   // let fabOut=(selectedData && selectedData[0].availProjectId !== null)?false:true;
-  let disableReuse = true;
-  let disableFabOut = true;
+  let disableReuse =
+    selectedData.length > 0 ? createDispatch.disableReuse : true;
+  let disableFabOut =
+    selectedData.length > 0 ? createDispatch.disableFabrication : false;
   // if (selectedData.length > 0 && selectedData[0].disabled) {
   //   console.log(`in Ifloop and ${JSON.stringify(selectedData[0])}`);
   //   disableFabOut = false;
@@ -73,14 +77,15 @@ export const setSelectedItem = (value) => {
   selectedData.map((item, index) => {
     if (item.availability === "YES") {
       disableReuse = false;
-    }
-    if (item.availability === "-") {
-      disableFabOut = false;
-    }
-    if (!disableReuse && !disableFabOut) {
       disableFabOut = true;
-      disableReuse = true;
     }
+    // if (item.availability === "-") {
+    //   disableFabOut = false;
+    // }
+    // if (!disableReuse && !disableFabOut) {
+    //   disableFabOut = true;
+    //   disableReuse = true;
+    // }
   });
 
   return {
@@ -109,37 +114,37 @@ export const setActiveItem = (id) => {
   };
 };
 
-export const createDispatch = () => {
+export const createDispatch = (payloadData) => {
   let createDispatch = store.getState().createDispatch;
   let reuseStructures = createDispatch.reuseStructures;
   let userDetails = getUserDetails();
   let dispStructureDtls = [];
   let data = {};
-  createDispatch.reuseStructures.map((item) => {
-    let tempObj = {
-      siteRequirementId: item.siteRequirementId,
-      toProjectId: item.projectId,
-      projectStructureId: item.projectStructureId,
-      structureId: item.structureId,
-      serviceTypeId: item.serviceTypeId,
-      quantity: 0,
-      transferPrice: " ",
-      status: item.projectCurrentStatus,
-      statusInternal: item.projectStructureStatus,
-      roleId: userDetails.roleId,
-      createdBy: userDetails.id,
-      isDelete: false,
-      notes: " ",
-    };
-    // console.log("inside here dispatch api", tempObj);
-    data = tempObj;
-  });
+  // createDispatch.reuseStructures.map((item) => {
+  //   let tempObj = {
+  //     siteRequirementId: item.siteRequirementId,
+  //     toProjectId: item.projectId,
+  //     projectStructureId: item.projectStructureId,
+  //     structureId: item.structureId,
+  //     serviceTypeId: item.serviceTypeId,
+  //     quantity: 0,
+  //     transferPrice: " ",
+  //     status: item.projectCurrentStatus,
+  //     statusInternal: item.projectStructureStatus,
+  //     roleId: userDetails.roleId,
+  //     createdBy: userDetails.id,
+  //     isDelete: false,
+  //     notes: " ",
+  //   };
+  //   // console.log("inside here dispatch api", tempObj);
+  //   data = tempObj;
+  // });
   // TODO : get rolename from userdetails
   return {
     type: CREATE_DISPATCH,
     payload: axios.post(
-      `${config.BASE_URL}/api/SiteDispatch/CreateDispatchForReuse`,
-      data
+      `${config.BASE_URL}/api/SiteDispatch/CreateDispatch`,
+      payloadData
     ),
   };
 };
