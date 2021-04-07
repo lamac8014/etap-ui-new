@@ -73,7 +73,7 @@ class DataTable extends Component {
     const contents = ({ paginationProps, paginationTableProps }) => (
       <Fragment>
         <ToolkitProvider
-          keyField="id"
+          keyField={this.props.keyField ? this.props.keyField : "id"}
           columns={this.props.metaData}
           data={this.props.bodyData}
           search
@@ -106,7 +106,7 @@ class DataTable extends Component {
               </Row>
               <BootstrapTable
                 {...this.props}
-                keyField="id"
+                keyField={this.props.keyField ? this.props.keyField : "id"}
                 HeaderCell=""
                 data={this.props.bodyData}
                 columns={this.props.metaData}

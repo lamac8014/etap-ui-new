@@ -26,7 +26,7 @@ import { getUserDetails } from "../../utils/auth";
 
 import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
 import store from "../../store";
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onPageLoad(structId, siteReqId) {
       dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
@@ -261,21 +261,25 @@ const mapDispatchToProps = (dispatch) => {
             : 0,
           structureId: item.structureId,
           serviceTypeId: item.serviceTypeId,
-          quantity: item.quantity ? parseInt(item.quantity) : 0,
+          quantity: item.quantity
+            ? item.quantity
+            : createDisp.dispatchStructures.filter((struct) => {
+                return struct.serviceTypeId === item.serviceTypeId;
+              }).length,
           transferPrice: " ",
-          status: item.projectCurrentStatus ? item.projectCurrentStatus : " ",
+          status: item.projectCurrentStatus ? item.projectCurrentStatus : "NEW",
           statusInternal: item.projectStructureStatus
             ? item.projectStructureStatus
-            : " ",
+            : "NEW",
           roleId: userDetails.roleId,
           createdBy: userDetails.id,
           isDelete: false,
           notes: item.notes ? item.notes : " ",
         };
-        // console.log("inside here dispatch api", tempObj);
+        console.log("inside here dispatch api", tempObj);
         dispatch(createDispatch(tempObj));
       });
-      this.transformSiteRequirement();
+      props.history.push("/etrack/dispatch/twccDispatch");
       dispatch({
         type: SET_SELECTED_ITEMS,
         payload: [],
