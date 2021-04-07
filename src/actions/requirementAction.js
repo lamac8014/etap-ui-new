@@ -62,7 +62,7 @@ export const addRequirement = () => {
   const siteRequirementStructures = [];
   requirement.savedRequirementList.map((dt) => {
     siteRequirementStructures.push({
-      quantity: dt.quantity,
+      quantity: parseInt(dt.quantity),
       structId: dt.structId,
       structName: dt.structName,
       planStartdate: dt.planStartdate + "T00:00:00.00Z",

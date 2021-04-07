@@ -189,7 +189,8 @@ const mapDispatchToProps = (dispatch) => {
       let currentProject = requirement.structureProjectList.filter((ele) => {
         return ele.structureId === value.value;
       });
-      console.log(`Current Project is: ${currentProject}`);
+      // console.log(`Current Project is: ${currentProject[0]}`);
+      console.log(currentProject[0]);
       requirement.siteRequirementList[i].structId =
         currentProject[0].structureId;
       requirement.siteRequirementList[i].structureAttributesVal = JSON.parse(
@@ -212,7 +213,7 @@ const mapDispatchToProps = (dispatch) => {
     onQuantityChange(value, i) {
       const requirement = store.getState().requirement;
       const length = requirement.siteRequirementList.length;
-      requirement.siteRequirementList[i].quantity = parseInt(value);
+      requirement.siteRequirementList[i].quantity = value;
       dispatch({
         type: SITE_REQUIRMENT_LIST,
         payload: requirement.siteRequirementList,

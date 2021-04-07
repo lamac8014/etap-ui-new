@@ -96,9 +96,13 @@ const mapDispatchToProps = (dispatch, props) => {
       });
     },
     updateStructure() {
-      dispatch(updateDispatchStructure()).then((response) =>
-        dispatch(getCmpcList())
-      );
+      dispatch(updateDispatchStructure()).then((response) => {
+        dispatch(getCmpcList());
+        dispatch({
+          type: SET_MODIFICATION,
+          payload: false,
+        });
+      });
     },
     resetMessage() {
       dispatch({ type: RESET_MESSAGE });
