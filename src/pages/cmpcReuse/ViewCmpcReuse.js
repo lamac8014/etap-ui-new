@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { listUsersMetaData } from "./utils";
+import { listUsersMetaData, addIdToData } from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -9,6 +9,7 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import Col6 from "../../common/forms/Col6";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
+import CustomAlert from "../../common/forms/customAlert";
 
 class ViewCmpcReuse extends Component {
   constructor(props) {
@@ -25,43 +26,27 @@ class ViewCmpcReuse extends Component {
   }
 
   render() {
-    let tableData = [
-      {
-        dcNo: "",
-        structureName: "Launching Griders",
-        structureCode: "111",
-        numberOfComponents: "",
-        ReqBy: "",
-        Qty: "",
-      },
-      {
-        dcNo: "",
-        structureName: "Launching Griders",
-        structureCode: "123",
-        numberOfComponents: "",
-        ReqBy: "",
-        Qty: "",
-      },
-      {
-        dcNo: "",
-        structureName: "Trestles",
-        structureCode: "124",
-        numberOfComponents: "",
-        ReqBy: "",
-        Qty: "",
-      },
-    ];
     return (
       <PageContainer>
+        {this.props.cmpcReuse.message && (
+          <CustomAlert
+            type={this.props.cmpcReuse.isSuccess ? "success" : "error"}
+            message={this.props.cmpcReuse.message}
+            onClose={this.props.resetMessage}
+          />
+        )}
         <ViewMoreCmpcReuse
           showCmpcViewMoreModel={this.props.cmpcReuse.showCmpcViewMoreModel}
         />
         <SimpleCard>
           {/* {this.props.users.scrapList && ( */}
           <DataTable
-            metaData={listUsersMetaData((id) => this.props.handleViewMore(id))}
+            keyField="dispatchRequirementId"
+            metaData={listUsersMetaData((id) =>
+              this.props.setSelectedStructures(id)
+            )}
             // bodyData={this.props.cmpcReuse.conditionAssessmentDetails}
-            bodyData={tableData}
+            bodyData={this.props.cmpcReuse.cmpcList}
           />
           {/* )} */}
           <SimpleRow className="d-flex justify-content-center">
@@ -72,7 +57,9 @@ class ViewCmpcReuse extends Component {
                 id="1"
                 value="withMod"
                 name="cmpcRadio"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) =>
+                  this.props.handleChangeModification(e.target.value)
+                }
               />
             </Col6>
 
@@ -83,7 +70,9 @@ class ViewCmpcReuse extends Component {
                 id="2"
                 value="withoutMod"
                 name="cmpcRadio"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) =>
+                  this.props.handleChangeModification(e.target.value)
+                }
               />
             </Col6>
 
@@ -94,28 +83,29 @@ class ViewCmpcReuse extends Component {
                 id="3"
                 value="reject"
                 name="cmpcRadio"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) =>
+                  this.props.handleChangeModification(e.target.value)
+                }
               />
             </Col6>
           </SimpleRow>
           <ButtonRow>
-
             <Button
               btnText="Submit"
-              onClick={() => { }}
-              outline={true}
+              onClick={() => {
+                this.props.updateStructure();
+              }}
               type="success"
-
+              gradient
             />
             <Button
               btnText="Discard"
-              onClick={() => { }}
-              outline={true}
+              onClick={() => {}}
               type="danger"
+              gradient
             />
           </ButtonRow>
         </SimpleCard>
-       
       </PageContainer>
     );
   }

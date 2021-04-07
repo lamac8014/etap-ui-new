@@ -102,9 +102,7 @@ class AddWorkBreak extends Component {
               {this.props.wbs.wbsUploadedData && (
                 <CustomDataTable
                   metaData={listWBSMetaData()}
-                  bodyData={this.filteredItems(
-                    transformWBSData(this.props.wbs.wbsUploadedData)
-                  )}
+                  bodyData={transformWBSData(this.props.wbs.wbsUploadedData)}
                 />
               )}
             </FormRow>
@@ -129,13 +127,13 @@ class AddWorkBreak extends Component {
               </Col6>
               <Col6 size="col-md-6 d-flex justify-content-end">
                 <Button
-                  btnText="SAVE"
+                  btnText="Save"
                   onClick={this.props.saveWBSData}
                   type="primary"
                   gradient
                 />
                 <Button
-                  btnText="DISCARD"
+                  btnText="Discard"
                   type="danger"
                   onClick={this.props.resetUsersData}
                   gradient

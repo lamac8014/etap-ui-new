@@ -9,7 +9,7 @@ import {
   SET_SELECTED_ITEMS,
   RESET_MESSAGE,
   SET_MODAL_DATA,
-  SET_SERVICE_TYPE_ID,
+  CD_SET_SERVICE_TYPE_ID,
   SET_DISPATCH_ERROR,
   RESET_SELECTION,
   SET_SHOW_ATTRIBUTE_MODAL,
@@ -17,11 +17,16 @@ import {
   SET_STRUCTURES_FOR_REUSE,
   DISABLE_SITE_REQUIREMENTS,
   TRANSFORM_SITE_REQUIREMENTS,
+  SET_SHOW_QUANTITY_MODAL_FLAG,
+  SET_QUANTITY,
+  SET_NOTES,
+  SET_CONFIRMATION_MODAL_FLAG,
 } from "../../actions/types";
+import { getUserDetails } from "../../utils/auth";
 
 import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
 import store from "../../store";
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     onPageLoad(structId, siteReqId) {
       dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
@@ -53,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
           } else {
             availability = "-";
             availDate = "-";
-            // disabled = true;
+            disabled = true;
           }
           let tmpObj = {
             ...structure,
@@ -100,24 +105,6 @@ const mapDispatchToProps = (dispatch) => {
         payload: false,
       });
     },
-    showConfirmModal(message) {
-      dispatch({
-        type: SET_MODAL_DATA,
-        payload: {
-          flag: true,
-          message,
-        },
-      });
-    },
-    hideConfirmModal() {
-      dispatch({
-        type: SET_MODAL_DATA,
-        payload: {
-          flag: false,
-          message: "",
-        },
-      });
-    },
     setStructuresForReuse(servTypeId) {
       let createDisp = store.getState().createDispatch;
       let selectedItems = JSON.parse(JSON.stringify(createDisp.selectedItems));
@@ -127,7 +114,10 @@ const mapDispatchToProps = (dispatch) => {
       selectedItems.map((item) => {
         item.serviceTypeId = servTypeId;
       });
-      let totalStructures = [...createDisp.reuseStructures, ...selectedItems];
+      let totalStructures = [
+        ...createDisp.dispatchStructures,
+        ...selectedItems,
+      ];
       dispatch({
         type: SET_STRUCTURES_FOR_REUSE,
         payload: totalStructures,
@@ -146,9 +136,44 @@ const mapDispatchToProps = (dispatch) => {
       });
       dispatch({
         type: SET_SELECTED_ITEMS,
-        payload: [],
+        payload: selectedItems,
         reuseResult: true,
-        fabOutResult: true,
+        fabOutResult: false,
+      });
+    },
+    setStructuresForFabOut() {
+      let createDisp = store.getState().createDispatch;
+      let currentReqInfo = JSON.parse(
+        localStorage.getItem("currentRequirementInfo")
+      );
+      let tempObj = {
+        ...currentReqInfo,
+        serviceTypeId: createDisp.serviceTypeId,
+        quantity: createDisp.quantity,
+        notes: createDisp.notes,
+      };
+      let totalStructures = [...createDisp.dispatchStructures, tempObj];
+      dispatch({
+        type: SET_STRUCTURES_FOR_REUSE,
+        payload: totalStructures,
+      });
+      dispatch({
+        type: SET_SHOW_QUANTITY_MODAL_FLAG,
+        payload: false,
+      });
+      dispatch({
+        type: SET_QUANTITY,
+        payload: "",
+      });
+      dispatch({
+        type: SET_NOTES,
+        payload: "",
+      });
+    },
+    setServiceTypeId(value) {
+      dispatch({
+        type: CD_SET_SERVICE_TYPE_ID,
+        payload: value,
       });
     },
     setDispatchError(flag, message) {
@@ -160,8 +185,107 @@ const mapDispatchToProps = (dispatch) => {
         },
       });
     },
+    showGetQuantityModal() {
+      dispatch({
+        type: SET_SHOW_QUANTITY_MODAL_FLAG,
+        payload: true,
+      });
+    },
+    hideGetQuantityModal() {
+      dispatch({
+        type: SET_SHOW_QUANTITY_MODAL_FLAG,
+        payload: false,
+      });
+      dispatch({
+        type: CD_SET_SERVICE_TYPE_ID,
+        payload: "",
+      });
+    },
+    showConfirmationModal() {
+      dispatch({
+        type: SET_CONFIRMATION_MODAL_FLAG,
+        payload: true,
+      });
+    },
+    hideConfirmationModal() {
+      dispatch({
+        type: SET_CONFIRMATION_MODAL_FLAG,
+        payload: false,
+      });
+      let createDispatch = store.getState().createDispatch;
+      let transformedSiteReq = JSON.parse(
+        JSON.stringify(createDispatch.transformedSiteReq)
+      );
+      transformedSiteReq.map((item) => {
+        if (item.availability === "YES") {
+          item.disabled = false;
+        }
+        item.checked = false;
+      });
+      dispatch({
+        type: DISABLE_SITE_REQUIREMENTS,
+        payload: transformedSiteReq,
+      });
+      dispatch({
+        type: SET_STRUCTURES_FOR_REUSE,
+        payload: [],
+      });
+      dispatch({
+        type: SET_SELECTED_ITEMS,
+        reuseResult: false,
+        fabOutResult: true,
+      });
+    },
+
+    handleChangeQuantity(value) {
+      dispatch({
+        type: SET_QUANTITY,
+        payload: value,
+      });
+    },
+    handleChangeNotes(value) {
+      dispatch({
+        type: SET_NOTES,
+        payload: value,
+      });
+    },
     createDispatchApi() {
-      dispatch(createDispatch());
+      let createDisp = store.getState().createDispatch;
+      let userDetails = getUserDetails();
+      createDisp.dispatchStructures.map((item) => {
+        let tempObj = {
+          siteRequirementId: item.siteRequirementId,
+          toProjectId: item.projectId ? item.projectId : item.fromProjectId,
+          projectStructureId: item.projectStructureId
+            ? item.projectStructureId
+            : 0,
+          structureId: item.structureId,
+          serviceTypeId: item.serviceTypeId,
+          quantity: item.quantity
+            ? item.quantity
+            : createDisp.dispatchStructures.filter((struct) => {
+                return struct.serviceTypeId === item.serviceTypeId;
+              }).length,
+          transferPrice: " ",
+          status: item.projectCurrentStatus ? item.projectCurrentStatus : "NEW",
+          statusInternal: item.projectStructureStatus
+            ? item.projectStructureStatus
+            : "NEW",
+          roleId: userDetails.roleId,
+          createdBy: userDetails.id,
+          isDelete: false,
+          notes: item.notes ? item.notes : " ",
+        };
+        console.log("inside here dispatch api", tempObj);
+        dispatch(createDispatch(tempObj));
+      });
+      props.history.push("/etrack/dispatch/twccDispatch");
+      dispatch({
+        type: SET_SELECTED_ITEMS,
+        payload: [],
+        reuseResult: true,
+        fabOutResult: false,
+      });
       dispatch({
         type: RESET_SELECTION,
       });

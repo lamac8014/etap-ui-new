@@ -1,25 +1,23 @@
 import React from "react";
 import Checkbox from "../../common/forms/Checkbox";
 import IconButton from "../../common/forms/IconButton";
-import {Input } from 'reactstrap';
+import { Input } from "reactstrap";
 
-
-export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
+export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
   return [
     {
-
+      text: "",
+      dataField: "",
       formatter: (cell, row) => {
         return (
-          <div key={row.userId}>
-            <>
-              {/* <Checkbox color="primary" checked={""} id="i-in-fill" outline /> */}
-              <Input type="checkbox" style={{marginLeft:0}}
-              //  disabled={row.disabled}
-              //  onChange={() => setSelectedStructures(row)}
-                />{''}
-                  {/* Check me out */}
-            </>
-          </div>
+          <Input
+            key={row.dispatchRequirementId}
+            type="checkbox"
+            style={{ marginLeft: 0 }}
+            //  disabled={row.disabled}
+            checked={row.checked}
+            onChange={() => setSelectedStructures(row)}
+          />
         );
       },
     },
@@ -29,7 +27,7 @@ export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
     },
     {
       text: "Struct. Name",
-      dataField: "structureName",
+      dataField: "structrueName",
     },
     {
       text: "Struct. Code",
@@ -41,11 +39,11 @@ export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
     },
     {
       text: "Required By",
-      dataField: "ReqBy",
+      dataField: "projectName",
     },
     {
       text: "Quantity",
-      dataField: "qty",
+      dataField: "quantity",
     },
     {
       text: "Actions",
@@ -55,11 +53,10 @@ export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
             <>
               <IconButton
                 compKey={row.userId}
-                iconname="faEye"
+                iconname="faList"
                 size="1x"
                 onClick={() => handleViewMore(row.id)}
               />
-
             </>
           </div>
         );
@@ -68,18 +65,14 @@ export const listUsersMetaData = (setSelectedStructures,handleViewMore) => {
   ];
 };
 
-export const transformUsersList = (usersList) => {
+export const addIdToData = (data) => {
   let tmpArr = [];
-  usersList &&
-    usersList.map((user) => {
+  data &&
+    data.map((item, index) => {
       let tmpObj = {
-        id: user.userId,
-        userID: user.userId,
-        firsttext: user.firstName,
-        lasttext: user.lastName,
-        usertext: user.userName,
-        email: user.email,
-        mobileNo: user.mobileNo,
+        id: item[index],
+        checked: false,
+        ...item,
       };
       tmpArr.push(tmpObj);
     });

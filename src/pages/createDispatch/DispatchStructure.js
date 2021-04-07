@@ -20,6 +20,8 @@ import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import SimpleRow from "../../common/forms/SimpleRow";
 import DispatchStructureViewMore from "./DispatchStructureViewMore";
 import ButtonRow from "../../common/forms/ButtonRow";
+import GetQuantityModal from "./GetQuantityModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 class DispatchStructure extends Component {
   constructor(props) {
@@ -132,7 +134,8 @@ class DispatchStructure extends Component {
           <hr />
 
           <DispatchStructureViewMore {...this.props} />
-
+          <GetQuantityModal {...this.props} />
+          <ConfirmationModal {...this.props} />
           {this.props.createDispatch.siteReqDetailsById && (
             <CustomDataTable
               metaData={twccdispatchStructureMetaData(
@@ -152,47 +155,48 @@ class DispatchStructure extends Component {
               btnText="Reuse"
               gradient
               onClick={() => {
-                if (this.props.createDispatch.selectedItems.length === 0) {
-                  this.props.setDispatchError(
-                    true,
-                    "Select atleast one structure"
-                  );
-                } else {
-                  let allowReuse = this.props.createDispatch.selectedItems.filter(
-                    (item) => {
-                      return item.availProjectId === null;
-                    }
-                  );
-                  if (allowReuse.length === 0) {
-                    this.props.showConfirmModal(
-                      `Dispatch structure(s) for Reuse`
-                    );
-                    this.props.setStructuresForReuse(4);
-                  } else {
-                    this.props.setDispatchError(
-                      true,
-                      "Structure(s) not eligible for Reuse"
-                    );
-                  }
-                }
+                // if (this.props.createDispatch.selectedItems.length === 0) {
+                //   this.props.setDispatchError(
+                //     true,
+                //     "Select atleast one structure"
+                //   );
+                // } else {
+                //   let allowReuse = this.props.createDispatch.selectedItems.filter(
+                //     (item) => {
+                //       return item.availProjectId === null;
+                //     }
+                //   );
+                //   if (allowReuse.length === 0) {
+                //     this.props.showConfirmModal(
+                //       `Dispatch structure(s) for Reuse`
+                //     );
+                this.props.setStructuresForReuse(4);
+                // } else {
+                //   this.props.setDispatchError(
+                //     true,
+                //     "Structure(s) not eligible for Reuse"
+                //   );
+                // }
               }}
+              // }}
               disabled={this.props.createDispatch.disableReuse}
             />
             <Button
               btnText="Fabrication"
               gradient
               onClick={() => {
-                if (this.props.createDispatch.selectedItems.length === 0) {
-                  this.props.setDispatchError(
-                    true,
-                    "Select atleast one structure"
-                  );
-                } else {
-                  this.props.showConfirmModal(
-                    `Dispatch structure(s) for Fabrication`
-                  );
-                  this.props.setServiceTypeId(1);
-                }
+                this.props.setServiceTypeId(1);
+                this.props.showGetQuantityModal();
+                // if (this.props.createDispatch.selectedItems.length === 0) {
+                //   this.props.setDispatchError(
+                //     true,
+                //     "Select atleast one structure"
+                //   );
+                // } else {
+                //   this.props.showConfirmModal(
+                //     `Dispatch structure(s) for Fabrication`
+                //   );
+                // }
               }}
               disabled={this.props.createDispatch.disableFabrication}
             />
@@ -200,17 +204,18 @@ class DispatchStructure extends Component {
               btnText="Outsourcing"
               gradient
               onClick={() => {
-                if (this.props.createDispatch.selectedItems.length === 0) {
-                  this.props.setDispatchError(
-                    true,
-                    "Select atleast one structure"
-                  );
-                } else {
-                  this.props.showConfirmModal(
-                    `Dispatch structure(s) for Outsourcing`
-                  );
-                  this.props.setServiceTypeId(2);
-                }
+                // if (this.props.createDispatch.selectedItems.length === 0) {
+                //   this.props.setDispatchError(
+                //     true,
+                //     "Select atleast one structure"
+                //   );
+                // } else {
+                //   this.props.showConfirmModal(
+                //     `Dispatch structure(s) for Outsourcing`
+                //   );
+                this.props.setServiceTypeId(2);
+                // }
+                this.props.showGetQuantityModal();
               }}
               disabled={this.props.createDispatch.disableOutSourcing}
             />
@@ -232,7 +237,7 @@ class DispatchStructure extends Component {
               type="success"
               gradient
               btnText="Dispatch"
-              onClick={this.props.createDispatchApi}
+              onClick={this.props.showConfirmationModal}
             />
           </ButtonRow>
         </SimpleCard>

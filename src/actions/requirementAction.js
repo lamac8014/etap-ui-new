@@ -67,7 +67,7 @@ export const addRequirement = () => {
       structName: dt.structName,
       planStartdate: dt.planStartdate + "T00:00:00.00Z",
       planReleasedate: dt.planReleasedate + "T00:00:00.00Z",
-      requireByDate: dt.planReleasedate + "T00:00:00.00Z",
+      requireByDate: dt.requireByDate + "T00:00:00.00Z",
       requireWbsId: dt.reqWbs.value,
       structureAttributesVal: JSON.stringify(dt.structureAttributesVal),
     });

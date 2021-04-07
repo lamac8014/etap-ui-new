@@ -44,7 +44,6 @@ class Checkbox extends Component {
             id={this.props.id}
             checked={this.props.checked}
             onChange={this.props.onChange}
-            
           />
           <Label for={this.props.id} className="cr">
             {this.props.label}
