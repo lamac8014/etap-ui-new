@@ -172,6 +172,14 @@ const menus = {
                   icon: "feather icon-user-check",
                   url: "/etrack/dispatch/vendor",
                 },
+                {
+                  id: "addComponents",
+                  title: "CMPC Add",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  icon: "feather icon-plus-square",
+                  url: "/etrack/dispatch/cmpcAdd",
+                },
               ],
             },
             {

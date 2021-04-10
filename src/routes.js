@@ -67,6 +67,14 @@ const CmpcModification = lazy(() =>
 const ModifyComponents = lazy(() =>
   import("./containers/cmpcModification/modifyComponents")
 );
+
+const CmpcViewPage = lazy(() =>
+  import("./containers/cmpcAddComponents/cmpcViewPage")
+);
+const CmpcAddComponentsPage = lazy(() =>
+  import("./containers/cmpcAddComponents/cmpcAddComponents")
+);
+
 const RouteList = [
   {
     exact: true,
@@ -241,6 +249,18 @@ const RouteList = [
     path: "/etrack/structure/modifyComponent/:compId",
     name: "Modify Components",
     component: ModifyComponents,
+  },
+  {
+    exact: true,
+    path: "/etrack/dispatch/cmpcAdd",
+    name: "Add Components",
+    component: CmpcViewPage,
+  },
+  {
+    exact: true,
+    path: "/etrack/dispatch/cmpcAdd/:projStructId/:dispStructId",
+    name: "Add Components",
+    component: CmpcAddComponentsPage,
   },
 ];
 export default RouteList;
