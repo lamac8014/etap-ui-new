@@ -3,231 +3,231 @@ import IconButton from "../../common/forms/IconButton";
 import { Link } from "react-router";
 
 export const componentsMetaData = (onChangeValue) => {
-  return [
-    {
-      text: "Component",
-      dataField: "component",
-    },
-    {
-      text: "Component Type",
-      dataField: "compType",
-    },
-    {
-      text: "Component ID",
-      dataField: "compId",
-    },
-    {
-      text: "Component No",
-      dataField: "compNum",
-    },
-    {
-      text: "Group",
-      dataField: "group",
-    },
+	return [
+		{
+			text: "Component",
+			dataField: "component",
+		},
+		{
+			text: "Component Type",
+			dataField: "compType",
+		},
+		{
+			text: "Component ID",
+			dataField: "compId",
+		},
+		{
+			text: "Component No",
+			dataField: "compNum",
+		},
+		{
+			text: "Group",
+			dataField: "group",
+		},
 
-    {
-      text: "Drawing No",
-      dataField: "drawingNum",
-    },
-    {
-      text: "Length",
-      dataField: "length",
-    },
-    {
-      text: "Breadth",
-      dataField: "breadth",
-    },
-    {
-      text: "Height",
-      dataField: "height",
-    },
-    {
-      text: "Thickness",
-      dataField: "thickness",
-    },
-    {
-      text: "Weight",
-      dataField: "weight",
-    },
-    {
-      text: "Type",
-      dataField: "type",
-    },
-    {
-      text: "Tag",
-      dataField: "tag",
-    },
-  ];
+		{
+			text: "Drawing No",
+			dataField: "drawingNum",
+		},
+		{
+			text: "Length",
+			dataField: "length",
+		},
+		{
+			text: "Breadth",
+			dataField: "breadth",
+		},
+		{
+			text: "Height",
+			dataField: "height",
+		},
+		{
+			text: "Thickness",
+			dataField: "thickness",
+		},
+		{
+			text: "Weight",
+			dataField: "weight",
+		},
+		{
+			text: "Type",
+			dataField: "type",
+		},
+		{
+			text: "Tag",
+			dataField: "tag",
+		},
+	];
 };
 
 export const structureMetaData = (handleComponentCheck, handleMore) => {
-  return [
-    {
-      text: "DC No",
-      dataField: "dcNo",
-    },
-    {
-      text: "Structure Name",
-      dataField: "structureName",
-    },
+	return [
+		{
+			text: "DC No",
+			dataField: "dcNumber",
+		},
+		{
+			text: "Structure Name",
+			dataField: "structrueName",
+		},
 
-    {
-      text: "Structure Code",
-      dataField: "structureCode",
-      formatter: (cell, row) => {
-        return (
-          <>
-            {
-              <a
-                href="#"
-                onClick={() => {
-                  handleComponentCheck(row.structureId, row.projectID);
-                }}
-              >
-                {row.structureCode}
-              </a>
-            }
-          </>
-        );
-      },
-    },
+		{
+			text: "Structure Code",
+			dataField: "structureCode",
+			formatter: (cell, row) => {
+				return (
+					<>
+						{
+							<a
+								href="#"
+								onClick={() => {
+									handleComponentCheck(row.structureId, row.projectID);
+								}}
+							>
+								{row.structureCode}
+							</a>
+						}
+					</>
+				);
+			},
+		},
 
-    {
-      text: "No of Comp",
-      dataField: "componentsCount",
-    },
+		{
+			text: "No of Comp",
+			dataField: "componentsCount",
+		},
 
-    {
-      text: "Actions",
-      formatter: (cell, row) => {
-        return <>{<IconButton iconname="faList" onClick={() => {}} />}</>;
-      },
-    },
-  ];
+		{
+			text: "Actions",
+			formatter: (cell, row) => {
+				return <>{<IconButton iconname="faList" onClick={() => {}} />}</>;
+			},
+		},
+	];
 };
 
 export const transformAssignedStructureList = (assignStructureList) => {
-  let tmpArr = [];
-  assignStructureList &&
-    assignStructureList.map((assignStructure, i) => {
-      let tmpObj = {
-        estimatedWeight: assignStructure.estimatedWeight,
-        drawingNo: assignStructure.drawingNo,
-        projectID: assignStructure.projectId,
-        structureName: assignStructure.strcutureName,
-        structureId: assignStructure.structureId,
-        structureCode: assignStructure.structureCode,
-        structureFamily: assignStructure.strcutureTypeName,
-        totalWeight: assignStructure.totalWeight,
-        componentsCount: assignStructure.componentsCount,
-        structureStatus: assignStructure.status,
-        currentStatus: assignStructure.currentStatus,
-        id: i,
-      };
-      tmpArr.push(tmpObj);
-    });
-  return tmpArr;
+	let tmpArr = [];
+	assignStructureList &&
+		assignStructureList.map((assignStructure, i) => {
+			let tmpObj = {
+				estimatedWeight: assignStructure.estimatedWeight,
+				drawingNo: assignStructure.drawingNo,
+				projectID: assignStructure.projectId,
+				structureName: assignStructure.strcutureName,
+				structureId: assignStructure.structureId,
+				structureCode: assignStructure.structureCode,
+				structureFamily: assignStructure.strcutureTypeName,
+				totalWeight: assignStructure.totalWeight,
+				componentsCount: assignStructure.componentsCount,
+				structureStatus: assignStructure.status,
+				currentStatus: assignStructure.currentStatus,
+				id: i,
+			};
+			tmpArr.push(tmpObj);
+		});
+	return tmpArr;
 };
 
 export const componentMetaData = (handleMore) => {
-  return [
-    {
-      text: "Component",
-      dataField: "component",
-    },
-    {
-      text: "Component Type",
-      dataField: "componentType",
-    },
-    {
-      text: "Comp ID",
-      dataField: "componentID",
-    },
-    {
-      text: "Comp No",
-      dataField: "componentNo",
-    },
-    {
-      text: "Group",
-      dataField: "group",
-    },
-    {
-      text: "Dr. No",
-      dataField: "drawingNumber",
-    },
-    {
-      text: "Length",
-      dataField: "length",
-    },
-    {
-      text: "Breadth",
-      dataField: "breadth",
-    },
-    {
-      text: "Height",
-      dataField: "height",
-    },
-    {
-      text: "Thickness",
-      dataField: "thickness",
-    },
-    {
-      text: "Weight",
-      dataField: "weight",
-    },
-    {
-      text: "Type",
-      dataField: "type",
-    },
-    {
-      text: "Tag",
-      dataField: "tag",
-    },
-    {
-      text: "Actions",
-      formatter: (cell, row) => {
-        return (
-          <>
-            {
-              <IconButton
-                compKey={row.userId}
-                iconname="faEdit"
-                size="1x"
-                onClick={() => handleMore(row.id)}
-              />
-            }
-          </>
-        );
-      },
-    },
-  ];
+	return [
+		{
+			text: "Component",
+			dataField: "component",
+		},
+		{
+			text: "Component Type",
+			dataField: "componentType",
+		},
+		{
+			text: "Comp ID",
+			dataField: "componentID",
+		},
+		{
+			text: "Comp No",
+			dataField: "componentNo",
+		},
+		{
+			text: "Group",
+			dataField: "group",
+		},
+		{
+			text: "Dr. No",
+			dataField: "drawingNumber",
+		},
+		{
+			text: "Length",
+			dataField: "length",
+		},
+		{
+			text: "Breadth",
+			dataField: "breadth",
+		},
+		{
+			text: "Height",
+			dataField: "height",
+		},
+		{
+			text: "Thickness",
+			dataField: "thickness",
+		},
+		{
+			text: "Weight",
+			dataField: "weight",
+		},
+		{
+			text: "Type",
+			dataField: "type",
+		},
+		{
+			text: "Tag",
+			dataField: "tag",
+		},
+		{
+			text: "Actions",
+			formatter: (cell, row) => {
+				return (
+					<>
+						{
+							<IconButton
+								compKey={row.userId}
+								iconname="faEdit"
+								size="1x"
+								onClick={() => handleMore(row.id)}
+							/>
+						}
+					</>
+				);
+			},
+		},
+	];
 };
 
 export const transformAssignedComponentList = (assignComponentList) => {
-  console.log("+++++++++");
-  console.log(assignComponentList);
-  console.log("+++++++++");
-  let tmpArr = [];
-  assignComponentList &&
-    assignComponentList.map((assignComponent, i) => {
-      let tmpObj = {
-        componentNo: assignComponent.componentNo,
-        component: assignComponent.componentName,
-        componentID: assignComponent.compId,
-        componentFamily: assignComponent.compTypeName,
-        drawingNumber: assignComponent.drawingNo,
-        oM: assignComponent.compStatus,
-        modNo: assignComponent.compStatus,
-        id: i,
-      };
-      tmpArr.push(tmpObj);
-    });
-  return tmpArr;
+	console.log("+++++++++");
+	console.log(assignComponentList);
+	console.log("+++++++++");
+	let tmpArr = [];
+	assignComponentList &&
+		assignComponentList.map((assignComponent, i) => {
+			let tmpObj = {
+				componentNo: assignComponent.componentNo,
+				component: assignComponent.componentName,
+				componentID: assignComponent.compId,
+				componentFamily: assignComponent.compTypeName,
+				drawingNumber: assignComponent.drawingNo,
+				oM: assignComponent.compStatus,
+				modNo: assignComponent.compStatus,
+				id: i,
+			};
+			tmpArr.push(tmpObj);
+		});
+	return tmpArr;
 };
 
 export const CSVLoaderStyles = {
-  dropArea: {
-    border: "none",
-    padding: 0,
-  },
+	dropArea: {
+		border: "none",
+		padding: 0,
+	},
 };
