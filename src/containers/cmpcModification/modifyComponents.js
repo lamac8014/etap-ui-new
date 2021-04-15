@@ -6,7 +6,10 @@ import {
 	MODIFY_HEIGHT,
 	MODIFY_LENGTH,
 	MODIFY_WEIGHT,
-	MODIFY_WIDTH,
+	MODIFY_THICKNESS,
+	SET_STRUCT_CODE,
+	SET_STRUCT_NAME,
+	SET_CURRENT_COMP,
 } from "../../actions/types";
 import {
 	getComponentData,
@@ -14,16 +17,34 @@ import {
 } from "../../actions/cmpcModificationActions";
 import ModifyComponents from "../../pages/cmpcModification/ModifyComponents";
 import store from "../../store";
+import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		getComponentData(id) {
+		getComponentData(id, name, code) {
 			dispatch(getComponentData(id));
+			dispatch({
+				type: SET_STRUCT_NAME,
+				payload: name,
+			});
+			dispatch({
+				type: SET_STRUCT_CODE,
+				payload: code,
+			});
 		},
 		handleEdit(id) {
+			let cmpc = store.getState().cmpc;
+			let components = JSON.parse(JSON.stringify(cmpc.componentData));
+			let currentComp = components.filter((item) => {
+				return item.dispStructureId === id;
+			});
 			dispatch({
 				type: SHOW_EDIT_COMPONENT_MODAL,
 				payload: true,
+			});
+			dispatch({
+				type: SET_CURRENT_COMP,
+				payload: currentComp[0],
 			});
 		},
 		closeEditComponentModal() {
@@ -57,9 +78,9 @@ const mapDispatchToProps = (dispatch, props) => {
 			let tempModifiedData = JSON.parse(
 				JSON.stringify(store.getState().cmpc.modifiedData)
 			);
-			tempModifiedData.width = value;
+			tempModifiedData.thickness = value;
 			dispatch({
-				type: MODIFY_WIDTH,
+				type: MODIFY_THICKNESS,
 				payload: tempModifiedData,
 			});
 		},
@@ -84,7 +105,22 @@ const mapDispatchToProps = (dispatch, props) => {
 			});
 		},
 		modifyComponents() {
-			dispatch(modifyComponents());
+			dispatch(modifyComponents())
+				.then((response) => {
+					swal("Component updated", {
+						icon: "success",
+					});
+					dispatch({
+						type: SHOW_EDIT_COMPONENT_MODAL,
+						payload: false,
+					});
+					dispatch({ type: RESET_EDIT_COMPONENT_FORM });
+				})
+				.catch((err) => {
+					swal("Update failed", {
+						icon: "error",
+					});
+				});
 		},
 	};
 };

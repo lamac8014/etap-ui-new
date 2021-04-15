@@ -150,8 +150,8 @@ class ViewStructures extends Component {
 
 					{/* {this.props.cmpc.structureData && ( */}
 					<CustomDataTable
-						metaData={structureMetaData(() => {
-							this.props.redirectToComponentPage();
+						metaData={structureMetaData((id, name, code) => {
+							this.props.redirectToComponentPage(id, name, code);
 						})}
 						bodyData={this.props.cmpc.structureData}
 					/>

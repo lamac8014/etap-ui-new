@@ -81,7 +81,11 @@ export const structureMetaData = (handleComponentCheck, handleMore) => {
 							<a
 								href="#"
 								onClick={() => {
-									handleComponentCheck(row.structureId, row.projectID);
+									handleComponentCheck(
+										row.dispStructureId,
+										row.structrueName,
+										row.structureCode
+									);
 								}}
 							>
 								{row.structureCode}
@@ -133,7 +137,7 @@ export const componentMetaData = (handleMore) => {
 	return [
 		{
 			text: "Component",
-			dataField: "component",
+			dataField: "componentName",
 		},
 		{
 			text: "Component Type",
@@ -141,7 +145,7 @@ export const componentMetaData = (handleMore) => {
 		},
 		{
 			text: "Comp ID",
-			dataField: "componentID",
+			dataField: "compId",
 		},
 		{
 			text: "Comp No",
@@ -149,19 +153,19 @@ export const componentMetaData = (handleMore) => {
 		},
 		{
 			text: "Group",
-			dataField: "group",
+			dataField: "isGroup",
 		},
 		{
 			text: "Dr. No",
-			dataField: "drawingNumber",
+			dataField: "drawingNo",
 		},
 		{
 			text: "Length",
-			dataField: "length",
+			dataField: "leng",
 		},
 		{
 			text: "Breadth",
-			dataField: "breadth",
+			dataField: "breath",
 		},
 		{
 			text: "Height",
@@ -177,11 +181,11 @@ export const componentMetaData = (handleMore) => {
 		},
 		{
 			text: "Type",
-			dataField: "type",
+			dataField: "makeType",
 		},
 		{
 			text: "Tag",
-			dataField: "tag",
+			dataField: "isTag",
 		},
 		{
 			text: "Actions",
@@ -193,7 +197,7 @@ export const componentMetaData = (handleMore) => {
 								compKey={row.userId}
 								iconname="faEdit"
 								size="1x"
-								onClick={() => handleMore(row.id)}
+								onClick={() => handleMore(row.dispStructureId)}
 							/>
 						}
 					</>

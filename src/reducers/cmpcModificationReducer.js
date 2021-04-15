@@ -7,8 +7,10 @@ import {
 	MODIFY_HEIGHT,
 	MODIFY_LENGTH,
 	MODIFY_WEIGHT,
-	MODIFY_WIDTH,
+	MODIFY_THICKNESS,
 	SET_CURRENT_COMP,
+	SET_STRUCT_CODE,
+	SET_STRUCT_NAME,
 	MODIFY_COMPONENTS,
 } from "../actions/types";
 
@@ -20,10 +22,12 @@ const initialState = {
 	isSuccess: false,
 	message: "",
 	showEditComponentModal: false,
+	structName: "",
+	structCode: "",
 	modifiedData: {
 		length: "",
 		breadth: "",
-		width: "",
+		thickness: "",
 		height: "",
 		weight: "",
 	},
@@ -91,14 +95,27 @@ const reducerFn = (state = initialState, action) => {
 		case SHOW_EDIT_COMPONENT_MODAL:
 			return { ...state, showEditComponentModal: action.payload };
 		case RESET_EDIT_COMPONENT_FORM:
-			return { ...state, modifiedData: {} };
+			return {
+				...state,
+				modifiedData: {
+					length: "",
+					breadth: "",
+					thickness: "",
+					weight: "",
+					height: "",
+				},
+			};
 		case SET_CURRENT_COMP:
 			return { ...state, currentComp: action.payload };
+		case SET_STRUCT_NAME:
+			return { ...state, structName: action.payload };
+		case SET_STRUCT_CODE:
+			return { ...state, structCode: action.payload };
 		case MODIFY_BREADTH:
 		case MODIFY_HEIGHT:
 		case MODIFY_WEIGHT:
 		case MODIFY_LENGTH:
-		case MODIFY_WIDTH:
+		case MODIFY_THICKNESS:
 			return { ...state, modifiedData: action.payload };
 		default:
 			return state;

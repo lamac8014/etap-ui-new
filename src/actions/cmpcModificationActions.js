@@ -6,6 +6,7 @@ import {
 import store from "../store";
 import axios from "axios";
 import config from "../config";
+import { getUserDetails } from "../utils/auth";
 
 export const getStructureTableData = () => {
 	return {
@@ -20,7 +21,7 @@ export const getComponentData = (id) => {
 	return {
 		type: GET_COMPONENT_DATA,
 		payload: axios.get(
-			`${config.BASE_URL}/api/SiteDispatch/GetStructrueComponent?id=${id}`
+			`${config.BASE_URL}/api/SiteDispatchReuse/GetStructrueComponent?id=${id}`
 		),
 	};
 };
@@ -29,23 +30,23 @@ export const modifyComponents = () => {
 	let cmpc = store.getState().cmpc;
 	let currentComp = cmpc.currentComp;
 	let modifiedData = cmpc.modifiedData;
-	let id = 0;
+	let id = getUserDetails().id;
 	let data = {
 		dispstructCompId: currentComp.dispStructureId,
-		leng: modifiedData.length,
-		breath: modifiedData.breadth,
-		height: modifiedData.height,
-		thickness: modifiedData.thickness,
-		weight: modifiedData.weight,
+		leng: parseInt(modifiedData.length),
+		breath: parseInt(modifiedData.breadth),
+		height: parseInt(modifiedData.height),
+		thickness: parseInt(modifiedData.thickness),
+		weight: parseInt(modifiedData.weight),
 		makeType: currentComp.makeType,
 		addplate: "string",
 		qrCode: "string",
-		createdBy: 0,
+		createdBy: id,
 	};
 	return {
 		type: MODIFY_COMPONENTS,
 		payload: axios.put(
-			`${config.BASE_URL}/api/SiteDispatch/GetStructrueComponent?id=${id}`,
+			`${config.BASE_URL}/api/SiteDispatchReuse/ModifyComponentsForDispatch`,
 			data
 		),
 	};
