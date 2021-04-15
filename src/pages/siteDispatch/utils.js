@@ -1,69 +1,97 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 import Button from "../../common/forms/Button";
+import { Input } from "reactstrap";
 
-export const siteDispatchMetaDatatext =(handleUpdate) => {
-  return [
-    // {
-    //   name: "MR Number",
-    //   selector: "mrNo",
-    //   sortable: false,
-    // },
-    {
-      text: "MR No",
-      dataField: "mrNo",
-    
-    },
-    {
-      text: "DC No",
-      dataField: "dispatchNo",
-    
-    },
-    // {
-    //   name: "Created Date",
-    //   selector: "createdDateTime",
-    //   sortable: false,
-    // },
-    {
-      text: "Structure Code",
-      dataField: "structId",
-    
-    },
-    {
-      text: "Structure Name",
-      dataField: "structureName",
-    
-    },
-    {
-      text: "Qty Assigned",
-      dataField: "createdDateTime",
-    
-    },
-    {
-      text: "Actions",
-      center: true,
-    
-      formatter: (cell,row) => {
-        return (
-          <div className="row">
-            <div className="col-md-5">
-              <IconButton
-                id={row.dispatchId}
-                iconname="faEdit"
-                onClick={() => handleUpdate(row.dispatchId)}
-              />
-            </div>
-            <div className="col-md-5">
-              {/* <Button btnText="View More" btnType="btn-primary btn-sm" /> */}
-              <IconButton
-                id={row.dispatchId}
-                iconname="faList"
-                onClick={() => { }}
-              />
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
+export const siteDispatchMetaDatatext = (redirectToComponentPage) => {
+	return [
+		{
+			text: "DC No",
+			dataField: "dcNumber",
+		},
+		{
+			text: "Structure Name",
+			dataField: "structureName",
+		},
+		{
+			text: "Structure Code",
+			dataField: "structId",
+			formatter: (cell, row) => {
+				return (
+					<a
+						href=""
+						onClick={() => {
+							redirectToComponentPage(
+								row.dispStructureId,
+								row.dispSubContractorId,
+								row.componentCount,
+								row.structureName,
+								row.structureCode
+							);
+						}}
+					>
+						{row.structureCode}
+					</a>
+				);
+			},
+		},
+
+		{
+			text: "Qty Assigned",
+			dataField: "quantity",
+		},
+		{
+			text: "Actions",
+			center: true,
+
+			formatter: (cell, row) => {
+				return (
+					<IconButton
+						id={row.dispatchId}
+						iconname="faList"
+						onClick={() => {}}
+					/>
+				);
+			},
+		},
+	];
+};
+
+export const componentMetaData = (setSelectedComponents) => {
+	return [
+		{
+			formatter: (cell, row) => {
+				return (
+					<>
+						<Input
+							type="checkbox"
+							style={{ marginLeft: 0 }}
+							disabled={row.disabled}
+							checked={row.checked}
+							onChange={() => {
+								setSelectedComponents(row);
+							}}
+						/>
+					</>
+				);
+			},
+			width: "2%",
+		},
+		{
+			text: "Component",
+			dataField: "componentName",
+		},
+		{
+			text: "Component Type",
+			dataField: "componentType",
+		},
+		{
+			text: "Comp. ID",
+			dataField: "componentId",
+		},
+		{
+			text: "Dr. No",
+			dataField: "drawingNumber",
+		},
+	];
 };

@@ -35,6 +35,7 @@ import cmpcReuseReducer from "./cmpcReuseReducer";
 import requirmentApprovalReducer from "./requirmentApprovalReducer";
 import sbgReducer from "./sgbReducer";
 import cmpcReducer from "./cmpcModificationReducer";
+import cmpcAddReducer from "./cmpcAddComponentsReducer";
 
 const rootReducer = combineReducers({
   config,
@@ -73,6 +74,7 @@ const rootReducer = combineReducers({
   requirmentApproval: requirmentApprovalReducer,
   sbg: sbgReducer,
   cmpc: cmpcReducer,
+  cmpcAdd: cmpcAddReducer,
 });
 
 export default rootReducer;
