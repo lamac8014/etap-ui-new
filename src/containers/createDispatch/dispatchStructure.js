@@ -5,6 +5,7 @@ import {
 	setActiveItem,
 	setSelectedItem,
 } from "../../actions/createDispatchActions";
+import { sortstructuresBasedOnAttributes } from "../../pages/createDispatch/utils";
 import {
 	SET_SELECTED_ITEMS,
 	RESET_MESSAGE,
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch, props) => {
 			// });
 			// dispatch(setActiveItem(structId,siteReqId));
 		},
-		transformSiteRequirement(structId, siteReqId) {
+		transformSiteRequirement(structId, siteReqId, sort = false) {
 			let createDisp = store.getState().createDispatch;
 			let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
 			let tmpArr = [];
@@ -62,6 +63,11 @@ const mapDispatchToProps = (dispatch, props) => {
 						availDate = "-";
 						disabled = true;
 					}
+					let parsedAttr = JSON.parse(structure.projectStructureAttributes);
+					structure.projectStructureAttributes = parsedAttr;
+					parsedAttr.map((item) => {
+						structure[item.name] = item.value ? item.value : 0;
+					});
 					let tmpObj = {
 						...structure,
 						availability,
@@ -70,6 +76,12 @@ const mapDispatchToProps = (dispatch, props) => {
 					};
 					tmpArr.push(tmpObj);
 				});
+			tmpArr = sort
+				? sortstructuresBasedOnAttributes(
+						tmpArr,
+						store.getState().createDispatch.chosenAttribute
+				  )
+				: tmpArr;
 			dispatch({
 				type: TRANSFORM_SITE_REQUIREMENTS,
 				payload: tmpArr,
@@ -82,6 +94,15 @@ const mapDispatchToProps = (dispatch, props) => {
 				type: SET_RELEASE_FILTER,
 				payload: obj.value,
 			});
+			let createDisp = store.getState().createDispatch;
+			let siteReqId = createDisp.siteReqId;
+			let structId = createDisp.structId;
+			let releaseFilter = createDisp.releaseFilter;
+			dispatch(getSiteReqDetailsById(structId, siteReqId, releaseFilter)).then(
+				() => {
+					this.transformSiteRequirement(structId, siteReqId);
+				}
+			);
 		},
 		handleChangeAttributeFilter(obj) {
 			dispatch({
@@ -90,6 +111,15 @@ const mapDispatchToProps = (dispatch, props) => {
 					flag: true,
 					chosenAttr: obj.value,
 				},
+			});
+			let createDisp = store.getState().createDispatch;
+			let siteReqId = createDisp.siteReqId;
+			let structId = createDisp.structId;
+			let isAttributeBasedFilter = createDisp.isAttributeBasedFilter;
+			dispatch(
+				getSiteReqDetailsById(structId, siteReqId, null, isAttributeBasedFilter)
+			).then(() => {
+				this.transformSiteRequirement(structId, siteReqId, true);
 			});
 		},
 		setSelectedStructures(value) {
@@ -102,12 +132,12 @@ const mapDispatchToProps = (dispatch, props) => {
 		showAttributeViewMore(structCode) {
 			let currentAttr = store
 				.getState()
-				.createDispatch.siteReqDetailsById.filter((item) => {
+				.createDispatch.transformedSiteReq.filter((item) => {
 					return item.structureCode === structCode;
 				})[0];
 			dispatch({
 				type: SET_CURRENT_ATTRIBUTE_MODAL_DATA,
-				payload: JSON.parse(currentAttr.projectStructureAttributes),
+				payload: currentAttr.projectStructureAttributes,
 			});
 			dispatch({
 				type: SET_SHOW_ATTRIBUTE_MODAL,
