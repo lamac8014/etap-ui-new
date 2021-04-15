@@ -99,14 +99,20 @@ export const setSelectedItem = (value) => {
 export const getSiteReqDetailsById = (
 	structId,
 	siteReqId,
-	releaseFilter,
-	isAttributeBasedFilter
+	releaseFilter = null,
+	isAttributeBasedFilter = false
 ) => {
+	let url = "";
+	if (!releaseFilter && !isAttributeBasedFilter) {
+		url = `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchInnerStructurDetails?structureId=${structId}&siteRequirementId=${siteReqId}`;
+	} else if (releaseFilter && !isAttributeBasedFilter) {
+		url = `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchInnerStructurDetails?structureId=${structId}&siteRequirementId=${siteReqId}&releaseFilter=${releaseFilter}`;
+	} else if (!releaseFilter && isAttributeBasedFilter) {
+		url = `${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchInnerStructurDetails?structureId=${structId}&siteRequirementId=${siteReqId}&isAttributeBasedFilter=${isAttributeBasedFilter}`;
+	}
 	return {
 		type: GET_SITE_REQ_DETAILS_BY_ID,
-		payload: axios.get(
-			`${config.BASE_URL}/api/SiteDispatch/getTWCCDispatchInnerStructurDetails?structureId=${structId}&siteRequirementId=${siteReqId}`
-		),
+		payload: axios.get(url),
 	};
 };
 

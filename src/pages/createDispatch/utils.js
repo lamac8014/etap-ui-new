@@ -273,3 +273,26 @@ export const transformAttributeFilterValues = (stringifiedData) => {
 		});
 	return optionsArr;
 };
+
+export const sortstructuresBasedOnAttributes = (data, sortField) => {
+	// console.log("inside the function...", data, sortField);
+	let first, second;
+	for (let index = 0; index < data.length; index++) {
+		first = data[index];
+		for (let jIndex = index + 1; jIndex < data.length; jIndex++) {
+			second = data[jIndex];
+			// console.log(first[sortField], second[sortField]);
+			if (
+				first[sortField] < second[sortField] ||
+				first[sortField] === undefined ||
+				second[sortField] === undefined
+			) {
+				let temp = data[index];
+				data[index] = data[jIndex];
+				data[jIndex] = temp;
+			}
+		}
+	}
+	// console.log("sortedArray......", data);
+	return data;
+};
