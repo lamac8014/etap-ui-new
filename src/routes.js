@@ -78,6 +78,12 @@ const CmpcViewPage = lazy(() =>
 const CmpcAddComponentsPage = lazy(() =>
 	import("./containers/cmpcAddComponents/cmpcAddComponents")
 );
+const ViewtwccModification = lazy(() =>
+  import("./containers/twccModification/twccModification")
+);
+const ViewtwccVerification = lazy(() =>
+  import("./containers/twccVerification/twccVerification")
+);
 
 const RouteList = [
 	{
@@ -273,6 +279,18 @@ const RouteList = [
 			"/etrack/dispatch/vendorComp/:dispStrId/:subContId/:count/:name/:code",
 		name: "Add Components",
 		component: VendorComponent,
+	},
+	{
+		exact: true,
+		path: "/etrack/dispatch/twccModification",
+		name: "twccModification",
+		component: ViewtwccModification,
+	},
+	{
+		exact: true,
+		path: "/etrack/dispatch/twccVerification",
+		name: "twccVerification",
+		component: ViewtwccVerification,
 	},
 ];
 export default RouteList;

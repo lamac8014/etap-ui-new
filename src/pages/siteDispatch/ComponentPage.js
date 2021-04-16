@@ -61,8 +61,8 @@ class ComponentPage extends Component {
 					<SimpleRow>
 						<DateInput
 							size="col-md-6"
-							labelSize="col-md-2 offset-md-2"
-							fieldSize="col-md-5"
+							labelSize="col-md-3 offset-md-1"
+							fieldSize="col-md-6"
 							label="Dispatch Date"
 							name="dispatchDate"
 							id="dispatchDate"
@@ -81,10 +81,10 @@ class ComponentPage extends Component {
 							/>
 						</div>
 						<InputGroupButton
-							label="Word Order File"
+							label="Work Order File"
 							size="col-md-6"
-							labelSize="col-md-2 offset-md-2"
-							fieldSize="col-md-5"
+							labelSize="col-md-3 offset-md-1"
+							fieldSize="col-md-6"
 							value={
 								this.props.siteDispatch.woFile
 									? this.props.siteDispatch.woFile.name
