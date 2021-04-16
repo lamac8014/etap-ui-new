@@ -7,33 +7,33 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import { transformDropDownData } from "../../utils/dataTransformer";
 
 class SiteRequirementStructure extends Component {
-  componentDidMount() {
-    this.props.requirement.siteRequirementList[
-      this.props.index
-    ].id = this.props.index;
-  }
-  render() {
-    return (
-      <>
-        <FormRow>
-          <Col6 size="col-md-12">
-            <SimpleRow>
-              <SearchableDropDown
-                size="col-sm-5"
-                fieldSize="col-sm-12"
-                placeholder="Structure"
-                name="structureName"
-                selectOptions={transformDropDownData(
-                  this.props.structureList,
-                  "id",
-                  "name"
-                )}
-                onChange={(obj) =>
-                  this.props.handleStructureNameChange(obj, this.props.index)
-                }
-                value={this.props.structureName}
-              />
-              {/* <div class="col-sm-2">
+	componentDidMount() {
+		this.props.requirement.siteRequirementList[
+			this.props.index
+		].id = this.props.index;
+	}
+	render() {
+		return (
+			<>
+				<FormRow>
+					<Col6 size="col-md-12">
+						<SimpleRow>
+							<SearchableDropDown
+								size="col-sm-5"
+								fieldSize="col-sm-12"
+								placeholder="Structure"
+								name="structureName"
+								selectOptions={transformDropDownData(
+									this.props.structureList,
+									"id",
+									"name"
+								)}
+								onChange={(obj) =>
+									this.props.handleStructureNameChange(obj, this.props.index)
+								}
+								value={this.props.structureName}
+							/>
+							{/* <div class="col-sm-2">
           <input
             type="text"
             class="form-control"
@@ -47,7 +47,7 @@ class SiteRequirementStructure extends Component {
             disabled
           />
         </div> */}
-              {/* <div class="col-sm-2">
+							{/* <div class="col-sm-2">
           <input
             type="text"
             class="form-control"
@@ -75,52 +75,52 @@ class SiteRequirementStructure extends Component {
             disabled
           />
         </div> */}
-              <div class="col-sm-4">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Qty"
-                  name={this.props.index}
-                  id={this.props.index}
-                  onChange={(e) =>
-                    this.props.onQuantityChange(e, this.props.index)
-                  }
-                  value={this.props.quantity}
-                />
-              </div>
-              <div class="col-sm-1">
-                <IconButton
-                  iconname="faEdit"
-                  index={this.props.index}
-                  rounded
-                  onClick={() =>
-                    this.props.requirement.siteRequirementList[this.props.index]
-                      .structId
-                      ? this.props.showModalOpen(
-                          this.props.requirement.siteRequirementList[
-                            this.props.index
-                          ].structId
-                        )
-                      : alert("Select a structure first")
-                  }
-                />
-              </div>
-              <div class="col-sm-1">
-                <IconButton
-                  iconname="faTimesCircle"
-                  index={this.props.index}
-                  rounded
-                  onClick={() =>
-                    this.props.onSiteRequirementRemove(this.props.index)
-                  }
-                />
-              </div>
-            </SimpleRow>
-          </Col6>
-        </FormRow>
-      </>
-    );
-  }
+							<div class="col-sm-4">
+								<input
+									type="text"
+									class="form-control"
+									placeholder="Qty"
+									name={this.props.index}
+									id={this.props.index}
+									onChange={(e) =>
+										this.props.onQuantityChange(e, this.props.index)
+									}
+									value={this.props.quantity}
+								/>
+							</div>
+							<div class="col-sm-1">
+								<IconButton
+									iconname="faEdit"
+									index={this.props.index}
+									rounded
+									onClick={() =>
+										this.props.requirement.siteRequirementList[this.props.index]
+											.structId
+											? this.props.showModalOpen(
+													this.props.requirement.siteRequirementList[
+														this.props.index
+													].structId
+											  )
+											: alert("Select a structure first")
+									}
+								/>
+							</div>
+							<div class="col-sm-1">
+								<IconButton
+									iconname="faTimesCircle"
+									index={this.props.index}
+									rounded
+									onClick={() =>
+										this.props.onSiteRequirementRemove(this.props.index)
+									}
+								/>
+							</div>
+						</SimpleRow>
+					</Col6>
+				</FormRow>
+			</>
+		);
+	}
 }
 
 export default SiteRequirementStructure;

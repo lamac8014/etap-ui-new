@@ -11,70 +11,51 @@ import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
 
 class ViewMoretwccVerification extends Component {
-    constructor(props) {
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
-    render() {
-        return (
-            
-            <Modal
-                title={``}
-                showModal={this.props.showScrapViewMoreModel}
-                handleClose={this.props.closeScarpViewMoreModal}
-                size="lg"
-                isShowFooter={false}
-            >
-                {console.log("isLoading", this.props.isLoading)}
-                {this.props.isLoading && <Loader />}
+	render() {
+		return (
+			<Modal
+				title={``}
+				showModal={this.props.showScrapViewMoreModel}
+				handleClose={this.props.closeScarpViewMoreModal}
+				size="lg"
+				isShowFooter={true}
+			>
+				{console.log("isLoading", this.props.isLoading)}
+				{this.props.isLoading && <Loader />}
 
-                <SimpleRow>
-                <DateInput
-							size="col-md-6"
-							labelSize="col-md-3 offset-md-1"
-							fieldSize="col-md-6"
-							label="From Due"
-							name="From due"
-							id="From due"
-							onChange={(e) =>
-								this.props.handleChangeDispatchDate(e.target.value)
-							}
-							// value={this.props.requirement.activeItem.planStartdate}
-						/>
-                         <DateInput
-							size="col-md-6"
-							labelSize="col-md-3 offset-md-1"
-							fieldSize="col-md-6"
-							label="To Due"
-							name="To due"
-							id="To due"
-							onChange={(e) =>
-								this.props.handleChangeDispatchDate(e.target.value)
-							}
-							// value={this.props.requirement.activeItem.planStartdate}
-						/>
-          
-                </SimpleRow>
-                <br/>
-                <ButtonRow position="center">
-                    <Button
-                        btnText="Save"
-                        onClick={this.props.saveAssignStruct}
-                        type="primary"
-                        gradient
-                    />
-                     <Button
-                        btnText="Discard"
-                        onClick={this.props.saveAssignStruct}
-                        type="primary"
-                        gradient
-                    />
-                 </ButtonRow>
-
-
-            </Modal>
-        );
-    }
+				<SimpleRow>
+					<DateInput
+						size="col-md-6"
+						labelSize="col-md-3 offset-md-1"
+						fieldSize="col-md-6"
+						label="From Due"
+						name="From due"
+						id="From due"
+						onChange={(e) =>
+							this.props.handleChangeDispatchDate(e.target.value)
+						}
+						// value={this.props.requirement.activeItem.planStartdate}
+					/>
+					<DateInput
+						size="col-md-6"
+						labelSize="col-md-3 offset-md-1"
+						fieldSize="col-md-6"
+						label="To Due"
+						name="To due"
+						id="To due"
+						onChange={(e) =>
+							this.props.handleChangeDispatchDate(e.target.value)
+						}
+						// value={this.props.requirement.activeItem.planStartdate}
+					/>
+				</SimpleRow>
+			</Modal>
+		);
+	}
 }
 
 export default ViewMoretwccVerification;
