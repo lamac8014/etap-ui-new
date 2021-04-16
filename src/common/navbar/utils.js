@@ -79,6 +79,22 @@ const menus = {
                   // icon: "feather icon-home",
                   url: "/etrack/fabricationMgmt/builtDetails",
                 },
+                {
+                  id: "twcc allot modification",
+                  title: "Twcc Allot Modification",
+                  type: "item",
+                  icon: "feather icon-info",
+                  // icon: "feather icon-home",
+                  url: "/etrack/dispatch/twccModification",
+                },
+                {
+                  id: "twcc physical verification",
+                  title: "Twcc Physical Verification",
+                  type: "item",
+                  icon: "feather icon-info",
+                  // icon: "feather icon-home",
+                  url: "/etrack/dispatch/twccVerification",
+                },
               ],
             },
             {
