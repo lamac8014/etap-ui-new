@@ -25,11 +25,13 @@ const mapDispatchToProps = (dispatch, props) => {
 				let cmpcList = store.getState().cmpcReuse.cmpcList;
 				let tempArr = [];
 				cmpcList.map((item) => {
-					let tempObj = {
-						...item,
-						checked: false,
-					};
-					tempArr.push(tempObj);
+					if (item.isModified === null) {
+						let tempObj = {
+							...item,
+							checked: false,
+						};
+						tempArr.push(tempObj);
+					}
 				});
 				dispatch({
 					type: TRANSFORM_STRUCTURE_DATA,
@@ -67,7 +69,7 @@ const mapDispatchToProps = (dispatch, props) => {
 		},
 		setSelectedStructures(structure) {
 			let cmpc = store.getState().cmpcReuse;
-			let cmpcList = JSON.parse(JSON.stringify(cmpc.cmpcList));
+			let cmpcList = JSON.parse(JSON.stringify(cmpc.transformedCmpcList));
 
 			let selectedItems = JSON.parse(JSON.stringify(cmpc.selectedItems));
 			cmpcList.map((item) => {
@@ -99,7 +101,12 @@ const mapDispatchToProps = (dispatch, props) => {
 		updateStructure() {
 			dispatch(updateDispatchStructure())
 				.then((response) => {
-					dispatch(getCmpcList());
+					dispatch({
+						type: CMPC_SET_SELECTED_ITEMS,
+						payload: [],
+						cmpcList: [],
+					});
+					this.cmpcList();
 					dispatch({
 						type: SET_MODIFICATION,
 						payload: false,

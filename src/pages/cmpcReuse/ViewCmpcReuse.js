@@ -46,7 +46,7 @@ class ViewCmpcReuse extends Component {
 							this.props.setSelectedStructures(id)
 						)}
 						// bodyData={this.props.cmpcReuse.conditionAssessmentDetails}
-						bodyData={this.props.cmpcReuse.cmpcList}
+						bodyData={this.props.cmpcReuse.transformedCmpcList}
 					/>
 					{/* )} */}
 					<SimpleRow className="d-flex justify-content-center">
