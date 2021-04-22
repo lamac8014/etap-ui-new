@@ -3,13 +3,13 @@ import { listUsersMetaData, addIdToData } from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
-import ViewMoreCmpcReuse from "../../containers/cmpcReuse/viewMoreCmpcReuse";
 import Radio from "../../common/forms/Radio";
 import SimpleRow from "../../common/forms/SimpleRow";
 import Col6 from "../../common/forms/Col6";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
 import CustomAlert from "../../common/forms/customAlert";
+import ViewMoreModal from "./ViewMoreModal";
 
 class ViewCmpcReuse extends Component {
 	constructor(props) {
@@ -35,15 +35,18 @@ class ViewCmpcReuse extends Component {
             onClose={this.props.resetMessage}
           />
         )} */}
-				<ViewMoreCmpcReuse
-					showCmpcViewMoreModel={this.props.cmpcReuse.showCmpcViewMoreModel}
-				/>
+				<ViewMoreModal {...this.props} />
 				<SimpleCard>
 					{/* {this.props.users.scrapList && ( */}
 					<DataTable
 						keyField="dispatchRequirementId"
-						metaData={listUsersMetaData((id) =>
-							this.props.setSelectedStructures(id)
+						metaData={listUsersMetaData(
+							(id) => {
+								this.props.setSelectedStructures(id);
+							},
+							(structure) => {
+								this.props.showViewMoreModal(structure);
+							}
 						)}
 						// bodyData={this.props.cmpcReuse.conditionAssessmentDetails}
 						bodyData={this.props.cmpcReuse.transformedCmpcList}

@@ -36,10 +36,14 @@ export const updateDispatchStructure = () => {
 	data.append("drawingNo", cmpcAdd.drNo);
 	data.append("estimatedWeight", cmpcAdd.estWeight);
 	data.append("compCount", parseInt(cmpcAdd.noOfComp));
-	cmpcAdd.files.length > 0 && data.append("uploadDocs", cmpcAdd.files);
-	cmpcAdd.removeFiles.length > 0 &&
-		data.append("remove_docs_filename", cmpcAdd.removeFiles);
+	data.append("uploadDocs", cmpcAdd.files);
+	data.append("remove_docs_filename", cmpcAdd.removeFiles);
 	data.append("dispStructureId", parseInt(cmpcAdd.dispStructId));
+	data.append(
+		"structureAttValue",
+		cmpcAdd.assignedStructureDetails.structureAttributes
+	);
+	data.append("structrueName", cmpcAdd.assignedStructureDetails.structrueName);
 
 	return {
 		type: UPDATE_DISPATCH_STRUCTURE,
@@ -64,7 +68,7 @@ export const updateStructureModify = () => {
 				componentName: item.componentName,
 				drawingNo: item.drawingNo,
 				componentNo: parseInt(item.componentNo),
-				isGroup: item.isGroup,
+				isGroup: item.isGroup === "Yes" ? "true" : "false",
 				leng: item.leng,
 				breath: item.breath,
 				height: item.height,

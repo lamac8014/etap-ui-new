@@ -219,13 +219,14 @@ export const dispatchTableMetaData = (handleDelete) => {
 					<IconButton
 						iconname="faTimes"
 						className={"table-delete-icon"}
-						onClick={() => handleDelete(row.structureId)}
+						onClick={() => handleDelete(row)}
 						size="lg"
 						iconColor="red"
 						noBg
 					/>
 				);
 			},
+			style: { width: "1%" },
 		},
 		{ text: "Structure", dataField: "structureName" },
 		{ text: "Quantity", dataField: "quantity" },

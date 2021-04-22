@@ -339,6 +339,19 @@ const mapDispatchToProps = (dispatch, props) => {
 				type: RESET_SELECTION,
 			});
 		},
+		removeFromDispatchStructures(row) {
+			let createDisp = store.getState().createDispatch;
+			let dispatchStructures = JSON.parse(
+				JSON.stringify(createDisp.dispatchStructures)
+			);
+			let tempArr = dispatchStructures.filter((item) => {
+				return item.structureId === row.structureId;
+			});
+			dispatch({
+				type: SET_STRUCTURES_FOR_REUSE,
+				payload: tempArr,
+			});
+		},
 		resetMessage() {
 			dispatch({
 				type: RESET_MESSAGE,

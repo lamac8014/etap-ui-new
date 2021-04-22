@@ -10,6 +10,7 @@ import {
 	SET_STRUCT_CODE,
 	SET_STRUCT_NAME,
 	SET_CURRENT_COMP,
+	SET_PROJECT_NAME,
 } from "../../actions/types";
 import {
 	getComponentData,
@@ -21,7 +22,7 @@ import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		getComponentData(id, name, code) {
+		getComponentData(id, name, code, proj) {
 			dispatch(getComponentData(id));
 			dispatch({
 				type: SET_STRUCT_NAME,
@@ -30,6 +31,10 @@ const mapDispatchToProps = (dispatch, props) => {
 			dispatch({
 				type: SET_STRUCT_CODE,
 				payload: code,
+			});
+			dispatch({
+				type: SET_PROJECT_NAME,
+				payload: proj,
 			});
 		},
 		handleEdit(id) {

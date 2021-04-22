@@ -79,10 +79,10 @@ const CmpcAddComponentsPage = lazy(() =>
 	import("./containers/cmpcAddComponents/cmpcAddComponents")
 );
 const ViewtwccModification = lazy(() =>
-  import("./containers/twccModification/twccModification")
+	import("./containers/twccModification/twccModification")
 );
 const ViewtwccVerification = lazy(() =>
-  import("./containers/twccVerification/twccVerification")
+	import("./containers/twccVerification/twccVerification")
 );
 
 const RouteList = [
@@ -257,7 +257,7 @@ const RouteList = [
 	{
 		exact: true,
 		path:
-			"/etrack/structure/modifyComponent/:dispStructId/:structName/:structCode",
+			"/etrack/structure/modifyComponent/:dispStructId/:structName/:structCode/:project",
 		name: "Modify Components",
 		component: ModifyComponents,
 	},

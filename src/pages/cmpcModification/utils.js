@@ -84,7 +84,8 @@ export const structureMetaData = (handleComponentCheck, handleMore) => {
 									handleComponentCheck(
 										row.dispStructureId,
 										row.structrueName,
-										row.structureCode
+										row.structureCode,
+										row.projectName
 									);
 								}}
 							>

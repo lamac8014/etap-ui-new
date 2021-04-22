@@ -55,7 +55,7 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 								compKey={row.userId}
 								iconname="faList"
 								size="1x"
-								onClick={() => handleViewMore(row.id)}
+								onClick={() => handleViewMore(row)}
 							/>
 						</>
 					</div>

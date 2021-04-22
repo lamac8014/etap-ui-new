@@ -12,8 +12,9 @@ import {
 	CMPC_SET_SELECTED_ITEMS,
 	RESET_MESSAGE,
 	SET_MODIFICATION,
-	SET_SELECTED_ITEMS,
 	TRANSFORM_STRUCTURE_DATA,
+	REUSE_SET_VIEW_MORE_MODAL,
+	SET_CURRENT_ATTRIBUTES,
 } from "../../actions/types";
 import ViewCmpcReuse from "../../pages/cmpcReuse/ViewCmpcReuse";
 import swal from "sweetalert";
@@ -65,6 +66,27 @@ const mapDispatchToProps = (dispatch, props) => {
 			dispatch({
 				type: SET_MODIFICATION,
 				payload: modifyFlag,
+			});
+		},
+		showViewMoreModal(structure) {
+			let attributes = JSON.parse(structure.structureAttValue);
+			dispatch({
+				type: SET_CURRENT_ATTRIBUTES,
+				payload: attributes,
+			});
+			dispatch({
+				type: REUSE_SET_VIEW_MORE_MODAL,
+				payload: true,
+			});
+		},
+		hideViewMoreModal() {
+			dispatch({
+				type: SET_CURRENT_ATTRIBUTES,
+				payload: [],
+			});
+			dispatch({
+				type: REUSE_SET_VIEW_MORE_MODAL,
+				payload: false,
 			});
 		},
 		setSelectedStructures(structure) {

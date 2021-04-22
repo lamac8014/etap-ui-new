@@ -48,21 +48,21 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		//   selector: "createdDateTime",
 		//   sortable: false,
 		// },
-		{
-			text: "Actions",
-			center: true,
-			formatter: (cell, row) => {
-				return (
-					<>
-						<IconButton
-							id={row.dispatchId}
-							iconname="faList"
-							onClick={() => {}}
-						/>
-					</>
-				);
-			},
-		},
+		// {
+		// 	text: "Actions",
+		// 	center: true,
+		// 	formatter: (cell, row) => {
+		// 		return (
+		// 			<>
+		// 				<IconButton
+		// 					id={row.dispatchId}
+		// 					iconname="faList"
+		// 					onClick={() => {}}
+		// 				/>
+		// 			</>
+		// 		);
+		// 	},
+		// },
 	];
 };
 

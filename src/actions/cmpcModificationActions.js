@@ -40,7 +40,7 @@ export const modifyComponents = () => {
 		weight: parseInt(modifiedData.weight),
 		makeType: currentComp.makeType,
 		addplate: "string",
-		qrCode: "string",
+		qrCode: null,
 		createdBy: id,
 	};
 	return {

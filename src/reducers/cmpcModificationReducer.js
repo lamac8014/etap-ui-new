@@ -12,6 +12,7 @@ import {
 	SET_STRUCT_CODE,
 	SET_STRUCT_NAME,
 	MODIFY_COMPONENTS,
+	SET_PROJECT_NAME,
 } from "../actions/types";
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
 	showEditComponentModal: false,
 	structName: "",
 	structCode: "",
+	projectName: "",
 	modifiedData: {
 		length: "",
 		breadth: "",
@@ -111,6 +113,8 @@ const reducerFn = (state = initialState, action) => {
 			return { ...state, structName: action.payload };
 		case SET_STRUCT_CODE:
 			return { ...state, structCode: action.payload };
+		case SET_PROJECT_NAME:
+			return { ...state, projectName: action.payload };
 		case MODIFY_BREADTH:
 		case MODIFY_HEIGHT:
 		case MODIFY_WEIGHT:
