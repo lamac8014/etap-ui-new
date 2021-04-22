@@ -9,6 +9,8 @@ import {
 	TRANSFORM_STRUCTURE_DATA,
 	CMPC_UPDATE_STRUCTURE,
 	RESET_MESSAGE,
+	SET_CURRENT_ATTRIBUTES,
+	REUSE_SET_VIEW_MORE_MODAL,
 } from "../actions/types";
 
 const initialState = {
@@ -21,7 +23,9 @@ const initialState = {
 	cmpcList: [],
 	transformedCmpcList: [],
 	selectedItems: [],
+	currentAttributes: [],
 	isModification: false,
+	viewMoreModalFlag: false,
 };
 
 export default function (state = initialState, action) {
@@ -90,6 +94,10 @@ export default function (state = initialState, action) {
 			return { ...state, isModification: action.payload };
 		case TRANSFORM_STRUCTURE_DATA:
 			return { ...state, transformedCmpcList: action.payload };
+		case SET_CURRENT_ATTRIBUTES:
+			return { ...state, currentAttributes: action.payload };
+		case REUSE_SET_VIEW_MORE_MODAL:
+			return { ...state, viewMoreModalFlag: action.payload };
 		case RESET_MESSAGE:
 			return { ...state, isError: false, isSuccess: false, message: "" };
 		default:
