@@ -6,6 +6,7 @@ import {
 	TRANSFORM_SITE_REQUIREMENTS,
 	CMPC_SET_SELECTED_ITEMS,
 	SET_MODIFICATION,
+	SET_MODIFICATION_CHECKED,
 	TRANSFORM_STRUCTURE_DATA,
 	CMPC_UPDATE_STRUCTURE,
 	RESET_MESSAGE,
@@ -26,6 +27,11 @@ const initialState = {
 	currentAttributes: [],
 	isModification: false,
 	viewMoreModalFlag: false,
+	isModChecked: {
+		isWithMod: false,
+		isWithoutMod: false,
+		isReject: false
+	}
 };
 
 export default function (state = initialState, action) {
@@ -92,6 +98,8 @@ export default function (state = initialState, action) {
 			};
 		case SET_MODIFICATION:
 			return { ...state, isModification: action.payload };
+		case SET_MODIFICATION_CHECKED:
+			return { ...state, isModChecked: action.payload };
 		case TRANSFORM_STRUCTURE_DATA:
 			return { ...state, transformedCmpcList: action.payload };
 		case SET_CURRENT_ATTRIBUTES:

@@ -12,6 +12,7 @@ import {
 	CMPC_SET_SELECTED_ITEMS,
 	RESET_MESSAGE,
 	SET_MODIFICATION,
+	SET_MODIFICATION_CHECKED,
 	TRANSFORM_STRUCTURE_DATA,
 	REUSE_SET_VIEW_MORE_MODAL,
 	SET_CURRENT_ATTRIBUTES,
@@ -67,6 +68,34 @@ const mapDispatchToProps = (dispatch, props) => {
 				type: SET_MODIFICATION,
 				payload: modifyFlag,
 			});
+			if(value === "withMod") {
+				dispatch({
+					type: SET_MODIFICATION_CHECKED,
+					payload: {
+						isWithMod: true,
+						isWithoutMod: false,
+						isReject: false
+					},
+				});
+			} else if(value === "withoutMod") {
+				dispatch({
+					type: SET_MODIFICATION_CHECKED,
+					payload: {
+						isWithMod: false,
+						isWithoutMod: true,
+						isReject: false
+					},
+				});
+			} else {
+				dispatch({
+					type: SET_MODIFICATION_CHECKED,
+					payload: {
+						isWithMod: false,
+						isWithoutMod: false,
+						isReject: true
+					},
+				});
+			}
 		},
 		showViewMoreModal(structure) {
 			let attributes = JSON.parse(structure.structureAttValue);
@@ -132,6 +161,14 @@ const mapDispatchToProps = (dispatch, props) => {
 					dispatch({
 						type: SET_MODIFICATION,
 						payload: false,
+					});
+					dispatch({
+						type: SET_MODIFICATION_CHECKED,
+						payload: {
+							isWithMod: false,
+							isWithoutMod: false,
+							isReject: false
+						},
 					});
 					swal(`${response.value.data.message}`, {
 						icon: "success",

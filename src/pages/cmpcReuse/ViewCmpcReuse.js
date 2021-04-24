@@ -63,6 +63,7 @@ class ViewCmpcReuse extends Component {
 								onChange={(e) =>
 									this.props.handleChangeModification(e.target.value)
 								}
+								checked={this.props.cmpcReuse.isModChecked.isWithMod}
 							/>
 						</Col6>
 
@@ -76,6 +77,7 @@ class ViewCmpcReuse extends Component {
 								onChange={(e) =>
 									this.props.handleChangeModification(e.target.value)
 								}
+								checked={this.props.cmpcReuse.isModChecked.isWithoutMod}
 							/>
 						</Col6>
 
@@ -89,6 +91,7 @@ class ViewCmpcReuse extends Component {
 								onChange={(e) =>
 									this.props.handleChangeModification(e.target.value)
 								}
+								checked={this.props.cmpcReuse.isModChecked.isReject}
 							/>
 						</Col6>
 					</SimpleRow>
