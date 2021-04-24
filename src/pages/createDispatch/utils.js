@@ -56,7 +56,7 @@ export const twccDispatchMetaData = (
 			formatter: (cell, row) => {
 				return (
 					<a
-						href=""
+						href="#"
 						onClick={() => {
 							redirectToDispatchStructure(
 								row.structureId,

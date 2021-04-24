@@ -19,7 +19,7 @@ export const siteDispatchMetaDatatext = (redirectToComponentPage) => {
 			formatter: (cell, row) => {
 				return (
 					<a
-						href=""
+						href="#"
 						onClick={() => {
 							redirectToComponentPage(
 								row.dispStructureId,
