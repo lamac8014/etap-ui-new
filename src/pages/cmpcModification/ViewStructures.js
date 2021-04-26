@@ -23,9 +23,18 @@ class ViewStructures extends Component {
 
 					{/* {this.props.cmpc.structureData && ( */}
 					<CustomDataTable
-						metaData={structureMetaData((id, name, code, proj) => {
-							this.props.redirectToComponentPage(id, name, code, proj);
-						})}
+						metaData={structureMetaData(
+							(dispStrId, dispReqId, projStrId, name, code, proj) => {
+								this.props.redirectToComponentPage(
+									dispStrId,
+									dispReqId,
+									projStrId,
+									name,
+									code,
+									proj
+								);
+							}
+						)}
 						bodyData={this.props.cmpc.structureData}
 					/>
 					{/* )} */}

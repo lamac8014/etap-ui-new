@@ -11,6 +11,9 @@ import {
 	SET_STRUCT_NAME,
 	SET_CURRENT_COMP,
 	SET_PROJECT_NAME,
+	SET_ADD_PLATE,
+	CMPC_TRANSFORM_COMPONENT_DATA,
+	SET_IDS,
 } from "../../actions/types";
 import {
 	getComponentData,
@@ -22,8 +25,28 @@ import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		getComponentData(id, name, code, proj) {
-			dispatch(getComponentData(id));
+		getComponentData(dispStrId, dispReqId, projStrId, name, code, proj) {
+			dispatch(getComponentData(dispStrId)).then((response) => {
+				const cmpc = store.getState().cmpc;
+				let componentData = JSON.parse(JSON.stringify(cmpc.componentData));
+				componentData.map((item) => {
+					if (item.modStageCompId !== null) {
+						item.leng = item.modStageLength;
+						item.breath = item.modStagebreath;
+						item.height = item.modStageHeight;
+						item.thickness = item.modStageThikness;
+						item.weight = item.modStageWeight;
+					}
+				});
+				dispatch({
+					type: SET_IDS,
+					payload: { projStrId, dispReqId },
+				});
+				dispatch({
+					type: CMPC_TRANSFORM_COMPONENT_DATA,
+					payload: componentData,
+				});
+			});
 			dispatch({
 				type: SET_STRUCT_NAME,
 				payload: name,
@@ -107,6 +130,12 @@ const mapDispatchToProps = (dispatch, props) => {
 			dispatch({
 				type: MODIFY_HEIGHT,
 				payload: tempModifiedData,
+			});
+		},
+		handleChangeAddPlate(value) {
+			dispatch({
+				type: SET_ADD_PLATE,
+				payload: value,
 			});
 		},
 		modifyComponents() {

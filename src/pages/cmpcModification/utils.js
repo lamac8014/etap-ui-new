@@ -80,9 +80,12 @@ export const structureMetaData = (handleComponentCheck, handleMore) => {
 						{
 							<a
 								href="#"
-								onClick={() => {
+								onClick={(e) => {
+									e.preventDefault();
 									handleComponentCheck(
 										row.dispStructureId,
+										row.dispatchRequirementId,
+										row.projectStructureId,
 										row.structrueName,
 										row.structureCode,
 										row.projectName

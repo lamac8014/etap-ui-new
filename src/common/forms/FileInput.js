@@ -5,22 +5,22 @@ class FileInput extends Component {
 	render() {
 		return (
 			<Col6 size={this.props.size}>
-				<div class="form-group">
+				<div className="form-group">
 					<label>{this.props.label}</label>
 
-					<div class="input-group col-xs-12">
+					<div className="input-group col-xs-12">
 						<input
 							ref={this.props.innerRef}
 							type="file"
 							name="img[]"
 							accept={this.props.accept}
-							// class="file-upload-default"
+							// className="file-upload-default"
 							onChange={(e) => this.props.onChange(e)}
-							class="form-control"
+							className="form-control"
 							style={this.props.style}
 						/>
-						{/* <span class="input-group-append">
-              <button class="file-upload-browse btn btn-primary upload-btn-fix" type="button">
+						{/* <span className="input-group-append">
+              <button className="file-upload-browse btn btn-primary upload-btn-fix" type="button">
                 Upload
               </button>
             </span> */}

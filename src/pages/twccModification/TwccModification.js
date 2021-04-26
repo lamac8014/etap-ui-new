@@ -7,47 +7,42 @@ import SimpleCard from "../../common/cards/SimpleCard";
 import ViewMoretwccModification from "../../containers/twccModification/twccModificationmore";
 
 class ViewtwccModification extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeId: null,
-      showDeleteModal: false,
-      filterText: "",
-      resetPaginationToggle: false,
-    };
-  }
-  componentDidMount() {
-    //this.props.scrapList();
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			activeId: null,
+			showDeleteModal: false,
+			filterText: "",
+			resetPaginationToggle: false,
+		};
+	}
+	componentDidMount() {
+		this.props.getTwccModificationData();
+	}
 
+	render() {
+		return (
+			<PageContainer>
+				<SimpleCard>
+					<ViewMoretwccModification
+						showScrapViewMoreModel={this.props.twcc.showEditModal}
+					/>
 
-  render() {
-    let tableData = [{ daNo: "1", structureName: "Launching Griders", structureCode: "111", numberOfComponents: "" },
-    { daNo: "2", structureName: "Launching Griders", structureCode: "123", numberOfComponents: "" },
-    { daNo: "3", structureName: "Trestles", structureCode: "124", numberOfComponents: "" }
-    ]
-    return (
-
-      <PageContainer>
-
-        <SimpleCard>
-          <ViewMoretwccModification showScrapViewMoreModel={this.props.scrap.showScrapViewMoreModel} />
-
-          {/* {this.props.users.scrapList && ( */}
-          <DataTable
-            metaData={listUsersMetaData(
-              // (id) => this.setState({ activeId: id, showDeleteModal: true }),
-              (id) => this.props.handleViewMore(id),
-              (id) => this.props.handleEdit(id)
-            )}
-            bodyData={tableData}
-          />
-          {/* )} */}
-
-        </SimpleCard>
-      </PageContainer>
-    );
-  }
+					{/* {this.props.users.scrapList && ( */}
+					<DataTable
+						metaData={listUsersMetaData(
+							// (id) => this.setState({ activeId: id, showDeleteModal: true }),
+							(id) => {
+								this.props.showEditModal(id);
+							}
+						)}
+						bodyData={this.props.twcc.twccModificationData}
+					/>
+					{/* )} */}
+				</SimpleCard>
+			</PageContainer>
+		);
+	}
 }
 
 export default ViewtwccModification;

@@ -1,36 +1,78 @@
-import { connect } from 'react-redux';
-import store from '../../store';
+import { connect } from "react-redux";
+import store from "../../store";
 
 import {
+	SET_EDIT_MODAL_FLAG,
+	SET_CURRENT_STRUCTURE,
+	SET_IS_SITE,
+	SET_IS_VENDOR,
+	SET_VENDOR_CODE,
+} from "../../actions/types";
+import {
+	getVendorCodeList,
+	updateComponentHistory,
+} from "../../actions/twccModificationAction";
 
-    CHANGE_SCRAP_MORE_MODAL_STATUS,
-    CHANGE_SCRAP_EDIT_MORE_MODAL_STATUS
-} from '../../actions/types';
+import ViewMoretwccModification from "../../pages/twccModification/TwccModificationmore";
 
-import ViewMoretwccModification from '../../pages/twccModification/TwccModificationmore';
-
-const mapDispatchToProps = dispatch => {
-    return {
-        closeScarpViewMoreModal() {
-            dispatch({
-                type: CHANGE_SCRAP_MORE_MODAL_STATUS,
-                payload: false,
-            })
-        },
-        showScrapEditMoreModal() {
-            dispatch({
-                type: CHANGE_SCRAP_EDIT_MORE_MODAL_STATUS,
-                payload: false,
-            })
-        }
-    };
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getVendorCodeList() {
+			dispatch(getVendorCodeList());
+		},
+		closeEditModal() {
+			dispatch({
+				type: SET_EDIT_MODAL_FLAG,
+				payload: false,
+			});
+			dispatch({
+				type: SET_CURRENT_STRUCTURE,
+				payload: {},
+			});
+		},
+		setIsSite(value) {
+			dispatch({
+				type: SET_IS_SITE,
+				payload: !value,
+			});
+			dispatch({
+				type: SET_IS_VENDOR,
+				payload: value,
+			});
+			dispatch({
+				type: SET_VENDOR_CODE,
+				payload: 0,
+			});
+		},
+		setIsVendor(value) {
+			dispatch({
+				type: SET_IS_VENDOR,
+				payload: !value,
+			});
+			dispatch({
+				type: SET_IS_SITE,
+				payload: value,
+			});
+		},
+		setVendorVode(object) {
+			dispatch({
+				type: SET_VENDOR_CODE,
+				payload: object.value,
+			});
+		},
+		updateComponentHistory() {
+			dispatch(updateComponentHistory());
+		},
+	};
 };
 
-const mapStateToProps = state => {
-    const scrap = store.getState().scrap;
-    return {
-        scrap,
-    };
+const mapStateToProps = (state) => {
+	const twcc = store.getState().twcc;
+	return {
+		twcc,
+	};
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ViewMoretwccModification);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ViewMoretwccModification);

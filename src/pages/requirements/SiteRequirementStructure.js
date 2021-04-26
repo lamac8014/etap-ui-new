@@ -33,10 +33,10 @@ class SiteRequirementStructure extends Component {
 								}
 								value={this.props.structureName}
 							/>
-							{/* <div class="col-sm-2">
+							{/* <div className="col-sm-2">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="No.of Comp"
             name={this.props.index}
             id={this.props.index}
@@ -47,10 +47,10 @@ class SiteRequirementStructure extends Component {
             disabled
           />
         </div> */}
-							{/* <div class="col-sm-2">
+							{/* <div className="col-sm-2">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Str Family"
             name={this.props.index}
             id={this.props.index}
@@ -61,10 +61,10 @@ class SiteRequirementStructure extends Component {
             disabled
           />
         </div>
-        <div class="col-sm-2">
+        <div className="col-sm-2">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Dr Number"
             name={this.props.index}
             id={this.props.index}
@@ -75,10 +75,10 @@ class SiteRequirementStructure extends Component {
             disabled
           />
         </div> */}
-							<div class="col-sm-4">
+							<div className="col-sm-4">
 								<input
 									type="text"
-									class="form-control"
+									className="form-control"
 									placeholder="Qty"
 									name={this.props.index}
 									id={this.props.index}
@@ -88,7 +88,7 @@ class SiteRequirementStructure extends Component {
 									value={this.props.quantity}
 								/>
 							</div>
-							<div class="col-sm-1">
+							<div className="col-sm-1">
 								<IconButton
 									iconname="faEdit"
 									index={this.props.index}
@@ -105,7 +105,7 @@ class SiteRequirementStructure extends Component {
 									}
 								/>
 							</div>
-							<div class="col-sm-1">
+							<div className="col-sm-1">
 								<IconButton
 									iconname="faTimesCircle"
 									index={this.props.index}
