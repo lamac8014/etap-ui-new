@@ -241,7 +241,7 @@ class DispatchStructure extends Component {
 					<ButtonRow position="center">
 						{/* <div style={{ textAlign: "center", marginRight: "300px" }}>
                 <button className="btn btn-md btn-primary" onClick={(data) => this.previous(data)}>
-                  <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                  <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
                 </button>
               </div> */}
 

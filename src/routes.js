@@ -257,7 +257,7 @@ const RouteList = [
 	{
 		exact: true,
 		path:
-			"/etrack/structure/modifyComponent/:dispStructId/:structName/:structCode/:project",
+			"/etrack/structure/modifyComponent/:dispStructId/:dispReqId/:projStrId/:structName/:structCode/:project",
 		name: "Modify Components",
 		component: ModifyComponents,
 	},

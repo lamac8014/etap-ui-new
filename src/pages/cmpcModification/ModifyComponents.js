@@ -13,11 +13,15 @@ import FaIcon from "../../common/FaIcon";
 class ViewAssignComponent extends Component {
 	componentDidMount() {
 		let dispStructId = window.atob(this.props.match.params.dispStructId);
+		let dispReqId = window.atob(this.props.match.params.dispReqId);
+		let projStrId = window.atob(this.props.match.params.projStrId);
 		let structName = window.atob(this.props.match.params.structName);
 		let structCode = window.atob(this.props.match.params.structCode);
 		let projectName = window.atob(this.props.match.params.project);
 		this.props.getComponentData(
 			dispStructId,
+			dispReqId,
+			projStrId,
 			structName,
 			structCode,
 			projectName

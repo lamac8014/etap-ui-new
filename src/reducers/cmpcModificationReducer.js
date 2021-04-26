@@ -13,6 +13,9 @@ import {
 	SET_STRUCT_NAME,
 	MODIFY_COMPONENTS,
 	SET_PROJECT_NAME,
+	SET_ADD_PLATE,
+	CMPC_TRANSFORM_COMPONENT_DATA,
+	SET_IDS,
 } from "../actions/types";
 
 const initialState = {
@@ -33,6 +36,9 @@ const initialState = {
 		height: "",
 		weight: "",
 	},
+	addPlate: "",
+	projStrId: 0,
+	dispReqId: 0,
 };
 
 const reducerFn = (state = initialState, action) => {
@@ -76,6 +82,8 @@ const reducerFn = (state = initialState, action) => {
 				isSuccess: true,
 				componentData: action.payload.data,
 			};
+		case CMPC_TRANSFORM_COMPONENT_DATA:
+			return { ...state, componentData: action.payload };
 		case `${MODIFY_COMPONENTS}_PENDING`:
 			return { ...state, isLoading: true };
 		case `${MODIFY_COMPONENTS}_REJECTED`:
@@ -121,6 +129,14 @@ const reducerFn = (state = initialState, action) => {
 		case MODIFY_LENGTH:
 		case MODIFY_THICKNESS:
 			return { ...state, modifiedData: action.payload };
+		case SET_ADD_PLATE:
+			return { ...state, addPlate: action.payload };
+		case SET_IDS:
+			return {
+				...state,
+				projStrId: action.payload.projStrId,
+				dispReqId: action.payload.dispReqId,
+			};
 		default:
 			return state;
 	}

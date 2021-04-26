@@ -31,16 +31,48 @@ export const modifyComponents = () => {
 	let currentComp = cmpc.currentComp;
 	let modifiedData = cmpc.modifiedData;
 	let id = getUserDetails().id;
+	// let data = {
+	// 	id: 0,
+	// 	dispstructCompId: 0,
+	// 	dispatchRequirementId: 0,
+	// 	projectStructureId: 0,
+	// 	dispStructureId: 0,
+	// 	componentId: 0,
+	// 	leng: 0,
+	// 	breath: 0,
+	// 	height: 0,
+	// 	thickness: 0,
+	// 	weight: 0,
+	// 	makeType: "string",
+	// 	addplate: "string",
+	// 	qrCode: "string",
+	// 	createdBy: 0,
+	//   }
 	let data = {
+		id: 0,
 		dispstructCompId: currentComp.dispStructureId,
-		leng: parseInt(modifiedData.length),
-		breath: parseInt(modifiedData.breadth),
-		height: parseInt(modifiedData.height),
-		thickness: parseInt(modifiedData.thickness),
-		weight: parseInt(modifiedData.weight),
+		dispatchRequirementId: parseInt(cmpc.dispReqId),
+		projectStructureId: parseInt(cmpc.projStrId),
+		dispStructureId: currentComp.dispStructureId,
+		componentId: 0,
+		leng: modifiedData.length
+			? parseInt(modifiedData.length)
+			: currentComp.leng,
+		breath: modifiedData.breadth
+			? parseInt(modifiedData.breadth)
+			: currentComp.breath,
+		height: modifiedData.height
+			? parseInt(modifiedData.height)
+			: currentComp.height,
+		thickness: modifiedData.thickness
+			? parseInt(modifiedData.thickness)
+			: currentComp.thickness,
+		weight: modifiedData.weight
+			? parseInt(modifiedData.weight)
+			: currentComp.weight,
 		makeType: currentComp.makeType,
-		addplate: "string",
-		qrCode: null,
+		addplate: cmpc.addplate ? cmpc.addPlate : "0",
+		qrCode: "0",
 		createdBy: id,
 	};
 	return {

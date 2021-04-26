@@ -3,6 +3,7 @@ import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import SimpleRow from "../../common/forms/SimpleRow";
 import Col6 from "../../common/forms/Col6";
+import TextArea from "../../common/forms/TextArea";
 
 class ModifyComponentsModal extends Component {
 	constructor(props) {
@@ -34,7 +35,8 @@ class ModifyComponentsModal extends Component {
 					this.props.cmpc.modifiedData.breadth === "" &&
 					this.props.cmpc.modifiedData.thickness === "" &&
 					this.props.cmpc.modifiedData.weight === "" &&
-					this.props.cmpc.modifiedData.height === ""
+					this.props.cmpc.modifiedData.height === "" &&
+					this.props.cmpc.addPlate === ""
 						? true
 						: false
 				}
@@ -200,6 +202,18 @@ class ModifyComponentsModal extends Component {
 							/>
 						</span>
 					</Col6>
+				</SimpleRow>
+				<SimpleRow>
+					<TextArea
+						labelSize="col-lg-3"
+						size="col-lg-12"
+						label="Add Plate"
+						name="addPlate"
+						id="addPlate"
+						onChange={(e) => this.props.handleChangeAddPlate(e.target.value)}
+						// value={this.props.requirement.remarks}
+						placeholder="Add plate"
+					/>
 				</SimpleRow>
 			</Modal>
 		);
