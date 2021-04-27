@@ -35,6 +35,8 @@ export const USER_EDIT_PAGE = "USER_EDIT_PAGE";
 export const UPDATE_USER = "UPDATE_USER";
 export const JOB_CODE = "JOB_CODE";
 export const EDRC_CODE = "EDRC_CODE";
+export const GET_VENDOR_CODE_LIST = "GET_VENDOR_CODE_LIST";
+export const USERS_SET_VENDOR_CODE = "USERS_SET_VENDOR_CODE";
 //Component
 export const COMPONENT_TYPE = "COMPONENT_TYPE";
 export const ADD_COMPONENT = "ADD_COMPONENT";

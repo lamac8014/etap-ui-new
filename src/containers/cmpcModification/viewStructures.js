@@ -16,13 +16,21 @@ const mapDispatchToProps = (dispatch, props) => {
 		getStructureTableData() {
 			dispatch(getStructureTableData());
 		},
-		redirectToComponentPage(dispStrId, dispReqId, projStrId, name, code, proj) {
+		redirectToComponentPage(
+			dispStrId,
+			dispReqId,
+			projStrId,
+			name,
+			code,
+			proj,
+			dcNumber
+		) {
 			props.history.push(
 				`/etrack/structure/modifyComponent/${window.btoa(
 					dispStrId
 				)}/${window.btoa(dispReqId)}/${window.btoa(projStrId)}/${window.btoa(
 					name
-				)}/${window.btoa(code)}/${window.btoa(proj)}`
+				)}/${window.btoa(code)}/${window.btoa(proj)}/${window.btoa(dcNumber)}`
 			);
 		},
 	};
