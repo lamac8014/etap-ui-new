@@ -9,8 +9,20 @@ export const transformGridList = (gridList) => {
 	return tmpArr;
 };
 
-export const transformDropDownData = (data, valueKey, labelKey) => {
+export const transformDropDownData = (
+	data,
+	valueKey,
+	labelKey,
+	strCode = false
+) => {
 	let tmpArr = [];
+	if (strCode) {
+		let tempObj = {
+			label: "NEW",
+			value: null,
+		};
+		tmpArr.push(tempObj);
+	}
 	data &&
 		data.map((dt) => {
 			if (dt.structureAttributes !== null) {

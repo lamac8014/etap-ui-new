@@ -17,6 +17,8 @@ import {
 	RESET_ASSIGN_COMP_FORM,
 	SET_SHOW_ATTRIBUTE_VALUE_MODAL,
 	SET_CURRENT_ATTRIBUTE,
+	SET_SELECTED_STRUCTURE_CODE,
+	RESET_ASSIGN_STRUCTURE_DETAILS,
 } from "../../actions/types";
 
 import AssignStructure from "../../pages/assignStructure/AssignStructure";
@@ -28,6 +30,8 @@ import {
 	saveAssignStruct,
 	saveAssignComp,
 	resetExistingData,
+	getStructureCodeList,
+	getAssignStructDetailsByProjStrId,
 } from "../../actions/StructCompAction";
 
 const mapDispatchToProps = (dispatch) => {
@@ -58,6 +62,21 @@ const mapDispatchToProps = (dispatch) => {
 				payload: value,
 			});
 			dispatch(getAssignStructDetails());
+			dispatch(getStructureCodeList());
+		},
+		handleChangeStructureCode(value) {
+			dispatch({
+				type: SET_SELECTED_STRUCTURE_CODE,
+				payload: value,
+			});
+			if (value.value) {
+				dispatch(getAssignStructDetailsByProjStrId(value.value));
+			}
+			if (value.value === null) {
+				const scr = store.getState().scr;
+				let attrData = JSON.parse(JSON.stringify(scr.structAttri));
+				dispatch({ type: RESET_ASSIGN_STRUCTURE_DETAILS, payload: attrData });
+			}
 		},
 		handleChangeComponentStructureFamily(value) {
 			dispatch({
@@ -94,15 +113,16 @@ const mapDispatchToProps = (dispatch) => {
 						compTypeName: a.data[start + 1] ? a.data[start + 1] : "",
 						compId: a.data[start + 2] ? a.data[start + 2] : "",
 						componentNo: a.data[start + 3] ? a.data[start + 3] : "",
-						isGroup: a.data[start + 4] ? parseInt(a.data[start + 4]) : "",
+						isGroup: a.data[start + 4] ? a.data[start + 4] : "",
 						drawingNo: a.data[start + 5] ? a.data[start + 5] : "",
 						leng: a.data[start + 6] ? parseFloat(a.data[start + 6]) : "",
 						breath: a.data[start + 7] ? parseFloat(a.data[start + 7]) : "",
 						height: a.data[start + 8] ? parseFloat(a.data[start + 8]) : "",
 						thickness: a.data[start + 9] ? parseFloat(a.data[start + 9]) : "",
 						width: a.data[start + 10] ? parseFloat(a.data[start + 10]) : "",
-						makeType: a.data[start + 11] ? a.data[start + 11] : "",
-						isTag: a.data[start + 12] ? Boolean(a.data[start + 12]) : "",
+						weight: a.data[start + 11] ? parseFloat(a.data[start + 11]) : "",
+						makeType: a.data[start + 12] ? a.data[start + 12] : "",
+						isTag: a.data[start + 13] ? Boolean(a.data[start + 13]) : "",
 					};
 					wbsDataArr.push(wbsSampleObject);
 				}

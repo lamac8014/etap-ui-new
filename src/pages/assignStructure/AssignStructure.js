@@ -89,16 +89,27 @@ class AssignStructure extends Component {
 								}
 								value={this.props.scr.structName}
 							/>
-							<TextInput
+							<SearchableDropDown
 								size="col-md-4"
 								labelSize="col-md-3 pr-0"
 								fieldSize="col-md-9 "
-								label="Struct. Family"
-								name="structureName"
-								id="structureName"
-								value={this.props.scr.strcutureType}
-								// value="LG&Bridge Builders"
-								disabled
+								label="Struct. Code"
+								name="structureCode"
+								id="structureCode"
+								selectOptions={
+									this.props.scr.structName.value
+										? transformDropDownData(
+												this.props.scr.structureCodeList,
+												"id",
+												"name",
+												true
+										  )
+										: []
+								}
+								onChange={(obj) => {
+									this.props.handleChangeStructureCode(obj);
+								}}
+								value={this.props.scr.structureCode}
 							/>
 						</SimpleRow>
 						<SimpleRow>
@@ -126,16 +137,15 @@ class AssignStructure extends Component {
 								// placeholder="Auto Fetch"
 								disabled={true}
 							/>
-
 							<TextInput
 								size="col-md-4"
 								labelSize="col-md-3 pr-0"
 								fieldSize="col-md-9 "
-								label="Struct. Code"
-								name="structureCode"
-								id="structureCode"
-								value={this.props.scr.structureCode}
-								placeholder="Auto Fetch"
+								label="Struct. Family"
+								name="structureName"
+								id="structureName"
+								value={this.props.scr.strcutureType}
+								// value="LG&Bridge Builders"
 								disabled
 							/>
 						</SimpleRow>

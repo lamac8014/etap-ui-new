@@ -19,6 +19,10 @@ import {
 	SET_SHOW_ATTRIBUTE_VALUE_MODAL,
 	RESET_SHOW_ATTRIBUTE_VALUE_MODAL,
 	SET_CURRENT_ATTRIBUTE,
+	GET_STRUCTURE_CODE_LIST,
+	SET_SELECTED_STRUCTURE_CODE,
+	GET_ASSIGN_STRUCTURE_BY_PROJSTR_ID,
+	RESET_ASSIGN_STRUCTURE_DETAILS,
 } from "../actions/types";
 
 import {
@@ -43,11 +47,12 @@ const initialState = {
 	strcutureType: "",
 	ic: "",
 	bu: "",
-	structureCode: "",
 	components: [],
 	currentAttribute: {},
 	fileInput: "",
 	showAttributeValueModal: false,
+	structureCodeList: [],
+	structureCode: {},
 };
 
 export default function (state = initialState, action) {
@@ -68,6 +73,24 @@ export default function (state = initialState, action) {
 				isLoading: false,
 				projList: action.payload.data,
 			};
+		case `${GET_STRUCTURE_CODE_LIST}_PENDING`:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case `${GET_STRUCTURE_CODE_LIST}_REJECTED`:
+			return {
+				...state,
+				isLoading: false,
+			};
+		case `${GET_STRUCTURE_CODE_LIST}_FULFILLED`:
+			return {
+				...state,
+				isLoading: false,
+				structureCodeList: action.payload.data,
+			};
+		case SET_SELECTED_STRUCTURE_CODE:
+			return { ...state, structureCode: action.payload };
 		case PROJECT_NAME:
 			return {
 				...state,
@@ -141,15 +164,52 @@ export default function (state = initialState, action) {
 				isLoading: false,
 				ic: scr.icName,
 				bu: scr.buName,
-				drawingNum: scr.drawingNo,
+				drawingNum: "",
 				strcutureType:
 					scr.strcutureTypeName !== null ? scr.strcutureTypeName : "",
-				estimatedWeight: scr.estimatedWeight ? scr.estimatedWeight : "",
-				structureCode: scr.structureCode !== null ? scr.structureCode : "",
+				estimatedWeight: 0,
+				structureCode: scr.structureCode !== null ? scr.structureCode : {},
 				structAttri: transformAttri(JSON.parse(scr.structureAttributes)),
 				files: transformDocs(scr.structureDocs),
-				uploadData: scr.components,
-				noOfComponents: scr.componentsCount,
+				uploadData: [],
+				noOfComponents: 0,
+			};
+		case `${GET_ASSIGN_STRUCTURE_BY_PROJSTR_ID}_PENDING`:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case `${GET_ASSIGN_STRUCTURE_BY_PROJSTR_ID}_REJECTED`:
+			return {
+				...state,
+				isLoading: false,
+			};
+		case `${GET_ASSIGN_STRUCTURE_BY_PROJSTR_ID}_FULFILLED`:
+			const data = action.payload.data;
+			return {
+				...state,
+				isLoading: false,
+				ic: data.icName,
+				bu: data.buName,
+				drawingNum: data.drawingNo,
+				strcutureType:
+					data.strcutureTypeName !== null ? data.strcutureTypeName : "",
+				estimatedWeight: data.estimatedWeight ? data.estimatedWeight : "",
+				// structureCode: data.structureCode !== null ? data.structureCode : "",
+				structAttri: transformAttri(JSON.parse(data.structureAttributes), true),
+				files: transformDocs(data.structureDocs),
+				uploadData: data.components,
+				noOfComponents: data.componentsCount,
+			};
+		case RESET_ASSIGN_STRUCTURE_DETAILS:
+			return {
+				...state,
+				drawingNum: "",
+				estimatedWeight: 0,
+				structAttri: transformAttri(action.payload),
+				files: [],
+				uploadData: [],
+				noOfComponents: 0,
 			};
 		case ASSIGN_FILE_REMOVE:
 			return {
@@ -165,10 +225,9 @@ export default function (state = initialState, action) {
 				structAttri: [],
 				files: [],
 				strcutureType: "",
-				structureCode: "",
+				structureCode: {},
 				removeFiles: [],
 				fileInput: null,
-				structName: {},
 				ic: "",
 				bu: "",
 				noOfComponents: "",

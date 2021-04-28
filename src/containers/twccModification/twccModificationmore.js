@@ -12,6 +12,7 @@ import {
 	getVendorCodeList,
 	updateComponentHistory,
 } from "../../actions/twccModificationAction";
+import swal from "sweetalert";
 
 import ViewMoretwccModification from "../../pages/twccModification/TwccModificationmore";
 
@@ -61,7 +62,17 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 		updateComponentHistory() {
-			dispatch(updateComponentHistory());
+			dispatch(updateComponentHistory())
+				.then((response) => {
+					swal("Success", {
+						icon: "success",
+					});
+				})
+				.catch((err) => {
+					swal("Failed", {
+						icon: "error",
+					});
+				});
 		},
 	};
 };
