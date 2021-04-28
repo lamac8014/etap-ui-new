@@ -32,7 +32,7 @@ class ViewMoretwccModification extends Component {
 				title={`${this.props.twcc.currentStructure.structrueName} : ${this.props.twcc.currentStructure.dcNumber}`}
 				showModal={this.props.showScrapViewMoreModel}
 				handleClose={this.props.closeEditModal}
-				handleSave={this.props.updateComponenthistory}
+				handleSave={this.props.updateComponentHistory}
 				size="s"
 				isShowFooter={true}
 				disableSave={this.disableSaveButton()}

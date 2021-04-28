@@ -18,13 +18,16 @@ class ViewAssignComponent extends Component {
 		let structName = window.atob(this.props.match.params.structName);
 		let structCode = window.atob(this.props.match.params.structCode);
 		let projectName = window.atob(this.props.match.params.project);
+		let dcNumber = window.atob(this.props.match.params.dcNumber);
+
 		this.props.getComponentData(
 			dispStructId,
 			dispReqId,
 			projStrId,
 			structName,
 			structCode,
-			projectName
+			projectName,
+			dcNumber
 		);
 	}
 

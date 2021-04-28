@@ -50,7 +50,7 @@ export const modifyComponents = () => {
 	//   }
 	let data = {
 		id: 0,
-		dispstructCompId: currentComp.dispStructureId,
+		dispstructCompId: currentComp.dispstructCompId,
 		dispatchRequirementId: parseInt(cmpc.dispReqId),
 		projectStructureId: parseInt(cmpc.projStrId),
 		dispStructureId: currentComp.dispStructureId,
@@ -73,6 +73,7 @@ export const modifyComponents = () => {
 		makeType: currentComp.makeType,
 		addplate: cmpc.addplate ? cmpc.addPlate : "0",
 		qrCode: "0",
+		dcNumber: cmpc.dcNumber,
 		createdBy: id,
 	};
 	return {

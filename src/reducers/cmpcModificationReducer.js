@@ -39,6 +39,7 @@ const initialState = {
 	addPlate: "",
 	projStrId: 0,
 	dispReqId: 0,
+	dcNumber: "",
 };
 
 const reducerFn = (state = initialState, action) => {
@@ -136,6 +137,7 @@ const reducerFn = (state = initialState, action) => {
 				...state,
 				projStrId: action.payload.projStrId,
 				dispReqId: action.payload.dispReqId,
+				dcNumber: action.payload.dcNumber,
 			};
 		default:
 			return state;

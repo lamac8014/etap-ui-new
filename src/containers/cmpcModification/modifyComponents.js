@@ -25,7 +25,15 @@ import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		getComponentData(dispStrId, dispReqId, projStrId, name, code, proj) {
+		getComponentData(
+			dispStrId,
+			dispReqId,
+			projStrId,
+			name,
+			code,
+			proj,
+			dcNumber
+		) {
 			dispatch(getComponentData(dispStrId)).then((response) => {
 				const cmpc = store.getState().cmpc;
 				let componentData = JSON.parse(JSON.stringify(cmpc.componentData));
@@ -40,7 +48,7 @@ const mapDispatchToProps = (dispatch, props) => {
 				});
 				dispatch({
 					type: SET_IDS,
-					payload: { projStrId, dispReqId },
+					payload: { projStrId, dispReqId, dcNumber },
 				});
 				dispatch({
 					type: CMPC_TRANSFORM_COMPONENT_DATA,

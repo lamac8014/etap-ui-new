@@ -58,7 +58,7 @@ export default (state = initialState, action) => {
 				isLoading: false,
 				isError: true,
 				isSuccess: false,
-				message: action.payload.data.message,
+				message: action.payload.response.data.message,
 			};
 		case `${GET_ASSIGNED_STRUCTURE_DETAILS}_FULFILLED`:
 			return {
@@ -81,7 +81,7 @@ export default (state = initialState, action) => {
 				isLoading: false,
 				isError: true,
 				isSuccess: false,
-				message: action.payload.data.message,
+				message: action.payload.response.data.message,
 			};
 		case `${UPDATE_STRUCTURE_MODIFY}_FULFILLED`:
 			return {
@@ -99,7 +99,7 @@ export default (state = initialState, action) => {
 				isLoading: false,
 				isError: true,
 				isSuccess: false,
-				message: action.payload.data.message,
+				message: action.payload.response.data.message,
 			};
 		case `${UPDATE_DISPATCH_STRUCTURE}_FULFILLED`:
 			return {
