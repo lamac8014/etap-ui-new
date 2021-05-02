@@ -41,7 +41,10 @@ class DispatchStructure extends Component {
 	componentDidMount = () => {
 		let siteReqid = window.atob(this.props.match.params.siteReqId);
 		let structid = window.atob(this.props.match.params.structId);
-		this.props.onPageLoad(structid, siteReqid);
+		let currentReqInfo = JSON.parse(
+			localStorage.getItem("currentRequirementInfo")
+		);
+		this.props.onPageLoad(structid, siteReqid, currentReqInfo);
 	};
 
 	// componentWillUnmount() {
@@ -49,9 +52,6 @@ class DispatchStructure extends Component {
 	// }
 
 	render() {
-		const currentReqInfo = JSON.parse(
-			localStorage.getItem("currentRequirementInfo")
-		);
 		return (
 			<PageContainer>
 				<SimpleCard>
@@ -90,7 +90,7 @@ class DispatchStructure extends Component {
 									label="MR No"
 									fieldSize="col-md-8"
 									labelSize="col-sm-4"
-									value={currentReqInfo.mrNumber}
+									value={this.props.createDispatch.currentReqInfo.mrNumber}
 									disabled
 								/>
 								<TextInput
@@ -98,7 +98,7 @@ class DispatchStructure extends Component {
 									label="Structure Name"
 									fieldSize="col-md-8"
 									labelSize="col-sm-4"
-									value={currentReqInfo.structureName}
+									value={this.props.createDispatch.currentReqInfo.structureName}
 									disabled
 								/>
 								<TextInput
@@ -106,7 +106,7 @@ class DispatchStructure extends Component {
 									label="Req Site"
 									fieldSize="col-md-8"
 									labelSize="col-sm-4"
-									value={currentReqInfo.requestBy}
+									value={this.props.createDispatch.currentReqInfo.requestBy}
 									disabled
 								/>
 							</SimpleRow>
@@ -116,7 +116,7 @@ class DispatchStructure extends Component {
 									label="Quantity"
 									fieldSize="col-md-8"
 									labelSize="col-sm-4"
-									value={currentReqInfo.quantity}
+									value={this.props.createDispatch.currentReqInfo.quantity}
 									disabled
 								/>
 								<SearchableDropDown
@@ -140,9 +140,14 @@ class DispatchStructure extends Component {
 									onChange={(obj) =>
 										this.props.handleChangeAttributeFilter(obj)
 									}
-									selectOptions={transformAttributeFilterValues(
-										currentReqInfo.structureAttributes
-									)}
+									selectOptions={
+										this.props.createDispatch.currentReqInfo.structureAttributes
+											? transformAttributeFilterValues(
+													this.props.createDispatch.currentReqInfo
+														.structureAttributes
+											  )
+											: []
+									}
 									// value={this.props.createDispatch.activeItem.projectName}
 								/>
 							</SimpleRow>

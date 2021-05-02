@@ -93,7 +93,7 @@ const reducerFn = (state = initialState, action) => {
 				isLoading: false,
 				isError: true,
 				isSuccess: false,
-				message: action.payload.data.message,
+				message: action.payload.response.data.message,
 			};
 		case `${MODIFY_COMPONENTS}_FULFILLED`:
 			return {

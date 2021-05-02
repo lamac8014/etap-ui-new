@@ -4,6 +4,7 @@ import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import TextArea from "../../common/forms/TextArea";
+import Col6 from "../../common/forms/Col6";
 
 class GetQuantityModal extends Component {
 	constructor(props) {
@@ -48,6 +49,15 @@ class GetQuantityModal extends Component {
 						placeholder="Remarks"
 					/>
 				</SimpleRow>
+				{this.props.createDispatch.quantityError && (
+					<SimpleRow>
+						<Col6 size="col-md-12">
+							<p className="text-danger text-center my-0">
+								*{this.props.createDispatch.quantityErrorMsg}*
+							</p>
+						</Col6>
+					</SimpleRow>
+				)}
 			</Modal>
 		);
 	}

@@ -25,6 +25,7 @@ import {
 } from "../../actions/types";
 
 import Procurement from "../../pages/procurement/Procurement";
+import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -117,18 +118,36 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 		osAssignVendor() {
-			dispatch(osAssignVendor()).then(() => dispatch(getSiteDispatchDetails()));
+			dispatch(osAssignVendor()).then((response) => {
+				swal(response.data.message, {
+					icon: "success",
+				});
+				dispatch(getSiteDispatchDetails());
+			});
 			dispatch({
 				type: SET_SHOW_EDIT_MODAL_FLAG,
 				payload: false,
+			}).catch((err) => {
+				swal("Vendor assign failed", {
+					icon: "error",
+				});
 			});
 			dispatch({ type: RESET_ASSIGN_VENDOR_MODAL });
 		},
 		fbAssignVendor() {
-			dispatch(fbAssignVendor()).then(() => dispatch(getSiteDispatchDetails()));
+			dispatch(fbAssignVendor()).then((response) => {
+				swal(response.data.message, {
+					icon: "success",
+				});
+				dispatch(getSiteDispatchDetails());
+			});
 			dispatch({
 				type: SET_SHOW_EDIT_MODAL_FLAG,
 				payload: false,
+			}).catch((err) => {
+				swal("Vendor assign failed", {
+					icon: "error",
+				});
 			});
 			dispatch({ type: RESET_ASSIGN_VENDOR_MODAL });
 		},

@@ -125,12 +125,35 @@ export const setActiveItem = (id) => {
 	};
 };
 
-export const createDispatch = (payloadData) => {
-	let createDispatch = store.getState().createDispatch;
-	let reuseStructures = createDispatch.reuseStructures;
+export const createDispatch = () => {
+	let createDisp = store.getState().createDispatch;
 	let userDetails = getUserDetails();
-	let dispStructureDtls = [];
-	let data = {};
+	let postDataArr = [];
+	createDisp.dispatchStructures.map((item) => {
+		let tempObj = {
+			siteRequirementId: item.siteRequirementId,
+			toProjectId: item.projectId ? item.projectId : item.fromProjectId,
+			projectStructureId: item.projectStructureId ? item.projectStructureId : 0,
+			structureId: item.structureId,
+			serviceTypeId: item.serviceTypeId,
+			quantity: item.quantity
+				? parseInt(item.quantity)
+				: createDisp.dispatchStructures.filter((struct) => {
+						return struct.serviceTypeId === item.serviceTypeId;
+				  }).length,
+			transferPrice: " ",
+			status: item.projectCurrentStatus ? item.projectCurrentStatus : "NEW",
+			statusInternal: item.projectStructureStatus
+				? item.projectStructureStatus
+				: "NEW",
+			roleId: userDetails.roleId,
+			createdBy: userDetails.id,
+			isDelete: false,
+			notes: item.notes ? item.notes : " ",
+		};
+		console.log("inside here dispatch api", tempObj);
+		postDataArr.push(tempObj);
+	});
 	// createDispatch.reuseStructures.map((item) => {
 	//   let tempObj = {
 	//     siteRequirementId: item.siteRequirementId,
@@ -150,12 +173,11 @@ export const createDispatch = (payloadData) => {
 	//   // console.log("inside here dispatch api", tempObj);
 	//   data = tempObj;
 	// });
-	// TODO : get rolename from userdetails
 	return {
 		type: CREATE_DISPATCH,
 		payload: axios.post(
 			`${config.BASE_URL}/api/SiteDispatch/CreateDispatch`,
-			payloadData
+			postDataArr
 		),
 	};
 };

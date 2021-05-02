@@ -304,12 +304,12 @@ class CmpcAddComponents extends Component {
 										}}
 										type="primary"
 										gradient
-										// disabled={
-										//   this.props.scr.projName.value &&
-										//   this.props.scr.structName.value
-										//     ? false
-										//     : true
-										// }
+										disabled={
+											this.props.cmpcAdd.assignedStructureDetails
+												.componentsCount !== 0
+												? false
+												: true
+										}
 									/>
 								</ButtonRow>
 							</Col6>

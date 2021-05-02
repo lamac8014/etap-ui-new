@@ -2,6 +2,10 @@ import { lazy } from "react";
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
+const SurplusDeclaration = lazy(() =>
+	import("./containers/surplus/surplusDeclaration")
+);
+
 const ViewStructure = lazy(() =>
 	import("./containers/assignStructure/viewAssignStructure")
 );
@@ -100,9 +104,15 @@ const RouteList = [
 	},
 	{
 		exact: true,
-		path: "/etrack/lifeCycle/surplusDeclaration",
+		path: "/etrack/lifeCycle/surplus",
 		name: "Surplus",
 		component: ViewSurplus,
+	},
+	{
+		exact: true,
+		path: "/etrack/lifeCycle/surplusDeclaration",
+		name: "Surplus Decl",
+		component: SurplusDeclaration,
 	},
 	{
 		exact: true,

@@ -62,6 +62,9 @@ const mapDispatchToProps = (dispatch, props) => {
 			});
 		},
 		handleOnDrop(data) {
+			let cmpcAdd = store.getState().cmpcAdd;
+			let components = cmpcAdd.assignedStructureDetails.components;
+			let componentCount = cmpcAdd.assignedStructureDetails.componentsCount;
 			let uploadData = [];
 			data.forEach((a, i) => {
 				console.log("index", i, a);
@@ -86,10 +89,16 @@ const mapDispatchToProps = (dispatch, props) => {
 					uploadData.push(wbsSampleObject);
 				}
 			});
-			dispatch({
-				type: CMPC_SET_UPLOAD_DATA,
-				payload: uploadData,
-			});
+			if (components.length + uploadData.length <= parseInt(componentCount)) {
+				dispatch({
+					type: CMPC_SET_UPLOAD_DATA,
+					payload: uploadData,
+				});
+			} else {
+				swal("Uploaded components exceed total count", {
+					icon: "error",
+				});
+			}
 		},
 		removeFiles(file, index) {
 			const cmpcAdd = store.getState().cmpcAdd;

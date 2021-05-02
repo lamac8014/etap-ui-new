@@ -12,11 +12,13 @@ import {
 	SET_SELECTED_COMPONENTS,
 	RESET_UPDATE_SITE_DISPATCH_MODAL,
 	TRANSFORM_COMPONENT_DATA,
+	SET_SHOW_VIEW_MORE,
 } from "../actions/types";
 const initialState = {
 	isLoading: false,
 	isError: false,
 	isSuccess: false,
+	showViewMore: false,
 	message: "",
 	siteDispatchDetails: [],
 	componentData: [],
@@ -29,6 +31,7 @@ const initialState = {
 	compCount: "",
 	dispatchDate: "",
 	woFile: null,
+	currentStructure: {},
 };
 
 export default (state = initialState, action) => {
@@ -123,6 +126,12 @@ export default (state = initialState, action) => {
 				uploadedFile: null,
 				activeItem: {},
 				structureListCode: [],
+			};
+		case SET_SHOW_VIEW_MORE:
+			return {
+				...state,
+				showViewMore: action.payload.viewMoreFlag,
+				currentStructure: action.payload.currentStr,
 			};
 		default:
 			return state;

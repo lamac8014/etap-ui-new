@@ -1,53 +1,75 @@
 import React, { Component } from "react";
 
-import { listUsersMetaData, transformUsersList } from "./utils";
+import { surplusApproveMetaData, transformUsersList } from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
-import ViewSurplusMore from "../../containers/surplus/viewMoreSurplus";
+import ConfirmModal from "../../common/forms/ConfirmModal";
 
 class ViewSurplus extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeId: null,
-      showDeleteModal: false,
-      filterText: "",
-      resetPaginationToggle: false,
-    };
-  }
-  componentDidMount() {
-    //this.props.surplusList();
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			activeId: null,
+			showDeleteModal: false,
+			showApproveModal: false,
+			filterText: "",
+			resetPaginationToggle: false,
+		};
+	}
+	componentDidMount() {
+		this.props.surplusList();
+	}
 
-
-  render() {
-    let tableData = [{ structureName: "Launching Griders", structureCode: "001", numberOfComponents: "" },
-    { structureName: "Trestles", structureCode: "002", numberOfComponents: "" },
-    { structureName: "Launching Griders", structureCode: "003", numberOfComponents: "" }
-    ]
-    return (
-      <PageContainer>
-        <ViewSurplusMore showSurplusViewMoreModel={this.props.surplus.showSurplusViewMoreModel} />
-
-        <SimpleCard>
-
-          {/* {this.props.users.usersList && ( */}
-          <DataTable
-            metaData={listUsersMetaData(
-              // (id) => this.setState({ activeId: id, showDeleteModal: true }),
-              (id) => this.props.handleViewMore(id),
-
-              (id) => this.props.handleEdit(id)
-            )}
-            bodyData={tableData}
-          />
-          {/* )} */}
-
-        </SimpleCard>
-      </PageContainer>
-    );
-  }
+	render() {
+		return (
+			<PageContainer>
+				<SimpleCard>
+					{/* {this.props.users.usersList && ( */}
+					{this.state.showApproveModal && (
+						<ConfirmModal
+							closeAction={() =>
+								this.setState({ showApproveModal: false, activeId: null })
+							}
+							title="Approve Surplus"
+							deleteAction={() => {
+								this.props.handleApprove(this.state.activeId);
+								this.setState({ showApproveModal: false, activeId: null });
+							}}
+							frontText="Are you sure?"
+							cancelText="Canceled!"
+						/>
+					)}
+					{/* )} */}
+					{/* {this.props.requirement.requirementsList && ( */}
+					{this.state.showDeleteModal && (
+						<ConfirmModal
+							closeAction={() =>
+								this.setState({ showDeleteModal: false, activeId: null })
+							}
+							title="Reject Surplus"
+							deleteAction={() => {
+								this.props.handleReject(this.state.activeId);
+								this.setState({ showDeleteModal: false, activeId: null });
+							}}
+							frontText="Are you sure?"
+							cancelText="Cancelled!"
+						/>
+					)}
+					<DataTable
+						metaData={surplusApproveMetaData(
+							// (id) => this.setState({ activeId: id, showDeleteModal: true }),
+							(id) => this.setState({ activeId: id, showApproveModal: true }),
+							(id) => this.setState({ activeId: id, showDeleteModal: true }),
+							() => {}
+						)}
+						bodyData={this.props.surplus.surplusList}
+					/>
+					{/* )} */}
+				</SimpleCard>
+			</PageContainer>
+		);
+	}
 }
 
 export default ViewSurplus;

@@ -22,6 +22,9 @@ import {
 	SET_CONFIRMATION_MODAL_FLAG,
 	SET_RELEASE_FILTER,
 	SET_IS_ATTRIBUTE_FILTER,
+	SET_QUANTITY_ERROR,
+	SET_CURRENT_REQ_INFO,
+	SET_CHOSEN_QUANTITY,
 } from "../actions/types";
 
 const initialState = {
@@ -56,6 +59,10 @@ const initialState = {
 	showTwccDispatchMoreModal: false,
 	showGetQuantityModal: false,
 	showConfirmationModal: false,
+	quantityError: false,
+	quantityErrorMsg: "",
+	currentReqInfo: {},
+	chosenQuantity: 0,
 };
 
 export default (state = initialState, action) => {
@@ -203,6 +210,16 @@ export default (state = initialState, action) => {
 				isAttributeBasedFilter: action.payload.flag,
 				chosenAttribute: action.payload.chosenAttr,
 			};
+		case SET_QUANTITY_ERROR:
+			return {
+				...state,
+				quantityError: action.payload.errorFlag,
+				quantityErrorMsg: action.payload.message,
+			};
+		case SET_CURRENT_REQ_INFO:
+			return { ...state, currentReqInfo: action.payload };
+		case SET_CHOSEN_QUANTITY:
+			return { ...state, chosenQuantity: action.payload };
 		default:
 			return state;
 	}

@@ -15,7 +15,7 @@ import requirementReducer from "./requirementReducer";
 import assignStructureReducer from "./assignStructureReducer";
 import structCompReducer from "./structCompReducer";
 import authReducer from "./authReducer";
-// import surplusReducer from "./surplusReducer";
+import surplusReducer from "./surplusReducer";
 import scrapReducer from "./scrapReducer";
 import siteDispatchReducer from "./siteDispatchReducer";
 import procurementReducer from "./procurementReducer";
@@ -30,7 +30,6 @@ import physicalVerificationReducer from "./physicalVerificationReducer";
 import fabricationcostReducer from "./fabricationCostReducer";
 import builtReducer from "./builtReducer";
 import scrapPageReducer from "./scrapPageReducer";
-import surplusPageReducer from "./surplusPageReducer";
 import cmpcReuseReducer from "./cmpcReuseReducer";
 import requirmentApprovalReducer from "./requirmentApprovalReducer";
 import sbgReducer from "./sgbReducer";
@@ -54,7 +53,7 @@ const rootReducer = combineReducers({
 	assignStructure: assignStructureReducer,
 	scr: structCompReducer,
 	auth: authReducer,
-	// surplus: surplusReducer,
+	surplus: surplusReducer,
 	// scrap: scrapReducer,
 	scrap: scrapPageReducer,
 	siteDispatch: siteDispatchReducer,
@@ -70,7 +69,6 @@ const rootReducer = combineReducers({
 	physicalVerification: physicalVerificationReducer,
 	fabCost: fabricationcostReducer,
 	built: builtReducer,
-	surplus: surplusPageReducer,
 	cmpcReuse: cmpcReuseReducer,
 	requirmentApproval: requirmentApprovalReducer,
 	sbg: sbgReducer,

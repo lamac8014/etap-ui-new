@@ -5,6 +5,10 @@ import Button from "../../common/forms/Button";
 export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 	return [
 		{
+			text: "DC No",
+			dataField: "dispatchNo",
+		},
+		{
 			text: "Structure",
 			dataField: "structrueName",
 		},
@@ -37,7 +41,13 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		},
 		{
 			text: "Quantity",
-			dataField: "quantity",
+			formatter: (cell, row) => {
+				return (
+					<p>
+						{row.currentComponentsCount}/{row.requiredComponenentCount}
+					</p>
+				);
+			},
 		},
 		{
 			text: "Status",
