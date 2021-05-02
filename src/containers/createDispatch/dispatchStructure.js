@@ -24,16 +24,22 @@ import {
 	SET_CONFIRMATION_MODAL_FLAG,
 	SET_RELEASE_FILTER,
 	SET_IS_ATTRIBUTE_FILTER,
+	SET_CURRENT_REQ_INFO,
+	SET_QUANTITY_ERROR,
 } from "../../actions/types";
-import { getUserDetails } from "../../utils/auth";
+import swal from "sweetalert";
 
 import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
 import store from "../../store";
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		onPageLoad(structId, siteReqId) {
+		onPageLoad(structId, siteReqId, currentReqInfo) {
 			dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
 				this.transformSiteRequirement(structId, siteReqId);
+			});
+			dispatch({
+				type: SET_CURRENT_REQ_INFO,
+				payload: currentReqInfo,
 			});
 			// dispatch({
 			//   type: CD_SET_CURRENT_REQUIREMENT,
@@ -56,7 +62,7 @@ const mapDispatchToProps = (dispatch, props) => {
 						if (currentDate.getTime() > surplusDate.getTime()) {
 							availability = "YES";
 							availDate = structure.surPlusFromDate.split("T")[0];
-							// disabled = false;
+							disabled = false;
 						}
 					} else {
 						availability = "-";
@@ -73,6 +79,7 @@ const mapDispatchToProps = (dispatch, props) => {
 						availability,
 						availDate,
 						disabled,
+						quantity: 1,
 					};
 					tmpArr.push(tmpObj);
 				});
@@ -160,6 +167,7 @@ const mapDispatchToProps = (dispatch, props) => {
 			let transformedSiteReq = JSON.parse(
 				JSON.stringify(createDisp.transformedSiteReq)
 			);
+			let currentReqInfo = createDisp.currentReqInfo;
 			selectedItems.map((item) => {
 				item.serviceTypeId = servTypeId;
 			});
@@ -202,22 +210,52 @@ const mapDispatchToProps = (dispatch, props) => {
 				notes: createDisp.notes,
 			};
 			let totalStructures = [...createDisp.dispatchStructures, tempObj];
-			dispatch({
-				type: SET_STRUCTURES_FOR_REUSE,
-				payload: totalStructures,
+			let totalQty = 0;
+			totalStructures.map((item) => {
+				totalQty += parseInt(item.quantity);
 			});
-			dispatch({
-				type: SET_SHOW_QUANTITY_MODAL_FLAG,
-				payload: false,
-			});
-			dispatch({
-				type: SET_QUANTITY,
-				payload: "",
-			});
-			dispatch({
-				type: SET_NOTES,
-				payload: "",
-			});
+			console.log("******************total quantity", totalQty);
+			if (totalQty <= currentReqInfo.quantity) {
+				dispatch({
+					type: SET_STRUCTURES_FOR_REUSE,
+					payload: totalStructures,
+				});
+				dispatch({
+					type: SET_SHOW_QUANTITY_MODAL_FLAG,
+					payload: false,
+				});
+				dispatch({
+					type: SET_QUANTITY,
+					payload: "",
+				});
+				dispatch({
+					type: SET_NOTES,
+					payload: "",
+				});
+				dispatch({
+					type: SET_QUANTITY_ERROR,
+					payload: {
+						errorFlag: false,
+						message: "",
+					},
+				});
+			} else {
+				dispatch({
+					type: SET_QUANTITY_ERROR,
+					payload: {
+						errorFlag: true,
+						message: "Invalid quantity",
+					},
+				});
+				dispatch({
+					type: SET_QUANTITY,
+					payload: "",
+				});
+				dispatch({
+					type: SET_NOTES,
+					payload: "",
+				});
+			}
 		},
 		setServiceTypeId(value) {
 			dispatch({
@@ -247,6 +285,21 @@ const mapDispatchToProps = (dispatch, props) => {
 			});
 			dispatch({
 				type: CD_SET_SERVICE_TYPE_ID,
+				payload: "",
+			});
+			dispatch({
+				type: SET_QUANTITY_ERROR,
+				payload: {
+					errorFlag: false,
+					message: "",
+				},
+			});
+			dispatch({
+				type: SET_QUANTITY,
+				payload: "",
+			});
+			dispatch({
+				type: SET_NOTES,
 				payload: "",
 			});
 		},
@@ -299,36 +352,36 @@ const mapDispatchToProps = (dispatch, props) => {
 			});
 		},
 		createDispatchApi() {
-			let createDisp = store.getState().createDispatch;
-			let userDetails = getUserDetails();
-			createDisp.dispatchStructures.map((item) => {
-				let tempObj = {
-					siteRequirementId: item.siteRequirementId,
-					toProjectId: item.projectId ? item.projectId : item.fromProjectId,
-					projectStructureId: item.projectStructureId
-						? item.projectStructureId
-						: 0,
-					structureId: item.structureId,
-					serviceTypeId: item.serviceTypeId,
-					quantity: item.quantity
-						? item.quantity
-						: createDisp.dispatchStructures.filter((struct) => {
-								return struct.serviceTypeId === item.serviceTypeId;
-						  }).length,
-					transferPrice: " ",
-					status: item.projectCurrentStatus ? item.projectCurrentStatus : "NEW",
-					statusInternal: item.projectStructureStatus
-						? item.projectStructureStatus
-						: "NEW",
-					roleId: userDetails.roleId,
-					createdBy: userDetails.id,
-					isDelete: false,
-					notes: item.notes ? item.notes : " ",
-				};
-				console.log("inside here dispatch api", tempObj);
-				dispatch(createDispatch(tempObj));
-			});
-			props.history.push("/etrack/dispatch/twccDispatch");
+			dispatch(createDispatch())
+				.then((response) => {
+					swal("Dispatch Succcessful", {
+						icon: "success",
+					});
+					dispatch({
+						type: SET_SELECTED_ITEMS,
+						payload: [],
+						reuseResult: true,
+						fabOutResult: false,
+					});
+					dispatch({
+						type: RESET_SELECTION,
+					});
+					props.history.push("/etrack/dispatch/twccDispatch");
+				})
+				.catch((err) => {
+					swal("Dispatch failed", {
+						icon: "error",
+					});
+					dispatch({
+						type: SET_SELECTED_ITEMS,
+						payload: [],
+						reuseResult: true,
+						fabOutResult: false,
+					});
+					dispatch({
+						type: RESET_SELECTION,
+					});
+				});
 			dispatch({
 				type: SET_SELECTED_ITEMS,
 				payload: [],

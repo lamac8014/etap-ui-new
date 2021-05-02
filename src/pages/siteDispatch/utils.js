@@ -3,7 +3,10 @@ import IconButton from "../../common/forms/IconButton";
 import Button from "../../common/forms/Button";
 import { Input } from "reactstrap";
 
-export const siteDispatchMetaDatatext = (redirectToComponentPage) => {
+export const siteDispatchMetaDatatext = (
+	handleViewMore,
+	redirectToComponentPage
+) => {
 	return [
 		{
 			text: "DC No",
@@ -49,7 +52,9 @@ export const siteDispatchMetaDatatext = (redirectToComponentPage) => {
 					<IconButton
 						id={row.dispatchId}
 						iconname="faList"
-						onClick={() => {}}
+						onClick={() => {
+							handleViewMore(row.dispSubContractorId);
+						}}
 					/>
 				);
 			},

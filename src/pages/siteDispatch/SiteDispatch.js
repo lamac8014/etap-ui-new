@@ -8,6 +8,7 @@ import CustomDataTable from "../../common/DataTable";
 // import UpdateSiteDispatchModal from "./UpdateSiteDispatchModal";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import ViewMoreModal from "./ViewMoreModal";
 
 class SiteDispatch extends Component {
 	constructor(props) {
@@ -38,13 +39,13 @@ class SiteDispatch extends Component {
               message={this.props.siteDispatch.message}
             />
           )} */}
-						{/* <UpdateSiteDispatchModal
-							{...this.props}
-							showModal={this.props.siteDispatch.showEditModalFlag}
-						/> */}
+						<ViewMoreModal {...this.props} />
 						{this.props.siteDispatch.siteDispatchDetails && (
 							<CustomDataTable
 								metaData={siteDispatchMetaDatatext(
+									(id) => {
+										this.props.openViewMoreModal(id);
+									},
 									(id1, id2, count, name, code) => {
 										this.props.redirectToComponentPage(
 											id1,

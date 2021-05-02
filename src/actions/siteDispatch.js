@@ -11,11 +11,11 @@ import {
 import { getUserDetails } from "../utils/auth";
 
 export const getSiteDispatchDetails = () => {
-	const roleName = getUserDetails().roleName;
+	const userDetails = getUserDetails();
 	return {
 		type: GET_VENDOR_DETAILS,
 		payload: axios.get(
-			`${config.BASE_URL}/api/SiteDispatch/getSubContractorDetails?vendorId=1`
+			`${config.BASE_URL}/api/SiteDispatch/getSubContractorDetails?vendorId=${userDetails.vendorId}`
 		),
 	};
 };
@@ -47,15 +47,17 @@ export const updateSiteDispatch = () => {
 	let idString = "";
 	siteDispatch.selectedComponents.map((item, index) => {
 		console.log(item);
-		idString = item.toString() + idString;
+		idString = idString + item.toString();
 		idString =
 			index !== siteDispatch.selectedComponents.length - 1
 				? idString + ","
 				: idString + "";
+		// console.log("*****************", idString);
 	});
 	const data = new FormData();
 	data.append("dispSubContractorId", siteDispatch.subContId);
-	data.append("dispatchReqSubContractorIds", idString);
+	data.append("dispatchReqSubContractorStructureIds", idString);
+	data.append("componentCount", siteDispatch.selectedComponents.length);
 	data.append("dispatchDate", siteDispatch.dispatchDate);
 	data.append("uploadDocs", siteDispatch.woFile);
 

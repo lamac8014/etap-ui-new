@@ -187,12 +187,11 @@ const mapDispatchToProps = (dispatch) => {
 			const requirement = store.getState().requirement;
 			requirement.siteRequirementList[i].structName = value.label;
 			let currentProject = requirement.structureProjectList.filter((ele) => {
-				return ele.structureTypeId === value.value;
+				return ele.id === value.value;
 			});
 			// console.log(`Current Project is: ${currentProject[0]}`);
 			console.log(currentProject[0]);
-			requirement.siteRequirementList[i].structId =
-				currentProject[0].structureTypeId;
+			requirement.siteRequirementList[i].structId = currentProject[0].id;
 			while (typeof currentProject[0].structureAttributes === "string") {
 				currentProject[0].structureAttributes = JSON.parse(
 					currentProject[0].structureAttributes

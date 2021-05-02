@@ -167,7 +167,7 @@ export default function (state = initialState, action) {
 		case `${LIST_STRUCTURE_PROJECT_DATA}_FULFILLED`:
 			console.log(`Project Name: ${state.projectName}`);
 			let structureListData = action.payload.data.map((ele) => {
-				return { id: ele.structureTypeId, name: ele.name };
+				return { id: ele.id, name: ele.name };
 			});
 			return {
 				...state,
