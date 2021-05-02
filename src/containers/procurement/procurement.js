@@ -136,7 +136,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		fbAssignVendor() {
 			dispatch(fbAssignVendor()).then((response) => {
-				swal(response.data.message, {
+				swal("Vendor is assigned successfully", {
 					icon: "success",
 				});
 				dispatch(getSiteDispatchDetails());

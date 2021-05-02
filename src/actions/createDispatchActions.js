@@ -132,7 +132,7 @@ export const createDispatch = () => {
 	createDisp.dispatchStructures.map((item) => {
 		let tempObj = {
 			siteRequirementId: item.siteRequirementId,
-			toProjectId: item.projectId ? item.projectId : item.fromProjectId,
+			toProjectId: item.fromProjectId,
 			projectStructureId: item.projectStructureId ? item.projectStructureId : 0,
 			structureId: item.structureId,
 			serviceTypeId: item.serviceTypeId,
@@ -146,6 +146,10 @@ export const createDispatch = () => {
 			statusInternal: item.projectStructureStatus
 				? item.projectStructureStatus
 				: "NEW",
+			fromProjectId: item.surplusFromProjectId
+				? item.surplusFromProjectId
+				: null,
+			surplusFromDate: item.surPlusFromDate ? item.surPlusFromDate : null,
 			roleId: userDetails.roleId,
 			createdBy: userDetails.id,
 			isDelete: false,
