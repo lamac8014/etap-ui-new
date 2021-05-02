@@ -74,12 +74,14 @@ const mapDispatchToProps = (dispatch, props) => {
 					parsedAttr.map((item) => {
 						structure[item.name] = item.value ? item.value : 0;
 					});
+					let currentReqInfo = createDisp.currentReqInfo;
 					let tmpObj = {
 						...structure,
 						availability,
 						availDate,
 						disabled,
 						quantity: 1,
+						fromProjectId: currentReqInfo.fromProjectId,
 					};
 					tmpArr.push(tmpObj);
 				});
