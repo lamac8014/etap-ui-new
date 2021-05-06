@@ -26,6 +26,7 @@ import {
 	SET_IS_ATTRIBUTE_FILTER,
 	SET_CURRENT_REQ_INFO,
 	SET_QUANTITY_ERROR,
+	RESET_PAGE,
 } from "../../actions/types";
 import swal from "sweetalert";
 
@@ -56,7 +57,7 @@ const mapDispatchToProps = (dispatch, props) => {
 				disabled = false;
 			let currentDate = new Date();
 			siteReq &&
-				siteReq.map((structure) => {
+				siteReq.map((structure, index) => {
 					if (structure.surPlusFromDate) {
 						let surplusDate = new Date(structure.surPlusFromDate);
 						if (currentDate.getTime() > surplusDate.getTime()) {
@@ -77,11 +78,13 @@ const mapDispatchToProps = (dispatch, props) => {
 					let currentReqInfo = createDisp.currentReqInfo;
 					let tmpObj = {
 						...structure,
+						id: index,
 						availability,
 						availDate,
 						disabled,
 						quantity: 1,
 						fromProjectId: currentReqInfo.fromProjectId,
+						checked: false,
 					};
 					tmpArr.push(tmpObj);
 				});
@@ -177,28 +180,39 @@ const mapDispatchToProps = (dispatch, props) => {
 				...createDisp.dispatchStructures,
 				...selectedItems,
 			];
-			dispatch({
-				type: SET_STRUCTURES_FOR_REUSE,
-				payload: totalStructures,
-			});
-			//disable the checkboxes
+			let totalQty = 0;
 			totalStructures.map((item) => {
-				transformedSiteReq.map((req) => {
-					if (req.structureCode === item.structureCode) {
-						req.disabled = true;
-					}
+				totalQty += parseInt(item.quantity);
+			});
+			if (totalQty <= currentReqInfo.quantity) {
+				dispatch({
+					type: SET_STRUCTURES_FOR_REUSE,
+					payload: totalStructures,
 				});
-			});
-			dispatch({
-				type: DISABLE_SITE_REQUIREMENTS,
-				payload: transformedSiteReq,
-			});
-			dispatch({
-				type: SET_SELECTED_ITEMS,
-				payload: selectedItems,
-				reuseResult: true,
-				fabOutResult: false,
-			});
+				//disable the checkboxes
+				totalStructures.map((item) => {
+					transformedSiteReq.map((req) => {
+						if (req.id === item.id) {
+							req.disabled = true;
+						}
+					});
+				});
+
+				dispatch({
+					type: DISABLE_SITE_REQUIREMENTS,
+					payload: transformedSiteReq,
+				});
+				dispatch({
+					type: SET_SELECTED_ITEMS,
+					payload: selectedItems,
+					reuseResult: true,
+					fabOutResult: false,
+				});
+			} else {
+				swal("Invalid quantity", {
+					icon: "error",
+				});
+			}
 		},
 		setStructuresForFabOut() {
 			let createDisp = store.getState().createDispatch;
@@ -324,7 +338,7 @@ const mapDispatchToProps = (dispatch, props) => {
 				if (item.availability === "YES") {
 					item.disabled = false;
 				}
-				item.checked = false;
+				// item.checked = false;
 			});
 			dispatch({
 				type: DISABLE_SITE_REQUIREMENTS,
@@ -410,6 +424,11 @@ const mapDispatchToProps = (dispatch, props) => {
 		resetMessage() {
 			dispatch({
 				type: RESET_MESSAGE,
+			});
+		},
+		resetPage() {
+			dispatch({
+				type: RESET_PAGE,
 			});
 		},
 	};

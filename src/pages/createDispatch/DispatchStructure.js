@@ -47,9 +47,9 @@ class DispatchStructure extends Component {
 		this.props.onPageLoad(structid, siteReqid, currentReqInfo);
 	};
 
-	// componentWillUnmount() {
-	// 	localStorage.removeItem("currentRequirementInfo");
-	// }
+	componentWillUnmount() {
+		this.props.resetPage();
+	}
 
 	render() {
 		return (

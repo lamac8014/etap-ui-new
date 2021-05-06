@@ -1,15 +1,8 @@
 import { connect } from "react-redux";
-import {
-	SHOW_EDIT_COMPONENT_MODAL,
-	RESET_EDIT_COMPONENT_FORM,
-	MODIFY_BREADTH,
-	MODIFY_HEIGHT,
-	MODIFY_LENGTH,
-	MODIFY_WEIGHT,
-	MODIFY_WIDTH,
-} from "../../actions/types";
+import { SET_VIEW_MORE_FLAG } from "../../actions/types";
 import { getStructureTableData } from "../../actions/cmpcModificationActions";
 import ViewStructures from "../../pages/cmpcModification/ViewStructures";
+import store from "../../store";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
@@ -32,6 +25,29 @@ const mapDispatchToProps = (dispatch, props) => {
 					name
 				)}/${window.btoa(code)}/${window.btoa(proj)}/${window.btoa(dcNumber)}`
 			);
+		},
+		openViewMoreModal(id) {
+			let cmpc = store.getState().cmpc;
+			let structData = JSON.parse(JSON.stringify(cmpc.structureData));
+			let currentStructure = structData.filter((item) => {
+				return item.dispStructureId === id;
+			});
+			dispatch({
+				type: SET_VIEW_MORE_FLAG,
+				payload: {
+					showViewMore: true,
+					attributes: JSON.parse(currentStructure[0].structureAttValue),
+				},
+			});
+		},
+		closeViewMoreModal() {
+			dispatch({
+				type: SET_VIEW_MORE_FLAG,
+				payload: {
+					showViewMore: false,
+					attributes: [],
+				},
+			});
 		},
 	};
 };
