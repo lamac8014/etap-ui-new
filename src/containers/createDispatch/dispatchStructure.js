@@ -78,7 +78,7 @@ const mapDispatchToProps = (dispatch, props) => {
 					let currentReqInfo = createDisp.currentReqInfo;
 					let tmpObj = {
 						...structure,
-						id: index,
+						temp_id: index,
 						availability,
 						availDate,
 						disabled,
@@ -192,7 +192,7 @@ const mapDispatchToProps = (dispatch, props) => {
 				//disable the checkboxes
 				totalStructures.map((item) => {
 					transformedSiteReq.map((req) => {
-						if (req.id === item.id) {
+						if (req.temp_id === item.temp_id) {
 							req.disabled = true;
 						}
 					});

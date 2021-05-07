@@ -127,7 +127,7 @@ export const twccdispatchStructureMetaData = (
 				return (
 					<>
 						<Input
-							key={row.id}
+							key={row.temp_id}
 							type="checkbox"
 							style={{ marginLeft: 0 }}
 							disabled={row.disabled}

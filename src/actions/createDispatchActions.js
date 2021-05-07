@@ -105,7 +105,7 @@ export const setSelectedItem = (value) => {
 	let disableReuse = createDispatch.disableReuse;
 	let disableFabOut = createDispatch.disableFabrication;
 	transformedSiteReq.map((item) => {
-		if (value.id === item.id) {
+		if (value.temp_id === item.temp_id) {
 			item.checked = !item.checked;
 		}
 	});
@@ -113,7 +113,7 @@ export const setSelectedItem = (value) => {
 	if (selectedItems.length > 0) {
 		let index = selectedItems.indexOf(
 			selectedItems.filter((item) => {
-				return item.id === value.id;
+				return item.temp_id === value.temp_id;
 			})[0]
 		);
 		if (index !== -1) {
