@@ -16,16 +16,19 @@ import {
 	SET_ADD_PLATE,
 	CMPC_TRANSFORM_COMPONENT_DATA,
 	SET_IDS,
+	SET_VIEW_MORE_FLAG,
 } from "../actions/types";
 
 const initialState = {
 	structureData: [],
 	componentData: [],
+	currentAttributeData: [],
 	currentComp: {},
 	isError: false,
 	isSuccess: false,
 	message: "",
 	showEditComponentModal: false,
+	viewMoreFlag: false,
 	structName: "",
 	structCode: "",
 	projectName: "",
@@ -138,6 +141,12 @@ const reducerFn = (state = initialState, action) => {
 				projStrId: action.payload.projStrId,
 				dispReqId: action.payload.dispReqId,
 				dcNumber: action.payload.dcNumber,
+			};
+		case SET_VIEW_MORE_FLAG:
+			return {
+				...state,
+				viewMoreFlag: action.payload.showViewMore,
+				currentAttributeData: action.payload.attributes,
 			};
 		default:
 			return state;

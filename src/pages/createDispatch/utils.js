@@ -127,9 +127,11 @@ export const twccdispatchStructureMetaData = (
 				return (
 					<>
 						<Input
+							key={row.temp_id}
 							type="checkbox"
 							style={{ marginLeft: 0 }}
 							disabled={row.disabled}
+							checked={row.checked}
 							onChange={() => setSelectedStructures(row)}
 						/>
 					</>

@@ -5,6 +5,7 @@ import { structureMetaData } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import ViewMoreModal from "./ViewMoreModal";
 
 class ViewStructures extends Component {
 	componentDidMount() {
@@ -22,6 +23,7 @@ class ViewStructures extends Component {
           )} */}
 
 					{/* {this.props.cmpc.structureData && ( */}
+					<ViewMoreModal {...this.props} />
 					<CustomDataTable
 						metaData={structureMetaData(
 							(dispStrId, dispReqId, projStrId, name, code, proj, dcNumber) => {
@@ -34,6 +36,9 @@ class ViewStructures extends Component {
 									proj,
 									dcNumber
 								);
+							},
+							(id) => {
+								this.props.openViewMoreModal(id);
 							}
 						)}
 						bodyData={this.props.cmpc.structureData}

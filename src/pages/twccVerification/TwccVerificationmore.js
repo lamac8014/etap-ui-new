@@ -9,6 +9,7 @@ import DateInput from "../../common/forms/DateInput";
 import SimpleRow from "../../common/forms/SimpleRow";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
+import Col6 from "../../common/forms/Col6";
 
 class ViewMoretwccVerification extends Component {
 	constructor(props) {
@@ -18,38 +19,41 @@ class ViewMoretwccVerification extends Component {
 	render() {
 		return (
 			<Modal
-				title={``}
-				showModal={this.props.showScrapViewMoreModel}
-				handleClose={this.props.closeScarpViewMoreModal}
-				size="lg"
+				title="Physical Verification"
+				showModal={this.props.physicalVerification.showSaveModal}
+				handleClose={this.props.hideSaveModal}
+				handleSave={this.props.savePhysicalVerification}
+				size="md"
 				isShowFooter={true}
+				disableSave={
+					this.props.physicalVerification.fromDue === "" ||
+					this.props.physicalVerification.toDue === ""
+				}
 			>
-				{console.log("isLoading", this.props.isLoading)}
-				{this.props.isLoading && <Loader />}
+				{/* {console.log("isLoading", this.props.isLoading)}
+				{this.props.isLoading && <Loader />} */}
 
 				<SimpleRow>
 					<DateInput
-						size="col-md-6"
-						labelSize="col-md-3 offset-md-1"
-						fieldSize="col-md-6"
+						size="col-md-12"
+						labelSize="col-md-3 offset-md-1 text-center"
+						fieldSize="col-md-7"
 						label="From Due"
 						name="From due"
 						id="From due"
-						onChange={(e) =>
-							this.props.handleChangeDispatchDate(e.target.value)
-						}
+						onChange={(e) => this.props.handleChangeFromDate(e.target.value)}
 						// value={this.props.requirement.activeItem.planStartdate}
 					/>
+				</SimpleRow>
+				<SimpleRow>
 					<DateInput
-						size="col-md-6"
-						labelSize="col-md-3 offset-md-1"
-						fieldSize="col-md-6"
+						size="col-md-12"
+						labelSize="col-md-3 offset-md-1 text-center"
+						fieldSize="col-md-7"
 						label="To Due"
 						name="To due"
 						id="To due"
-						onChange={(e) =>
-							this.props.handleChangeDispatchDate(e.target.value)
-						}
+						onChange={(e) => this.props.handleChangeToDate(e.target.value)}
 						// value={this.props.requirement.activeItem.planStartdate}
 					/>
 				</SimpleRow>

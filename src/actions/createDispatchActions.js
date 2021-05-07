@@ -21,7 +21,7 @@ export const getSiteReqDetails = () => {
 	};
 };
 
-export const setSelectedItem = (value) => {
+export const setSelectedItemCopy = (value) => {
 	let createDispatch = store.getState().createDispatch;
 	let lstStructforDispatch = createDispatch.lstStructforDispatch;
 	let selectedData = createDispatch.selectedItems;
@@ -96,6 +96,67 @@ export const setSelectedItem = (value) => {
 		fabOutResult: disableFabOut,
 	};
 };
+
+export const setSelectedItem = (value) => {
+	let createDispatch = store.getState().createDispatch;
+	let transformedSiteReq = JSON.parse(
+		JSON.stringify(createDispatch.transformedSiteReq)
+	);
+	let disableReuse = createDispatch.disableReuse;
+	let disableFabOut = createDispatch.disableFabrication;
+	transformedSiteReq.map((item) => {
+		if (value.temp_id === item.temp_id) {
+			item.checked = !item.checked;
+		}
+	});
+	let selectedItems = JSON.parse(JSON.stringify(createDispatch.selectedItems));
+	if (selectedItems.length > 0) {
+		let index = selectedItems.indexOf(
+			selectedItems.filter((item) => {
+				return item.temp_id === value.temp_id;
+			})[0]
+		);
+		if (index !== -1) {
+			selectedItems.splice(index, 1);
+			if (selectedItems.length === 0) {
+				disableReuse = true;
+				disableFabOut = false;
+			} else {
+				let disabledItemsArr = selectedItems.filter((item) => {
+					return item.disabled === true;
+				});
+				let disableBtnFlag =
+					disabledItemsArr.length === selectedItems.length ? true : false;
+				if (disableBtnFlag) {
+					console.log("al disabled");
+					disableReuse = true;
+					disableFabOut = false;
+				} else {
+					console.log("not diabled");
+					disableReuse = false;
+					disableFabOut = true;
+				}
+			}
+		} else {
+			selectedItems.push(value);
+			disableReuse = false;
+			disableFabOut = true;
+		}
+	} else {
+		selectedItems.push(value);
+		disableReuse = false;
+		disableFabOut = true;
+	}
+
+	return {
+		type: SET_SELECTED_ITEMS,
+		payload: selectedItems,
+		transformedSiteReq,
+		reuseResult: disableReuse,
+		fabOutResult: disableFabOut,
+	};
+};
+
 export const getSiteReqDetailsById = (
 	structId,
 	siteReqId,

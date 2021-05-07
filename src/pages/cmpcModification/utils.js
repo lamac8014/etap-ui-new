@@ -60,7 +60,7 @@ export const componentsMetaData = (onChangeValue) => {
 	];
 };
 
-export const structureMetaData = (handleComponentCheck, handleMore) => {
+export const structureMetaData = (handleComponentCheck, handleViewMore) => {
 	return [
 		{
 			text: "DC No",
@@ -109,7 +109,14 @@ export const structureMetaData = (handleComponentCheck, handleMore) => {
 		{
 			text: "Actions",
 			formatter: (cell, row) => {
-				return <>{<IconButton iconname="faList" onClick={() => {}} />}</>;
+				return (
+					<IconButton
+						iconname="faList"
+						onClick={() => {
+							handleViewMore(row.dispStructureId);
+						}}
+					/>
+				);
 			},
 		},
 	];

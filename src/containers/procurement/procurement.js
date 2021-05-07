@@ -118,36 +118,40 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 		osAssignVendor() {
-			dispatch(osAssignVendor()).then((response) => {
-				swal(response.data.message, {
-					icon: "success",
+			dispatch(osAssignVendor())
+				.then((response) => {
+					swal(response.data.message, {
+						icon: "success",
+					});
+					dispatch(getSiteDispatchDetails());
+				})
+				.catch((err) => {
+					swal("Vendor assign failed", {
+						icon: "error",
+					});
 				});
-				dispatch(getSiteDispatchDetails());
-			});
 			dispatch({
 				type: SET_SHOW_EDIT_MODAL_FLAG,
 				payload: false,
-			}).catch((err) => {
-				swal("Vendor assign failed", {
-					icon: "error",
-				});
 			});
 			dispatch({ type: RESET_ASSIGN_VENDOR_MODAL });
 		},
 		fbAssignVendor() {
-			dispatch(fbAssignVendor()).then((response) => {
-				swal("Vendor is assigned successfully", {
-					icon: "success",
+			dispatch(fbAssignVendor())
+				.then((response) => {
+					swal("Vendor is assigned successfully", {
+						icon: "success",
+					});
+					dispatch(getSiteDispatchDetails());
+				})
+				.catch((err) => {
+					swal("Vendor assign failed", {
+						icon: "error",
+					});
 				});
-				dispatch(getSiteDispatchDetails());
-			});
 			dispatch({
 				type: SET_SHOW_EDIT_MODAL_FLAG,
 				payload: false,
-			}).catch((err) => {
-				swal("Vendor assign failed", {
-					icon: "error",
-				});
 			});
 			dispatch({ type: RESET_ASSIGN_VENDOR_MODAL });
 		},

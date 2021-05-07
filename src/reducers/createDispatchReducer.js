@@ -25,6 +25,7 @@ import {
 	SET_QUANTITY_ERROR,
 	SET_CURRENT_REQ_INFO,
 	SET_CHOSEN_QUANTITY,
+	RESET_PAGE,
 } from "../actions/types";
 
 const initialState = {
@@ -147,6 +148,9 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				selectedItems: action.payload ? action.payload : state.selectedItems,
+				transformedSiteReq: action.transformedSiteReq
+					? action.transformedSiteReq
+					: state.transformedSiteReq,
 				lstStructforDispatch: action.structureList,
 				disableReuse: action.reuseResult,
 				disableFabrication: action.fabOutResult,
@@ -220,6 +224,10 @@ export default (state = initialState, action) => {
 			return { ...state, currentReqInfo: action.payload };
 		case SET_CHOSEN_QUANTITY:
 			return { ...state, chosenQuantity: action.payload };
+		case RESET_PAGE:
+			return {
+				...initialState,
+			};
 		default:
 			return state;
 	}
