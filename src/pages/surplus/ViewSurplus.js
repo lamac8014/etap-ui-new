@@ -63,7 +63,11 @@ class ViewSurplus extends Component {
 							(id) => this.setState({ activeId: id, showDeleteModal: true }),
 							() => {}
 						)}
-						bodyData={this.props.surplus.surplusList}
+						bodyData={
+							this.props.surplus.surplusList
+								? this.props.surplus.surplusList
+								: []
+						}
 					/>
 					{/* )} */}
 				</SimpleCard>
