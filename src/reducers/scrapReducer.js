@@ -17,7 +17,8 @@ import {
   LIST_SCRAP_CODES,
   SCRAP_AUCTION_ID,
   SCRAP_RATE,
-  SCRAP_VENDOR
+  SCRAP_VENDOR,
+  GET_WORKFLOW_SCRAP_DETAILS,
 } from "../actions/types";
 
 const initialState = {
@@ -30,7 +31,8 @@ const initialState = {
   projectID: {},
   structureFamily: "",
   SCRAPViewMore: [],
-  vendorCodesList:[]
+  vendorCodesList: [],
+  workflowDetails: [],
 };
 
 export default function (state = initialState, action) {
@@ -46,10 +48,10 @@ export default function (state = initialState, action) {
         auctionID: action.payload,
       };
     case SCRAP_RATE:
-        return {
-          ...state,
-          scrapRate: action.payload,
-        };
+      return {
+        ...state,
+        scrapRate: action.payload,
+      };
     case SCRAP_STRUCTURE_FAMILY:
       return {
         ...state,
@@ -62,8 +64,8 @@ export default function (state = initialState, action) {
       };
     case SCRAP_VENDOR:
       return {
-          ...state,
-          scrapVendor: action.payload,
+        ...state,
+        scrapVendor: action.payload,
       };
     case SCRAP_FILE:
       return {
@@ -118,6 +120,28 @@ export default function (state = initialState, action) {
         structureProjectList: action.payload.data,
         structureList: structureListData,
       };
+    case `${GET_WORKFLOW_SCRAP_DETAILS}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+    case `${GET_WORKFLOW_SCRAP_DETAILS}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+      };
+    case `${GET_WORKFLOW_SCRAP_DETAILS}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: false,
+        workflowDetails: action.payload.data,
+      };
     case `${LIST_PROJECT_CODES}_PENDING`:
       return {
         ...state,
@@ -140,29 +164,29 @@ export default function (state = initialState, action) {
         isSuccess: false,
         projectCodesList: action.payload.data,
       };
-      case `${LIST_SCRAP_CODES}_PENDING`:
-        return {
-          ...state,
-          isLoading: true,
-          isError: false,
-          isSuccess: false,
-        };
-      case `${LIST_SCRAP_CODES}_REJECTED`:
-        return {
-          ...state,
-          isLoading: false,
-          isError: true,
-          isSuccess: false,
-        };
-      case `${LIST_SCRAP_CODES}_FULFILLED`:
-        return {
-          ...state,
-          isLoading: false,
-          isError: false,
-          isSuccess: false,
-          vendorCodesList: action.payload.data,
-        };
-      
+    case `${LIST_SCRAP_CODES}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+    case `${LIST_SCRAP_CODES}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+      };
+    case `${LIST_SCRAP_CODES}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: false,
+        vendorCodesList: action.payload.data,
+      };
+
     case `${SCRAP_APPROVAL_LIST}_PENDING`:
       return {
         ...state,
@@ -219,10 +243,10 @@ export default function (state = initialState, action) {
         vendor: {},
         structureID: {},
         structureFamily: "",
-        structureCode:"",
+        structureCode: "",
         scrapRate: "",
-        auctionID:"",
-        scrapFile: []
+        auctionID: "",
+        scrapFile: [],
       };
     case GET_SCRAP_DATA_SINGLE:
       return {

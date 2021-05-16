@@ -62,3 +62,70 @@ export const transformUsersList = (usersList) => {
     });
   return tmpArr;
 };
+
+export const scrapApproveMetaData = (
+  handleApprove,
+  handleReject,
+  handleViewMore
+) => {
+  return [
+    {
+      text: "Struct. Name",
+      dataField: "structureName",
+    },
+    {
+      text: "Struct. Code",
+      dataField: "structureCode",
+    },
+    {
+      text: "Struct. Type",
+      dataField: "structureTypeName",
+    },
+    {
+      text: "Project",
+      dataField: "fromProjectName",
+    },
+    {
+      text: "Actions",
+      formatter: (cell, row) => {
+        if (row.isAction == "1") {
+          return (
+            <>
+              {
+                <IconButton
+                  type="success"
+                  iconname="faThumbsUp"
+                  onClick={() => handleApprove(row.id)}
+                />
+              }
+              {
+                <IconButton
+                  type="danger"
+                  iconname="faThumbsDown"
+                  onClick={() => handleReject(row.id)}
+                />
+              }
+              {
+                <IconButton
+                  iconname="faList"
+                  onClick={() => handleViewMore(row.id)}
+                />
+              }
+            </>
+          );
+        } else {
+          return (
+            <>
+              {
+                <IconButton
+                  iconname="faList"
+                  onClick={() => handleViewMore(row.id)}
+                />
+              }
+            </>
+          );
+        }
+      },
+    },
+  ];
+};
