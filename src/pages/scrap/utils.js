@@ -27,15 +27,15 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
             <>
               <IconButton
                 compKey={row.userId}
-                iconname="faEye"
+                iconname="faEdit"
                 size="1x"
-                onClick={() => handleViewMore(row.id)}
+                onClick={() => handleEdit(row.dispStructId)}
               />
               <IconButton
                 compKey={row.userId}
-                iconname="faEdit"
+                iconname="faList"
                 size="1x"
-                onClick={() => handleEdit(row.id)}
+                onClick={() => handleViewMore(row.dispStructId)}
               />
             </>
           </div>
@@ -128,4 +128,15 @@ export const scrapApproveMetaData = (
       },
     },
   ];
+};
+export const transformVendorCodeListData = (vendorCodeList) => {
+  let tempArr = [];
+  vendorCodeList.map((item) => {
+    tempArr.push({
+      value: item.id,
+      label: item.name,
+    });
+  });
+
+  return tempArr;
 };

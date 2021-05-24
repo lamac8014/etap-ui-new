@@ -19,6 +19,9 @@ import {
   SCRAP_RATE,
   SCRAP_VENDOR,
   GET_WORKFLOW_SCRAP_DETAILS,
+  GET_SCRAP_DATA,
+  SCRAP_EDIT_MORE_PAGE,
+  SET_CURRENT_SCRAP_DATA,
 } from "../actions/types";
 
 const initialState = {
@@ -30,9 +33,16 @@ const initialState = {
   structureList: [],
   projectID: {},
   structureFamily: "",
-  SCRAPViewMore: [],
   vendorCodesList: [],
   workflowDetails: [],
+  scrapData: [],
+  currentScrap: {},
+  scrapVendor: {},
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  showViewMore: false,
+  showEditModal: false,
 };
 
 export default function (state = initialState, action) {
@@ -247,6 +257,7 @@ export default function (state = initialState, action) {
         scrapRate: "",
         auctionID: "",
         scrapFile: [],
+        scrapVendor: {},
       };
     case GET_SCRAP_DATA_SINGLE:
       return {
@@ -263,6 +274,12 @@ export default function (state = initialState, action) {
         ...state,
         showSCRAPMoreModal: action.payload,
       };
+    case GET_SCRAP_DATA:
+      return { ...state, scrapData: action.payload };
+    case SCRAP_EDIT_MORE_PAGE:
+      return { ...state, showEditModal: action.payload };
+    case SET_CURRENT_SCRAP_DATA:
+      return { ...state, currentScrap: action.payload };
     default:
       return state;
   }
