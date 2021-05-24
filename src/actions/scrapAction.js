@@ -43,27 +43,27 @@ export const getWBSList = () => {
   };
 };
 
-export const addScrap = () => {
-  const scrap = store.getState().scrap;
-  const postData = new FormData();
-  postData.append("subconId", parseInt(scrap.scrapVendor.value));
-  postData.append("structId", parseInt(scrap.structureID.value));
-  postData.append("scrapRate", parseFloat(scrap.scrapRate));
-  postData.append("auctionId", scrap.auctionId);
-  postData.append("uploadDocs", scrap.scrapFile);
-  const configHeader = {
-    headers: { "content-type": "multipart/form-data" },
-  };
+// export const addScrap = () => {
+//   const scrap = store.getState().scrap;
+//   const postData = new FormData();
+//   postData.append("subconId", parseInt(scrap.scrapVendor.value));
+//   postData.append("structId", parseInt(scrap.structureID.value));
+//   postData.append("scrapRate", parseFloat(scrap.scrapRate));
+//   postData.append("auctionId", scrap.auctionId);
+//   postData.append("uploadDocs", scrap.scrapFile);
+//   const configHeader = {
+//     headers: { "content-type": "multipart/form-data" },
+//   };
 
-  return {
-    type: ADD_SCRAP,
-    payload: axios.post(
-      config.BASE_URL + "/api/ScrapStructure/createScrapStruct",
-      postData,
-      configHeader
-    ),
-  };
-};
+//   return {
+//     type: ADD_SCRAP,
+//     payload: axios.post(
+//       config.BASE_URL + "/api/ScrapStructure/createScrapStruct",
+//       postData,
+//       configHeader
+//     ),
+//   };
+// };
 
 export const getProjectStructureData = () => {
   return {
@@ -84,12 +84,12 @@ export const getScrap = () => {
   };
 };
 
-export const getWorkFlowDetails = () => {
-  const userDetails = getUserDetails();
+export const getWorkFlowDetails = (workFlowPage = true) => {
+  const roleName = workFlowPage ? getUserDetails().roleName : "QA";
   return {
     type: GET_WORKFLOW_SCRAP_DETAILS,
     payload: axios.get(
-      `${config.BASE_URL}/api/ScrapStructure/getWorkFlowScrapDetails?role_name=${userDetails.roleName}`
+      `${config.BASE_URL}/api/ScrapStructure/getWorkFlowScrapDetails?role_name=${roleName}`
     ),
   };
 };
@@ -123,5 +123,30 @@ export const singleScrapFetch = (id) => {
   return {
     type: GET_SCRAP_DATA_SINGLE,
     payload: data,
+  };
+};
+
+export const postProcScrapStruct = () => {
+  const scrap = store.getState().scrap;
+  let id = scrap.currentScrap.id;
+  let projStrId = scrap.currentScrap.projStructId;
+  const postData = new FormData();
+  const configHeader = {
+    headers: { "content-type": "multipart/form-data" },
+  };
+  postData.append("subconId", parseInt(scrap.scrapVendor.value));
+  postData.append("projStructId", parseInt(projStrId));
+  postData.append("scrapRate", parseFloat(scrap.scrapRate));
+  postData.append("auctionId", scrap.auctionID);
+  postData.append("isDelete", false);
+  postData.append("uploadDocs", scrap.upload);
+
+  return {
+    type: ADD_SCRAP,
+    payload: axios.post(
+      `${config.BASE_URL}/api/ScrapStructure/ProcScrapStruct/${id}`,
+      postData,
+      configHeader
+    ),
   };
 };
