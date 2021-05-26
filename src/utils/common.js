@@ -20,3 +20,15 @@ export const sortDataByDate = (tableData) => {
 
   return data;
 };
+
+export const sortByFieldName = (data, field) => {
+  data.map((item) => {
+    item.sortDcNumber = parseInt(item[field].split("C")[1]);
+  });
+  data &&
+    data.sort((first, second) => {
+      return second.sortDcNumber - first.sortDcNumber;
+    });
+
+  return data;
+};
