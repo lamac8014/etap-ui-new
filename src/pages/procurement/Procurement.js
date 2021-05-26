@@ -7,6 +7,7 @@ import CustomDataTable from "../../common/DataTable";
 import AssignVendorModal from "./AssignVendorModal";
 import SimpleCard from "../../common/cards/SimpleCard";
 import PageContainer from "../../common/forms/PageContainer";
+import { sortByFieldName } from "../../utils/common";
 
 class Procurement extends Component {
   constructor(props) {
@@ -39,7 +40,10 @@ class Procurement extends Component {
                 metaData={siteDispatchMetaData(
                   this.props.showAssignVendorModal
                 )}
-                bodyData={this.props.procurement.siteDispatchDetails}
+                bodyData={sortByFieldName(
+                  this.props.procurement.siteDispatchDetails,
+                  "dispatchNo"
+                )}
               />
             )}
           </SimpleCard>

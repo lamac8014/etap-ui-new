@@ -7,45 +7,49 @@ import CustomDataTable from "../../common/DataTable";
 // import AssignVendorModal from "./AssignVendorModal";
 import SimpleCard from "../../common/cards/SimpleCard";
 import PageContainer from "../../common/forms/PageContainer";
+import { sortByFieldName } from "../../utils/common";
 
 class CmpcViewPage extends Component {
-	constructor(props) {
-		super(props);
-	}
-	componentDidMount() {
-		this.props.getDispatchStructureData();
-	}
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.getDispatchStructureData();
+  }
 
-	render() {
-		return (
-			<>
-				<PageContainer>
-					<SimpleCard>
-						{this.props.cmpcAdd.isLoading && <Loader />}
-						{/* {this.props.procurement.message && (
+  render() {
+    return (
+      <>
+        <PageContainer>
+          <SimpleCard>
+            {this.props.cmpcAdd.isLoading && <Loader />}
+            {/* {this.props.procurement.message && (
             <Popup
               type={this.props.procurement.isSuccess ? "success" : "danger"}
               message={this.props.procurement.message}
               onClose={this.props.resetMessage}
             />
           )} */}
-						{/* <AssignVendorModal
+            {/* <AssignVendorModal
               {...this.props}
               showModal={this.props.procurement.showEditModalFlag}
             /> */}
-						{this.props.cmpcAdd.dispatchStructure && (
-							<CustomDataTable
-								metaData={cmpcViewPageMetaData((id, dispStrId) =>
-									this.props.redirectToAddComponents(id, dispStrId)
-								)}
-								bodyData={this.props.cmpcAdd.dispatchStructure}
-							/>
-						)}
-					</SimpleCard>
-				</PageContainer>
-			</>
-		);
-	}
+            {this.props.cmpcAdd.dispatchStructure && (
+              <CustomDataTable
+                metaData={cmpcViewPageMetaData((id, dispStrId) =>
+                  this.props.redirectToAddComponents(id, dispStrId)
+                )}
+                bodyData={sortByFieldName(
+                  this.props.cmpcAdd.dispatchStructure,
+                  "dispatchNo"
+                )}
+              />
+            )}
+          </SimpleCard>
+        </PageContainer>
+      </>
+    );
+  }
 }
 
 export default CmpcViewPage;
