@@ -11,6 +11,7 @@ import Col6 from "../../common/forms/Col6";
 import AddIndependentCompany from "../../containers/independentCompany/independentCompany";
 import SimpleCard from "../../common/cards/SimpleCard";
 import PageContainer from "../../common/forms/PageContainer";
+import { sortDataByDate } from "../../utils/common";
 
 class ViewIndependentCompany extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ViewIndependentCompany extends Component {
                 (id) => this.setState({ activeId: id, showDeleteModal: true }),
                 (id) => this.props.handleEdit(id)
               )}
-              bodyData={icbuList(this.props.icbu.icbuList)}
+              bodyData={sortDataByDate(icbuList(this.props.icbu.icbuList))}
               showButton={true}
               btnText="Add Independent Company"
               onClick={this.props.showAddIcbuModal}

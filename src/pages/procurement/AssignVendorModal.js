@@ -77,7 +77,8 @@ class AssignVendorModal extends Component {
             name="vendorName"
             id="vendorName"
             selectOptions={transformVendorCodeListData(
-              this.props.procurement.vendorCodeList
+              this.props.procurement.vendorCodeList,
+              this.props.procurement.activeItem.serviceTypeId
             )}
             onChange={(item) => this.props.handleChangeVendorId(item)}
           />
