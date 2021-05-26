@@ -34,6 +34,8 @@ export const icbuList = (icbuList) => {
         id: icbu.id,
         independentCompanyID: icbu.id,
         independentCompanyName: icbu.name,
+        createdAt: icbu.createdDate ? icbu.createdDate : new Date(),
+        updatedAt: icbu.updatedDate ? icbu.updatedDate : new Date(),
       };
       tmpArr.push(tmpObj);
     });

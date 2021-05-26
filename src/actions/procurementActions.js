@@ -21,7 +21,9 @@ export const getSiteDispatchDetails = () => {
 export const getVendorCodeList = () => {
   return {
     type: SET_VENDOR_CODE_LIST,
-    payload: axios.get(`${config.BASE_URL}/api/Vendor/vendorCodeList`),
+    payload: axios.get(
+      `${config.BASE_URL}/api/Vendor/vendorCodeListWithServiceType`
+    ),
   };
 };
 

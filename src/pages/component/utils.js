@@ -62,6 +62,8 @@ export const transformComponentList = (componentList) => {
         id: component.id,
         componentType: component.name,
         status: statusValue,
+        createdAt: component.createdDate ? component.createdDate : new Date(),
+        updatedAt: component.updatedDate ? component.updatedDate : new Date(),
       };
       tmpArr.push(tmpObj);
     });

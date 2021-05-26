@@ -5,6 +5,20 @@ import { logout } from "../../../utils/auth";
 // import avatar from "../../../assets/images/user/avatar-1.jpg";
 
 class UserProfile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+    };
+  }
+
+  componentDidMount = () => {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    this.setState({
+      name: `${userDetails.firstName} ${userDetails.lastName}`,
+    });
+  };
+
   render() {
     return (
       <Fragment>
@@ -15,7 +29,7 @@ class UserProfile extends Component {
           <DropdownMenu right className="profile-notification">
             <div className="pro-head">
               {/* <img src={avatar} className="img-radius" alt="User-Profile" /> */}
-              <span>John Doe</span>
+              <span>{this.state.name}</span>
               <Link
                 to="#"
                 className="dud-logout"

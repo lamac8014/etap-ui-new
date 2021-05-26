@@ -6,6 +6,7 @@ import CustomDataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import ConfirmModal from "../../common/forms/ConfirmModal";
+import { sortDataByDate } from "../../utils/common";
 
 class ViewComponent extends Component {
   constructor(props) {
@@ -58,9 +59,9 @@ class ViewComponent extends Component {
               (id) => this.setState({ activeId: id, showDeleteModal: true }),
               (id) => this.props.handleEdit(id)
             )}
-            bodyData={transformComponentList(
-              this.props.component.componentTypeList
-           )}
+            bodyData={sortDataByDate(
+              transformComponentList(this.props.component.componentTypeList)
+            )}
             // bodyData={[{ id: 1, componentType: "COMP1", status: "Active" }]}
             showButton={true}
             btnText="Add Component Type"
