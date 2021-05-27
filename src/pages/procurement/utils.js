@@ -2,7 +2,7 @@ import React from "react";
 import IconButton from "../../common/forms/IconButton";
 import Button from "../../common/forms/Button";
 
-export const siteDispatchMetaData = (handleUpdate) => {
+export const siteDispatchMetaData = (handleUpdate, handleViewMore) => {
   return [
     // {
     //   name: "MR Number",
@@ -37,15 +37,19 @@ export const siteDispatchMetaData = (handleUpdate) => {
       formatter: (cell, row) => {
         return (
           <>
-            <IconButton
-              id={row.dispatchId}
-              iconname="faEdit"
-              onClick={() => handleUpdate(row.dispatchId)}
-            />
+            {row.status !== "PROCAPPROVED" && (
+              <IconButton
+                id={row.dispatchId}
+                iconname="faEdit"
+                onClick={() => handleUpdate(row.dispatchId)}
+              />
+            )}
             <IconButton
               id={row.dispatchId}
               iconname="faList"
-              onClick={() => {}}
+              onClick={() => {
+                handleViewMore(row.dispatchId);
+              }}
             />
           </>
         );

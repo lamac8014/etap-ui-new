@@ -64,8 +64,12 @@ class ViewAssignStructure extends Component {
           {this.props.assignStructure.assignStructureList && (
             <CustomDataTable
               metaData={listAssignedStructureMetaData(
-                (structureID, projectID) => {
-                  this.props.handleComponentCheck(structureID, projectID);
+                (structureID, projectID, projStrId) => {
+                  this.props.handleComponentCheck(
+                    structureID,
+                    projectID,
+                    projStrId
+                  );
                 },
                 (id) => this.props.handleMore(id)
               )}

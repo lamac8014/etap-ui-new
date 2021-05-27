@@ -8,6 +8,7 @@ import AssignVendorModal from "./AssignVendorModal";
 import SimpleCard from "../../common/cards/SimpleCard";
 import PageContainer from "../../common/forms/PageContainer";
 import { sortByFieldName } from "../../utils/common";
+import ViewMoreModal from "./ViewMoreModal";
 
 class Procurement extends Component {
   constructor(props) {
@@ -34,11 +35,21 @@ class Procurement extends Component {
               {...this.props}
               showModal={this.props.procurement.showEditModalFlag}
             />
+            {this.props.procurement.activeItem.serviceType && (
+              <ViewMoreModal
+                showViewMore={this.props.procurement.showViewMore}
+                activeItem={this.props.procurement.activeItem}
+                handleClose={this.props.closeViewMore}
+              />
+            )}
 
             {this.props.procurement.siteDispatchDetails && (
               <CustomDataTable
                 metaData={siteDispatchMetaData(
-                  this.props.showAssignVendorModal
+                  this.props.showAssignVendorModal,
+                  (id) => {
+                    this.props.openViewMore(id);
+                  }
                 )}
                 bodyData={sortByFieldName(
                   this.props.procurement.siteDispatchDetails,

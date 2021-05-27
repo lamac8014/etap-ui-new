@@ -6,6 +6,7 @@ import {
   GET_ASSIGN_STRUCTURE_DATA_SINGLE,
   LIST_ASSIGN_COMPONENT,
   GET_ASSIGN_COMPONENT_DATA_SINGLE,
+  GET_CHART_DATA,
 } from "./types";
 
 export const assignStructureList = () => {
@@ -46,5 +47,14 @@ export const assignComponentFetch = (id) => {
   return {
     type: GET_ASSIGN_COMPONENT_DATA_SINGLE,
     payload: data,
+  };
+};
+
+export const getChartData = (projStrId) => {
+  return {
+    type: GET_CHART_DATA,
+    payload: axios.get(
+      `${config.BASE_URL}/api/StructureComponent/GetViewStructureChart?projectStructureId=${projStrId}`
+    ),
   };
 };

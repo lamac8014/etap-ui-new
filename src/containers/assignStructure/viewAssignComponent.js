@@ -4,6 +4,7 @@ import {
   assignStructureList,
   assignComponentFetch,
   assignComponentList,
+  getChartData,
 } from "../../actions/assignStructureAction";
 
 import {
@@ -15,8 +16,9 @@ import ViewAssignComponent from "../../pages/assignStructure/ViewAssignComponent
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    assignComponentList(structId, projectId) {
+    assignComponentList(structId, projectId, projStrId) {
       dispatch(assignComponentList(structId, projectId));
+      dispatch(getChartData(projStrId));
     },
 
     handleMore(id) {

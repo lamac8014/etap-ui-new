@@ -22,6 +22,7 @@ import {
   RESET_ASSIGN_VENDOR_MODAL,
   SET_SELECTED_STRUCTURES,
   RESET_MESSAGE,
+  PROC_SET_SHOW_VIEW_MORE,
 } from "../../actions/types";
 
 import Procurement from "../../pages/procurement/Procurement";
@@ -117,10 +118,26 @@ const mapDispatchToProps = (dispatch) => {
         type: RESET_MESSAGE,
       });
     },
+    openViewMore(id) {
+      dispatch({
+        type: PR_SET_ACTIVE_ITEM,
+        payload: id,
+      });
+      dispatch({
+        type: PROC_SET_SHOW_VIEW_MORE,
+        payload: true,
+      });
+    },
+    closeViewMore() {
+      dispatch({
+        type: PROC_SET_SHOW_VIEW_MORE,
+        payload: false,
+      });
+    },
     osAssignVendor() {
       dispatch(osAssignVendor())
         .then((response) => {
-          swal(response.data.message, {
+          swal(response.value.data.message, {
             icon: "success",
           });
           dispatch(getSiteDispatchDetails());
