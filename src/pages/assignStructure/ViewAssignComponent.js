@@ -6,7 +6,9 @@ import DataTable from "../../common/DataTable";
 // import ConfirmModal from "../../common/ConfirmModal";
 import CustomAlert from "../../common/forms/customAlert";
 import {
+  assignedCompPieChartData,
   listAssignedComponentMetaData,
+  scannedCompPieChartData,
   transformAssignedComponentList,
 } from "./utils";
 import Button from "../../common/forms/Button";
@@ -37,7 +39,8 @@ class ViewAssignComponent extends Component {
   componentDidMount() {
     let structId = window.atob(this.props.match.params.structId);
     let projectId = window.atob(this.props.match.params.projectId);
-    this.props.assignComponentList(structId, projectId);
+    let projStrId = window.atob(this.props.match.params.projStrId);
+    this.props.assignComponentList(structId, projectId, projStrId);
   }
 
   render() {
@@ -48,36 +51,22 @@ class ViewAssignComponent extends Component {
           <SimpleRow>
             <Col6>
               <PieChartCard
-                // isLoading={this.props.summary.pieLoading1}
+                isLoading={this.props.assignStructure.pieChartLoading}
                 height={250}
                 title="Components assigned vs Total Components "
-                data={{
-                  labels: ["Assigned", "Total"],
-                  datasets: [
-                    {
-                      data: [35, 100],
-                      backgroundColor: ["#F15850", "#EDE03E"],
-                      hoverBackgroundColor: ["#F15850", "#EDE03E"],
-                    },
-                  ],
-                }}
+                data={assignedCompPieChartData(
+                  this.props.assignStructure.chartData
+                )}
               />
             </Col6>
             <Col6>
               <PieChartCard
-                // isLoading={this.props.summary.pieLoading1}
+                isLoading={this.props.assignStructure.pieChartLoading}
                 height={250}
-                title="Scanned Components vs Dispatched Components"
-                data={{
-                  labels: ["Scanned", "Dispatched"],
-                  datasets: [
-                    {
-                      data: [6, 35],
-                      backgroundColor: ["#F15850", "#EDE03E"],
-                      hoverBackgroundColor: ["#F15850", "#EDE03E"],
-                    },
-                  ],
-                }}
+                title="Scanned Components vs Dispatched Components "
+                data={scannedCompPieChartData(
+                  this.props.assignStructure.chartData
+                )}
               />
             </Col6>
           </SimpleRow>

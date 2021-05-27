@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch, props) => {
         payload: true,
       });
     },
-    handleComponentCheck(structID, projectID) {
+    handleComponentCheck(structID, projectID, projStrId) {
       dispatch({
         type: SET_PROJECT_STRUCTURE_ID,
         payload: { structureID: structID, projectID },
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch, props) => {
       props.history.push(
         `/etrack/structure/viewComponent/${window.btoa(structID)}/${window.btoa(
           projectID
-        )}`
+        )}/${window.btoa(projStrId)}`
       );
     },
     handleGetComponent(structID, projectID) {

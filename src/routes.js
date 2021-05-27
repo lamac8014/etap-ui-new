@@ -153,7 +153,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/structure/viewComponent/:structId/:projectId",
+    path: "/etrack/structure/viewComponent/:structId/:projectId/:projStrId",
     name: "View Component",
     component: ViewComponent,
   },
