@@ -11,6 +11,8 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import "./index.scss";
 import "./assets/fonts/feather/css/feather.css";
 import "flag-icon-css/sass/flag-icon.scss";
+import "react-notifications/lib/notifications.css";
+
 import reportWebVitals from "./reportWebVitals";
 
 const App = lazy(() => import("./App"));
