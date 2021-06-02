@@ -40,26 +40,37 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
 			},
 		},
 	];
+
 };
 
 export const transformUsersList = (usersList) => {
-	let tmpArr = [];
-	usersList &&
-		usersList.map((user) => {
-			let tmpObj = {
-				id: user.userId,
-				userID: user.userId,
-				firsttext: user.firstName,
-				lasttext: user.lastName,
-				usertext: user.userName,
-				email: user.email,
-				mobileNo: user.mobileNo,
-			};
-			tmpArr.push(tmpObj);
-		});
-	return tmpArr;
+  let tmpArr = [];
+  usersList &&
+    usersList.map((user) => {
+      let tmpObj = {
+        id: user.userId,
+        userID: user.userId,
+        firsttext: user.firstName,
+        lasttext: user.lastName,
+        usertext: user.userName,
+        email: user.email,
+        mobileNo: user.mobileNo,
+      };
+      tmpArr.push(tmpObj);
+    });
+  return tmpArr;
 };
 
 export const transformVendorData = (vendorCodeList) => {
-	return transformVendorCodeListData(vendorCodeList);
+  let tempArr = [];
+  vendorCodeList.map((item) => {
+    // return new fabrication vendors only
+    item.serviceTypeId === 1 &&
+      tempArr.push({
+        value: item.id,
+        label: item.name,
+      });
+  });
+
+  return tempArr;
 };

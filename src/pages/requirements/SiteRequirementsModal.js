@@ -7,6 +7,10 @@ import Modal from "../../common/Modal";
 import DateInput from "../../common/forms/DateInput";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { transformDropDownData } from "../../utils/dataTransformer";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 // import SearchableDropDown from "../../common/forms/SearchableDropDown";
 // import Label from "../../common/forms/Label";
@@ -18,11 +22,67 @@ class SiteRequirementsModal extends Component {
     super();
     this.state = {
       structureNames: [],
+      error: false,
+      errorMsg: "",
     };
   }
+
+  isNumbers = (value) => {
+    const regex = /^\d+$/;
+    return regex.test(value) ? true : false;
+  };
+
+  isAlphabets = (value) => {
+    const regex = /^[A-Za-z]+$/;
+    return regex.test(value) ? true : false;
+  };
+
+  changeValue = (e, index) => {
+    if (e.target.value === "") {
+      this.props.handleChangeRequirementAttributeValue(e.target.value, index);
+    } else if (
+      this.props.requirement.activeItem.structureAttributesVal[index]
+        .typeOfInput.id === "numeric"
+    ) {
+      if (this.isNumbers(e.target.value)) {
+        this.setState({ error: false, errorMsg: "" });
+        this.props.handleChangeRequirementAttributeValue(e.target.value, index);
+      } else {
+        NotificationManager.error(
+          "The Input type is Numeric",
+          // <p className="text-white">Error</p>,
+          "",
+          3000
+        );
+      }
+    } else if (
+      this.props.requirement.activeItem.structureAttributesVal[index]
+        .typeOfInput.id === "alphabetic"
+    ) {
+      if (this.isAlphabets(e.target.value)) {
+        this.setState({ error: false, errorMsg: "" });
+        this.props.handleChangeRequirementAttributeValue(e.target.value, index);
+      } else {
+        NotificationManager.error(
+          "The Input type is Alphabetic",
+          // <p className="text-white">Error</p>,
+          "",
+          3000
+        );
+      }
+    } else if (
+      this.props.requirement.activeItem.structureAttributesVal[index]
+        .typeOfInput.id === "both"
+    ) {
+      this.setState({ error: false, errorMsg: "" });
+      this.props.handleChangeRequirementAttributeValue(e.target.value, index);
+    }
+  };
+
   render() {
     return (
       <>
+        <NotificationContainer />
         {this.props.requirement.activeItem.structId && (
           <Modal
             title="Site Requirements"
@@ -157,12 +217,7 @@ class SiteRequirementsModal extends Component {
                             name="value"
                             id="value"
                             value={structure.value}
-                            onChange={(e) =>
-                              this.props.handleChangeRequirementAttributeValue(
-                                e.target.value,
-                                index
-                              )
-                            }
+                            onChange={(e) => this.changeValue(e, index)}
                           />
                         </div>
                       </div>
