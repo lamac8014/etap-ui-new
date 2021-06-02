@@ -208,6 +208,7 @@ const mapDispatchToProps = (dispatch) => {
           currentProject[0].structureAttributes
         );
       }
+      currentProject[0].structureAttributes.map((item) => (item.value = ""));
       requirement.siteRequirementList[i].structureAttributesVal =
         currentProject[0].structureAttributes;
       dispatch({

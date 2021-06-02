@@ -63,7 +63,8 @@ export const twccDispatchMetaData = (
         return (
           <a
             href="#"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               redirectToDispatchStructure(
                 row.structureId,
                 row.siteRequirementId
