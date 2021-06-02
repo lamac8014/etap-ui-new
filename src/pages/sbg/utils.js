@@ -6,6 +6,7 @@ export const sbgTableMetaData = (handleEdit) => {
     {
       text: "Strategic Business Group Name",
       dataField: "sbgName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",

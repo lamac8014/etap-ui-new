@@ -6,6 +6,7 @@ export const icbuMetaData = (handleDelete, handleEdit) => {
     {
       text: "Independent Company Name",
       dataField: "independentCompanyName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",

@@ -135,14 +135,17 @@ export const structureTableMetaData = (handleEdit, handleViewMore) => {
     {
       text: "Project",
       dataField: "dcNo",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Struct. Code",
       dataField: "structId",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Struct. Name",
       selector: "structName",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Actions",
@@ -177,18 +180,22 @@ export const componentsMetaData = (onChangeValue) => {
     {
       text: "Component",
       dataField: "component",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Comp Type",
       dataField: "compType",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Comp ID",
       dataField: "compType",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Comp No",
       dataField: "compNum",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Group",
@@ -198,38 +205,47 @@ export const componentsMetaData = (onChangeValue) => {
     {
       text: "Dr No",
       dataField: "drawingNum",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Length",
       dataField: "length",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Breadth",
       dataField: "breadth",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Height",
       dataField: "height",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Thickness",
       dataField: "thickness",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Weight",
       dataField: "weight",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Type",
       dataField: "type",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Tag",
       dataField: "tag",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Cost",
       dataField: "cost",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
   ];
 };
@@ -307,6 +323,7 @@ export const listAssignedStructureMetaData = (
     {
       text: "Structure Name",
       dataField: "structureName",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
 
     {
@@ -332,23 +349,28 @@ export const listAssignedStructureMetaData = (
     {
       text: "Structure Family",
       dataField: "structureFamily",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Component Count",
       dataField: "componentsCount",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
 
     {
       text: "Total Weight",
       dataField: "totalWeight",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Structure Status",
       dataField: "structureStatus",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Current Status",
       dataField: "currentStatus",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Actions",
@@ -394,30 +416,37 @@ export const listAssignedComponentMetaData = (handleDelete, handleMore) => {
     {
       text: "Component NO",
       dataField: "componentNo",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Component",
       dataField: "component",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Component ID",
       dataField: "componentID",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Component Family",
       dataField: "componentFamily",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Drawing Number",
       dataField: "drawingNumber",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "O/M",
       dataField: "oM",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Mod No",
       dataField: "modNo",
+      style: { textAlign: "center" ,verticalalign:"middle"},
     },
     {
       text: "Actions",

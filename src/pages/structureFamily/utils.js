@@ -8,10 +8,12 @@ export const structureFamilyMetaData = (handleEdit) => {
     {
       text: 'Structure Family',
       dataField: 'structureFamilyType',
+      style: { verticalAlign:"middle"},
     },
     {
       text: 'Status',
       dataField: 'status',
+      style: { verticalAlign:"middle"},
 
     },
     {

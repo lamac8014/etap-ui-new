@@ -25,16 +25,19 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
     {
       text: "Structure Name",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Structure Family",
       dataField: "structureType",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Status",
       dataField: "status",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {

@@ -7,55 +7,68 @@ export const componentsMetaData = (onChangeValue) => {
     {
       text: "Component",
       dataField: "component",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Component Type",
       dataField: "compType",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Component ID",
       dataField: "compId",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Component No",
       dataField: "compNum",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Group",
       dataField: "group",
+      style: {verticalAlign:"middle"},
     },
 
     {
       text: "Drawing No",
       dataField: "drawingNum",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Length",
       dataField: "length",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Breadth",
       dataField: "breadth",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Height",
       dataField: "height",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Thickness",
       dataField: "thickness",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Weight",
       dataField: "weight",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Type",
       dataField: "type",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Tag",
       dataField: "tag",
+      style: {verticalAlign:"middle"},
     },
   ];
 };
@@ -65,15 +78,18 @@ export const structureMetaData = (handleComponentCheck, handleViewMore) => {
     {
       text: "DC No",
       dataField: "dcNumber",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Structure Name",
       dataField: "structrueName",
+      style: {verticalAlign:"middle"},
     },
 
     {
       text: "Structure Code",
       dataField: "structureCode",
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <>
@@ -104,6 +120,7 @@ export const structureMetaData = (handleComponentCheck, handleViewMore) => {
     {
       text: "No of Comp",
       dataField: "componentsCount",
+      style: {verticalAlign:"middle"},
     },
 
     {
@@ -150,57 +167,71 @@ export const componentMetaData = (handleMore) => {
     {
       text: "Component",
       dataField: "componentName",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Component Type",
       dataField: "componentType",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Comp ID",
       dataField: "compId",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Comp No",
       dataField: "componentNo",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Group",
       dataField: "isGroup",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Dr. No",
       dataField: "drawingNo",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Length",
       dataField: "leng",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Breadth",
       dataField: "breath",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Height",
       dataField: "height",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Thickness",
       dataField: "thickness",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Weight",
       dataField: "weight",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Type",
       dataField: "makeType",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Tag",
       dataField: "isTag",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Actions",
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <>

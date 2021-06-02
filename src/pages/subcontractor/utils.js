@@ -16,16 +16,19 @@ export const tranformServTypeListEnableCheck = (data) => {
     {
       name: "Fabrication",
       id: 1,
+      style: { verticalAlign:"middle"},
       checked: false,
     },
     {
       name: "Outsourcing",
       id: 2,
+      style: { verticalAlign:"middle"},
       checked: false,
     },
     {
       name: "Scrap",
       id: 3,
+      style: { verticalAlign:"middle"},
       checked: false,
     },
   ];
@@ -51,18 +54,22 @@ export const listVendorMetaData = (handleDelete, handleEdit) => {
     {
       text: "Vendor Name",
       dataField: "name",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Vendor Email",
       dataField: "email",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Vendor Code",
       dataField: "vendorCode",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Phone Number",
       dataField: "phoneNunmber",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Status",

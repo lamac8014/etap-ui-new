@@ -9,38 +9,45 @@ export const listBuiltTypeMetaData = (
     {
       text: "Mr No",
       dataField: "mrNo",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
 
     {
       text: "Project",
       dataField: "projectName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
 
     {
       text: "Structure Id",
       dataField: "projectId",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Structure Family",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Quantity",
       dataField: "projectId",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Required By",
       dataField: "projectId",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "status",
       dataField: "status",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
 

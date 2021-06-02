@@ -7,6 +7,9 @@ import {
 	SURPLUS_EDIT_MORE_PAGE,
 	CHANGE_SURPLUS_MORE_MODAL_STATUS,
 	CHANGE_SURPLUS_EDIT_MORE_MODAL_STATUS,
+	SURPLUS_VIEW_MORE_MODAL, 
+	SURPLUS_VIEW_PAGE,
+	SURPLUS_VIEW_MODAL
 } from "../../actions/types";
 import ViewSurplus from "../../pages/surplus/ViewSurplus";
 import swal from "sweetalert";
@@ -37,23 +40,13 @@ const mapDispatchToProps = (dispatch, props) => {
 				dispatch(surplusList());
 			});
 		},
-		handleViewMore(id) {
+		handleView(id) {
 			dispatch({
-				type: SURPLUS_MORE_PAGE,
+				type: SURPLUS_VIEW_PAGE,
 				payload: true,
 			});
 			dispatch({
-				type: CHANGE_SURPLUS_MORE_MODAL_STATUS,
-				payload: true,
-			});
-		},
-		handleEdit(id) {
-			dispatch({
-				type: SURPLUS_EDIT_MORE_PAGE,
-				payload: true,
-			});
-			dispatch({
-				type: CHANGE_SURPLUS_EDIT_MORE_MODAL_STATUS,
+				type: SURPLUS_VIEW_MODAL,
 				payload: true,
 			});
 		},

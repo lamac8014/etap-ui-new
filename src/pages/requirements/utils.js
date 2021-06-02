@@ -91,18 +91,21 @@ export const listViewRequirementsMetaData = (
     {
       text: "Mr No",
       dataField: "mrNo",
+      style: { verticalAlign:"middle"},
       sort: true,
       sortCaret,
     },
     {
       text: "Project",
       dataField: "projectName",
+      style: { verticalAlign:"middle"},
       sort: true,
       sortCaret,
     },
     {
       text: "Structure",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
       sort: true,
       sortCaret,
     },
@@ -189,10 +192,12 @@ export const requestCreationMetaData = (handleViewMore) => {
     {
       text: "Structure Name",
       dataField: "structName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Quantity",
       dataField: "quantity",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",

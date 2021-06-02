@@ -11,14 +11,17 @@ export const siteDispatchMetaDatatext = (
 		{
 			text: "DC No",
 			dataField: "dcNumber",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Structure Name",
 			dataField: "structureName",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Structure Code",
 			dataField: "structId",
+			style: { verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<a
@@ -42,10 +45,12 @@ export const siteDispatchMetaDatatext = (
 		{
 			text: "Qty Assigned",
 			dataField: "quantity",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Actions",
 			center: true,
+			style: { verticalAlign:"middle"},
 
 			formatter: (cell, row) => {
 				return (
@@ -85,18 +90,22 @@ export const componentMetaData = (setSelectedComponents) => {
 		{
 			text: "Component",
 			dataField: "componentName",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Component Type",
 			dataField: "componentType",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Comp. ID",
 			dataField: "componentId",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Dr. No",
 			dataField: "drawingNumber",
+			style: { verticalAlign:"middle"},
 		},
 	];
 };

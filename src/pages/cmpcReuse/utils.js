@@ -8,12 +8,14 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 		{
 			text: "",
 			dataField: "",
+			style: {verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<Input
 						key={row.dispatchRequirementId}
 						type="checkbox"
-						style={{ marginLeft: 0 }}
+						style={{ marginLeft: 0,marginTop:0}}
+						//style= {{verticalAlign: "middle"}}
 						//  disabled={row.disabled}
 						checked={row.checked}
 						onChange={() => setSelectedStructures(row)}
@@ -24,29 +26,36 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 		{
 			text: "DA No",
 			dataField: "dcNumber",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Name",
 			dataField: "structrueName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Code",
 			dataField: "structureCode",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "No of Components",
 			dataField: "numberOfComponents",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Required By",
 			dataField: "projectName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Quantity",
 			dataField: "quantity",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Actions",
+			style: {verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<div key={row.userId}>

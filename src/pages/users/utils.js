@@ -6,21 +6,25 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
     {
       text: "First Name",
       dataField: "firstName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Last Name",
       dataField: "lastName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "PS No",
       dataField: "userName",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       text: "Email",
       dataField: "email",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {

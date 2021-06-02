@@ -7,18 +7,22 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
 		{
 			text: "DA No",
 			dataField: "dcNumber",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Name",
 			dataField: "structrueName",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Code",
 			dataField: "structureCode",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Family",
 			dataField: "structureFamily",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Actions",

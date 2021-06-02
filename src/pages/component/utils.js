@@ -25,13 +25,16 @@ export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
     {
       text: "Component Type",
       dataField: "componentType",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Status",
       dataField: "status",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Actions",
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <>
