@@ -7,14 +7,17 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		{
 			text: "DC No",
 			dataField: "dispatchNo",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Structure",
 			dataField: "structrueName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Structure ID",
 			dataField: "structureCode",
+			style: {verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<>
@@ -38,9 +41,11 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		{
 			text: "Project",
 			dataField: "projectName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Quantity",
+			style: {verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<p>
@@ -52,6 +57,7 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		{
 			text: "Status",
 			dataField: "status",
+			style: {verticalAlign:"middle"},
 		},
 		// {
 		//   name: "Created Date",
@@ -98,10 +104,12 @@ export const assignVendorTableMetaData = (handleDelete) => {
 		{
 			text: "Structure Name",
 			dataField: "structureName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Vendor Name",
 			dataField: "vendorName",
+			style: {verticalAlign:"middle"},
 		},
 	];
 };
@@ -124,30 +132,37 @@ export const outSourcingTableMetaData = (handleDelete) => {
 		{
 			text: "Structure Name",
 			dataField: "structureName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Vendor Name",
 			dataField: "vendorName",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Monthly Rent",
 			dataField: "monthlyRent",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Contract Years",
 			dataField: "contractYears",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Planned Release Date",
 			dataField: "plannedReleaseDate",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Actual Start Date",
 			dataField: "actualStartDate",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Expected Release Date",
 			dataField: "expectedReleaseDate",
+			style: {verticalAlign:"middle"},
 		},
 	];
 };
@@ -157,59 +172,73 @@ export const componentsMetaData = (onChangeValue) => {
 		{
 			text: "Component",
 			dataField: "component",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Component Type",
 			dataField: "compType",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Component ID",
 			dataField: "compId",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Component No",
 			dataField: "compNum",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Group",
 			dataField: "group",
+			style: {verticalAlign:"middle"},
 		},
 
 		{
 			text: "Drawing No",
 			dataField: "drawingNum",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Length",
 			dataField: "length",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Breadth",
 			dataField: "breadth",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Height",
 			dataField: "height",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Thickness",
 			dataField: "thickness",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Weight",
 			dataField: "weight",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Type",
 			dataField: "type",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "Tag",
 			dataField: "tag",
+			style: {verticalAlign:"middle"},
 		},
 		{
 			text: "QR Code",
 			dataField: "qrCode",
+			style: {verticalAlign:"middle"},
 		},
 	];
 };

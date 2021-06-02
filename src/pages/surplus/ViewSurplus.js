@@ -5,7 +5,8 @@ import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import ConfirmModal from "../../common/forms/ConfirmModal";
-
+//import ViewSurplusMore from "./ViewSurplusMore";
+import ViewModal from "../../containers/surplus/viewModal";
 class ViewSurplus extends Component {
 	constructor(props) {
 		super(props);
@@ -24,6 +25,7 @@ class ViewSurplus extends Component {
 	render() {
 		return (
 			<PageContainer>
+				<ViewModal showSurplusViewModal = {this.props.surplus.showSurplusViewModal} />
 				<SimpleCard>
 					{/* {this.props.users.usersList && ( */}
 					{this.state.showApproveModal && (
@@ -56,11 +58,13 @@ class ViewSurplus extends Component {
 							cancelText="Cancelled!"
 						/>
 					)}
+					{/* <SurplusViewMore showSurplusViewModal = {this.props.surplus.showSurplusViewModal} />  */}
 					<DataTable
 						metaData={surplusApproveMetaData(
 							// (id) => this.setState({ activeId: id, showDeleteModal: true }),
 							(id) => this.setState({ activeId: id, showApproveModal: true }),
 							(id) => this.setState({ activeId: id, showDeleteModal: true }),
+							(id) =>{this.props.handleView(id)},
 							() => {}
 						)}
 						bodyData={

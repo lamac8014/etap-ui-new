@@ -19,7 +19,7 @@ class EditGridDetailsTable extends Component {
 								<tr>
 									{Object.keys(data).map((key) => (
 										<>
-											<td> {data[key]}</td>
+											<td style="text-align:center"> {data[key]}</td>
 										</>
 									))}
 									<td className="action-btns">

@@ -23,14 +23,17 @@ export const listUsersMetaData = (setSelectedItems) => {
 		{
 			text: "Structure",
 			dataField: "structureName",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Code",
 			dataField: "structureCode",
+			style: { verticalAlign:"middle"},
 		},
 		{
 			text: "Struct. Family",
 			dataField: "structureFamily",
+			style: { verticalAlign:"middle"},
 		},
 		// {
 		// 	text: "Actions",

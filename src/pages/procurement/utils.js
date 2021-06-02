@@ -13,18 +13,22 @@ export const siteDispatchMetaData = (handleUpdate, handleViewMore) => {
     {
       text: "MR No",
       dataField: "mrNo",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "DC No",
       dataField: "dispatchNo",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Structure",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Req By",
       dataField: "toProjectName",
+      style: { verticalAlign:"middle"},
     },
     // {
     //   name: "Created Date",
@@ -80,10 +84,12 @@ export const assignVendorTableMetaData = (handleDelete) => {
     {
       text: "Structure Name",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Vendor Name",
       dataField: "vendorName",
+      style: { verticalAlign:"middle"},
     },
   ];
 };
@@ -106,30 +112,37 @@ export const outSourcingTableMetaData = (handleDelete) => {
     {
       text: "Structure Name",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Vendor Name",
       dataField: "vendorName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Monthly Rent",
       dataField: "monthlyRent",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Contract Years",
       dataField: "contractYears",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Planned Release Date",
       dataField: "plannedReleaseDate",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actual Start Date",
       dataField: "actualStartDate",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Expected Release Date",
       dataField: "expectedReleaseDate",
+      style: { verticalAlign:"middle"},
     },
   ];
 };

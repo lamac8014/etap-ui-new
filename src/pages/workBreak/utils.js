@@ -6,18 +6,22 @@ export const listWBSMetaData = (handleDelete, handleEdit) => {
     {
       text: "WBS",
       dataField: "wbs",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Segment",
       dataField: "segment",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "SubSegment",
       dataField: "subSegment",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Element",
       dataField: "element",
+      style: { verticalAlign:"middle"},
     },
   ];
 };
@@ -43,26 +47,31 @@ export const listWBSMetaDataView = (handleDelete, handleEdit) => {
     {
       name: "ProjectCode",
       selector: "projectCode",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       name: "WBS",
       selector: "wbs",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       name: "Segment",
       selector: "segment",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       name: "SubSegment",
       selector: "subSegment",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
     {
       name: "Element",
       selector: "element",
+      style: { verticalAlign:"middle"},
       sortable: true,
     },
   ];

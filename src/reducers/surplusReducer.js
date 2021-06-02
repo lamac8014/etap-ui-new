@@ -9,6 +9,8 @@ import {
 	VIEW_SURPLUS_MORE_PAGE,
 	SURPLUS_SET_EDIT_MODAL_FLAG,
 	SURPLUS_SET_ACTION,
+	SURPLUS_VIEW_MODAL,
+	SET_VIEW_MODE,
 } from "../actions/types";
 import { getUserDetails } from "../utils/auth";
 
@@ -26,6 +28,8 @@ const initialState = {
 	surplusList: [],
 	isSurplusChecked: false,
 	isScrapChecked: false,
+	isEditMode:false,
+	surplusViewModal:[]
 };
 
 export default function (state = initialState, action) {
@@ -139,7 +143,19 @@ export default function (state = initialState, action) {
 				isSurplusChecked: action.payload.surplus,
 				isScrapChecked: action.payload.scrap,
 			};
+		case SURPLUS_VIEW_MODAL:
+				return {
+				  ...state,
+				  showSurplusViewModal: action.payload,
+				}
+		
+		case SET_VIEW_MODE:
+				return {
+				  ...state,
+				  isEditMode: action.payload,
+				}
 		default:
 			return state;
 	}
-}
+};
+

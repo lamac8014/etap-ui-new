@@ -6,22 +6,27 @@ export const listProjectMetaData = (handleDelete, handleEdit) => {
     {
       text: "Project",
       dataField: "name",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Project Code",
       dataField: "projCode",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Area",
       dataField: "area",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "IC",
       dataField: "icName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "BU",
       dataField: "buName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",

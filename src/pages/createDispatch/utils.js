@@ -9,23 +9,27 @@ export const createDispatchMetaData = (handleEditIconPress) => {
     {
       text: "MR Number",
       dataField: "mrNo",
+      style: {verticalAlign:"middle"},
     },
 
     {
       text: "Project",
       dataField: "projectName",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Project ID",
       dataField: "projectId",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Status",
       dataField: "status",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Actions",
-
+      style: {verticalAlign:"middle"},
       formatter: (row) => {
         return (
           <>
@@ -48,11 +52,13 @@ export const twccDispatchMetaData = (
     {
       text: "MR Number",
       dataField: "mrNumber",
+      style: {verticalAlign:"middle"},
     },
 
     {
       text: "Structure Name",
       // dataField: "structureName",
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <a
@@ -80,18 +86,21 @@ export const twccDispatchMetaData = (
     {
       text: "Req By",
       dataField: "requestBy",
+      sstyle: {verticalAlign:"middle"},
     },
     {
       text: "Raised By",
       dataField: "raisedBy",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Status",
       dataField: "requestStatus",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Actions",
-
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <>
@@ -143,14 +152,17 @@ export const twccdispatchStructureMetaData = (
     {
       text: "Availability",
       dataField: "availability",
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Avail.Site",
       dataField: "projectName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Avail.Dt",
       dataField: "availDate",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",
@@ -173,10 +185,12 @@ export const lstVerifyStructureQtyMetaData = () => {
     {
       text: "Structure Name",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Quantity",
       dataField: "quantity",
+      style: { verticalAlign:"middle"},
     },
   ];
 };
@@ -231,9 +245,9 @@ export const dispatchTableMetaData = (handleDelete) => {
       },
       style: { width: "1%" },
     },
-    { text: "Structure", dataField: "structureName" },
-    { text: "Quantity", dataField: "quantity" },
-    { text: "Dispatch Type", dataField: "serviceType" },
+    { text: "Structure", dataField: "structureName" , style: { verticalAlign:"middle"}},
+    { text: "Quantity", dataField: "quantity" ,style: { verticalAlign:"middle"}},
+    { text: "Dispatch Type", dataField: "serviceType" ,style: { verticalAlign:"middle"}, },
   ];
 };
 
