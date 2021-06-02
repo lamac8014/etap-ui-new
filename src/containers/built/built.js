@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import store from '../../store';
 import { builtList } from '../../actions/builtAction';
-
+import {buildStructure} from "../../actions/builtAction";
 import {
   CHANGE_BUILT_MORE_MODAL_STATUS,
   BUILT_MORE_PAGE,
   CHANGE_BUILT_EDIT_MORE_MODAL_STATUS,
-  BUILT_EDIT_MORE_PAGE
+  BUILT_EDIT_MORE_PAGE,
+  GET_AS_BUILD_STRUCTURE,
 } from '../../actions/types';
 import ViewAsBuilt from '../../pages/built/ViewAsBuilt';
 
@@ -20,6 +21,9 @@ const mapDispatchToProps = (dispatch,props) => {
       props.history.push(
         `/etrack/built/asBuiltDetails/${window.btoa(id)}`
       );
+    },
+    buildStructure(projectId) {
+      dispatch(buildStructure(projectId));
     },
 
     handleMore(id) {

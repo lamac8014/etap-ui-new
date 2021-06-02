@@ -54,6 +54,7 @@ class ViewAsBuilt extends Component {
                     <CustomDataTable
                         metaData={listBuiltTypeMetaData(
                             (structureName) => { this.props.redirectToBuiltMoreDetails(structureName) },
+                            (projectId) =>{ this.props.buildStructure(projectId)},
                             (id) => this.props.handleEdit(id),
                             (id) => this.props.handleMore(id),
                             //(id) => this.props.redirectBuiltDetails(id),

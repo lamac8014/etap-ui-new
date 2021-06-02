@@ -21,9 +21,9 @@ class AddIndependentCompany extends Component {
         <FormRow>
           <TextInput
             label="Independent Company Name"
-            size="col-md-10 offset-md-2"
-            labelSize="col-md-5 text-right"
-            fieldSize="col-md-3"
+            //size="col-md-4 offset"
+            //labelSize="col-md-5 text-right"
+            //fieldSize="col-md-3"
             name="ic"
             id="ic"
             onChange={(e) => this.props.handleChangeIc(e.target.value)}

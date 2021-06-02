@@ -8,14 +8,13 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 		{
 			text: "",
 			dataField: "",
-			style: {verticalAlign:"middle"},
+			//style: {verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
 					<Input
 						key={row.dispatchRequirementId}
 						type="checkbox"
-						style={{ marginLeft: 0,marginTop:0}}
-						//style= {{verticalAlign: "middle"}}
+						style={{ marginTop:10,marginBottom:5,marginLeft:0}}
 						//  disabled={row.disabled}
 						checked={row.checked}
 						onChange={() => setSelectedStructures(row)}
