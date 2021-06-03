@@ -18,7 +18,7 @@ class ViewAsBuilt extends Component {
         };
     }
     componentDidMount() {
-        this.props.built.buildStructure();
+        this.props.buildStructure();
     }
 
 
@@ -58,7 +58,7 @@ class ViewAsBuilt extends Component {
                             (id) => this.props.handleMore(id),
                             (id) => this.props.redirectBuiltDetails(id),
                         )}
-                        bodyData={this.props.built.buildStructure}
+                        bodyData= {listBuiltDetailsMetaData(this.props.built.buildStructure)}
                         // bodyData={[{ structureName: "Launching Girders", structureCode: "STR 001", dcNo: "16" },
                         //{ structureName: "Tresties", structureCode: "STR 002", dcNo: "17" }]}
                        
