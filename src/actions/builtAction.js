@@ -12,9 +12,10 @@ export const builtList = () => {
     }
 }
 
-export const buildStructure = (projectId) => {
+export const buildStructure = () => {
+    let projectId = JSON.parse(localStorage.getItem("userDetails")).projectId;
     return {
         type: GET_AS_BUILD_STRUCTURE,
-        payload: axios.get(config.BASE_URL +'/api/FabricationManagement/GetAsBuildStructure/'+projectId)
+        payload: axios.get(config.BASE_URL +'/api/FabricationManagement/GetAsBuildStructure?id=2'+projectId)
     }
 }
