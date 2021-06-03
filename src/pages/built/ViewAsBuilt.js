@@ -18,7 +18,7 @@ class ViewAsBuilt extends Component {
         };
     }
     componentDidMount() {
-        this.props.builtList();
+        this.props.buildStructure();
     }
 
 
@@ -54,14 +54,13 @@ class ViewAsBuilt extends Component {
                     <CustomDataTable
                         metaData={listBuiltTypeMetaData(
                             (structureName) => { this.props.redirectToBuiltMoreDetails(structureName) },
-                            (projectId) =>{ this.props.buildStructure(projectId)},
                             (id) => this.props.handleEdit(id),
                             (id) => this.props.handleMore(id),
-                            //(id) => this.props.redirectBuiltDetails(id),
+                            (id) => this.props.redirectBuiltDetails(id),
                         )}
-                        // bodyData={this.props.procurement.siteDispatchDetails}
-                        bodyData={[{ structureName: "Launching Girders", structureCode: "STR 001", dcNo: "16" },
-                        { structureName: "Tresties", structureCode: "STR 002", dcNo: "17" }]}
+                        bodyData= {this.props.built.asBuildStructure}
+                        // bodyData={[{ structureName: "Launching Girders", structureCode: "STR 001", dcNo: "16" },
+                        //{ structureName: "Tresties", structureCode: "STR 002", dcNo: "17" }]}
                        
                         
                     />

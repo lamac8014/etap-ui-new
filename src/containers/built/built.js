@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch,props) => {
         `/etrack/built/asBuiltDetails/${window.btoa(id)}`
       );
     },
-    buildStructure(projectId) {
-      dispatch(buildStructure(projectId));
+    buildStructure() {
+      dispatch(buildStructure());
     },
 
     handleMore(id) {
