@@ -79,7 +79,7 @@ export const listVendorMetaData = (handleDelete, handleEdit) => {
       },
     },
     {
-      name: "Actions",
+      text: "Actions",
       sortable: true,
       formatter: (cell, row) => {
         return (

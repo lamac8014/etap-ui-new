@@ -23,16 +23,16 @@ export const businessUnitMetaData = (handleDelete, handleEdit) => {
     {
       text: "BU Name",
       dataField: "businessUnit",
-      style: { textAlign: "center" ,verticalalign:"middle"},
+      style: { verticalAlign:"middle"},
     },
     {
       text: "IC Name",
       dataField: "icName",
-      style: { textAlign: "center" ,verticalalign:"middle"},
+      style: {verticalAlign:"middle"},
     },
     {
-      name: "Actions",
-      style: { textAlign: "center" ,verticalalign:"middle"},
+      text: "Actions",
+      style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
         return (
           <>

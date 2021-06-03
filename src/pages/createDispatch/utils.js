@@ -86,7 +86,7 @@ export const twccDispatchMetaData = (
     {
       text: "Req By",
       dataField: "requestBy",
-      sstyle: {verticalAlign:"middle"},
+      style: {verticalAlign:"middle"},
     },
     {
       text: "Raised By",
@@ -139,7 +139,7 @@ export const twccdispatchStructureMetaData = (
             <Input
               key={row.temp_id}
               type="checkbox"
-              style={{ marginLeft: 0 }}
+              style={{ marginTop:10,marginBottom:5,marginLeft:0}}
               disabled={row.disabled}
               checked={row.checked}
               onChange={() => setSelectedStructures(row)}
