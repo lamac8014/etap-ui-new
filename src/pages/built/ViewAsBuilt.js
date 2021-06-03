@@ -58,7 +58,7 @@ class ViewAsBuilt extends Component {
                             (id) => this.props.handleMore(id),
                             (id) => this.props.redirectBuiltDetails(id),
                         )}
-                        bodyData= {listBuiltDetailsMetaData(this.props.built.buildStructure)}
+                        bodyData= {this.props.built.asBuildStructure}
                         // bodyData={[{ structureName: "Launching Girders", structureCode: "STR 001", dcNo: "16" },
                         //{ structureName: "Tresties", structureCode: "STR 002", dcNo: "17" }]}
                        
