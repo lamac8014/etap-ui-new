@@ -12,6 +12,7 @@ import {
   IC_CODE,
   BUSINESS_UNIT_LIST,
   RESET_EDIT_BUSINESS_UNIT_FORM,
+  BU_STATUS,
 } from "../../actions/types";
 import {
   addBusinessUnit,
@@ -107,6 +108,12 @@ const mapDispatchToProps = (dispatch) => {
     handleBusinessUnitStatus(value) {
       dispatch({
         type: BUSINESS_UNIT_STATUS,
+        payload: value,
+      });
+    },
+    handleBuStatus(value) {
+      dispatch({
+        type: BU_STATUS,
         payload: value,
       });
     },

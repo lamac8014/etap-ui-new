@@ -9,6 +9,7 @@ import {
   SITE_LOCATION,
   PROJECT_INDEPENDENT_COMPANY,
   RESET_STRUCTURE_FORM,
+  PROJ_STATUS,
 
 } from '../../actions/types';
 
@@ -56,6 +57,12 @@ const mapDispatchToProps = dispatch => {
         payload: value,
       });
     },
+    handleProjStatus(value) {
+			dispatch({
+			  type:PROJ_STATUS,
+			  payload: value,
+			});
+		},
   };
 };
 

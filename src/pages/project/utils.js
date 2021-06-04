@@ -29,6 +29,12 @@ export const listProjectMetaData = (handleDelete, handleEdit) => {
       style: { verticalAlign:"middle"},
     },
     {
+      text: 'Status',
+      dataField: 'status',
+      style: { verticalAlign:"middle"},
+
+    },
+    {
       text: "Actions",
       formatter: (cell, row) => {
         return (
@@ -41,8 +47,15 @@ export const listProjectMetaData = (handleDelete, handleEdit) => {
 
 export const transformProjectList = (projectList) => {
   let tmpArr = [];
+  let status;
   projectList &&
     projectList.map((project) => {
+      if (project.isActive) {
+        status= "Active"
+      }
+      else {
+        status = "InActive"
+      }
       let tmpObj = {
         id: project.id,
         name: project.name,
@@ -55,6 +68,7 @@ export const transformProjectList = (projectList) => {
           .map((dt) => dt.name)
           .join()
           .replaceAll(",", ", "),
+        status:status,  
       };
       tmpArr.push(tmpObj);
     });

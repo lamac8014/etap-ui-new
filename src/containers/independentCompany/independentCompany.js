@@ -10,7 +10,8 @@ import {
     RESET_IC_FORM,
     IC_NAME,
     SHOW_ICBU_MSG,
-    SHOW_ADD_ICBU_MODAL
+    SHOW_ADD_ICBU_MODAL,
+    IC_STATUS,
 } from '../../actions/types';
 import {createIcbu,updateIcbu,icbuList} from '../../actions/icbuAction';
 import AddIndependentCompany from '../../pages/independentCompany/AddIndependentCompany';
@@ -54,6 +55,12 @@ const mapDispatchToProps = dispatch => {
                 payload: value,
             });
         },
+        handleIcStatus(value) {
+            dispatch({
+              type: IC_STATUS,
+              payload: value,
+            });
+          },
 
     };
 };

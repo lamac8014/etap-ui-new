@@ -18,6 +18,7 @@ import {
   ADD_LOCATION_FIELD,
   JOB_CODE,
   EDRC_CODE,
+  PROJ_STATUS,
 } from "../actions/types";
 
 import { getSelectedValue } from "../utils/dataTransformer";
@@ -41,6 +42,7 @@ const initialState = {
   locations: [],
   jobCode: "",
   edrcCode: "",
+  projStatus:"",
 };
 
 export default function (state = initialState, action) {
@@ -50,6 +52,11 @@ export default function (state = initialState, action) {
         ...state,
         projectName: action.payload,
       };
+      case PROJ_STATUS:
+        return {
+          ...state,
+          projStatus: action.payload
+        }
       case JOB_CODE:
       return {
         ...state,

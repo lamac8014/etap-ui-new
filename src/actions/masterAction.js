@@ -9,6 +9,7 @@ import {
   GET_BU_LIST,
   CREATE_PROJECT,
   UPDATE_PROJECT,
+  PROJ_STATUS
 } from "./types";
 
 //Projects
@@ -70,6 +71,7 @@ export const createProj = () => {
 
 export const updateProj = () => {
   const proj = store.getState().proj;
+  const status=(proj.projStatus.value==="InActive")?false:true
   const data = {
     id: proj.selectedProjId,
     name: proj.projectName,
@@ -80,6 +82,8 @@ export const updateProj = () => {
     icId: proj.independentCompany.value,
     buId: proj.businessUnit.value,
     projectSiteLocationDetails: proj.locations,
+    isActive: status,
+    isDelete: false,
   };
   return {
     type: UPDATE_PROJECT,

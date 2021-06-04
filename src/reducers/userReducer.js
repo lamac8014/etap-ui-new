@@ -22,6 +22,7 @@ import {
   UPDATE_USER,
   GET_VENDOR_CODE_LIST,
   USERS_SET_VENDOR_CODE,
+  USER_STATUS,
 } from "../actions/types";
 import { getSelectedValue } from "../utils/dataTransformer";
 
@@ -42,6 +43,7 @@ const initialState = {
   vendorCodeList: [],
   userId: "",
   vendor: {},
+  userStatus:"",
 };
 
 export default function (state = initialState, action) {
@@ -51,6 +53,11 @@ export default function (state = initialState, action) {
         ...state,
         isEdit: action.payload,
       };
+    case USER_STATUS:
+        return {
+          ...state,
+          userStatus: action.payload
+        }
     case FIRST_NAME:
       return {
         ...state,

@@ -15,6 +15,7 @@ import {
   SET_BUSINESS_UNIT_EDIT_MODE,
   EDIT_SINGLE_BU,
   CHANGE_EDIT_BUSINESS_UNIT_MODAL_STATUS,
+  BU_STATUS,
 } from "../../actions/types";
 
 import ViewBusinessUnit from "../../pages/businessUnit/ViewBusinessUnit";
@@ -23,6 +24,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     businessUnitList() {
       dispatch(businessUnitList());
+    },
+    handleBuStatus(value) {
+      dispatch({
+        type: BU_STATUS,
+        payload: value,
+      });
     },
 
     handleChangeBusinessUnitType(value) {

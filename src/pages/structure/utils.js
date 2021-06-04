@@ -60,13 +60,13 @@ export const listStructureMetaData = (handleDelete, handleEdit) => {
 
 export const transformStructureList = (structureList, structureFamilyList) => {
   let tmpArr = [];
-  let isActiveValue;
+  let status;
   structureList &&
     structureList.map((structure) => {
       if (structure.isActive) {
-        isActiveValue = "Active";
+        status = "Active";
       } else {
-        isActiveValue = "inActive";
+        status = "InActive";
       }
 
       const structureFamilyValue = getSelectedValue(
@@ -77,7 +77,7 @@ export const transformStructureList = (structureList, structureFamilyList) => {
         id: structure.id,
         structureName: structure.name,
         structureType: structureFamilyValue.label,
-        status: isActiveValue,
+        status:status,
       };
       tmpArr.push(tmpObj);
     });

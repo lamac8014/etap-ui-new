@@ -8,6 +8,7 @@ import {
 	GET_STRUCTURE_DATA,
 	UPDATE_STRUCTURE,
 	LIST_STRUCTURE_FAMILY,
+	STRUCT_STATUS,
 } from "./types";
 
 export const addStructure = () => {
@@ -82,6 +83,7 @@ export const structureFetch = (id) => {
 
 export const updateStructure = () => {
 	const structure = store.getState().structure;
+	const status=(structure.structStatus.value==="InActive")?false:true
 	let stringifiedStructure = JSON.stringify(structure.attributeList);
 
 	const body = {
@@ -89,6 +91,8 @@ export const updateStructure = () => {
 		structureTypeId: structure.structureFamily.value,
 		isActive: true,
 		structureAttributes: stringifiedStructure,
+		isActive: status,
+        isDelete: false,
 	};
 	return {
 		type: UPDATE_STRUCTURE,

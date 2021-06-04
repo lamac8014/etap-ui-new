@@ -19,6 +19,7 @@ import {
   RESET_ICBU_FORM,
   SHOW_ICBU_MSG,
   SET_EDIT_MODE,
+  IC_STATUS,
 } from "../../actions/types";
 import ViewIndependentCompany from "../../pages/independentCompany/ViewIndependentCompany";
 
@@ -101,6 +102,12 @@ const mapDispatchToProps = (dispatch) => {
         .catch(() => {
           dispatch({ type: SHOW_ICBU_MSG, payload: true });
         });
+    },
+    handleIcStatus(value) {
+      dispatch({
+        type:IC_STATUS,
+        payload: value,
+      });
     },
     handleEdit(id) {
       dispatch(getSingleIcbu(id));
