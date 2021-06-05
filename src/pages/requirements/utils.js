@@ -109,13 +109,18 @@ export const listViewRequirementsMetaData = (
       sort: true,
       sortCaret,
     },
+    
     {
-      text: "status",
+      text: "Status",
+      dataField: "Status",
+      style: { verticalAlign:"middle", paddingTop:"25px"},
+      sort: true,
+      sortCaret,
       formatter:(cell,row) => {
         return(
             <span>
               <p>
-              <FaIcon iconname="faCircle" color={tableRowStyles(row)} />
+                <FaIcon iconname="faCircle" color={tableRowStyles(row)} /> 
                &nbsp;
               {row.status}
               </p>
@@ -126,6 +131,7 @@ export const listViewRequirementsMetaData = (
     {
       text: "Action",
       dataField: "actions",
+      style: { verticalAlign:"middle"},
       formatter: (cell, row) => {
         if (row.isAction == "1") {
           console.log(row.id);
@@ -201,6 +207,7 @@ export const requestCreationMetaData = (handleViewMore) => {
     },
     {
       text: "Actions",
+      style:{verticalAlign: 'middle'},
       formatter: (cell, row) => {
         return (
           <IconButton
@@ -220,12 +227,11 @@ export const tableRowStyles = (row, rowIndex) => {
   switch (row.status) {
     case "REJECTED":
       return "#d41515";
-      
+
     case "READYTODISPATCH":
       return "#39bf11";
   
     default:
       return "#e3d90e";
-    
-  }
+    }
 };

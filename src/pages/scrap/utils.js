@@ -76,21 +76,26 @@ export const scrapApproveMetaData = (
     {
       text: "Struct. Name",
       dataField: "structureName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Struct. Code",
       dataField: "structureCode",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Struct. Type",
       dataField: "structureTypeName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Project",
       dataField: "fromProjectName",
+      style: { verticalAlign:"middle"},
     },
     {
       text: "Actions",
+      style: { verticalAlign:"middle"},
       formatter: (cell, row) => {
         if (row.isAction == "1") {
           return (
