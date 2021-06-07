@@ -11,6 +11,7 @@ import {
   STRUCTURE_EDIT_PAGE,
   UPDATE_STRUCTURE,
   LIST_STRUCTURE_FAMILY,
+  STRUCT_STATUS,
 } from "../actions/types";
 
 import { getSelectedValue } from "../utils/dataTransformer";
@@ -21,6 +22,7 @@ const initialState = {
   isEdit: false,
   attributeList: [],
   structureFamilyList: [],
+  structStatus:[],
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +31,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         structureName: action.payload,
+      };
+    case STRUCT_STATUS:
+        return {
+          ...state,
+          structStatus: action.payload
       };
     case STRUCTURE_FAMILY:
       return {

@@ -15,6 +15,7 @@ import {
   SHOW_ERR_MSG,
   IC_DESCRIPTION,
   RESET_IC_FORM,
+  IC_STATUS,
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
   buList: [],
   icList: [],
   icID: "",
+  icStatus:"",
 };
 
 export default function (state = initialState, action) {
@@ -103,6 +105,7 @@ export default function (state = initialState, action) {
         icName: data.name,
         icDescription: data.description,
         icID: data.id,
+        icStatus:data.isActive,
       };
     case `${GET_IC_LIST}_PENDING`:
       return {
@@ -143,6 +146,7 @@ export default function (state = initialState, action) {
         isLoading: false,
         icName: "",
         icDescription: "",
+        icStatus:"",
       };
     case SHOW_ERR_MSG:
       return {
@@ -151,6 +155,11 @@ export default function (state = initialState, action) {
       };
     case RESET_ICBU_FORM:
       return { ...state, icName: "" };
+    case IC_STATUS:
+        return {
+          ...state,
+          icStatus: action.payload
+        }
     default:
       return state;
   }

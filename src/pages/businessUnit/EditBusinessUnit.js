@@ -6,9 +6,10 @@ import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
 import { businessUnitRoles } from "./utils";
 import { transformDropDownData } from "../../utils/dataTransformer";
-import SearchableDropDown from "../../common/forms/SearchableDropdown";
+//import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import BUList from "./buList";
 import IconTextButton from "../../common/forms/IconTextButton";
+import SearchableDropdown from "../../common/forms/SearchableDropdown";
 
 class EditBusinessUnit extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class EditBusinessUnit extends Component {
         {console.log("isLoading", this.props.isLoading)}
         {this.props.isLoading && <Loader />}
         <FormRow>
-          <SearchableDropDown
+          <SearchableDropdown
             label="IC Name"
             name="icCodes"
             selectOptions={transformDropDownData(
@@ -51,6 +52,17 @@ class EditBusinessUnit extends Component {
               this.props.handleChangeBusinessUnit(e.target.value)
             }
             value={this.props.businessUnit.buName}
+          />
+           <SearchableDropdown
+            label="Status"
+            //labelSize="col-md-3 text-right"
+            //fieldSize="col-md-7"
+            selectOptions={[
+              { value: "Active", label: "Active" },
+              { value: "InActive", label: "InActive" },
+            ]}
+            onChange={(obj) => this.props.handleBuStatus(obj)}
+            value={this.props.businessUnit.buStatus}
           />
         </FormRow>
       </Modal>

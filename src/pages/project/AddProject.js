@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
-import SearchableDropDown from "../../common/forms/SearchableDropdown";
+//import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
 import { transformDropDownData } from "../../utils/dataTransformer";
 import IconTextButton from "../../common/forms/IconTextButton";
 import IconButton from "../../common/forms/IconButton";
 import Col6 from "../../common/forms/Col6";
 import SimpleRow from "../../common/forms/SimpleRow";
-
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 class AddProjModal extends Component {
   render() {
     return (
@@ -81,6 +81,18 @@ class AddProjModal extends Component {
             )}
             onChange={(obj) => this.props.handleChangeBusinessUnit(obj)}
             value={this.props.proj.businessUnit}
+          />
+          <br />
+           <SearchableDropDown
+            label="Status"
+            //labelSize="col-md-3 text-right"
+            //fieldSize="col-md-7"
+            selectOptions={[
+              { value: "Active", label: "Active" },
+              { value: "InActive", label: "InActive" },
+            ]}
+            onChange={(obj) => this.props.handleProjStatus(obj)}
+            value={this.props.proj.projStatus}
           />
         </SimpleRow>
         <SimpleRow>

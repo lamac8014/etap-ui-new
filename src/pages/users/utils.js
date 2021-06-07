@@ -28,6 +28,12 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
       sortable: true,
     },
     {
+      text: 'Status',
+      dataField: 'status',
+      style: { verticalAlign:"middle"},
+
+    },
+    {
       text: "Actions",
       sortable: true,
       formatter: (cell,row) => {
@@ -48,8 +54,15 @@ export const listUsersMetaData = (handleDelete, handleEdit) => {
 
 export const transformUsersList = (usersList) => {
   let tmpArr = [];
+  let status;
   usersList &&
     usersList.map((user) => {
+      if (user.isActive) {
+        status= "Active"
+      }
+      else {
+        status = "InActive"
+      }
       let tmpObj = {
         id: user.userId,
         userID: user.userId,
@@ -58,6 +71,7 @@ export const transformUsersList = (usersList) => {
         userName: user.userName,
         email: user.email,
         mobileNo: user.mobileNo,
+        status:status,
       };
       tmpArr.push(tmpObj);
     });

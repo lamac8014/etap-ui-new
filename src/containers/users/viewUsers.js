@@ -17,6 +17,7 @@ import {
 	SET_COMPONENT_EDIT_MODE,
 	COMPONENT_TYPE_STATUS,
 	USER_EDIT_PAGE,
+	USER_STATUS,
 } from "../../actions/types";
 import ViewUsers from "../../pages/users/ViewUsers";
 
@@ -53,6 +54,12 @@ const mapDispatchToProps = (dispatch) => {
 				});
 			});
 		},
+		handleUserStatus(value) {
+			dispatch({
+			  type:USER_STATUS,
+			  payload: value,
+			});
+		  },
 	};
 };
 

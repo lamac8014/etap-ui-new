@@ -61,6 +61,17 @@ class AddStructure extends Component {
 						onChange={(obj) => this.props.handleChangeStructureFamily(obj)}
 						value={this.props.structure.structureFamily}
 					/>
+					 <SearchableDropDown
+                       label="Status"
+                       //labelSize="col-md-3 text-right"
+                       //fieldSize="col-md-7"
+                       selectOptions={[
+                          { value: "Active", label: "Active" },
+                          { value: "InActive", label: "InActive" },
+                        ]}
+                        onChange={(obj) => this.props.handleStructStatus(obj)}
+                        value={this.props.structure.structStatus}
+                    />
 				</SimpleRow>
 				<div className="form-group row">
 					<div className="col-sm-8">

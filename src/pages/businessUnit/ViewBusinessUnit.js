@@ -8,6 +8,7 @@ import AddBusinessUnit from "../../containers/businessUnit/addBusinessUnit";
 import EditBusinessUnit from "../../containers/businessUnit/editBusinessUnit";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import SearchableDropdown from "../../common/forms/SearchableDropdown";
 
 class ViewBusinessUnit extends Component {
   constructor(props) {

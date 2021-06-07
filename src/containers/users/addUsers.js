@@ -13,6 +13,7 @@ import {
 	INDEPENDENT_COMPANY,
 	CHANGE_ADD_USERS_MODAL_STATUS,
 	USERS_SET_VENDOR_CODE,
+	USER_STATUS,
 } from "../../actions/types";
 import AddUser from "../../pages/users/AddUser";
 import {
@@ -127,6 +128,12 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({
 				type: USERS_SET_VENDOR_CODE,
 				payload: value,
+			});
+		},
+		handleUserStatus(value) {
+			dispatch({
+			  type:USER_STATUS,
+			  payload: value,
 			});
 		},
 	};

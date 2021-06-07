@@ -10,6 +10,7 @@ import {
   GET_USER_SINGLE,
   UPDATE_USER,
   GET_VENDOR_CODE_LIST,
+  USER_STATUS
 } from "./types";
 
 export const addUser = () => {
@@ -79,8 +80,9 @@ export const userFetch = (id) => {
   };
 };
 
-export const updateUser = () => {
+export const updateUser = (id) => {
   const users = store.getState().users;
+  const status=(users.userStatus.value==="InActive")?false:true
   const body = {
     firstName: users.firstName,
     lastName: users.lastName,
@@ -94,7 +96,8 @@ export const updateUser = () => {
     userId: users.userId,
     roleId: users.role.value,
     vendorId: users.vendor.value,
-    isActive: users.isActive,
+    isActive: status,
+    isDelete: false,
   };
   return {
     type: UPDATE_USER,

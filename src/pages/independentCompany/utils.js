@@ -9,6 +9,12 @@ export const icbuMetaData = (handleDelete, handleEdit) => {
       style: { verticalAlign:"middle"},
     },
     {
+      text: 'Status',
+      dataField: 'status',
+      style: { verticalAlign:"middle"},
+
+    },
+    {
       text: "Actions",
       dataField: true,
       formatter: (cell, row) => {
@@ -29,14 +35,22 @@ export const icbuMetaData = (handleDelete, handleEdit) => {
 
 export const icbuList = (icbuList) => {
   let tmpArr = [];
+  let status;
   icbuList &&
     icbuList.map((icbu) => {
+      if (icbu.isActive) {
+        status= "Active"
+      }
+      else {
+        status = "InActive"
+      }
       let tmpObj = {
         id: icbu.id,
         independentCompanyID: icbu.id,
         independentCompanyName: icbu.name,
         createdAt: icbu.createdDate ? icbu.createdDate : new Date(),
         updatedAt: icbu.updatedDate ? icbu.updatedDate : new Date(),
+        status:status,
       };
       tmpArr.push(tmpObj);
     });

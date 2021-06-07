@@ -11,6 +11,7 @@ import {
   CHANGE_ADD_STRUCTURE_MODAL_STATUS,
   SHOW_ADD_STRUCTURE_MSG,
   STRUCTURE_EDIT_PAGE,
+  STRUCT_STATUS,
 } from "../../actions/types";
 import ViewStructure from "../../pages/structure/ViewStructure";
 
@@ -52,7 +53,13 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(inActiveStructure());
         dispatch(structureList());
       });
-    }
+    },
+    handleStructStatus(value) {
+			dispatch({
+			  type:STRUCT_STATUS,
+			  payload:value,
+			});
+		},
   };
 };
 

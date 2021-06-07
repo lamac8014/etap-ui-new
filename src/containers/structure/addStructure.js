@@ -16,6 +16,7 @@ import {
 	CHANGE_ADD_STRUCTURE_MODAL_STATUS,
 	STRUCTURE_ATTRIBUTE_LIST,
 	STRUCTURE_EDIT_PAGE,
+	STRUCT_STATUS,
 } from "../../actions/types";
 
 const mapDispatchToProps = (dispatch) => {
@@ -118,6 +119,12 @@ const mapDispatchToProps = (dispatch) => {
 					type: RESET_STRUCTURE_FORM,
 				});
 				dispatch(structureList());
+			});
+		},
+		handleStructStatus(value) {
+			dispatch({
+			  type:STRUCT_STATUS,
+			  payload:value,
 			});
 		},
 	};

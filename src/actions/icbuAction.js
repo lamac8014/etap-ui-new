@@ -7,8 +7,8 @@ import {
     CREATE_ICBU,
     UPDATE_ICBU,
     GET_BU_LIST,
-    GET_IC_LIST
-
+    GET_IC_LIST,
+    IC_STATUS
  } from "./types";
 
 //Projects
@@ -44,10 +44,19 @@ export const getBUList = () => {
 };
 
 export const createIcbu = () => {
-  const icbu = store.getState().icbu;
+  const {icbu,icStatus} = store.getState().icbu;
+      let status;
+      console.log(icStatus);
+      if(icStatus.value === "Active"){
+        status=true;
+    } else{
+        status=false;
+    }
   const data = {
-      "name": icbu.icName,
-      "description": icbu.icDescription
+      name:icbu.icName,
+      description:icbu.icDescription,
+      isActive: status,
+      isDelete: false,
     };
   return {
     type: CREATE_ICBU,
@@ -55,14 +64,22 @@ export const createIcbu = () => {
   };
 };
 
-export const updateIcbu = () => {
+export const updateIcbu = (id) => {
   const icbu = store.getState().icbu;
+  //console.log(icStatus);
+
+  const status=(icbu.icStatus.value==="InActive")?false:true
   const data = {
-    "name": icbu.icName,
-    "description": icbu.icDescription
+    id:icbu.icID,
+    name: icbu.icName,
+    description:icbu.icDescription,
+    isActive: status,
+    isDelete: false,
   };
+  //console.log(`${config.BASE_URL}​/api/IC/updateIC/${icID}`);
+  //console.log(data)
   return {
     type: UPDATE_ICBU,
-    payload: axios.put(config.BASE_URL + "/api/IC/updateIC/" + icbu.icID, data),
+    payload: axios.put(config.BASE_URL + "/api/IC/updateIC/" +icbu.icID, data),
   };
 };

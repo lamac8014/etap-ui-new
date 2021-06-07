@@ -7,7 +7,7 @@ import Loader from "../../common/Loader";
 import { transformUserRoles } from "./utils";
 import { transformDropDownData } from "../../utils/dataTransformer";
 import SimpleRow from "../../common/forms/SimpleRow";
-
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 class AddUser extends Component {
 	constructor(props) {
 		super(props);
@@ -129,6 +129,17 @@ class AddUser extends Component {
 						placeholder="Auto Fetch"
 						disabled={true}
 					/>
+					 <SearchableDropDown
+                       label="Status"
+                       //labelSize="col-md-3 text-right"
+                       //fieldSize="col-md-7"
+                       selectOptions={[
+                          { value: "Active", label: "Active" },
+                          { value: "InActive", label: "InActive" },
+                        ]}
+                        onChange={(obj) => this.props.handleUserStatus(obj)}
+                        value={this.props.users.userStatus}
+                    />
 				</SimpleRow>
 				{this.props.users.role.value === 12 && (
 					<SimpleRow>

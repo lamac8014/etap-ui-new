@@ -31,6 +31,12 @@ export const businessUnitMetaData = (handleDelete, handleEdit) => {
       style: {verticalAlign:"middle"},
     },
     {
+      text: 'Status',
+      dataField: 'status',
+      style: { verticalAlign:"middle"},
+
+    },
+    {
       text: "Actions",
       style: {verticalAlign:"middle"},
       formatter: (cell, row) => {
@@ -51,18 +57,20 @@ export const businessUnitMetaData = (handleDelete, handleEdit) => {
 
 export const businessUnitBodyData = (businessUnitList) => {
   let tmpArr = [];
-  let statusValue;
+  let status;
   businessUnitList &&
-    businessUnitList.map((businessUnit, i) => {
+    businessUnitList.map((businessUnit,i) => {
       if (businessUnit.isActive) {
-        statusValue = "Active";
-      } else {
-        statusValue = "InActive";
+        status = "Active";
+      } 
+      else {
+        status = "InActive";
       }
       let tmpObj = {
         id: i,
         businessUnit: businessUnit.name,
         icName: businessUnit.icName,
+        status:status,
       };
       tmpArr.push(tmpObj);
     });

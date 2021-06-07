@@ -26,7 +26,8 @@ import {
   SHOW_ERR_MSG,
   ADD_LOCATION_FIELD,
   JOB_CODE,
-  EDRC_CODE
+  EDRC_CODE,
+  PROJ_STATUS,
 } from "../../actions/types";
 import ViewProject from "../../pages/project/ViewProject";
 
@@ -174,6 +175,12 @@ const mapDispatchToProps = (dispatch) => {
       });
       dispatch(getSingleProj(id));
     },
+    handleProjStatus(value) {
+			dispatch({
+			  type:PROJ_STATUS,
+			  payload: value,
+			});
+		},
   };
 };
 

@@ -18,6 +18,7 @@ import {
   BUSINESS_UNIT_NAME,
   RESET_EDIT_BUSINESS_UNIT_FORM,
   UPDATE_BUSINESS_UNIT_NAME,
+  BU_STATUS,
 } from "../actions/types";
 import { getSelectedValue } from "../utils/dataTransformer";
 
@@ -34,6 +35,7 @@ const initialState = {
   icName: "",
   showEditBusinessUnitModal: false,
   businessUnitList: [],
+  buStatus:"",
 };
 
 export default function (state = initialState, action) {
@@ -71,6 +73,7 @@ export default function (state = initialState, action) {
         buName: action.payload.name,
         buID: action.payload.id,
         isLoading: false,
+
       };
     case RESET_CREATE_BUSINESS_UNIT_FORM:
       return {
@@ -231,6 +234,11 @@ export default function (state = initialState, action) {
             ? action.payload.response.data.message
             : "Please check your form data and retry",
       };
+      case BU_STATUS:
+        return {
+          ...state,
+          buStatus: action.payload
+        }
     default:
       return state;
   }

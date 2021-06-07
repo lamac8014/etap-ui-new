@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
+import SearchableDropdown from "../../common/forms/SearchableDropdown";
 
 class AddIndependentCompany extends Component {
   render() {
@@ -28,6 +29,17 @@ class AddIndependentCompany extends Component {
             id="ic"
             onChange={(e) => this.props.handleChangeIc(e.target.value)}
             value={this.props.icbu.icName}
+          />
+          <SearchableDropdown
+            label="Status"
+            //labelSize="col-md-3 text-right"
+            //fieldSize="col-md-7"
+            selectOptions={[
+              { value: "Active", label: "Active" },
+              { value: "InActive", label: "InActive" },
+            ]}
+            onChange={(value) => this.props.handleIcStatus(value)}
+            value={this.props.icbu.icStatus}
           />
         </FormRow>
 
