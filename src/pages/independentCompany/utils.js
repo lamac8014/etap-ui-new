@@ -6,13 +6,12 @@ export const icbuMetaData = (handleDelete, handleEdit) => {
     {
       text: "Independent Company Name",
       dataField: "independentCompanyName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
-      text: 'Status',
-      dataField: 'status',
-      style: { verticalAlign:"middle"},
-
+      text: "Status",
+      dataField: "status",
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
@@ -39,18 +38,17 @@ export const icbuList = (icbuList) => {
   icbuList &&
     icbuList.map((icbu) => {
       if (icbu.isActive) {
-        status= "Active"
-      }
-      else {
-        status = "InActive"
+        status = "Active";
+      } else {
+        status = "InActive";
       }
       let tmpObj = {
         id: icbu.id,
         independentCompanyID: icbu.id,
         independentCompanyName: icbu.name,
-        createdAt: icbu.createdDate ? icbu.createdDate : new Date(),
-        updatedAt: icbu.updatedDate ? icbu.updatedDate : new Date(),
-        status:status,
+        createdAt: icbu.createdDate ? icbu.createdDate : null,
+        updatedAt: icbu.updatedDate ? icbu.updatedDate : null,
+        status: status,
       };
       tmpArr.push(tmpObj);
     });

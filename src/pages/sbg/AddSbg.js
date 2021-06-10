@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import FormRow from "../../common/forms/FormRow";
+import SimpleRow from "../../common/forms/SimpleRow";
+import SearchableDropdown from "../../common/forms/SearchableDropdown";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 
@@ -12,28 +13,38 @@ class AddSbg extends Component {
         handleSave={
           this.props.sbg.isEditMode
             ? () => {
-                console.log("updated");
+                this.props.updateSbgData();
               }
             : () => {
-                console.log("added");
+                this.props.addSbgData();
               }
         }
         handleClose={this.props.closeSbgModal}
         size="lg"
         isShowFooter={true}
       >
-        <FormRow>
+        <SimpleRow>
           <TextInput
-            label="Strategic Busi. Group Name"
-            size="col-md-10 offset-md-2"
-            labelSize="col-md-5 text-right"
-            fieldSize="col-md-3"
+            label="SBG Name"
+            size="col-md-7"
+            labelSize="col-md-5 "
+            fieldSize="col-md-7"
             name="sbgName"
             id="sbgName"
             onChange={(e) => this.props.handleSbgName(e.target.value)}
             value={this.props.sbg.sbgName}
           />
-        </FormRow>
+          <SearchableDropdown
+            label="Status"
+            size="col-md-5"
+            selectOptions={[
+              { value: "Active", label: "Active" },
+              { value: "InActive", label: "InActive" },
+            ]}
+            onChange={(value) => this.props.handleSbgStatus(value)}
+            value={this.props.sbg.status}
+          />
+        </SimpleRow>
 
         {/* {this.props.icbu.isModalMsg && (
           <p className="text-danger">{this.props.icbu.component.message}</p>

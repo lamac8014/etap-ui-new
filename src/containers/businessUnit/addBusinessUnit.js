@@ -13,13 +13,16 @@ import {
   BUSINESS_UNIT_LIST,
   RESET_EDIT_BUSINESS_UNIT_FORM,
   BU_STATUS,
+  SET_SBG_CODE,
 } from "../../actions/types";
 import {
   addBusinessUnit,
   updateBusinessUnitType,
   businessUnitList,
   getICCodes,
+  getSbgCodes,
 } from "../../actions/businessUnitAction";
+import swal from "sweetalert";
 import AddBusinessUnit from "../../pages/businessUnit/AddBusinessUnit";
 
 const mapDispatchToProps = (dispatch) => {
@@ -30,19 +33,31 @@ const mapDispatchToProps = (dispatch) => {
     getICCodes() {
       dispatch(getICCodes());
     },
+    getSbgCodes() {
+      dispatch(getSbgCodes());
+    },
     addBusinessUnitType() {
-      dispatch(addBusinessUnit()).then(() => {
-        dispatch(businessUnitList());
-        dispatch({
-          type: SET_BUSINESS_UNIT_EDIT_MODE,
-          payload: false,
+      dispatch(addBusinessUnit())
+        .then((response) => {
+          swal(response.value.data.message, {
+            icon: "success",
+          });
+          dispatch(businessUnitList());
+          dispatch({
+            type: SET_BUSINESS_UNIT_EDIT_MODE,
+            payload: false,
+          });
+          dispatch({ type: RESET_CREATE_BUSINESS_UNIT_FORM });
+          dispatch({
+            type: CHANGE_ADD_BUSINESS_UNIT_MODAL_STATUS,
+            payload: false,
+          });
+        })
+        .catch((err) => {
+          swal("Add Business Unit failed", {
+            icon: "error",
+          });
         });
-        dispatch({ type: RESET_CREATE_BUSINESS_UNIT_FORM });
-        dispatch({
-          type: CHANGE_ADD_BUSINESS_UNIT_MODAL_STATUS,
-          payload: false,
-        });
-      });
     },
     updateBusinessUnitType() {
       dispatch(updateBusinessUnitType()).then(() => {
@@ -102,6 +117,12 @@ const mapDispatchToProps = (dispatch) => {
     handleChangeICCode(value) {
       dispatch({
         type: IC_CODE,
+        payload: value,
+      });
+    },
+    handleChangeSbgCode(value) {
+      dispatch({
+        type: SET_SBG_CODE,
         payload: value,
       });
     },

@@ -10366,10 +10366,10 @@
   "resolved" "https://registry.npmjs.org/nan/-/nan-2.14.2.tgz"
   "version" "2.14.2"
 
-"nanoid@^3.1.20":
-  "integrity" "sha512-a1cQNyczgKbLX9jwbS/+d7W8fX/RfgYR7lVWwWOGIPNgK2m0MWvrGF6/m4kk6U3QcFMnZf3RIhL0v2Jgh/0Uxw=="
-  "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.1.20.tgz"
-  "version" "3.1.20"
+"nanoid@^3.1.20", "nanoid@^3.1.23":
+  "integrity" "sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw=="
+  "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.1.23.tgz"
+  "version" "3.1.23"
 
 "nanomatch@^1.2.9":
   "integrity" "sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA=="
@@ -12826,7 +12826,7 @@
     "object-assign" "^4.1.0"
     "prop-types" "^15.5.10"
 
-"react-dom@^17.0.1", "react-dom@>=16.6.0":
+"react-dom@^17.0.1":
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -13423,7 +13423,7 @@
     "object-assign" "^4.1.0"
     "prop-types" "^15.5.10"
 
-"react@^16.8.0 || ^17.0.0", "react@^17.0.1", "react@>=16.6.0":
+"react@^16.8.0 || ^17.0.0", "react@^17.0.1":
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"

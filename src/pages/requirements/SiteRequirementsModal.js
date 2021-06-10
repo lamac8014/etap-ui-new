@@ -89,25 +89,57 @@ class SiteRequirementsModal extends Component {
             showModal={this.props.showModal}
             handleSave={this.props.onRequirementModalSave}
             handleClose={this.props.showModalClose}
-            size="lg"
+            size="xl"
             isShowFooter={true}
           >
             <SimpleRow>
               <SearchableDropDown
-                size="col-md-6"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
-                label="Required for WBS"
+                size="col-md-3"
+                labelSize="col-md-4 pr-0"
+                fieldSize="col-md-8 pl-0"
+                label="WBS"
                 name="requiredWorkBreak"
-                selectOptions={transformDropDownData(
-                  this.props.requirement.wbsCodesList,
-                  "id",
-                  "name"
-                )}
+                selectOptions={this.props.requirement.wbsList}
                 onChange={(obj) =>
                   this.props.handleChangeRequirementRequiredWorkBreak(obj)
                 }
-                value={this.props.requirement.activeItem.reqWbs}
+                value={this.props.requirement.activeItem.wbsName}
+              />
+              <SearchableDropDown
+                size="col-md-3"
+                labelSize="col-md-4 pr-0"
+                fieldSize="col-md-8 pl-0"
+                label="Segment"
+                name="segment"
+                selectOptions={this.props.requirement.segmentList}
+                onChange={(obj) =>
+                  this.props.handleChangeRequirementWbsSegment(obj)
+                }
+                value={this.props.requirement.activeItem.segmentName}
+              />
+              <SearchableDropDown
+                size="col-md-3"
+                labelSize="col-md-4 pr-0"
+                fieldSize="col-md-8 pl-0"
+                label="Subsegment"
+                name="subSegment"
+                selectOptions={this.props.requirement.subSegmentList}
+                onChange={(obj) =>
+                  this.props.handleChangeRequirementWbsSubSegment(obj)
+                }
+                value={this.props.requirement.activeItem.subSegmentName}
+              />
+              <SearchableDropDown
+                size="col-md-3"
+                labelSize="col-md-4 pr-0"
+                fieldSize="col-md-8 pl-0"
+                label="Element"
+                name="element"
+                selectOptions={this.props.requirement.elementList}
+                onChange={(obj) =>
+                  this.props.handleChangeRequirementWbsElement(obj)
+                }
+                value={this.props.requirement.activeItem.elementName}
               />
               {/* <SearchableDropDown
                 size="col-md-4"
@@ -125,20 +157,6 @@ class SiteRequirementsModal extends Component {
                 }
                 value={this.props.requirement.actualWorkBreak}
               /> */}
-              <DateInput
-                size="col-md-6"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
-                label="Planned Start Date"
-                name="plannedStartDate"
-                id="plannedStartDate"
-                onChange={(e) =>
-                  this.props.handleChangeRequirementPlannedStartDate(
-                    e.target.value
-                  )
-                }
-                value={this.props.requirement.activeItem.planStartdate}
-              />
             </SimpleRow>
 
             <SimpleRow>
@@ -157,9 +175,23 @@ class SiteRequirementsModal extends Component {
                 value={this.props.requirement.actualStartDateOfUsage}
               /> */}
               <DateInput
-                size="col-md-6"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
+                size="col-md-4"
+                labelSize="col-md-5 pr-0"
+                fieldSize="col-md-7 pl-0"
+                label="Planned Start Date"
+                name="plannedStartDate"
+                id="plannedStartDate"
+                onChange={(e) =>
+                  this.props.handleChangeRequirementPlannedStartDate(
+                    e.target.value
+                  )
+                }
+                value={this.props.requirement.activeItem.planStartdate}
+              />
+              <DateInput
+                size="col-md-4"
+                labelSize="col-md-5 pr-0"
+                fieldSize="col-md-7 pl-0"
                 label="Planned Release"
                 name="plannedReleaseDate"
                 id="plannedReleaseDate"
@@ -171,9 +203,9 @@ class SiteRequirementsModal extends Component {
                 value={this.props.requirement.activeItem.planReleasedate}
               />
               <DateInput
-                size="col-md-6"
-                labelSize="col-md-4"
-                fieldSize="col-md-8"
+                size="col-md-4"
+                labelSize="col-md-5 pr-0"
+                fieldSize="col-md-7 pl-0"
                 label="Required By"
                 onChange={(e) =>
                   this.props.handleChangeRequirementRequiredBy(e.target.value)

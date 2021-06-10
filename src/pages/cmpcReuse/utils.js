@@ -41,6 +41,13 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 			text: "No of Components",
 			dataField: "numberOfComponents",
 			style: {verticalAlign:"middle"},
+						formatter: (cell, row) => {
+				return (
+					<p>
+						{row.currentComponentsCount}/{row.requiredComponenentCount}
+					</p>
+				);
+			},
 		},
 		{
 			text: "Required By",

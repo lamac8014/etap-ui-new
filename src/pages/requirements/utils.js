@@ -91,47 +91,47 @@ export const listViewRequirementsMetaData = (
     {
       text: "Mr No",
       dataField: "mrNo",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sort: true,
       sortCaret,
     },
     {
       text: "Project",
       dataField: "projectName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sort: true,
       sortCaret,
     },
     {
       text: "Structure",
       dataField: "structureName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sort: true,
       sortCaret,
     },
-    
+
     {
       text: "Status",
       dataField: "Status",
-      style: { verticalAlign:"middle", paddingTop:"25px"},
+      style: { verticalAlign: "middle" },
       sort: true,
       sortCaret,
-      formatter:(cell,row) => {
-        return(
-            <span>
-              <p>
-                <FaIcon iconname="faCircle" color={tableRowStyles(row)} /> 
-               &nbsp;
+      formatter: (cell, row) => {
+        return (
+          <span>
+            <p className="my-0">
+              <FaIcon iconname="faCircle" color={tableRowStyles(row)} />
+              &nbsp;
               {row.status}
-              </p>
-            </span>
+            </p>
+          </span>
         );
-      }
+      },
     },
     {
       text: "Action",
       dataField: "actions",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         if (row.isAction == "1") {
           console.log(row.id);
@@ -198,16 +198,16 @@ export const requestCreationMetaData = (handleViewMore) => {
     {
       text: "Structure Name",
       dataField: "structName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Quantity",
       dataField: "quantity",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
-      style:{verticalAlign: 'middle'},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <IconButton
@@ -230,8 +230,8 @@ export const tableRowStyles = (row, rowIndex) => {
 
     case "READYTODISPATCH":
       return "#39bf11";
-  
+
     default:
       return "#e3d90e";
-    }
+  }
 };

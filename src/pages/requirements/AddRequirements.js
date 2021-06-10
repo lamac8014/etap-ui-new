@@ -59,16 +59,11 @@ class AddRequirement extends Component {
                 gradient
               />
             </ButtonRow>
-            {/* <div className="form-group row">
-              <div className="col-sm-8">
-                <IconTextButton
-                  btnText="Requirement"
-                  onClick={this.props.addSiteRequirement}
-                  gradient
-                />
-              </div>
-            </div> */}
+
             <div className="form-group row my-4">
+              <SiteRequirementStructure {...this.props} />
+            </div>
+            {/* <div className="form-group row my-4">
               {this.props.requirement.siteRequirementList.map((e, i) => {
                 return (
                   <Col6>
@@ -94,7 +89,6 @@ class AddRequirement extends Component {
                       quantity={
                         this.props.requirement.siteRequirementList[i].quantity
                       }
-                      structureList={this.props.requirement.structureList}
                       structureName={
                         this.props.requirement.siteRequirementList[i]
                           .structureName
@@ -102,8 +96,8 @@ class AddRequirement extends Component {
                     />
                   </Col6>
                 );
-              })}
-            </div>
+              })} */}
+            {/* </div> */}
             <FormRow>
               <CustomDataTable
                 metaData={requestCreationMetaData((id) =>
