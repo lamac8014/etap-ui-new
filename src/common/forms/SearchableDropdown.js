@@ -2,9 +2,19 @@ import React, { Component } from "react";
 import Col6 from "./Col6";
 import Select from "react-select";
 
+ const customStyles = {
+	 input: () => ({
+		width: 500,
+		//background: 'white',
+		height: 38,
+		radius: 40,
+		//borderRadius: 3,
+	}),
+}
 class SearchableDropdown extends Component {
 	render() {
 		return (
+
 			<Col6 size={this.props.size}>
 				<div className="form-group row">
 					{this.props.label && (
@@ -22,6 +32,7 @@ class SearchableDropdown extends Component {
 						}`}
 					>
 						<Select
+							styles={customStyles}
 							className={this.props.className}
 							onChange={(e) => this.props.onChange(e)}
 							placeholder={this.props.placeholder}
@@ -30,7 +41,7 @@ class SearchableDropdown extends Component {
 							isSearchable={true}
 							isMulti={this.props.isMulti}
 							isDisabled={this.props.isDisabled}
-						/>
+						/>			
 					</div>
 				</div>
 			</Col6>
