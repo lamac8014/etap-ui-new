@@ -43,7 +43,9 @@ const initialState = {
   vendorCodeList: [],
   userId: "",
   vendor: {},
-  userStatus:"",
+  userStatus: "",
+  sbgId: "",
+  sbgName: "",
 };
 
 export default function (state = initialState, action) {
@@ -54,10 +56,10 @@ export default function (state = initialState, action) {
         isEdit: action.payload,
       };
     case USER_STATUS:
-        return {
-          ...state,
-          userStatus: action.payload
-        }
+      return {
+        ...state,
+        userStatus: action.payload,
+      };
     case FIRST_NAME:
       return {
         ...state,
@@ -180,6 +182,8 @@ export default function (state = initialState, action) {
         segmentId: action.payload.data.segmentId,
         ic: action.payload.data.icName,
         icId: action.payload.data.icId,
+        sbgId: action.payload.data.sbgId ? action.payload.data.sbgId : "",
+        sbgName: action.payload.data.sbgName ? action.payload.data.sbgName : "",
       };
     case `${GET_ROLES_LIST}_PENDING`:
       return {
@@ -331,6 +335,8 @@ export default function (state = initialState, action) {
         bu: "",
         segment: "",
         role: "",
+        sbgId: "",
+        sbgName: "",
         isLoading: false,
         isEdit: false,
       };

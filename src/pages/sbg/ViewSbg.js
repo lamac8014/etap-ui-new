@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { sbgTableMetaData, icbuList } from "./utils";
+import { sbgTableMetaData, transformSbgData } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import AddIndependentCompany from "../../containers/independentCompany/independentCompany";
 import SimpleCard from "../../common/cards/SimpleCard";
 import PageContainer from "../../common/forms/PageContainer";
 import AddSbg from "./AddSbg";
+import { sortDataByDate } from "../../utils/common";
 
 class ViewSbg extends Component {
   componentDidMount() {
-    // this.props.icbuList();
+    this.props.getSbgData();
   }
 
   render() {
@@ -20,11 +21,9 @@ class ViewSbg extends Component {
           {this.props.sbg.sbgData && (
             <CustomDataTable
               metaData={sbgTableMetaData((id) => this.props.handleEdit(id))}
-              //   bodyData={icbuList(this.props.icbu.icbuList)}
-              bodyData={[
-                { id: "1", sbgName: "Sample Sbg One" },
-                { id: "2", sbgName: "Sample sbg Two" },
-              ]}
+              bodyData={sortDataByDate(
+                transformSbgData(this.props.sbg.sbgData)
+              )}
               showButton={true}
               btnText="Add Strategic Busi. Group"
               onClick={this.props.openSbgmodal}

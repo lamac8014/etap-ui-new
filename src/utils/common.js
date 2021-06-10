@@ -13,6 +13,7 @@ export const sortDataByDate = (tableData) => {
       ? new Date(item.updatedAt)
       : new Date(item.createdAt);
   });
+  console.log("data......", data);
   data &&
     data.sort((first, second) => {
       return second.sortDate.getTime() - first.sortDate.getTime();

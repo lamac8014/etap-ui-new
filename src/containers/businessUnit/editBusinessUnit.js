@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import store from '../../store';
+import { connect } from "react-redux";
+import store from "../../store";
 
 import {
   CHANGE_ADD_BUSINESS_UNIT_MODAL_STATUS,
@@ -14,12 +14,19 @@ import {
   CHANGE_EDIT_BUSINESS_UNIT_MODAL_STATUS,
   RESET_EDIT_BUSINESS_UNIT_FORM,
   BU_STATUS,
-}
-  from '../../actions/types';
-import { addBusinessUnit, updateBusinessUnitType, businessUnitList, getICCodes } from '../../actions/businessUnitAction'
-import EditBusinessUnit from '../../pages/businessUnit/EditBusinessUnit';
+  SET_SBG_CODE,
+} from "../../actions/types";
+import {
+  addBusinessUnit,
+  updateBusinessUnitType,
+  businessUnitList,
+  getICCodes,
+  getSbgCodes,
+} from "../../actions/businessUnitAction";
+import swal from "sweetalert";
+import EditBusinessUnit from "../../pages/businessUnit/EditBusinessUnit";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     resetStructureData() {
       dispatch({ type: RESET_STRUCTURE_FORM });
@@ -27,38 +34,55 @@ const mapDispatchToProps = dispatch => {
     getICCodes() {
       dispatch(getICCodes());
     },
+    getSbgCodes() {
+      dispatch(getSbgCodes());
+    },
     updateBusinessUnitType() {
-      dispatch(updateBusinessUnitType()).then(() => {
-        dispatch(businessUnitList());
-        dispatch({
-          type: SET_BUSINESS_UNIT_EDIT_MODE,
-          payload: false,
-        });
-        dispatch({ type: RESET_EDIT_BUSINESS_UNIT_FORM });
-        dispatch({
-          type: CHANGE_EDIT_BUSINESS_UNIT_MODAL_STATUS,
-          payload: false,
+      dispatch(updateBusinessUnitType())
+        .then((response) => {
+          swal(response.value.data.message, {
+            icon: "success",
+          });
+          dispatch(businessUnitList());
+          dispatch({
+            type: SET_BUSINESS_UNIT_EDIT_MODE,
+            payload: false,
+          });
+          dispatch({ type: RESET_EDIT_BUSINESS_UNIT_FORM });
+          dispatch({
+            type: CHANGE_EDIT_BUSINESS_UNIT_MODAL_STATUS,
+            payload: false,
+          });
         })
-
-      });
+        .catch((err) => {
+          swal("Update Business Unit Failed", {
+            icon: "error",
+          });
+        });
     },
     closeAddBusinessUnitModal() {
       dispatch({
         type: CHANGE_EDIT_BUSINESS_UNIT_MODAL_STATUS,
         payload: false,
-      })
-      dispatch({ type: RESET_CREATE_BUSINESS_UNIT_FORM })
+      });
+      dispatch({ type: RESET_CREATE_BUSINESS_UNIT_FORM });
     },
-    
+
     handleChangeBusinessUnitName(value) {
       dispatch({
         type: BUSINESS_UNIT_NAME,
         payload: value,
       });
     },
-    handleChangeICCode(value){
+    handleChangeICCode(value) {
       dispatch({
         type: IC_CODE,
+        payload: value,
+      });
+    },
+    handleChangeSbgCode(value) {
+      dispatch({
+        type: SET_SBG_CODE,
         payload: value,
       });
     },
@@ -77,7 +101,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const businessUnit = store.getState().businessUnit;
   return {
     businessUnit,

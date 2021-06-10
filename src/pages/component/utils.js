@@ -25,16 +25,16 @@ export const listComponentTypeMetaData = (handleDelete, handleEdit) => {
     {
       text: "Component Type",
       dataField: "componentType",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Status",
       dataField: "status",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
@@ -65,8 +65,8 @@ export const transformComponentList = (componentList) => {
         id: component.id,
         componentType: component.name,
         status: statusValue,
-        createdAt: component.createdDate ? component.createdDate : new Date(),
-        updatedAt: component.updatedDate ? component.updatedDate : new Date(),
+        createdAt: component.createdDate ? component.createdDate : null,
+        updatedAt: component.updatedDate ? component.updatedDate : null,
       };
       tmpArr.push(tmpObj);
     });
