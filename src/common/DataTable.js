@@ -99,6 +99,7 @@ class DataTable extends Component {
                         gradient
                         type="success"
                         onClick={this.props.onClick}
+                        disabled={this.props.btnDisabled ? true : false}
                       />
                     )}
                   </span>

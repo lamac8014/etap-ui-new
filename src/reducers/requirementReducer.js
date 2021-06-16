@@ -38,6 +38,10 @@ import {
   SET_WBS_ELEMENT,
   SET_WBS_SEGMENT,
   SET_WBS_SUBSEGMENT,
+  EDIT_ATTRIBUTES,
+  SET_CURRENT_STRUCTURE_ATTRIBUTES,
+  SET_CURRENT_STRUCTURE_ATTRIBUTE_VALUE,
+  SET_EDIT_ATTRIBUTES,
 } from "../actions/types";
 
 const initialState = {
@@ -48,6 +52,8 @@ const initialState = {
   siteRequirementList: [],
   savedRequirementList: [],
   structureProjectList: [],
+  currentStructureAttributes: {},
+  editAttributes: false,
   structureList: [],
   wbsList: [],
   segmentList: [],
@@ -63,6 +69,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case SET_CURRENT_STRUCTURE_ATTRIBUTES:
+      return { ...state, currentStructureAttributes: action.payload };
+    case SET_CURRENT_STRUCTURE_ATTRIBUTE_VALUE:
+      return { ...state, requirementViewMore: action.payload };
+    case SET_EDIT_ATTRIBUTES:
+      return { ...state, editAttributes: action.payload };
     case PROJECT_NAME:
       return {
         ...state,

@@ -97,7 +97,7 @@ class SiteRequirementStructure extends Component {
                     <NotificationContainer />
                     <div className="col-sm-4">
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="Qty"
                         name="quantity"

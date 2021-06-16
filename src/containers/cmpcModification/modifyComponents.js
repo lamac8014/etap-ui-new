@@ -14,6 +14,8 @@ import {
   SET_ADD_PLATE,
   CMPC_TRANSFORM_COMPONENT_DATA,
   SET_IDS,
+  CMPC_SET_COMPONENT_DATA_FROM_EXCEL,
+  REMOVE_EXCEL_DATA,
 } from "../../actions/types";
 import {
   getComponentData,
@@ -48,7 +50,7 @@ const mapDispatchToProps = (dispatch, props) => {
         });
         dispatch({
           type: SET_IDS,
-          payload: { projStrId, dispReqId, dcNumber },
+          payload: { projStrId, dispReqId, dcNumber, dispStrId },
         });
         dispatch({
           type: CMPC_TRANSFORM_COMPONENT_DATA,
@@ -146,9 +148,70 @@ const mapDispatchToProps = (dispatch, props) => {
         payload: value,
       });
     },
+    handleOnDrop(data) {
+      let cmpc = store.getState().cmpc;
+      let componentData = cmpc.uploadData;
+      let uploadData = [];
+      data.forEach((a, i) => {
+        // console.log("index", i, a);
+        if (i > 0 && a.data.length > 1) {
+          let start = 0;
+          let componentObject = {
+            componentName: a.data[start] ? a.data[start] : "",
+            componentType: a.data[start + 1] ? a.data[start + 1] : "",
+            compId: a.data[start + 2] ? a.data[start + 2] : "",
+            componentNo: a.data[start + 3] ? a.data[start + 3] : "",
+            isGroup: a.data[start + 4] !== "" ? Boolean(a.data[start + 4]) : "",
+            drawingNo: a.data[start + 5] ? a.data[start + 5] : "",
+            leng: a.data[start + 6] ? parseFloat(a.data[start + 6]) : "",
+            breath: a.data[start + 7] ? parseFloat(a.data[start + 7]) : "",
+            height: a.data[start + 8] ? parseFloat(a.data[start + 8]) : "",
+            thickness: a.data[start + 9] ? parseFloat(a.data[start + 9]) : "",
+            weight: a.data[start + 10] ? parseFloat(a.data[start + 10]) : "",
+            makeType: a.data[start + 11] ? a.data[start + 11] : "",
+            isTag: a.data[start + 12] ? Boolean(a.data[start + 12]) : "",
+            isModified: a.data[start + 13] ? Boolean(a.data[start + 13]) : "",
+          };
+          uploadData.push(componentObject);
+        }
+      });
+      if (componentData.length === uploadData.length) {
+        dispatch({
+          type: CMPC_SET_COMPONENT_DATA_FROM_EXCEL,
+          payload: uploadData,
+        });
+      } else {
+        swal("Uploaded components exceed total count", {
+          icon: "error",
+        });
+      }
+    },
+    removeExcelData() {
+      dispatch({
+        type: REMOVE_EXCEL_DATA,
+      });
+    },
     modifyComponents() {
       dispatch(modifyComponents())
         .then((response) => {
+          let { dispStrId } = store.getState().cmpc;
+          dispatch(getComponentData(dispStrId)).then((response) => {
+            const cmpc = store.getState().cmpc;
+            let componentData = JSON.parse(JSON.stringify(cmpc.componentData));
+            componentData.map((item) => {
+              if (item.modStageCompId !== null) {
+                item.leng = item.modStageLength;
+                item.breath = item.modStagebreath;
+                item.height = item.modStageHeight;
+                item.thickness = item.modStageThikness;
+                item.weight = item.modStageWeight;
+              }
+            });
+            dispatch({
+              type: CMPC_TRANSFORM_COMPONENT_DATA,
+              payload: componentData,
+            });
+          });
           swal("Component updated", {
             icon: "success",
           });

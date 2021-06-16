@@ -28,8 +28,8 @@ export const getComponentData = (id) => {
 
 export const modifyComponents = () => {
   let cmpc = store.getState().cmpc;
-  let currentComp = cmpc.currentComp;
-  let modifiedData = cmpc.modifiedData;
+  let componentData = cmpc.componentData;
+  let uploadData = cmpc.uploadData;
   let id = getUserDetails().id;
   // let data = {
   // 	id: 0,
@@ -48,39 +48,38 @@ export const modifyComponents = () => {
   // 	qrCode: "string",
   // 	createdBy: 0,
   //   }
-  let data = {
-    id: 0,
-    dispstructCompId: currentComp.dispstructCompId,
-    dispatchRequirementId: parseInt(cmpc.dispReqId),
-    projectStructureId: parseInt(cmpc.projStrId),
-    dispStructureId: currentComp.dispStructureId,
-    componentId: 0,
-    leng: modifiedData.length
-      ? parseFloat(modifiedData.length)
-      : parseFloat(currentComp.leng),
-    breath: modifiedData.breadth
-      ? parseFloat(modifiedData.breadth)
-      : parseFloat(currentComp.breath),
-    height: modifiedData.height
-      ? parseFloat(modifiedData.height)
-      : parseFloat(currentComp.height),
-    thickness: modifiedData.thickness
-      ? parseFloat(modifiedData.thickness)
-      : parseFloat(currentComp.thickness),
-    weight: modifiedData.weight
-      ? parseFloat(modifiedData.weight)
-      : parseFloat(currentComp.weight),
-    makeType: currentComp.makeType,
-    addplate: cmpc.addplate ? cmpc.addPlate : "0",
-    qrCode: "0",
-    dcNumber: cmpc.dcNumber,
-    createdBy: id,
-  };
+  let payload = [];
+  uploadData.map((item) => {
+    if (item.isModified) {
+      let { dispstructCompId, dispStructureId, makeType } = componentData.find(
+        (component) => {
+          return component.compId === item.compId;
+        }
+      );
+      let data = {
+        dispstructCompId: dispstructCompId,
+        dispatchRequirementId: parseInt(cmpc.dispReqId),
+        projectStructureId: parseInt(cmpc.projStrId),
+        dispStructureId: dispStructureId,
+        leng: item.leng,
+        breath: item.breath,
+        height: item.height,
+        thickness: item.thickness,
+        weight: item.weight,
+        makeType: makeType,
+        dcNumber: cmpc.dcNumber,
+        createdBy: id,
+      };
+
+      payload.push(data);
+    }
+  });
+
   return {
     type: MODIFY_COMPONENTS,
     payload: axios.put(
       `${config.BASE_URL}/api/SiteDispatchReuse/ModifyComponentsForDispatch`,
-      data
+      payload
     ),
   };
 };
