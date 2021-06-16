@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
-import { surplusApproveMetaData, transformUsersList } from "./utils";
+import {
+  surplusApproveMetaData,
+  transformDate,
+  transformUsersList,
+} from "./utils";
 import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -74,7 +78,7 @@ class ViewSurplus extends Component {
             )}
             bodyData={
               this.props.surplus.surplusList
-                ? sortDataByDate(this.props.surplus.surplusList)
+                ? sortDataByDate(transformDate(this.props.surplus.surplusList))
                 : []
             }
           />

@@ -124,20 +124,11 @@ export const surplusApproveMetaData = (
   ];
 };
 
-export const transformUsersList = (usersList) => {
-  let tmpArr = [];
-  usersList &&
-    usersList.map((user) => {
-      let tmpObj = {
-        id: user.userId,
-        userID: user.userId,
-        firsttext: user.firstName,
-        lasttext: user.lastName,
-        usertext: user.userName,
-        email: user.email,
-        mobileNo: user.mobileNo,
-      };
-      tmpArr.push(tmpObj);
+export const transformDate = (data) => {
+  data &&
+    data.map((item) => {
+      item.surplusDate = item.surplusDate.split("T")[0];
     });
-  return tmpArr;
+
+  return data;
 };

@@ -13,6 +13,7 @@ import {
   SITE_REQUIRMENT_LIST,
   ADD_REQUIREMENT,
   LIST_STRUCTURE_PROJECT_DATA,
+  EDIT_ATTRIBUTES,
 } from "./types";
 
 export const getProjectList = () => {
@@ -148,6 +149,32 @@ export const singleRequirementFetch = (id) => {
     type: GET_REQUIREMENT_DATA_SINGLE,
     payload: axios.get(
       `${config.BASE_URL}/api/SiteRequirement/getSiteReqDetailsById/${id}`
+    ),
+  };
+};
+
+export const saveAttributeValues = () => {
+  let payload = {
+    siteReqStructureId: 0,
+    structureAttributesVal: "",
+  };
+  const requirement = store.getState().requirement;
+  let requirementViewMore = requirement.requirementViewMore;
+  let { structId } = requirement.currentStructureAttributes;
+  requirementViewMore.siteRequirementStructures.map((structure) => {
+    if (structure.id === structId) {
+      payload.siteReqStructureId = structId;
+      payload.structureAttributesVal = JSON.stringify(
+        structure.structureAttributesVal
+      );
+    }
+  });
+
+  return {
+    type: EDIT_ATTRIBUTES,
+    payload: axios.post(
+      `${config.BASE_URL}/api/FabricationManagement/UpdatetructureAttributes`,
+      payload
     ),
   };
 };

@@ -28,7 +28,7 @@ class SiteRequirementsModal extends Component {
   }
 
   isNumbers = (value) => {
-    const regex = /^\d+$/;
+    const regex = /^[(\d*\.)?\d]+$/;
     return regex.test(value) ? true : false;
   };
 

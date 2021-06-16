@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch, props) => {
           JSON.stringify(store.getState().siteDispatch.componentData)
         );
         componentData.map((item) => {
-          item.checked = false;
+          item.checked = item.dispatchDate === null ? false : true;
           item.disabled = item.dispatchDate === null ? false : true;
         });
         dispatch({
