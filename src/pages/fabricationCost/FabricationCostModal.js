@@ -19,7 +19,7 @@ class FabricationCostModal extends Component {
       <Modal
         title="Add Fabrication Cost"
         showModal={this.props.fabCost.fabCostModalflag}
-        handleSave={() => {}}
+        handleSave={this.props.fabCost.addStructCost}
         handleClose={() => this.props.setFabCostModalFlag(false)}
         size="md"
         isShowFooter={true}

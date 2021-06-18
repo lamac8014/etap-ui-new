@@ -40,7 +40,7 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 		{
 			text: "No of Components",
 			dataField: "numberOfComponents",
-			style: {verticalAlign:"middle"},
+			style: {verticalAlign:"middle",paddingTop:"25px"},
 		},
 		{
 			text: "Required By",

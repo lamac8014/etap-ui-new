@@ -4,8 +4,10 @@ import { listBuiltTypeMetaData, listBuiltDetailsMetaData } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import BuiltViewMore from "../../containers/built/builtMore";
 import BuiltMoreEdit from "../../containers/built/builtEdit";
+import ViewMoreModal from "../../containers/built/viewMoreModal";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
+import ViewMoreDetails from "./ViewMoreModal";
 
 class ViewAsBuilt extends Component {
     constructor(props) {
@@ -48,7 +50,7 @@ class ViewAsBuilt extends Component {
                     )}
                     <BuiltMoreEdit showBuiltEditMoreModal={this.props.built.showBuiltEditMoreModal} />
                     <BuiltViewMore showBuiltViewMoreModal={this.props.built.showBuiltViewMoreModal} />
-
+                    <ViewMoreModal openViewMoreModal={this.props.built.openViewMoreModal} />
 
                     {/* {this.props.built.builtTypeList && ( */}
                     <CustomDataTable
@@ -57,6 +59,7 @@ class ViewAsBuilt extends Component {
                             (id) => this.props.handleEdit(id),
                             (id) => this.props.handleMore(id),
                             (id) => this.props.redirectBuiltDetails(id),
+                            (id) => this.props.handleViewMore(id),
                         )}
                         bodyData= {this.props.built.asBuildStructure}
                         // bodyData={[{ structureName: "Launching Girders", structureCode: "STR 001", dcNo: "16" },

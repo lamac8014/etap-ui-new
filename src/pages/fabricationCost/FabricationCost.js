@@ -6,10 +6,10 @@ import MultiFileInput from "../../common/forms/MultiFileInput";
 import Button from "../../common/forms/Button";
 import Loader from "../../common/Loader";
 import CustomDataTable from "../../common/DataTable";
-
+import SimpleRow from "../../common/forms/SimpleRow";
 import ExportExcel from "../../common/ExportExcel";
 import FaIcon from "../../common/FaIcon";
-
+import ButtonRow from "../../common/forms/ButtonRow";
 import {
   componentsMetaData,
   getExcelData,
@@ -30,8 +30,10 @@ import SimpleCard from "../../common/cards/SimpleCard";
 class AssignStructure extends Component {
   fileInputRef = React.createRef();
   fileInputRef2 = React.createRef();
+  downloadBtnRef = React.createRef();
   componentDidMount = () => {
-    // this.props.setInitialData();
+    this.props.buildStructureCost();
+    this.props.getCompDetails();
   };
 
   getFiles = (files) => {
@@ -53,13 +55,13 @@ class AssignStructure extends Component {
       <>
         <PageContainer>
           <SimpleCard>
-          {this.props.fabCost.isLoading && <Loader />}
-          {/* {this.props.fabCost.message && (
+            {this.props.fabCost.isLoading && <Loader />}
+            {/* {this.props.fabCost.message && (
             <CustomAlert variant="success" message={this.props.proj.message} />
           )} */}
-          <ViewMoreModal {...this.props} />
-          <FabricationCostModal {...this.props} />
-          
+            <ViewMoreModal {...this.props} />
+            <FabricationCostModal {...this.props} />
+
             <div className="mb-2">
               <CustomDataTable
                 metaData={structureTableMetaData(
@@ -67,7 +69,7 @@ class AssignStructure extends Component {
                   this.props.setViewMoreModalFlag
                 )}
                 // bodyData={getComponentTableData(this.props.scr)}
-                bodyData={[{}, {}]}
+                bodyData={this.props.fabCost.buildCost}
                 // progressPending={this.props.assignStructure.isLoading}
                 pagination={true}
                 // paginationTotalRows={
@@ -78,86 +80,94 @@ class AssignStructure extends Component {
               />
             </div>
             <hr />
-            <FormRow className="d-flex justify-content-end mb-2">
-              <div style={{ display: "none" }}>
-                <ExportExcel
-                  compRef={this.fileInputRef2}
-                  data={getExcelData(this.props.fabCost)}
-                  // header={this.props.headers}
-                  filename={"test"}
-                  className="download-btn"
-                  iconName="faDownload"
-                />
-                <CSVReader
-                  onDrop={this.props.handleFileUpload}
-                  onError={this.handleOnError}
-                  noDrag
-                  addRemoveButton
-                  onRemoveFile={this.handleOnRemoveFile}
-                  className="test"
-                >
-                  <span ref={this.fileInputRef}></span>
-                </CSVReader>
-              </div>
-              <Button
-                btnText={
-                  <>
-                    <FaIcon iconName="faUpload" /> Upload Excel Template
-                  </>
-                }
-                btnType="btn-primary mx-3"
-                onClick={() => this.fileInputRef.current.click()}
-              />
-            </FormRow>
+            <FormRow>
+              <Col6 size="col-md-6 offset-md-3 mb-3">
+                <div>
+                  <CSVReader
+                    onDrop={this.props.handleOnDrop}
+                    onError={this.handleOnError}
+                    noDrag
+                    addRemoveButton
+                    onRemoveFile={() => this.props.handleOnDrop([])}
+                    className="test"
+                  >
+                    <span className="loader-text">
+                      <FaIcon iconname="faUpload" />
+											&nbsp;Upload Excel Template
+										</span>
+                  </CSVReader>
+                </div>
+              </Col6>
 
-            <CustomDataTable
-              metaData={componentsMetaData()}
-              // bodyData={getComponentTableData(this.props.scr)}
-              bodyData={[{}, {}]}
-              // progressPending={this.props.assignStructure.isLoading}
-              pagination={true}
-              // paginationTotalRows={
-              //   this.props.scr.uploadData && this.props.scr.uploadData.length
-              // }
-              paginationPerPage={5}
-              noHeader={true}
-              style={{ margin: "0" }}
-            />
-
-            <FormRow className="d-flex justify-content-end ">
-              <Button
-                btnText={
-                  <>
-                    <FaIcon iconName="faDownload" /> Download as Excel
-                  </>
-                }
-                btnType="btn-primary mx-3"
-                onClick={() => this.fileInputRef2.current.click()}
+              <CustomDataTable
+                metaData={componentsMetaData()}
+                // bodyData={getComponentTableData(this.props.scr)}
+                bodyData={this.props.fabCost.compDetails}
+                // progressPending={this.props.assignStructure.isLoading}
+                pagination={true}
+                // paginationTotalRows={
+                //   this.props.scr.uploadData && this.props.scr.uploadData.length
+                // }
+                paginationPerPage={5}
+                noHeader={true}
+                style={{ margin: "0" }}
               />
             </FormRow>
-            <FormRow className="d-flex justify-content-center">
-              <Button
-                btnText="SAVE"
-                onClick={this.props.saveAssignComp}
-                btnType="primary"
-              />
-            </FormRow>
+            <SimpleRow>
+              <Col6>
+                <ButtonRow className="excel-upload-btn mb-2" position="left">
+                   <div style={{ display: "none" }}>  
+                   <ExportExcel
+											data={getExcelData(this.props.fabCost )}
+											compRef={this.downloadBtnRef}
+											// header={this.props.headers}
+											filename={"test"}
+											className="download-btn"
+											iconname="faDownload"
+										/> 
+                   </div> 
+                  <Button
+                    btnText={
+                      <>
+                        <FaIcon iconname="faDownload" /> Download as Excel
+                      </>
+                    }
+                    type="light"
+                    gradient
+                    onClick={() => this.downloadBtnRef.current.click()}
+                  />
+                </ButtonRow>
+              </Col6>
+              <Col6>
+                <ButtonRow>
+                  <Button
+                    btnText="SAVE"
+                    onClick={this.props.saveAssignComp}
+                    type="primary"
+                    gradient
+                  />
+                </ButtonRow>
+              </Col6>
+            </SimpleRow>
             <hr />
-            <FormRow className="d-flex justify-content-center">
+            <SimpleRow className="d-flex justify-content-center">
+
               <Button
                 btnText="Save"
-                onClick={() => {}}
-                btnType="btn-primary mr-3"
+                onClick={() => { }}
+                type="success"
+                gradient
               />
               <Button
                 btnText="Discard"
-                onClick={() => {}}
-                btnType="btn-danger mr-3"
+                onClick={() => { }}
+                type="danger"
+                gradient
               />
-            </FormRow>
-         
+            </SimpleRow>
+
           </SimpleCard>
-         </PageContainer>
+        </PageContainer>
       </>
     );
   }
