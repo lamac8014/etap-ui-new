@@ -28,6 +28,7 @@ import {
   SET_QUANTITY_ERROR,
   RESET_PAGE,
 } from "../../actions/types";
+import { nanoid } from "nanoid";
 import swal from "sweetalert";
 
 import DispatchStructure from "../../pages/createDispatch/DispatchStructure";
@@ -175,6 +176,7 @@ const mapDispatchToProps = (dispatch, props) => {
       let currentReqInfo = createDisp.currentReqInfo;
       selectedItems.map((item) => {
         item.serviceTypeId = servTypeId;
+        item.uid = nanoid();
       });
       let totalStructures = [
         ...createDisp.dispatchStructures,
@@ -221,6 +223,7 @@ const mapDispatchToProps = (dispatch, props) => {
       );
       let tempObj = {
         ...currentReqInfo,
+        uid: nanoid(),
         serviceTypeId: createDisp.serviceTypeId,
         quantity: createDisp.quantity,
         notes: createDisp.notes,
@@ -414,7 +417,7 @@ const mapDispatchToProps = (dispatch, props) => {
         JSON.stringify(createDisp.dispatchStructures)
       );
       let tempArr = dispatchStructures.filter((item) => {
-        return item.structureId === row.structureId;
+        return item.uid !== row.uid;
       });
       dispatch({
         type: SET_STRUCTURES_FOR_REUSE,

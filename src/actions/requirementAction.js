@@ -2,6 +2,7 @@ import store from "../store";
 import axios from "axios";
 import config from "../config";
 import { getUserDetails } from "../utils/auth";
+import { nanoid } from "nanoid";
 
 import {
   GET_REQUIREMENT_DATA_SINGLE,
@@ -12,6 +13,7 @@ import {
   SITE_REQUIRMENT_LIST,
   ADD_REQUIREMENT,
   LIST_STRUCTURE_PROJECT_DATA,
+  EDIT_ATTRIBUTES,
 } from "./types";
 
 export const getProjectList = () => {
@@ -30,7 +32,7 @@ export const getProjectList = () => {
 export const getWBSList = () => {
   return {
     type: LIST_WBS_CODES,
-    payload: axios.get(config.BASE_URL + "/api/WBS/GetWBSCode"),
+    payload: axios.get(config.BASE_URL + "/api/WBS/GetWBS"),
   };
 };
 
@@ -42,15 +44,19 @@ export const addSiteRequirement = () => {
     quantity: "",
     structId: "",
     structName: "",
+    structureName: "",
     planStartdate: "",
     planReleasedate: "",
     requireWbsId: "",
     actualWbsId: "",
     requireByDate: "",
     wbsName: "",
+    segmentName: "",
+    subSegmentName: "",
+    elementName: "",
     structureAttributesVal: [],
   };
-  asiteRequirementObj.itemId = siteRequirementList.length + 1;
+  asiteRequirementObj.itemId = nanoid();
   siteRequirementList.push(asiteRequirementObj);
   return {
     type: SITE_REQUIRMENT_LIST,
@@ -60,8 +66,17 @@ export const addSiteRequirement = () => {
 
 export const addRequirement = () => {
   const requirement = store.getState().requirement;
+  let wbsCodesList = JSON.parse(JSON.stringify(requirement.wbsCodesList));
   const siteRequirementStructures = [];
   requirement.savedRequirementList.map((dt) => {
+    let wbs = wbsCodesList.find((item) => {
+      return (
+        item.workBreakDownCode === dt.wbsName.value &&
+        item.segment === dt.segmentName.value &&
+        item.subSegment === dt.subSegmentName.value &&
+        item.element === dt.elementName.value
+      );
+    });
     siteRequirementStructures.push({
       quantity: parseInt(dt.quantity),
       structId: dt.structId,
@@ -69,7 +84,7 @@ export const addRequirement = () => {
       planStartdate: dt.planStartdate + "T00:00:00.00Z",
       planReleasedate: dt.planReleasedate + "T00:00:00.00Z",
       requireByDate: dt.requireByDate + "T00:00:00.00Z",
-      requireWbsId: dt.reqWbs.value,
+      requireWbsId: wbs.id,
       structureAttributesVal: JSON.stringify(dt.structureAttributesVal),
     });
   });
@@ -134,6 +149,32 @@ export const singleRequirementFetch = (id) => {
     type: GET_REQUIREMENT_DATA_SINGLE,
     payload: axios.get(
       `${config.BASE_URL}/api/SiteRequirement/getSiteReqDetailsById/${id}`
+    ),
+  };
+};
+
+export const saveAttributeValues = () => {
+  let payload = {
+    siteReqStructureId: 0,
+    structureAttributesVal: "",
+  };
+  const requirement = store.getState().requirement;
+  let requirementViewMore = requirement.requirementViewMore;
+  let { structId } = requirement.currentStructureAttributes;
+  requirementViewMore.siteRequirementStructures.map((structure) => {
+    if (structure.id === structId) {
+      payload.siteReqStructureId = structId;
+      payload.structureAttributesVal = JSON.stringify(
+        structure.structureAttributesVal
+      );
+    }
+  });
+
+  return {
+    type: EDIT_ATTRIBUTES,
+    payload: axios.post(
+      `${config.BASE_URL}/api/FabricationManagement/UpdatetructureAttributes`,
+      payload
     ),
   };
 };

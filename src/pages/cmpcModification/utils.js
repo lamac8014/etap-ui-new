@@ -7,68 +7,68 @@ export const componentsMetaData = (onChangeValue) => {
     {
       text: "Component",
       dataField: "component",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component Type",
       dataField: "compType",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component ID",
       dataField: "compId",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component No",
       dataField: "compNum",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Group",
       dataField: "group",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Drawing No",
       dataField: "drawingNum",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Length",
       dataField: "length",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Breadth",
       dataField: "breadth",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Height",
       dataField: "height",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Thickness",
       dataField: "thickness",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Weight",
       dataField: "weight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Type",
       dataField: "type",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Tag",
       dataField: "tag",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
   ];
 };
@@ -78,18 +78,18 @@ export const structureMetaData = (handleComponentCheck, handleViewMore) => {
     {
       text: "DC No",
       dataField: "dcNumber",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Structure Name",
       dataField: "structrueName",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Structure Code",
       dataField: "structureCode",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
@@ -120,7 +120,14 @@ export const structureMetaData = (handleComponentCheck, handleViewMore) => {
     {
       text: "No of Comp",
       dataField: "componentsCount",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
+      formatter: (cell, row) => {
+        return (
+          <p className="m-0">
+            {row.currentComponentsCount}/{row.requiredComponenentCount}
+          </p>
+        );
+      },
     },
 
     {
@@ -167,93 +174,94 @@ export const componentMetaData = (handleMore) => {
     {
       text: "Component",
       dataField: "componentName",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component Type",
       dataField: "componentType",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Comp ID",
       dataField: "compId",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Comp No",
       dataField: "componentNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Group",
       dataField: "isGroup",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Dr. No",
       dataField: "drawingNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Length",
       dataField: "leng",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Breadth",
       dataField: "breath",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Height",
       dataField: "height",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Thickness",
       dataField: "thickness",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Weight",
       dataField: "weight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Type",
       dataField: "makeType",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Tag",
       dataField: "isTag",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
-      text: "Actions",
-      style: {verticalAlign:"middle"},
-      formatter: (cell, row) => {
-        return (
-          <>
-            {
-              <IconButton
-                compKey={row.userId}
-                iconname="faEdit"
-                size="1x"
-                onClick={() => handleMore(row.compId)}
-              />
-            }
-          </>
-        );
-      },
+      text: "Modified",
+      dataField: "isModified",
+      // style: { verticalAlign: "middle" },
+      // formatter: (cell, row) => {
+      //   return (
+      //     <>
+      //       {
+      //         <IconButton
+      //           compKey={row.userId}
+      //           iconname="faEdit"
+      //           size="1x"
+      //           onClick={() => handleMore(row.compId)}
+      //         />
+      //       }
+      //     </>
+      //   );
+      // },
     },
   ];
 };
 
 export const transformAssignedComponentList = (assignComponentList) => {
-  console.log("+++++++++");
-  console.log(assignComponentList);
-  console.log("+++++++++");
+  // console.log("+++++++++");
+  // console.log(assignComponentList);
+  // console.log("+++++++++");
   let tmpArr = [];
   assignComponentList &&
     assignComponentList.map((assignComponent, i) => {
@@ -277,4 +285,52 @@ export const CSVLoaderStyles = {
     border: "none",
     padding: 0,
   },
+};
+export const getAssignExcelHeaders = () => {
+  const headers = [
+    "Component",
+    "Component Type",
+    "Component ID",
+    "Component No",
+    "Group",
+    "Drawing Number",
+    "Length",
+    "Breadth",
+    "Height",
+    "Thickness",
+    "Weight",
+    "Type",
+    "Tag",
+    "Modified",
+  ];
+  return headers;
+};
+export const getExcelData = (cmpc) => {
+  let data = cmpc.componentData;
+  let dataArr = [];
+  dataArr.push(getAssignExcelHeaders());
+  if (data && data.length > 0) {
+    data.map((dt, i) => {
+      let tmpArr = [];
+      tmpArr.push(dt.componentName);
+      tmpArr.push(dt.componentType);
+      tmpArr.push(dt.compId);
+      tmpArr.push(dt.componentNo);
+      tmpArr.push(dt.isGroup);
+      tmpArr.push(dt.drawingNo);
+      tmpArr.push(dt.leng);
+      tmpArr.push(dt.breath);
+      tmpArr.push(dt.height);
+      tmpArr.push(dt.thickness);
+      tmpArr.push(dt.weight);
+      tmpArr.push(dt.makeType);
+      tmpArr.push(dt.isTag);
+      tmpArr.push(dt.isModified);
+      dataArr.push(tmpArr);
+    });
+  } else {
+    let tmpArr = [];
+    dataArr.push(tmpArr);
+  }
+  return dataArr;
 };

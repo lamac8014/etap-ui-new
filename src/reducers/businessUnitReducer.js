@@ -11,6 +11,7 @@ import {
   ADD_BUSINESS_UNIT,
   UPDATE_BUSINESS_UNIT,
   LIST_IC_CODES,
+  LIST_SBG_CODES,
   IC_CODE,
   EDIT_SINGLE_BU,
   BUSINESS_UNIT_LIST,
@@ -18,6 +19,7 @@ import {
   BUSINESS_UNIT_NAME,
   RESET_EDIT_BUSINESS_UNIT_FORM,
   UPDATE_BUSINESS_UNIT_NAME,
+  SET_SBG_CODE,
   BU_STATUS,
 } from "../actions/types";
 import { getSelectedValue } from "../utils/dataTransformer";
@@ -31,11 +33,13 @@ const initialState = {
   isEditMode: false,
   isLoading: false,
   icCodeList: [],
+  sbgCodeList: [],
   icCode: {},
+  sbgCode: {},
   icName: "",
   showEditBusinessUnitModal: false,
   businessUnitList: [],
-  buStatus:"",
+  buStatus: "",
 };
 
 export default function (state = initialState, action) {
@@ -70,10 +74,10 @@ export default function (state = initialState, action) {
       return {
         ...state,
         icCode: getSelectedValue(state.icCodeList, action.payload.icId),
+        sbgCode: getSelectedValue(state.sbgCodeList, action.payload.sbgId),
         buName: action.payload.name,
         buID: action.payload.id,
         isLoading: false,
-
       };
     case RESET_CREATE_BUSINESS_UNIT_FORM:
       return {
@@ -130,6 +134,30 @@ export default function (state = initialState, action) {
         isSuccess: false,
         icCodeList: action.payload.data,
       };
+    case `${LIST_SBG_CODES}_PENDING`:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+      };
+    case `${LIST_SBG_CODES}_REJECTED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        isSuccess: false,
+      };
+    case `${LIST_SBG_CODES}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        isSuccess: false,
+        sbgCodeList: action.payload.data,
+      };
+    case SET_SBG_CODE:
+      return { ...state, sbgCode: action.payload };
     case `${LIST_BUSINESS_UNIT}_PENDING`:
       return {
         ...state,
@@ -234,11 +262,11 @@ export default function (state = initialState, action) {
             ? action.payload.response.data.message
             : "Please check your form data and retry",
       };
-      case BU_STATUS:
-        return {
-          ...state,
-          buStatus: action.payload
-        }
+    case BU_STATUS:
+      return {
+        ...state,
+        buStatus: action.payload,
+      };
     default:
       return state;
   }

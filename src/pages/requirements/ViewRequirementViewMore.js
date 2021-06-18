@@ -3,6 +3,8 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
+import DataTable from "../../common/DataTable";
+import AttributeTable from "./AttributeTable";
 
 class ViewRequirementViewMore extends Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class ViewRequirementViewMore extends Component {
     return dateArray[0];
   }
   render() {
-    console.log(`Show model: ${this.props.showAddComponentModal}`);
+    // console.log(`Show model: ${this.props.showAddComponentModal}`);
     return (
       <Modal
         title={`Requirement No. :${this.props.requirement.requirementViewMore.mrNo}`}
@@ -24,7 +26,6 @@ class ViewRequirementViewMore extends Component {
       >
         {console.log("isLoading", this.props.isLoading)}
         {this.props.isLoading && <Loader />}
-
         {this.props.requirement.requirementViewMore.siteRequirementStructures.map(
           (req, index) => (
             <div key={index}>
@@ -83,7 +84,13 @@ class ViewRequirementViewMore extends Component {
                 />
               </SimpleRow>
               <h4>Structure Attributes :</h4>
-              <table className="table my-3">
+              <AttributeTable
+                {...this.props}
+                status={this.props.requirement.requirementViewMore.status}
+                strId={req.id}
+                attributesData={req.structureAttributesVal}
+              />
+              {/* <table className="table my-3">
                 <thead className="thead-light">
                   <tr>
                     <th scope="col">#</th>
@@ -105,7 +112,7 @@ class ViewRequirementViewMore extends Component {
                       )
                     )}
                 </tbody>
-              </table>
+              </table> */}
               {index <
                 this.props.requirement.requirementViewMore
                   .siteRequirementStructures.length -

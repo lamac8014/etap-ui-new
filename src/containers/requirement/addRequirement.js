@@ -26,6 +26,14 @@ import {
   SAVE_REQUIREMENT_MODAL_VALUES,
   SET_ATTRIBUTE_VALUE,
   REQUIREMENT_VIEW_MORE,
+  WBS_CODE_LIST,
+  SET_WBS_CODE,
+  SET_WBS_SEGMENT,
+  SET_WBS_SUBSEGMENT,
+  SET_WBS_ELEMENT,
+  WBS_SEGMENT_LIST,
+  WBS_SUBSEGMENT_LIST,
+  WBS_ELEMENT_LIST,
 } from "../../actions/types";
 import AddRequirement from "../../pages/requirements/AddRequirements";
 import { getUserDetails } from "../../utils/auth";
@@ -111,11 +119,107 @@ const mapDispatchToProps = (dispatch) => {
         payload: value,
       });
     },
-    handleChangeRequirementRequiredWorkBreak(value) {
+    handleChangeRequirementRequiredWorkBreak(obj) {
       let tempActiveItem = store.getState().requirement.activeItem;
-      tempActiveItem.reqWbs = value;
+      tempActiveItem.wbsName = obj;
       dispatch({
         type: REQUIRED_FOR_WORK_BREAK,
+        payload: tempActiveItem,
+      });
+      const requirement = store.getState().requirement;
+      let wbsCodesList = JSON.parse(JSON.stringify(requirement.wbsCodesList));
+      let activeItem = requirement.activeItem;
+      let segmentList = [];
+      wbsCodesList = wbsCodesList.filter((item) => {
+        return item.workBreakDownCode === activeItem.wbsName.value;
+      });
+      wbsCodesList.map((item) => {
+        let currentItem = segmentList.find((wbs) => wbs.value === item.segment);
+        if (!currentItem) {
+          let tempObj = {
+            label: item.segment,
+            value: item.segment,
+          };
+          segmentList.push(tempObj);
+        }
+      });
+      dispatch({
+        type: WBS_SEGMENT_LIST,
+        payload: segmentList,
+      });
+    },
+    handleChangeRequirementWbsSubSegment(obj) {
+      let tempActiveItem = store.getState().requirement.activeItem;
+      tempActiveItem.subSegmentName = obj;
+      dispatch({
+        type: SET_WBS_SUBSEGMENT,
+        payload: tempActiveItem,
+      });
+      const requirement = store.getState().requirement;
+      let wbsCodesList = JSON.parse(JSON.stringify(requirement.wbsCodesList));
+      let activeItem = requirement.activeItem;
+      let elementList = [];
+      wbsCodesList = wbsCodesList.filter((item) => {
+        return (
+          item.workBreakDownCode === activeItem.wbsName.value &&
+          item.segment === activeItem.segmentName.value &&
+          item.subSegment === activeItem.subSegmentName.value
+        );
+      });
+      wbsCodesList.map((item) => {
+        let currentItem = elementList.find((wbs) => wbs.value === item.element);
+        if (!currentItem) {
+          let tempObj = {
+            label: item.element,
+            value: item.element,
+          };
+          elementList.push(tempObj);
+        }
+      });
+      dispatch({
+        type: WBS_ELEMENT_LIST,
+        payload: elementList,
+      });
+    },
+    handleChangeRequirementWbsSegment(obj) {
+      let tempActiveItem = store.getState().requirement.activeItem;
+      tempActiveItem.segmentName = obj;
+      dispatch({
+        type: SET_WBS_SEGMENT,
+        payload: tempActiveItem,
+      });
+      const requirement = store.getState().requirement;
+      let wbsCodesList = JSON.parse(JSON.stringify(requirement.wbsCodesList));
+      let activeItem = requirement.activeItem;
+      let subSegmentList = [];
+      wbsCodesList = wbsCodesList.filter((item) => {
+        return (
+          item.workBreakDownCode === activeItem.wbsName.value &&
+          item.segment === activeItem.segmentName.value
+        );
+      });
+      wbsCodesList.map((item) => {
+        let currentItem = subSegmentList.find(
+          (wbs) => wbs.value === item.subSegment
+        );
+        if (!currentItem) {
+          let tempObj = {
+            label: item.subSegment,
+            value: item.subSegment,
+          };
+          subSegmentList.push(tempObj);
+        }
+      });
+      dispatch({
+        type: WBS_SUBSEGMENT_LIST,
+        payload: subSegmentList,
+      });
+    },
+    handleChangeRequirementWbsElement(obj) {
+      let tempActiveItem = store.getState().requirement.activeItem;
+      tempActiveItem.elementName = obj;
+      dispatch({
+        type: SET_WBS_ELEMENT,
         payload: tempActiveItem,
       });
     },
@@ -178,7 +282,27 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getProjectList());
     },
     getWBSList() {
-      dispatch(getWBSList());
+      dispatch(getWBSList()).then((response) => {
+        const requirement = store.getState().requirement;
+        let wbsCodesList = JSON.parse(JSON.stringify(requirement.wbsCodesList));
+        let wbsList = [];
+        wbsCodesList.map((item) => {
+          let currentItem = wbsList.find(
+            (wbs) => wbs.value === item.workBreakDownCode
+          );
+          if (!currentItem) {
+            let tempObj = {
+              label: item.workBreakDownCode,
+              value: item.workBreakDownCode,
+            };
+            wbsList.push(tempObj);
+          }
+        });
+        dispatch({
+          type: WBS_CODE_LIST,
+          payload: wbsList,
+        });
+      });
     },
     addSiteRequirement() {
       dispatch(addSiteRequirement());
@@ -192,28 +316,35 @@ const mapDispatchToProps = (dispatch) => {
         payload: requirement.siteRequirementList,
       });
     },
-    handleStructureNameChange(value, i) {
+    handleStructureNameChange(value, id) {
       const userDetails = getUserDetails();
 
       const requirement = store.getState().requirement;
-      requirement.siteRequirementList[i].structName = value.label;
-      let currentProject = requirement.structureProjectList.filter((ele) => {
-        return ele.id === value.value;
+      let siteReqList = JSON.parse(
+        JSON.stringify(requirement.siteRequirementList)
+      );
+      siteReqList.map((item) => {
+        if (item.itemId === id) {
+          item.structName = value.label;
+          item.structureName = value;
+          let currentProject = requirement.structureProjectList.filter(
+            (ele) => {
+              return ele.id === value.value;
+            }
+          )[0];
+          item.structId = currentProject.id;
+          while (typeof currentProject.structureAttributes === "string") {
+            currentProject.structureAttributes = JSON.parse(
+              currentProject.structureAttributes
+            );
+          }
+          currentProject.structureAttributes.map((item) => (item.value = ""));
+          item.structureAttributesVal = currentProject.structureAttributes;
+        }
       });
-      // console.log(`Current Project is: ${currentProject[0]}`);
-      console.log(currentProject[0]);
-      requirement.siteRequirementList[i].structId = currentProject[0].id;
-      while (typeof currentProject[0].structureAttributes === "string") {
-        currentProject[0].structureAttributes = JSON.parse(
-          currentProject[0].structureAttributes
-        );
-      }
-      currentProject[0].structureAttributes.map((item) => (item.value = ""));
-      requirement.siteRequirementList[i].structureAttributesVal =
-        currentProject[0].structureAttributes;
       dispatch({
         type: SITE_REQUIRMENT_LIST,
-        payload: requirement.siteRequirementList,
+        payload: siteReqList,
       });
     },
     ondrawingNumberChange(value, i) {
@@ -225,22 +356,30 @@ const mapDispatchToProps = (dispatch) => {
         payload: requirement.siteRequirementList,
       });
     },
-    onQuantityChange(value, i) {
+    onQuantityChange(e, id) {
       const requirement = store.getState().requirement;
-      const length = requirement.siteRequirementList.length;
-      requirement.siteRequirementList[i].quantity = value;
+      let siteReqList = JSON.parse(
+        JSON.stringify(requirement.siteRequirementList)
+      );
+      siteReqList.map((item) => {
+        if (item.itemId === id) {
+          item.quantity = e.target.value;
+        }
+      });
       dispatch({
         type: SITE_REQUIRMENT_LIST,
-        payload: requirement.siteRequirementList,
+        payload: siteReqList,
       });
     },
-    onSiteRequirementRemove(i) {
+    onSiteRequirementRemove(id) {
       const requirement = store.getState().requirement;
       const siteRequirementList = [...requirement.siteRequirementList];
-      siteRequirementList.splice(i, 1);
+      let siteReqList = siteRequirementList.filter((item) => {
+        return item.itemId !== id;
+      });
       dispatch({
         type: SITE_REQUIRMENT_LIST,
-        payload: siteRequirementList,
+        payload: siteReqList,
       });
     },
     onRequirementModalSave() {
