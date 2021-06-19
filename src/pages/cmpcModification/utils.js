@@ -237,7 +237,7 @@ export const componentMetaData = (handleMore) => {
       style: { verticalAlign: "middle" },
     },
     {
-      text: "Modified",
+      text: "Modified(Y/N)",
       dataField: "isModified",
       // style: { verticalAlign: "middle" },
       // formatter: (cell, row) => {

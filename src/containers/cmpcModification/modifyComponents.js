@@ -170,7 +170,7 @@ const mapDispatchToProps = (dispatch, props) => {
             weight: a.data[start + 10] ? parseFloat(a.data[start + 10]) : "",
             makeType: a.data[start + 11] ? a.data[start + 11] : "",
             isTag: a.data[start + 12] ? Boolean(a.data[start + 12]) : "",
-            isModified: a.data[start + 13] ? Boolean(a.data[start + 13]) : "",
+            isModified: a.data[start + 13] ? a.data[start + 13] : "",
           };
           uploadData.push(componentObject);
         }
@@ -181,6 +181,7 @@ const mapDispatchToProps = (dispatch, props) => {
           payload: uploadData,
         });
       } else {
+        // console.log(componentData.length, uploadData.length);
         swal("Uploaded components exceed total count", {
           icon: "error",
         });

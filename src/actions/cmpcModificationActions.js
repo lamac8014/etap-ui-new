@@ -50,7 +50,7 @@ export const modifyComponents = () => {
   //   }
   let payload = [];
   uploadData.map((item) => {
-    if (item.isModified) {
+    if (item.isModified === "Y" || item.isModified === "y") {
       let { dispstructCompId, dispStructureId, makeType } = componentData.find(
         (component) => {
           return component.compId === item.compId;
