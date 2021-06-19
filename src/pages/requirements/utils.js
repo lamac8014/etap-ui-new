@@ -213,7 +213,7 @@ export const requestCreationMetaData = (handleViewMore) => {
           <IconButton
             iconname="faList"
             onClick={() => {
-              handleViewMore(row.id);
+              handleViewMore(row.itemId);
             }}
             rounded
           />
