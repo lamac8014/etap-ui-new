@@ -189,7 +189,7 @@ class ViewAssignComponent extends Component {
                   gradient
                   disabled={
                     this.props.cmpc.uploadData.filter((item) => {
-                      return item.isModified === true;
+                      return item.isModified === "Y" || item.isModified === "y";
                     }).length > 0
                       ? false
                       : true
