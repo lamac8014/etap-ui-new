@@ -45,7 +45,7 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		},
 		{
 			text: "Quantity",
-			style: {verticalAlign:"middle"},
+			style: {verticalAlign:"middle",paddingTop:"25px"},
 			formatter: (cell, row) => {
 				return (
 					<p>

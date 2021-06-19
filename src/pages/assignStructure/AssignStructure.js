@@ -277,7 +277,7 @@ class AssignStructure extends Component {
 											filename={"test"}
 											className="download-btn"
 											iconname="faDownload"
-										/>
+										/> 
 									</div>
 									<Button
 										btnText={

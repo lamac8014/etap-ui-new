@@ -4,7 +4,8 @@ import IconButton from "../../common/forms/IconButton";
 export const listBuiltTypeMetaData = (
   redirectToBuiltMoreDetails,
   handleEdit,
-  handleMore
+  handleMore,
+  handleViewMore,
 ) => {
   return [
     {
@@ -53,6 +54,12 @@ export const listBuiltTypeMetaData = (
               <IconButton
                 iconname="faList"
                 onClick={() => handleMore(row.id)}
+              />
+            } 
+            {
+              <IconButton
+                iconname="faEye"
+                onClick={() => handleViewMore(row.id)}
               />
             }
           </>

@@ -8,6 +8,8 @@ import {
   CHANGE_BUILT_EDIT_MORE_MODAL_STATUS,
   BUILT_EDIT_MORE_PAGE,
   GET_AS_BUILD_STRUCTURE,
+  BUILT_VIEW_PAGE,
+	BUILT_VIEW_MODAL
 } from '../../actions/types';
 import ViewAsBuilt from '../../pages/built/ViewAsBuilt';
 
@@ -46,6 +48,16 @@ const mapDispatchToProps = (dispatch,props) => {
         payload: true,
       })
     },
+    handleViewMore(id){
+      dispatch({
+				type: BUILT_VIEW_PAGE,
+				payload: true,
+			});
+			dispatch({
+				type: BUILT_VIEW_MODAL,
+				payload: true,
+			});
+    }
   };
 };
 
