@@ -387,7 +387,7 @@ const mapDispatchToProps = (dispatch) => {
         JSON.stringify(store.getState().requirement.siteRequirementList)
       );
       let reqIndex = tempSiteRequirementList.findIndex(
-        (item) => item.id === store.getState().requirement.activeItem.id
+        (item) => item.itemId === store.getState().requirement.activeItem.itemId
       );
       tempSiteRequirementList[reqIndex] = JSON.parse(
         JSON.stringify(store.getState().requirement.activeItem)
@@ -397,7 +397,7 @@ const mapDispatchToProps = (dispatch) => {
         JSON.stringify(store.getState().requirement.savedRequirementList)
       );
       let index = tempSavedRequirementlist.findIndex(
-        (item) => item.id === store.getState().requirement.activeItem.id
+        (item) => item.itemId === store.getState().requirement.activeItem.itemId
       );
       index === -1
         ? tempSavedRequirementlist.push(store.getState().requirement.activeItem)

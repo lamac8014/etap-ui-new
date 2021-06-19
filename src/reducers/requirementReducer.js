@@ -343,7 +343,7 @@ export default function (state = initialState, action) {
       };
     case REQUIREMENT_VIEW_MORE:
       let tempActiveItem = state.savedRequirementList.filter((item) => {
-        return item.id === action.payload.id;
+        return item.itemId === action.payload.id;
       });
       return {
         ...state,
