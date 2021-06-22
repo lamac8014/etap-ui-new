@@ -19,6 +19,9 @@ import {
 	SET_CURRENT_ATTRIBUTE,
 	SET_SELECTED_STRUCTURE_CODE,
 	RESET_ASSIGN_STRUCTURE_DETAILS,
+	ADD_DRNO_MORE_PAGE,
+	ADD_DRNO_MODAL,
+	ADD_DRNO_MORE_MODAL,
 } from "../../actions/types";
 
 import AssignStructure from "../../pages/assignStructure/AssignStructure";
@@ -84,12 +87,22 @@ const mapDispatchToProps = (dispatch) => {
 				payload: value,
 			});
 		},
-		handleChangeComponentDrawingNumber(value) {
+		handleAddDrNo(id) {
 			dispatch({
-				type: DRAWING_NO,
-				payload: value,
+				type: ADD_DRNO_MORE_PAGE,
+				payload: true,
+			});
+			dispatch({
+				type: ADD_DRNO_MODAL,
+				payload: true,
 			});
 		},
+		handleChangeComponentDrawingNumber(value) {
+			dispatch({
+			  type: DRAWING_NO,
+			  payload: value,
+			});
+		  },
 		handleChangeEstimatedWeight(value) {
 			dispatch({
 				type: ESTIMATED_WEIGHT,

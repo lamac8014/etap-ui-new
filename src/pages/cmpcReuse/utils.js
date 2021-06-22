@@ -14,7 +14,7 @@ export const listUsersMetaData = (setSelectedStructures, handleViewMore) => {
 					<Input
 						key={row.dispatchRequirementId}
 						type="checkbox"
-						style={{ marginTop:10,marginBottom:5,marginLeft:0}}
+						style={{ marginTop:18,marginBottom:5,marginLeft:0}}
 						//  disabled={row.disabled}
 						checked={row.checked}
 						onChange={() => setSelectedStructures(row)}

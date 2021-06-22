@@ -26,12 +26,15 @@ import IconButton from "../../common/forms/IconButton";
 import IconTextButton from "../../common/forms/IconTextButton";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Loader from "../../common/Loader";
+import AddDrNoModal from "../../containers/assignStructure/addDrNoModal";
 
 class AssignStructure extends Component {
 	fileInputRef = React.createRef();
 	exportBtnRef = React.createRef();
 	downloadBtnRef = React.createRef();
-
+	constructor() {
+		super();
+	}
 	componentDidMount = () => {
 		this.props.setInitialData();
 	};
@@ -52,7 +55,10 @@ class AssignStructure extends Component {
           {this.props.scr.isProjMsg && (
             <CustomAlert variant="success" message={this.props.proj.message} />
           )} */}
+
 					<Loader />
+					<AddDrNoModal showAddModal={this.props.scr.showAddModal} />
+					{/* <AddDrNoModal {...this.props}/>  */}
 					<SimpleCard>
 						<SimpleRow>
 							<SearchableDropDown
@@ -99,11 +105,11 @@ class AssignStructure extends Component {
 								selectOptions={
 									this.props.scr.structName.value
 										? transformDropDownData(
-												this.props.scr.structureCodeList,
-												"id",
-												"name",
-												true
-										  )
+											this.props.scr.structureCodeList,
+											"id",
+											"name",
+											true
+										)
 										: []
 								}
 								onChange={(obj) => {
@@ -175,7 +181,8 @@ class AssignStructure extends Component {
 								}
 								value={this.props.scr.estimatedWeight}
 							/>
-							<InputGroupButton
+
+							{/* <InputGroupButton
 								size="col-md-4"
 								label="Dr.No"
 								labelSize="col-md-3"
@@ -186,7 +193,7 @@ class AssignStructure extends Component {
 								value={this.props.scr.drawingNum}
 								btnText={<FaIcon iconname="faFileAlt" />}
 								onClick={() => this.fileInputRef.current.click()}
-							/>
+							/> */}
 						</SimpleRow>
 						<MultiFileInput
 							innerRef={this.fileInputRef}
@@ -211,6 +218,16 @@ class AssignStructure extends Component {
 									/>
 								</Col6>
 							))}
+
+							<Button
+								btnText="Add DrNo"
+								type="primary"
+								size="col-md-10 offset-md-2"
+                                fieldSize="col-md-7"
+								onClick={(id) => {this.props.handleAddDrNo(id)}}
+								gradient
+							/>
+
 						</SimpleRow>
 						{/* table */}
 						{this.props.scr.structAttri.length > 0 ? (
@@ -222,6 +239,9 @@ class AssignStructure extends Component {
 									// }
 									bodyData={this.props.scr.structAttri}
 									title="Structure Attributes"
+									showButton={true}
+									btnText="Add Independent Company"
+									onClick={this.props.handleChangeDrawingNumber}
 								/>
 
 								{/* <Button
@@ -262,8 +282,8 @@ class AssignStructure extends Component {
 							<CustomDataTable
 								metaData={componentsMetaData()}
 								bodyData={getComponentTableData(this.props.scr)}
-								// bodyData={[{}, {}]}
-								// progressPending={this.props.assignStructure.isLoading}
+							// bodyData={[{}, {}]}
+							// progressPending={this.props.assignStructure.isLoading}
 							/>
 						</FormRow>
 						<SimpleRow>
@@ -277,7 +297,7 @@ class AssignStructure extends Component {
 											filename={"test"}
 											className="download-btn"
 											iconname="faDownload"
-										/> 
+										/>
 									</div>
 									<Button
 										btnText={
@@ -300,7 +320,7 @@ class AssignStructure extends Component {
 										gradient
 										disabled={
 											this.props.scr.projName.value &&
-											this.props.scr.structName.value
+												this.props.scr.structName.value
 												? false
 												: true
 										}
@@ -328,13 +348,13 @@ class AssignStructure extends Component {
 						<SimpleRow className="d-flex justify-content-center">
 							<Button
 								btnText="Complete"
-								onClick={() => {}}
+								onClick={() => { }}
 								type="success"
 								gradient
 							/>
 							<Button
 								btnText="Discard"
-								onClick={() => {}}
+								onClick={() => { }}
 								type="danger"
 								gradient
 							/>
