@@ -6,11 +6,11 @@ import {GET_AS_BUILD_STRUCTURE_COST,
         GET_COMPONENT_DETAILS_COST} from "./types";
 import { getUserDetails } from "../utils/auth";
 export const buildStructureCost = () => {
-    //let projId = JSON.parse(localStorage.getItem("userDetails")).projId;
+    //let projectId = JSON.parse(localStorage.getItem("userDetails")).projectId;
     return {
         type: GET_AS_BUILD_STRUCTURE_COST,
         payload: axios.get(
-           `${config.BASE_URL}/api/FabricationManagement/GetAsBuildStructureCost?id=1`
+           config.BASE_URL + '/api/FabricationManagement/GetAsBuildStructureCost?id='
         ),
     };
 };
@@ -39,11 +39,10 @@ export const addStructCost = () => {
 	};
 };
 export const getCompDetails = () => {
-    //const projectId = getUserDetails().projectId;
     return {
         type: GET_COMPONENT_DETAILS_COST,
         payload: axios.get(
-           `${config.BASE_URL}/api/FabricationManagement/GetStructrueFabraiationComponent?id=1`
+           config.BASE_URL + 'api/FabricationManagement/GetStructrueFabraiationComponent?id='
         ),
     };
     
