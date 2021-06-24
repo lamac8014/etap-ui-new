@@ -49,6 +49,7 @@ const initialState = {
   isError: false,
   drnoAddModal:[],
   attributeList:[],
+  showAddModal:false,
 };
 
 export default function (state = initialState, action) {

@@ -36,13 +36,19 @@ class AddDrNoModal extends Component {
             btnText={<FaIcon iconname="faFileAlt" />}
             onClick={() => this.fileInputRef.current.click()}
           />
-          <MultiFileInput
+          {/* <MultiFileInput
             innerRef={this.fileInputRef}
             style={{ display: "none" }}
             onChange={(e) =>
               this.props.handleChangeFileUpload(e.target.files)
             }
-          />
+          /> */}
+          <MultiFileInput
+							innerRef={this.fileInputRef}
+							style={{ display: "none" }}
+							onChange={(e) => this.props.handleFileUpload(e.target.files)}
+							value={this.props.scr.fileInput}
+						/>
         </FormRow>
       </Modal>
     );

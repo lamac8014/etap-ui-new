@@ -229,8 +229,8 @@ class AddStructure extends Component {
 									onNameChange={(e) =>
 										this.props.onNameChange(e.target.value, i)
 									}
-									onTypeOfInputChange={(obj) =>
-										this.props.onTypeOfInputChange(obj.label, i)
+									onTypeOfInputChange={(e) =>
+										this.props.onTypeOfInputChange(e.target.value, i)
 									}
 									onUoMChange={(e) => this.props.onUoMChange(e.target.value, i)}
 									index={i}

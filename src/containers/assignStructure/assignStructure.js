@@ -88,10 +88,7 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 		handleAddDrNo(id) {
-			dispatch({
-				type: ADD_DRNO_MORE_PAGE,
-				payload: true,
-			});
+		
 			dispatch({
 				type: ADD_DRNO_MODAL,
 				payload: true,

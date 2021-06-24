@@ -29,9 +29,9 @@ class AddDrNo extends Component {
                 <FormRow>
                     <InputGroupButton
                         label="Dr.No"
-                        onChange={(e) => {
-                            this.props.handlechangeDrNumber(e.target.value);
-                        }}
+                        //onChange={(e) => {
+                            //this.props.handlechangeDrNumber(e.target.value);
+                        //}}
                         value={this.props.cmpcAdd.drNo}
                         btnText={<FaIcon iconname="faFileAlt" />}
                         onClick={() => this.fileInputRef.current.click()}
