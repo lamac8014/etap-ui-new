@@ -27,7 +27,7 @@ import IconButton from "../../common/forms/IconButton";
 import IconTextButton from "../../common/forms/IconTextButton";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Loader from "../../common/Loader";
-
+import AddDrNo from "../../containers/cmpcAddComponents/addDrNo";
 class CmpcAddComponents extends Component {
   fileInputRef = React.createRef();
   exportBtnRef = React.createRef();
@@ -60,6 +60,7 @@ class CmpcAddComponents extends Component {
             <CustomAlert variant="success" message={this.props.proj.message} />
           )} */}
           <Loader />
+          {/* <AddDrNo showAddModal={this.props.cmpcAdd.showAddModal} /> */}
           <SimpleCard>
             <SimpleRow>
               <TextInput
@@ -201,30 +202,39 @@ class CmpcAddComponents extends Component {
                   </Col6>
                 ))}
             </SimpleRow>
+            <AddDrNo showAddModal={this.props.cmpcAdd.showAddModal} />
+            <Button
+              btnText="Add Dr No"
+              type="primary"
+              size="col-md-10 offset-md-2"
+              fieldSize="col-md-7"
+              onClick={(id) => { this.props.handleAddDrNo(id) }}
+              gradient
+            />
             {/* table */}
             {this.props.cmpcAdd.assignedStructureDetails.structureAttributes &&
-            this.props.cmpcAdd.assignedStructureDetails.structureAttributes
-              .length > 0 ? (
-              <>
-                <StructureAttributesTable
-                  {...this.props}
-                  onChange={(e, id) =>
-                    this.props.handleChangeAssignStruct(e, id)
-                  }
-                  bodyData={JSON.parse(
-                    this.props.cmpcAdd.assignedStructureDetails
-                      .structureAttributes
-                  )}
-                  title="Structure Attributes"
-                />
+              this.props.cmpcAdd.assignedStructureDetails.structureAttributes
+                .length > 0 ? (
+                <>
+                  <StructureAttributesTable
+                    {...this.props}
+                    onChange={(e, id) =>
+                      this.props.handleChangeAssignStruct(e, id)
+                    }
+                    bodyData={JSON.parse(
+                      this.props.cmpcAdd.assignedStructureDetails
+                        .structureAttributes
+                    )}
+                    title="Structure Attributes"
+                  />
 
-                {/* <Button
+                  {/* <Button
                 btnText="Clear"
                 onClick={this.props.clearStrcutAttri}
                 btnType="btn-secondary"
               /> */}
-              </>
-            ) : null}
+                </>
+              ) : null}
             <ButtonRow position="center">
               <Button
                 btnText="Save"
@@ -234,8 +244,8 @@ class CmpcAddComponents extends Component {
                 type="primary"
                 disabled={
                   this.props.cmpcAdd.noOfComp &&
-                  this.props.cmpcAdd.estWeight &&
-                  this.props.cmpcAdd.drNo
+                    this.props.cmpcAdd.estWeight &&
+                    this.props.cmpcAdd.drNo
                     ? false
                     : true
                 }
@@ -265,8 +275,8 @@ class CmpcAddComponents extends Component {
               <CustomDataTable
                 metaData={componentsMetaData()}
                 bodyData={getComponentTableData(this.props.cmpcAdd)}
-                // bodyData={[{}, {}]}
-                // progressPending={this.props.assignStructure.isLoading}
+              // bodyData={[{}, {}]}
+              // progressPending={this.props.assignStructure.isLoading}
               />
             </FormRow>
             <SimpleRow>
@@ -334,13 +344,13 @@ class CmpcAddComponents extends Component {
             <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Complete"
-                onClick={() => {}}
+                onClick={() => { }}
                 type="success"
                 gradient
               />
               <Button
                 btnText="Discard"
-                onClick={() => {}}
+                onClick={() => { }}
                 type="danger"
                 gradient
               />

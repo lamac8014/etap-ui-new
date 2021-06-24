@@ -14,6 +14,9 @@ import {
 	SET_DISP_STRUCT_ID,
 	SET_PROJ_STRUCT_ID,
 	SET_DR_NUMBER,
+	ADD_DRNO_MORE_PAGE,
+	ADD_DRNO_MODAL,
+	ADD_DRNO_MORE_MODAL,
 } from "../../actions/types";
 import swal from "sweetalert";
 import CmpcAddComponents from "../../pages/cmpcAddComponents/CmpcAddComponents";
@@ -59,6 +62,16 @@ const mapDispatchToProps = (dispatch, props) => {
 			dispatch({
 				type: SET_FILES,
 				payload: tmpArr,
+			});
+		},
+		handleAddDrNo(id) {
+			dispatch({
+				type: ADD_DRNO_MORE_PAGE,
+				payload: true,
+			});
+			dispatch({
+				type: ADD_DRNO_MODAL,
+				payload: true,
 			});
 		},
 		handleOnDrop(data) {

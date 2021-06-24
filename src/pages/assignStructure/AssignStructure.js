@@ -32,9 +32,7 @@ class AssignStructure extends Component {
 	fileInputRef = React.createRef();
 	exportBtnRef = React.createRef();
 	downloadBtnRef = React.createRef();
-	constructor() {
-		super();
-	}
+	
 	componentDidMount = () => {
 		this.props.setInitialData();
 	};
@@ -219,7 +217,8 @@ class AssignStructure extends Component {
 								</Col6>
 							))}
 
-							<Button
+						</SimpleRow>
+						<Button
 								btnText="Add DrNo"
 								type="primary"
 								size="col-md-10 offset-md-2"
@@ -227,8 +226,6 @@ class AssignStructure extends Component {
 								onClick={(id) => {this.props.handleAddDrNo(id)}}
 								gradient
 							/>
-
-						</SimpleRow>
 						{/* table */}
 						{this.props.scr.structAttri.length > 0 ? (
 							<>

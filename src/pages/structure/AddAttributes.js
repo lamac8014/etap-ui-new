@@ -36,7 +36,7 @@ class AddAttributes extends Component {
 						}
 						value={this.props.typeOfInputValue}
 					/>
-					{/* <input
+					 {/* <input
             type="text"
             className="form-control"
             placeholder="TypeOfInput"
@@ -46,7 +46,7 @@ class AddAttributes extends Component {
               this.props.onTypeOfInputChange(e, this.props.index)
             }
             value={this.props.typeOfInputValue}
-          /> */}
+          />  */}
 					{/* </div> */}
 					<div className="col-sm-3">
 						<input

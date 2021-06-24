@@ -11,6 +11,7 @@ import DataTable from "../../common/DataTable";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 import AddAttributes from "./AddAttributes";
+import AssignStructureViewMore from "../../containers/assignStructure/assignStructureViewMore";
 class AddStructure extends Component {
 	constructor(props) {
 		super(props);
@@ -217,18 +218,19 @@ class AddStructure extends Component {
 						}
 					/>
 				</SimpleRow>
+				
 
 				<label>Structure Attributes</label>
 				<div className="form-group row location-row">
-					{this.props.assignStructure.assignStructureViewMoreAttributes.map(
+					 {this.props.assignStructure.assignStructureViewMoreAttributes.map(
 						(e, i) => {
 							return (
 								<AddAttributes
 									onNameChange={(e) =>
 										this.props.onNameChange(e.target.value, i)
 									}
-									onTypeOfInputChange={(e) =>
-										this.props.onTypeOfInputChange(e.target.value, i)
+									onTypeOfInputChange={(obj) =>
+										this.props.onTypeOfInputChange(obj.label, i)
 									}
 									onUoMChange={(e) => this.props.onUoMChange(e.target.value, i)}
 									index={i}
@@ -247,7 +249,7 @@ class AddStructure extends Component {
 								/>
 							);
 						}
-					)}
+					)} 
 				</div>
 			</Modal>
 		);

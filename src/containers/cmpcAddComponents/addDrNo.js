@@ -7,7 +7,7 @@ import {
     ADD_DRNO_MORE_PAGE,
     SET_FILES,
 } from "../../actions/types";
-import AddDrNoModal from "../../pages/assignStructure/AddDrNoModal";
+import AddDrNo from "../../pages/cmpcAddComponents/AddDrNo";
 const mapDispatchToProps = (dispatch) => {
     return {
         closeAddModal() {
@@ -33,12 +33,12 @@ const mapDispatchToProps = (dispatch) => {
 			});
         },
         handleChangeFileUpload(files) {
-			const scr = store.getState().scr;
+			const cmpcAdd = store.getState().cmpcAdd;
 			const newDocs = [...files];
 			newDocs.map((doc) => {
 				doc.isNew = true;
 			});
-			const tmpArr = [...scr.files, ...newDocs];
+			const tmpArr = [...cmpcAdd.files, ...newDocs];
 			dispatch({
 				type: SET_FILES,
 				payload: tmpArr,
@@ -48,10 +48,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-    const scr = state.scr;
-    return {
-        scr,
-    };
+	const cmpcAdd = state.cmpcAdd;
+	return {
+		cmpcAdd,
+	};
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddDrNoModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddDrNo);

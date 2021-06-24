@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FaIcon from "../../common/FaIcon";
 import IconButton from "../../common/forms/IconButton";
+import SearchableDropDown from "../../common/forms/SearchableDropdown";
 
 class AddAttributes extends Component {
 	render() {
@@ -17,19 +18,24 @@ class AddAttributes extends Component {
 						value={this.props.nameValue}
 					/>
 				</div>
-				<div className="col-sm-3">
-					<input
-						type="text"
-						className="form-control"
-						placeholder="TypeOfInput"
-						name={this.props.index}
-						id={this.props.index}
-						onChange={(e) =>
-							this.props.onTypeOfInputChange(e, this.props.index)
-						}
-						value={this.props.typeOfInputValue}
-					/>
-				</div>
+				{/* <div className="col-sm-3"> */}
+				<SearchableDropDown
+					size="col-md-3"
+					fieldSize="w-100"
+					placeholder="TypeOfInput"
+					name="typeOfInput"
+					selectOptions={[
+						{ id: "alphabetic", label: "alphabetic" },
+						{ id: "numeric", label: "numeric" },
+						{ id: "both", label: "both" },
+					]}
+					onChange={(obj) =>
+						this.props.onTypeOfInputChange(obj, this.props.index)
+					}
+					value={this.props.typeOfInputValue}
+				/>
+				{/* </div> */}
+	
 				<div className="col-sm-3">
 					<input
 						type="text"

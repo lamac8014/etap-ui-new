@@ -217,8 +217,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
+	const scr = state.scr;
 	return {
-		scr: state.scr,
+		scr,
 	};
 };
 

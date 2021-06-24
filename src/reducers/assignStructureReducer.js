@@ -23,6 +23,7 @@ import {
   GET_CHART_DATA,
   ADD_DRNO_MODAL,
   SET_ADD_MODE,
+  STRUCTURE_ATTRIBUTE_LIST,
 } from "../actions/types";
 import { faLandmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -46,7 +47,8 @@ const initialState = {
   isEditMode: false,
   isLoading: false,
   isError: false,
-  drnoAddModal:[]
+  drnoAddModal:[],
+  attributeList:[],
 };
 
 export default function (state = initialState, action) {
@@ -255,6 +257,11 @@ export default function (state = initialState, action) {
           ...state,
           isEditMode: action.payload,
         }
+        case STRUCTURE_ATTRIBUTE_LIST:
+          return {
+            ...state,
+            attributeList: action.payload,
+          };
     default:
       return state;
   }
