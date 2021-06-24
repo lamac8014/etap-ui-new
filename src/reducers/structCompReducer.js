@@ -23,6 +23,8 @@ import {
 	SET_SELECTED_STRUCTURE_CODE,
 	GET_ASSIGN_STRUCTURE_BY_PROJSTR_ID,
 	RESET_ASSIGN_STRUCTURE_DETAILS,
+	ADD_DRNO_MODAL,
+	SET_ADD_MODE,
 } from "../actions/types";
 
 import {
@@ -53,6 +55,7 @@ const initialState = {
 	showAttributeValueModal: false,
 	structureCodeList: [],
 	structureCode: {},
+	showAddModal:false,
 };
 
 export default function (state = initialState, action) {
@@ -280,6 +283,17 @@ export default function (state = initialState, action) {
 			return { ...state, showAttributeValueModal: action.payload };
 		case SET_CURRENT_ATTRIBUTE:
 			return { ...state, currentAttribute: action.payload };
+		case ADD_DRNO_MODAL:
+			return {
+				...state,
+				showAddModal: action.payload,
+			}
+
+		case SET_ADD_MODE:
+			return {
+				...state,
+				isEditMode: action.payload,
+			}
 		default:
 			return state;
 	}

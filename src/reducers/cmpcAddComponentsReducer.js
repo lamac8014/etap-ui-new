@@ -11,6 +11,8 @@ import {
 	UPDATE_DISPATCH_STRUCTURE,
 	SET_PROJ_STRUCT_ID,
 	SET_DR_NUMBER,
+	ADD_DRNO_MODAL,
+	SET_ADD_MODE,
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +30,8 @@ const initialState = {
 	estWeight: 0,
 	dispStructId: 0,
 	projStructId: 0,
+	isEditMode: false,
+	drnoAddModal: []
 };
 
 export default (state = initialState, action) => {
@@ -140,6 +144,17 @@ export default (state = initialState, action) => {
 			return { ...state, dispStructId: action.payload };
 		case SET_PROJ_STRUCT_ID:
 			return { ...state, projStructId: action.payload };
+		case ADD_DRNO_MODAL:
+			return {
+				...state,
+				showAddModal: action.payload,
+			}
+
+		case SET_ADD_MODE:
+			return {
+				...state,
+				isEditMode: action.payload,
+			}
 		default:
 			return state;
 	}

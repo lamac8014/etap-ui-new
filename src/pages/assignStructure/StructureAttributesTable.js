@@ -5,7 +5,6 @@ import FormRow from "../../common/forms/FormRow";
 import IconButton from "../../common/forms/IconButton";
 import AddAttributeValueModal from "./AddAttributeValueModal";
 // import Popup from "../../common/forms/Popup";
-
 class StructureAttributesTable extends Component {
   constructor() {
     super();

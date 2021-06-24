@@ -172,7 +172,7 @@ export const saveAttributeValues = () => {
 
   return {
     type: EDIT_ATTRIBUTES,
-    payload: axios.post(
+    payload: axios.put(
       `${config.BASE_URL}/api/FabricationManagement/UpdatetructureAttributes`,
       payload
     ),

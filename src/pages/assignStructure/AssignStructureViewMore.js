@@ -11,6 +11,7 @@ import DataTable from "../../common/DataTable";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 import AddAttributes from "./AddAttributes";
+import AssignStructureViewMore from "../../containers/assignStructure/assignStructureViewMore";
 class AddStructure extends Component {
 	constructor(props) {
 		super(props);
@@ -217,10 +218,11 @@ class AddStructure extends Component {
 						}
 					/>
 				</SimpleRow>
+				
 
 				<label>Structure Attributes</label>
 				<div className="form-group row location-row">
-					{this.props.assignStructure.assignStructureViewMoreAttributes.map(
+					 {this.props.assignStructure.assignStructureViewMoreAttributes.map(
 						(e, i) => {
 							return (
 								<AddAttributes
@@ -247,7 +249,7 @@ class AddStructure extends Component {
 								/>
 							);
 						}
-					)}
+					)} 
 				</div>
 			</Modal>
 		);

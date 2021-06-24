@@ -21,9 +21,14 @@ import {
   GET_ASSIGN_COMPONENT_DATA_SINGLE,
   SET_PROJECT_STRUCTURE_ID,
   GET_CHART_DATA,
+  ADD_DRNO_MODAL,
+  SET_ADD_MODE,
+  STRUCTURE_ATTRIBUTE_LIST,
 } from "../actions/types";
+import { faLandmark } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
+
   pieChartLoading: false,
   projectName: "",
   structureName: "",
@@ -39,6 +44,12 @@ const initialState = {
   assignComponentList: [],
   assignComponentViewMore: [],
   chartData: [],
+  isEditMode: false,
+  isLoading: false,
+  isError: false,
+  drnoAddModal:[],
+  attributeList:[],
+  showAddModal:false,
 };
 
 export default function (state = initialState, action) {
@@ -236,6 +247,22 @@ export default function (state = initialState, action) {
         ...state,
         showAssignComponentMoreModal: action.payload,
       };
+      case ADD_DRNO_MODAL:
+        return {
+          ...state,
+          showAddModal: action.payload,
+        }
+
+      case SET_ADD_MODE:
+        return {
+          ...state,
+          isEditMode: action.payload,
+        }
+        case STRUCTURE_ATTRIBUTE_LIST:
+          return {
+            ...state,
+            attributeList: action.payload,
+          };
     default:
       return state;
   }

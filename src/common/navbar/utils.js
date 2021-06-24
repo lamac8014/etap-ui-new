@@ -142,13 +142,13 @@ const menus = {
                   icon: "feather icon-trash",
                   url: "/etrack/lifeCycle/scrap",
                 },
-                {
-                  id: "scrapApprove",
-                  title: "Scrap Approve",
-                  type: "item",
-                  icon: "feather icon-trash",
-                  url: "/etrack/lifeCycle/scrapApprove",
-                },
+                // {
+                  //id: "scrapApprove",
+                  //title: "Scrap Approve",
+                  //type: "item",
+                  //icon: "feather icon-trash",
+                  //url: "/etrack/lifeCycle/scrapApprove",
+                // },
                 {
                   id: "surplus",
                   title: "Surplus",
