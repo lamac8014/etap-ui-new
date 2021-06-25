@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, props) => {
 					JSON.stringify(twcc.twccModificationData)
 				);
 				let modifiedData = twccModificationData.filter((item) => {
-					return item.status === "CMPCMODIFIED";
+					return item.status === "CMPC MODIFIED";
 				});
 				dispatch({
 					type: TRANSFORM_TABLE_DATA,
