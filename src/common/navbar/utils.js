@@ -151,14 +151,14 @@ const menus = {
                 // },
                 {
                   id: "surplus",
-                  title: "Surplus",
+                  title: "Surplus Declaration",
                   type: "item",
                   icon: "feather icon-package",
                   url: "/etrack/lifeCycle/surplus",
                 },
                 {
                   id: "surplus",
-                  title: "Surplus Declaration",
+                  title: "Surplus Approval",
                   type: "item",
                   icon: "feather icon-package",
                   url: "/etrack/lifeCycle/surplusDeclaration",

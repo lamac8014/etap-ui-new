@@ -18,14 +18,14 @@ export const assignStructureList = () => {
   };
 };
 
-export const assignComponentList = (structId, projectId) => {
+export const assignComponentList = (projStructId) => {
   // const assignStructure = store.getState().assignStructure;
   // console.log(`/api/StructureComponent/GetAssignedStructureDetailsById?structId=${assignStructure.structureID}&projectId=${assignStructure.projectID}`)
   return {
     type: LIST_ASSIGN_COMPONENT,
     payload: axios.get(
       config.BASE_URL +
-        `/api/StructureComponent/GetAssignedStructureDetailsById?structId=${structId}&projectId=${projectId}`
+        `/api/StructureComponent/GetAssignedStructureDetailsByProjStructId?projStructId=${projStructId}`
     ),
   };
 };

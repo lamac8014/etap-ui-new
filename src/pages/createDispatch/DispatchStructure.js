@@ -23,7 +23,8 @@ import DispatchStructureViewMore from "./DispatchStructureViewMore";
 import ButtonRow from "../../common/forms/ButtonRow";
 import GetQuantityModal from "./GetQuantityModal";
 import ConfirmationModal from "./ConfirmationModal";
-
+import { createDispatch } from "../../actions/createDispatchActions";
+import store from "../../store";
 class DispatchStructure extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +46,16 @@ class DispatchStructure extends Component {
       localStorage.getItem("currentRequirementInfo")
     );
     this.props.onPageLoad(structid, siteReqid, currentReqInfo);
+
+    //let createDisp = store.getState().createDispatch;
+    //let projCurrentStatus=createDisp.projCurrentStatus;
+    //let projStructureStatus=createDisp.projStructureStatus;
+    if (!this.props.handleChangeAttributeFilter && !this.props.handleChangeReleaseFilter) {
+      return {
+        projCurrentStatus: "READY TO USE",
+        projStructureStatus: "AVAILABLE"
+      }
+    }
   };
 
   componentWillUnmount() {
@@ -131,7 +142,7 @@ class DispatchStructure extends Component {
                     { label: "SIXMONTHS", value: "SIXMONTHS" },
                   ]}
                   onChange={(obj) => this.props.handleChangeReleaseFilter(obj)}
-                  // value={this.props.createDispatch.activeItem.planStartdate}
+                // value={this.props.createDispatch.activeItem.planStartdate}
                 />
                 <SearchableDropDown
                   label="Search By Attributes"
@@ -144,12 +155,12 @@ class DispatchStructure extends Component {
                   selectOptions={
                     this.props.createDispatch.currentReqInfo.structureAttributes
                       ? transformAttributeFilterValues(
-                          this.props.createDispatch.currentReqInfo
-                            .structureAttributes
-                        )
+                        this.props.createDispatch.currentReqInfo
+                          .structureAttributes
+                      )
                       : []
                   }
-                  // value={this.props.createDispatch.activeItem.projectName}
+                // value={this.props.createDispatch.activeItem.projectName}
                 />
               </SimpleRow>
             </>
@@ -188,7 +199,7 @@ class DispatchStructure extends Component {
                 }
               )}
               bodyData={this.props.createDispatch.transformedSiteReq}
-              // bodyData={tempArr}
+            // bodyData={tempArr}
             />
           )}
           <ButtonRow>
