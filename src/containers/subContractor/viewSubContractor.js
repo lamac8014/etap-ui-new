@@ -106,7 +106,7 @@ const mapDispatchToProps = (dispatch) => {
         swal(response.value.data.message, {
           icon: "success",
         });
-        dispatch({ type: RESET_PROJECT_FORM });
+        dispatch({ type: RESET_VENDOR_FORM });
         dispatch(vendorList());
       })
         .catch((err) => {
@@ -123,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
             type: SHOW_ADD_VENDOR_MODAL,
             payload: false,
           });
-          dispatch({ type: RESET_PROJECT_FORM });
+          dispatch({ type: RESET_VENDOR_FORM });
           swal(response.value.data.message, {
             icon: "success",
           });

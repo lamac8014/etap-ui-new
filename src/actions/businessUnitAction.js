@@ -13,13 +13,9 @@ import {
 
 export const addBusinessUnit = () => {
   const businessUnit = store.getState().businessUnit;
-  let status;
+  //let status;
   //console.log(buStatus);
-  if (businessUnit.buStatus.value === "Active") {
-    status = true;
-  } else {
-    status = false;
-  }
+  const status = businessUnit.buStatus.value === "InActive" ? false : true;
   const body = {
     icId: businessUnit.icCode.value,
     sbgId: businessUnit.sbgCode.value,
@@ -34,11 +30,12 @@ export const addBusinessUnit = () => {
 export const updateBusinessUnitType = (id) => {
   const businessUnit = store.getState().businessUnit;
   //console.log(buStatus);
-  const status = businessUnit.buStatus.value === "InActive" ? false : true;
+  const status = (businessUnit.buStatus.value === "InActive")? false : true
   const body = {
     icId: businessUnit.icCode.value,
     name: businessUnit.buName,
     sbgId: businessUnit.sbgCode.value,
+    isActive: true,
     isActive: status,
     isDelete: false,
   };
