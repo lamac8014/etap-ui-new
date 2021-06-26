@@ -76,7 +76,7 @@ export default (state = initialState, action) => {
         isLoading: false,
         isError: false,
         isSuccess: true,
-        message: action.payload.data.message,
+        message: action.payload.data,
       };
     case `${GET_COMPONENT_DETAILS_COST}_PENDING`:
       return {
@@ -88,6 +88,7 @@ export default (state = initialState, action) => {
         ...state,
         isloading: false,
         isError: true,
+        isSuccess:false,
         message: action.payload.response.data.message,
       };
     case `${GET_COMPONENT_DETAILS_COST}_FULFILLED`:

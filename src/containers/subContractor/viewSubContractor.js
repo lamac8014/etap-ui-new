@@ -23,7 +23,7 @@ import {
   ON_CHANGE_VEN_SERV_TYPES,
 } from "../../actions/types";
 import ViewSubContractor from "../../pages/subcontractor/ViewSubContractor";
-
+import swal from "sweetalert";
 const mapDispatchToProps = (dispatch) => {
   return {
     vendorList() {
@@ -98,27 +98,41 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
     createVendor() {
-      dispatch(createVendor()).then(() => {
+      dispatch(createVendor()).then((response) => {
         dispatch({
           type: SHOW_ADD_VENDOR_MODAL,
           payload: false,
         });
+        swal(response.value.data.message, {
+          icon: "success",
+        });
         dispatch({ type: RESET_PROJECT_FORM });
         dispatch(vendorList());
-      });
+      })
+        .catch((err) => {
+          swal("Vendor Add Failed", {
+            icon: "error",
+          });
+        });
     },
     //Edit Vendor
     updateVendor() {
       dispatch(updateVendor())
-        .then(() => {
+        .then((response) => {
           dispatch({
             type: SHOW_ADD_VENDOR_MODAL,
             payload: false,
           });
           dispatch({ type: RESET_PROJECT_FORM });
+          swal(response.value.data.message, {
+            icon: "success",
+          });
           dispatch(vendorList());
         })
-        .catch(() => {
+        .catch((err) => {
+          swal("Vendor Update Failed", {
+            icon: "error",
+          });
           dispatch({ type: SHOW_ERR_MSG, payload: true });
         });
     },

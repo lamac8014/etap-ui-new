@@ -12,7 +12,7 @@ import {
   WORK_BREAK_PROJECT_NAME,
   WBS_UPLOADED_DATA,
 } from "../../actions/types";
-
+import swal from "sweetalert";
 import AddWorkBreak from "../../pages/workBreak/AddWorkBreak";
 
 const mapDispatchToProps = (dispatch) => {
@@ -46,10 +46,20 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(projectCodesList());
     },
     saveWBSData() {
-      dispatch(saveWBSData());
-      dispatch({
-        type: RESET_WBS_FORM,
-      });
+      dispatch(saveWBSData()).then((response) => {
+        dispatch({
+          type: RESET_WBS_FORM,
+        });
+        dispatch(wbsList());
+        swal(response.value.data.message, {
+          icon: "success",
+        });
+      })
+        .catch((err) => {
+          swal("Not Saved Successfully", {
+            icon: "error",
+          });
+        });
     },
     handleChangeProjectName(value) {
       dispatch({

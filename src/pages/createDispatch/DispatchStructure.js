@@ -46,16 +46,6 @@ class DispatchStructure extends Component {
       localStorage.getItem("currentRequirementInfo")
     );
     this.props.onPageLoad(structid, siteReqid, currentReqInfo);
-
-    //let createDisp = store.getState().createDispatch;
-    //let projCurrentStatus=createDisp.projCurrentStatus;
-    //let projStructureStatus=createDisp.projStructureStatus;
-    if (!this.props.handleChangeAttributeFilter && !this.props.handleChangeReleaseFilter) {
-      return {
-        projCurrentStatus: "READY TO USE",
-        projStructureStatus: "AVAILABLE"
-      }
-    }
   };
 
   componentWillUnmount() {

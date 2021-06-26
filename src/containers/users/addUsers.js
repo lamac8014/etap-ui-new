@@ -24,7 +24,7 @@ import {
 	usersList,
 	updateUser,
 } from "../../actions/usersAction";
-
+import swal from "sweetalert";
 const mapDispatchToProps = (dispatch) => {
 	return {
 		resetStructureData() {
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 		addUser() {
-			dispatch(addUser()).then(() => {
+			dispatch(addUser()).then((response) => {
 				dispatch({
 					type: "RESET_CREATE_USER_FORM",
 				});
@@ -48,11 +48,19 @@ const mapDispatchToProps = (dispatch) => {
 					type: CHANGE_ADD_USERS_MODAL_STATUS,
 					payload: false,
 				});
+				swal(response.value.data.message, {
+					icon: "success",
+				});
 				dispatch(usersList());
-			});
+			})
+				.catch((err) => {
+					swal("User Add Failed", {
+						icon: "error",
+					});
+				});
 		},
 		updateUser() {
-			dispatch(updateUser()).then(() => {
+			dispatch(updateUser()).then((response) => {
 				dispatch({
 					type: "RESET_CREATE_USER_FORM",
 				});
@@ -60,8 +68,16 @@ const mapDispatchToProps = (dispatch) => {
 					type: CHANGE_ADD_USERS_MODAL_STATUS,
 					payload: false,
 				});
+				swal(response.value.data.message, {
+					icon: "success",
+				});
 				dispatch(usersList());
-			});
+			})
+				.catch((err) => {
+					swal("User Update Failed", {
+						icon: "error",
+					});
+				});
 		},
 		getProjectList() {
 			dispatch(projectCodesList());
@@ -132,8 +148,8 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		handleUserStatus(value) {
 			dispatch({
-			  type:USER_STATUS,
-			  payload: value,
+				type: USER_STATUS,
+				payload: value,
 			});
 		},
 	};

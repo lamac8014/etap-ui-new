@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch, props) => {
         siteReqId,
       });
     },
-    handleChangeReleaseFilter(obj) {
+    handleChangeReleaseFilter(obj,item) {
       dispatch({
         type: SET_RELEASE_FILTER,
         payload: obj.value,
@@ -111,13 +111,29 @@ const mapDispatchToProps = (dispatch, props) => {
       let siteReqId = createDisp.siteReqId;
       let structId = createDisp.structId;
       let releaseFilter = createDisp.releaseFilter;
+      if (!releaseFilter === null){
+        return{
+          status: item.projectCurrentStatus ? item.projectCurrentStatus : "INUSE",
+          statusInternal: item.projectStructureStatus
+        ? item.projectStructureStatus
+        : "NOT AVAILABLE",
+        }
+      }
+      // else {
+      //   return{
+      //     status: item.projectCurrentStatus ? item.projectCurrentStatus : "READY TO USE",
+      //     statusInternal: item.projectStructureStatus
+      //   ? item.projectStructureStatus
+      //   : "AVAILABLE",
+      //   }
+      // }
       dispatch(
         getSiteReqDetailsById(structId, siteReqId, releaseFilter, true)
       ).then(() => {
         this.transformSiteRequirement(structId, siteReqId);
       });
     },
-    handleChangeAttributeFilter(obj) {
+    handleChangeAttributeFilter(obj,item) {
       dispatch({
         type: SET_IS_ATTRIBUTE_FILTER,
         payload: {
@@ -129,6 +145,22 @@ const mapDispatchToProps = (dispatch, props) => {
       let siteReqId = createDisp.siteReqId;
       let structId = createDisp.structId;
       let isAttributeBasedFilter = createDisp.isAttributeBasedFilter;
+      if (!isAttributeBasedFilter === null){
+        return{
+          status: item.projectCurrentStatus ? item.projectCurrentStatus : "INUSE",
+          statusInternal: item.projectStructureStatus
+        ? item.projectStructureStatus
+        : "NOT AVAILABLE",
+        }
+      }
+      // else {
+      //   return{
+      //     status: item.projectCurrentStatus ? item.projectCurrentStatus : "READY TO USE",
+      //     statusInternal: item.projectStructureStatus
+      //   ? item.projectStructureStatus
+      //   : "AVAILABLE",
+      //   }
+      // }
       dispatch(
         getSiteReqDetailsById(structId, siteReqId, null, isAttributeBasedFilter)
       ).then(() => {
