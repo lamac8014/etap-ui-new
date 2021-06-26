@@ -26,7 +26,7 @@ class AttributeTable extends Component {
         <div className="card-body">
           <>
             {this.state.userDetails.roleName === "CMPC" &&
-              this.props.status === "BUAPPROVED" && (
+              this.props.status === "BU APPROVED" && (
                 <ButtonRow>
                   {this.props.requirement.editAttributes ? (
                     <>

@@ -228,7 +228,7 @@ export const tableRowStyles = (row, rowIndex) => {
     case "REJECTED":
       return "#d41515";
 
-    case "READYTODISPATCH":
+    case "READY TO DISPATCH":
       return "#39bf11";
 
     default:
