@@ -13,16 +13,17 @@ import {
 
 export const addStructure = () => {
 	const structure = store.getState().structure;
-	const stringifiedStructure = JSON.stringify(structure.attributeList);
+	let stringifiedStructure = JSON.stringify(structure.attributeList);
 	const body = {
 		name: structure.structureName,
 		structureTypeId: structure.structureFamily.value,
 		isActive: true,
 		structureAttributes: stringifiedStructure,
 	};
+	console.log(body)
 	return {
 		type: ADD_STRUCTURE,
-		payload: axios.post(config.BASE_URL + "/api/Structure/addstructure", body),
+		payload: axios.post(config.BASE_URL + "/api/Structure/addstructure/", body),
 	};
 };
 
@@ -47,7 +48,7 @@ export const inActiveStructure = () => {
 export const structureList = () => {
 	return {
 		type: LIST_STRUCTURE,
-		payload: axios.get(config.BASE_URL + "/api/Structure/getstructure"),
+		payload: axios.get(config.BASE_URL + "/api/Structure/getstructure/"),
 	};
 };
 export const structureFamilyList = () => {

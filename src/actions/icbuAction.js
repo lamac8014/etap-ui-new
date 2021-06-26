@@ -44,14 +44,15 @@ export const getBUList = () => {
 };
 
 export const createIcbu = () => {
-  const {icbu,icStatus} = store.getState().icbu;
-      let status;
-      console.log(icStatus);
-      if(icStatus.value === "Active"){
-        status=true;
-    } else{
-        status=false;
-    }
+  const icbu = store.getState().icbu;
+  const status=(icbu.icStatus.value==="InActive")?false:true
+      //let status;
+    //   console.log(icStatus);
+    //   if(icStatus.value === "Active"){
+    //     status=true;
+    // } else{
+    //     status=false;
+    // }
   const data = {
       name:icbu.icName,
       description:icbu.icDescription,

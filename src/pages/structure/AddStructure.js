@@ -16,11 +16,11 @@ class AddStructure extends Component {
 		return (
 			<Modal
 				title={`${
-					this.props.structure.isEdit ? "Update" : "Create New"
+					this.props.structure.isEditMode ? "Update" : "Create New"
 				} Structure`}
 				showModal={this.props.showAddComponentModal}
 				handleSave={
-					this.props.structure.isEdit
+					this.props.structure.isEditMode
 						? this.props.updateStructure
 						: this.props.addStructure
 				}

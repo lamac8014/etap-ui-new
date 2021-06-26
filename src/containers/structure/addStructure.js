@@ -101,7 +101,7 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(addStructure()).then(() => {
 				dispatch({
 					type: CHANGE_ADD_STRUCTURE_MODAL_STATUS,
-					payload: false,
+					payload:false,
 				});
 				dispatch({
 					type: RESET_STRUCTURE_FORM,

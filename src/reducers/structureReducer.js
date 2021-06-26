@@ -16,10 +16,14 @@ import {
 
 import { getSelectedValue } from "../utils/dataTransformer";
 const initialState = {
+  isLoading: false,
+  isSuccess: false,
+  isError: false,
+  message: "",
   structureName: "",
   structureFamily: "",
   noOfAttributes: "",
-  isEdit: false,
+  isEditMode: false,
   attributeList: [],
   structureFamilyList: [],
   structStatus:[],
@@ -50,7 +54,7 @@ export default function (state = initialState, action) {
     case STRUCTURE_EDIT_PAGE:
       return {
         ...state,
-        isEdit: action.payload,
+        isEditMode: action.payload,
       };
     case RESET_STRUCTURE_FORM:
       return {
@@ -119,8 +123,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: true,
-        isError: false,
-        isSuccess: false,
       };
     case `${ADD_STRUCTURE}_REJECTED`:
       return {
@@ -138,7 +140,7 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: false,
         isError: false,
-        isSuccess: false,
+        isSuccess: true,
         message: action.payload.data.message,
       };
     case `${GET_STRUCTURE_DATA}_PENDING`:
