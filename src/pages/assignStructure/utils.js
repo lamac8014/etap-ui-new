@@ -69,12 +69,6 @@ export const getExcelData = (scr) => {
     });
   } else {
     let tmpArr = [];
-    tmpArr.push(scr.ic);
-    tmpArr.push(scr.bu);
-    tmpArr.push(scr.projName.label);
-    tmpArr.push(scr.strcutureType);
-    tmpArr.push(scr.structName.label);
-    tmpArr.push(scr.structName.value);
     dataArr.push(tmpArr);
   }
   return dataArr;
@@ -117,18 +111,18 @@ export const structAttriMetaData = (onChangeValue) => {
     {
       name: "Description",
       dataField: "name",
-      style: {verticalAlign:"middle"},
-			sort: true,
+      style: { verticalAlign: "middle" },
+      sort: true,
     },
     {
       name: "UoM",
       dataField: "uom",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       name: "Value",
       dataField: "value",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: false,
       cell: (row) => {
         console.log("in meta", row.id, row.value);
@@ -149,68 +143,68 @@ export const componentsMetaData = (onChangeValue) => {
     {
       text: "Component",
       dataField: "component",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component Type",
       dataField: "compType",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component ID",
       dataField: "compId",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Component No",
       dataField: "compNum",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Group",
       dataField: "group",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Drawing No",
       dataField: "drawingNum",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Length",
       dataField: "length",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Breadth",
       dataField: "breadth",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Height",
       dataField: "height",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Thickness",
       dataField: "thickness",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Weight",
       dataField: "weight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Type",
       dataField: "type",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Tag",
       dataField: "tag",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
   ];
 };
@@ -288,13 +282,13 @@ export const listAssignedStructureMetaData = (
     {
       text: "Structure Name",
       dataField: "structureName",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Structure Code",
       dataField: "structureCode",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
@@ -321,23 +315,23 @@ export const listAssignedStructureMetaData = (
     {
       text: "No of Comp",
       dataField: "componentsCount",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Est. Weight",
       dataField: "estimatedWeight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Dr. No",
       dataField: "drawingNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Status",
       dataField: "currentStatus",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
@@ -387,46 +381,46 @@ export const listAssignedComponentMetaData = (handleDelete, handleMore) => {
     {
       text: "Comp No",
       dataField: "componentNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Comp",
       dataField: "component",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Comp Code",
       dataField: "componentID",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Comp Type",
       dataField: "componentFamily",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Tot. Weight",
       dataField: "totalWeight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Dr. No",
       dataField: "drawingNumber",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "M/O",
       dataField: "oM",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Mod No",
       dataField: "modNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
