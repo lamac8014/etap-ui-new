@@ -180,7 +180,7 @@ class AssignStructure extends Component {
 								value={this.props.scr.estimatedWeight}
 							/>
 
-							{/* <InputGroupButton
+							 <InputGroupButton
 								size="col-md-4"
 								label="Dr.No"
 								labelSize="col-md-3"
@@ -191,7 +191,7 @@ class AssignStructure extends Component {
 								value={this.props.scr.drawingNum}
 								btnText={<FaIcon iconname="faFileAlt" />}
 								onClick={() => this.fileInputRef.current.click()}
-							/> */}
+							/> 
 						</SimpleRow>
 						<MultiFileInput
 							innerRef={this.fileInputRef}
@@ -219,7 +219,7 @@ class AssignStructure extends Component {
 
 						</SimpleRow>
 						<Button
-								btnText="Add DrNo"
+								btnText="Add Dr No"
 								type="primary"
 								size="col-md-10 offset-md-2"
                                 fieldSize="col-md-7"

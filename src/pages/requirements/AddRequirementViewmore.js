@@ -19,7 +19,7 @@ class AddRequirementViewMore extends Component {
             <Modal
               title="Requirement Details"
               showModal={this.props.showModalViewMore}
-              handleSave={() => {}}
+              handleSave={() => { }}
               handleClose={() => this.props.closeViewMoreModal()}
               size="xl"
               isShowFooter={false}
@@ -54,7 +54,7 @@ class AddRequirementViewMore extends Component {
                   value={
                     this.props.requirement.viewMoreActiveItem.segmentName
                       ? this.props.requirement.viewMoreActiveItem.segmentName
-                          .label
+                        .label
                       : ""
                   }
                 />
@@ -71,7 +71,7 @@ class AddRequirementViewMore extends Component {
                   value={
                     this.props.requirement.viewMoreActiveItem.subSegmentName
                       ? this.props.requirement.viewMoreActiveItem.subSegmentName
-                          .label
+                        .label
                       : ""
                   }
                 />
@@ -88,7 +88,7 @@ class AddRequirementViewMore extends Component {
                   value={
                     this.props.requirement.viewMoreActiveItem.elementName
                       ? this.props.requirement.viewMoreActiveItem.elementName
-                          .label
+                        .label
                       : ""
                   }
                 />
