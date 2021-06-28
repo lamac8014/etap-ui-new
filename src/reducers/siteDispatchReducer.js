@@ -126,6 +126,8 @@ export default (state = initialState, action) => {
 				uploadedFile: null,
 				activeItem: {},
 				structureListCode: [],
+				componentData: [],
+				selectedComponents: [],
 			};
 		case SET_SHOW_VIEW_MORE:
 			return {
@@ -133,6 +135,16 @@ export default (state = initialState, action) => {
 				showViewMore: action.payload.viewMoreFlag,
 				currentStructure: action.payload.currentStr,
 			};
+		// case RESET_COMPONENT_DETAILS:
+		// 	return {
+		// 		...state,
+		// 		isLoading: false,
+		// 		isEdit: false,
+		// 		componentName: "",
+		// 		componentType: "",
+		// 		componentId: "",
+		// 		drawingNumber: "",
+		// 	}
 		default:
 			return state;
 	}

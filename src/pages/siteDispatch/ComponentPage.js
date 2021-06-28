@@ -112,7 +112,7 @@ class ComponentPage extends Component {
 						/>
 						<Button
 							type="danger"
-							onClick={() => {}}
+							onClick={this.props.resetDispatchDetails}
 							gradient
 							btnText="Cancel"
 						/>

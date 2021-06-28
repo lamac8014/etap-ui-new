@@ -62,6 +62,8 @@ class AssignVendorModal extends Component {
         <SimpleRow>
           <SearchableDropDown
             size="col-md-6"
+            paddingTop= "1px"
+            paddingBottom="1px"
             label="Structure Name"
             name="structureName"
             id="structureName"

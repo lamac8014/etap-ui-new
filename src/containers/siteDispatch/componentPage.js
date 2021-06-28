@@ -15,6 +15,7 @@ import {
   SET_DISPATCH_DATE,
   TRANSFORM_COMPONENT_DATA,
   SET_SELECTED_COMPONENTS,
+  RESET_UPDATE_SITE_DISPATCH_MODAL,
 } from "../../actions/types";
 
 import ComponentPage from "../../pages/siteDispatch/ComponentPage";
@@ -109,6 +110,9 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateSiteDispatch())
         .then((response) => {
           props.history.push("/etrack/dispatch/vendor");
+          dispatch({
+            type: RESET_UPDATE_SITE_DISPATCH_MODAL,
+          });
           swal("Dispatched Successfully", {
             icon: "success",
           });
@@ -119,6 +123,11 @@ const mapDispatchToProps = (dispatch, props) => {
           });
         });
     },
+    resetDispatchDetails() {
+      dispatch({
+        type: RESET_UPDATE_SITE_DISPATCH_MODAL,
+			});
+    }
   };
 };
 
