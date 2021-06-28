@@ -16,9 +16,9 @@ import ViewAssignComponent from "../../pages/assignStructure/ViewAssignComponent
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    assignComponentList(structId, projectId, projStrId) {
-      dispatch(assignComponentList(structId, projectId));
-      dispatch(getChartData(projStrId));
+    assignComponentList(projStructId) {
+      dispatch(assignComponentList(projStructId));
+      dispatch(getChartData(projStructId));
     },
 
     handleMore(id) {

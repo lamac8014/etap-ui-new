@@ -26,7 +26,7 @@ import IconButton from "../../common/forms/IconButton";
 import IconTextButton from "../../common/forms/IconTextButton";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Loader from "../../common/Loader";
-import AddDrNoModal from "../../containers/assignStructure/addDrNoModal";
+import AddDrNoPage from "../../containers/assignStructure/addDrNoPage";
 
 class AssignStructure extends Component {
 	fileInputRef = React.createRef();
@@ -55,7 +55,7 @@ class AssignStructure extends Component {
           )} */}
 
 					<Loader />
-					<AddDrNoModal showAddModal={this.props.scr.showAddModal} />
+					{/* <AddDrNoModal showAddModal={this.props.scr.showAddModal} /> */}
 					{/* <AddDrNoModal {...this.props}/>  */}
 					<SimpleCard>
 						<SimpleRow>
@@ -218,14 +218,16 @@ class AssignStructure extends Component {
 							))}
 
 						</SimpleRow>
+						<a href="#">
 						<Button
 								btnText="Add Dr No"
 								type="primary"
 								size="col-md-10 offset-md-2"
                                 fieldSize="col-md-7"
-								onClick={(id) => {this.props.handleAddDrNo(id)}}
+								onClick={()=> window.open("/etrack/assignStructure/addDrNo")}
 								gradient
 							/>
+					    </a>
 						{/* table */}
 						{this.props.scr.structAttri.length > 0 ? (
 							<>
