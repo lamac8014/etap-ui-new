@@ -87,13 +87,16 @@ const mapDispatchToProps = (dispatch, props) => {
             fromProjectId: currentReqInfo.fromProjectId,
             checked: false,
           };
-          tmpArr.push(tmpObj);
+          if ((structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "AVAILABLE")) 
+           {
+           tmpArr.push(tmpObj);
+           }
         });
       tmpArr = sort
         ? sortstructuresBasedOnAttributes(
-            tmpArr,
-            store.getState().createDispatch.chosenAttribute
-          )
+          tmpArr,
+          store.getState().createDispatch.chosenAttribute
+        )
         : tmpArr;
       dispatch({
         type: TRANSFORM_SITE_REQUIREMENTS,
@@ -102,7 +105,7 @@ const mapDispatchToProps = (dispatch, props) => {
         siteReqId,
       });
     },
-    handleChangeReleaseFilter(obj,item) {
+    handleChangeReleaseFilter(obj, sort) {
       dispatch({
         type: SET_RELEASE_FILTER,
         payload: obj.value,
@@ -111,29 +114,69 @@ const mapDispatchToProps = (dispatch, props) => {
       let siteReqId = createDisp.siteReqId;
       let structId = createDisp.structId;
       let releaseFilter = createDisp.releaseFilter;
-      if (!releaseFilter === null){
-        return{
-          status: item.projectCurrentStatus ? item.projectCurrentStatus : "INUSE",
-          statusInternal: item.projectStructureStatus
-        ? item.projectStructureStatus
-        : "NOT AVAILABLE",
-        }
-      }
-      // else {
-      //   return{
-      //     status: item.projectCurrentStatus ? item.projectCurrentStatus : "READY TO USE",
-      //     statusInternal: item.projectStructureStatus
-      //   ? item.projectStructureStatus
-      //   : "AVAILABLE",
-      //   }
-      // }
       dispatch(
         getSiteReqDetailsById(structId, siteReqId, releaseFilter, true)
       ).then(() => {
-        this.transformSiteRequirement(structId, siteReqId);
+        // this.transformSiteRequirement(structId, siteReqId);
+        let createDisp = store.getState().createDispatch;
+        let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
+        let tmpArr = [];
+        let availability = "-",
+          availDate = "-",
+          disabled = false;
+        let currentDate = new Date();
+        siteReq &&
+          siteReq.map((structure, index) => {
+            if (structure.surPlusFromDate) {
+              let surplusDate = new Date(structure.surPlusFromDate);
+              if (currentDate.getTime() > surplusDate.getTime()) {
+                availability = "YES";
+                availDate = structure.surPlusFromDate.split("T")[0];
+                disabled = false;
+              }
+            } else {
+              availability = "-";
+              availDate = "-";
+              disabled = true;
+            }
+            let parsedAttr = JSON.parse(structure.projectStructureAttributes);
+            structure.projectStructureAttributes = parsedAttr;
+            parsedAttr.map((item) => {
+              structure[item.name] = item.value ? item.value : 0;
+            });
+            let currentReqInfo = createDisp.currentReqInfo;
+            let tmpObj = {
+              ...structure,
+              temp_id: index,
+              availability,
+              availDate,
+              disabled,
+              quantity: 1,
+              fromProjectId: currentReqInfo.fromProjectId,
+              checked: false,
+            };
+            
+            if ((structure.projectCurrentStatus === "IN USE" || structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "NOT AVAILABLE" || structure.projectStructureStatus === "AVAILABLE")) 
+            {
+              tmpArr.push(tmpObj);
+            }
+          });
+            
+        tmpArr = sort
+          ? sortstructuresBasedOnAttributes(
+            tmpArr,
+            store.getState().createDispatch.chosenAttribute
+          )
+          : tmpArr;
+        dispatch({
+          type: TRANSFORM_SITE_REQUIREMENTS,
+          payload: tmpArr,
+          structId,
+          siteReqId,
+        });
       });
     },
-    handleChangeAttributeFilter(obj,item) {
+    handleChangeAttributeFilter(obj, item) {
       dispatch({
         type: SET_IS_ATTRIBUTE_FILTER,
         payload: {
@@ -145,22 +188,6 @@ const mapDispatchToProps = (dispatch, props) => {
       let siteReqId = createDisp.siteReqId;
       let structId = createDisp.structId;
       let isAttributeBasedFilter = createDisp.isAttributeBasedFilter;
-      if (!isAttributeBasedFilter === null){
-        return{
-          status: item.projectCurrentStatus ? item.projectCurrentStatus : "INUSE",
-          statusInternal: item.projectStructureStatus
-        ? item.projectStructureStatus
-        : "NOT AVAILABLE",
-        }
-      }
-      // else {
-      //   return{
-      //     status: item.projectCurrentStatus ? item.projectCurrentStatus : "READY TO USE",
-      //     statusInternal: item.projectStructureStatus
-      //   ? item.projectStructureStatus
-      //   : "AVAILABLE",
-      //   }
-      // }
       dispatch(
         getSiteReqDetailsById(structId, siteReqId, null, isAttributeBasedFilter)
       ).then(() => {

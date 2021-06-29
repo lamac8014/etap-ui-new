@@ -89,6 +89,9 @@ const ViewtwccModification = lazy(() =>
 const ViewtwccVerification = lazy(() =>
   import("./containers/twccVerification/twccVerification")
 );
+const AddDrNoPage = lazy(()=> 
+  import("./containers/assignStructure/addDrNoPage")
+);
 
 const RouteList = [
   {
@@ -306,6 +309,12 @@ const RouteList = [
     path: "/etrack/dispatch/twccVerification",
     name: "twccVerification",
     component: ViewtwccVerification,
+  },
+  {
+    exact: true,
+    path: "/etrack/assignStructure/addDrNo",
+    name: "addDrNo",
+    component: AddDrNoPage,
   },
 ];
 export default RouteList;

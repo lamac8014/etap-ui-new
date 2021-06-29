@@ -37,10 +37,10 @@ class ViewAssignComponent extends Component {
     };
   }
   componentDidMount() {
-    let structId = window.atob(this.props.match.params.structId);
-    let projectId = window.atob(this.props.match.params.projectId);
-    let projStrId = window.atob(this.props.match.params.projStrId);
-    this.props.assignComponentList(structId, projectId, projStrId);
+    // let structId = window.atob(this.props.match.params.structId);
+    // let projectId = window.atob(this.props.match.params.projectId);
+    let projStructId = window.atob(this.props.match.params.projStrId);
+    this.props.assignComponentList(projStructId);
   }
 
   render() {
