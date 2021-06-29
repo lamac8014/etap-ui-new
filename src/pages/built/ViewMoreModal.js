@@ -30,7 +30,7 @@ class ViewMoreModal extends Component {
       <Modal
         title={`BUILT-ATTRIBUTES`}
         showModal={this.props.built.openViewMoreModal}
-        handleSave={this.props.built.addComponent}
+        // handleSave={this.props.built.addComponent}
         handleClose={this.props.closeViewMoreModal}
         size="lg"
         isShowFooter={true}

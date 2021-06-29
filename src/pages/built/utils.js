@@ -11,17 +11,18 @@ export const listBuiltTypeMetaData = (
     {
       text: "DC No",
       dataField: "dcNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
 
     {
       text: "Structure Name",
-      dataField: "structureName",
-      style: {verticalAlign:"middle"},
+      dataField: "structrueName",
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Structure Code",
-      style: {verticalAlign:"middle"},
+      dataField: "strcutureCode",
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
@@ -40,83 +41,94 @@ export const listBuiltTypeMetaData = (
     {
       text: "Component Weight",
       dataField: "weight",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "Actions",
       dataField: true,
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         return (
           <>
-            {
-              <IconButton
-                iconname="faList"
-                onClick={() => handleMore(row.id)}
-              />
-            } 
-            {
-              <IconButton
-                iconname="faEye"
-                onClick={() => handleViewMore(row.id)}
-              />
-            }
+
+            <IconButton
+              iconname="faList"
+              onClick={() => handleMore(row.id)}
+            />
+            <IconButton
+              iconname="faEye"
+              onClick={() => handleEdit(row.id)}
+            />
+
           </>
         );
       },
     },
   ];
 };
-
+// export const getTableData = (built) => {
+// 	let tmpArr = [];
+// 	let data = built.getData;
+// 	data &&
+// 		data.map((data) => {
+// 			tmpArr.push({
+// 				dcNo: data.dcNo,
+// 				structureName: data.structureName,
+// 				structureCode: data.structureCode,
+// 				weight: data.weight,
+// 			});
+// 		});
+// 	return tmpArr;
+// };
 export const listBuiltDetailsMetaData = () => {
   return [
     {
       text: "Comp",
       dataField: "component",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "ID",
       dataField: "id",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "DR No",
       dataField: "drNo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "Attr 1",
       dataField: "attributeOne",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "Attr 2",
       dataField: "attributeTwo",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "Attr 3",
       dataField: "attributeThree",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "Vendor",
       dataField: "vendor",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
     {
       text: "QR",
       dataField: "qrCode",
-      style: {verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       sortable: true,
     },
   ];
