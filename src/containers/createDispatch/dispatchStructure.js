@@ -53,8 +53,6 @@ const mapDispatchToProps = (dispatch, props) => {
       let createDisp = store.getState().createDispatch;
       let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
       let tmpArr = [];
-      let projectCurrentStatus = "READY TO REUSE";
-      let projectStructureStatus="AVAILABLE";
       let availability = "-",
         availDate = "-",
         disabled = false;
@@ -83,18 +81,16 @@ const mapDispatchToProps = (dispatch, props) => {
             ...structure,
             temp_id: index,
             availability,
-            projectCurrentStatus,
-            projectStructureStatus,
             availDate,
             disabled,
             quantity: 1,
             fromProjectId: currentReqInfo.fromProjectId,
             checked: false,
           };
-          if ((projectCurrentStatus === "READY TO REUSE" || projectCurrentStatus === "NEW") && (projectStructureStatus === "AVAILABLE")) 
+          if ((structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "AVAILABLE")) 
            {
+           tmpArr.push(tmpObj);
            }
-          tmpArr.push(tmpObj);
         });
       tmpArr = sort
         ? sortstructuresBasedOnAttributes(
@@ -125,8 +121,6 @@ const mapDispatchToProps = (dispatch, props) => {
         let createDisp = store.getState().createDispatch;
         let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
         let tmpArr = [];
-        // let projectCurrentStatus;
-        // let projectStructureStatus;
         let availability = "-",
           availDate = "-",
           disabled = false;
@@ -157,17 +151,17 @@ const mapDispatchToProps = (dispatch, props) => {
               availability,
               availDate,
               disabled,
-              // projectCurrentStatus,
-              // projectStructureStatus,
               quantity: 1,
               fromProjectId: currentReqInfo.fromProjectId,
               checked: false,
             };
-             tmpArr.push(tmpObj);
+            
+            if ((structure.projectCurrentStatus === "IN USE" || structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "NOT AVAILABLE" || structure.projectStructureStatus === "AVAILABLE")) 
+            {
+              tmpArr.push(tmpObj);
+            }
           });
-          //  if ((projectCurrentStatus === "IN USE") && (projectStructureStatus === "NOT AVAILABLE")) 
-          //   {
-          //   }
+            
         tmpArr = sort
           ? sortstructuresBasedOnAttributes(
             tmpArr,
