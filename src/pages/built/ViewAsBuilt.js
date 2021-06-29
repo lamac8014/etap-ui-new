@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CustomAlert from "../../common/forms/customAlert";
-import { listBuiltTypeMetaData, listBuiltDetailsMetaData } from "./utils";
+import { listBuiltTypeMetaData, listBuiltDetailsMetaData,getTableData } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import BuiltViewMore from "../../containers/built/builtMore";
 import BuiltMoreEdit from "../../containers/built/builtEdit";

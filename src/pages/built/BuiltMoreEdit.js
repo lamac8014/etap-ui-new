@@ -7,11 +7,15 @@ import InputGroupButton from "../../common/forms/InputGroupButton";
 import FaIcon from "../../common/FaIcon";
 import DateInput from "../../common/forms/DateInput";
 import Button from "../../common/forms/Button";
+import FileInput from "../../common/forms/FileInput";
+import ImageInput from "../../common/forms/ImageInput";
 
 class BuiltMoreEdit extends Component {
     fileInputRef = React.createRef();
     constructor(props) {
         super(props);
+        this.fileRef = React.createRef();
+        this.imageRef = React.createRef();
     }
 
     render() {
@@ -20,8 +24,9 @@ class BuiltMoreEdit extends Component {
                 title={`Built Attributes - Details`}
                 showModal={this.props.showBuiltEditMoreModal}
                 handleClose={this.props.closeBuiltEditMoreModal}
+                handleSave={this.props.built.addComponent}
                 size="xl"
-                isShowFooter={false}
+                isShowFooter={true}
             >
                 {console.log("isLoading", this.props.isLoading)}
                 {this.props.isLoading && <Loader />}
@@ -159,8 +164,8 @@ class BuiltMoreEdit extends Component {
                         fieldSize="col-md-9"
                         onChange={() => { }}
                         value="O17078-Q-BR-CM-FB-1713"
-                        btnText={<FaIcon iconName="faFileUpload" />}
-                        onClick={() => this.fileInputRef.current.click()}
+                        btnText={<FaIcon iconName="faFileImage" />}
+                        onClick={() => this.imageRef.current.click()}
                     />
                     <InputGroupButton
                         size="col-md-4"
@@ -168,11 +173,15 @@ class BuiltMoreEdit extends Component {
                         onChange={() => { }}
                         value="O17078-Q-BR-CM-FB-1713"
                         btnText={<FaIcon iconName="faFileUpload" />}
-                        onClick={() => this.fileInputRef.current.click()}
+                        onClick={() => this.fileRef.current.click()}
                     />
+                    <div style={{ display: "none" }}>
+                        <FileInput innerRef={this.fileRef} onChange={() => { }} />
+                        <ImageInput innerRef={this.imageRef} onChange={() => { }} />
+                    </div>
                 </SimpleRow>
-                <hr />
-                <SimpleRow className="d-flex justify-content-center">
+                {/* <hr /> */}
+                {/* <SimpleRow className="d-flex justify-content-center">
                     <Button
                         btnText="SAVE"
                         onClick={() => { }}
@@ -183,7 +192,7 @@ class BuiltMoreEdit extends Component {
                         onClick={() => { }}
                         btnType="btn-danger mr-3"
                     />
-                </SimpleRow>
+                </SimpleRow> */}
             </Modal>
         );
     }
