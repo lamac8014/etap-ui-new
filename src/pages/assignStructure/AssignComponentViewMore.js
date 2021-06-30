@@ -182,7 +182,7 @@ class AssignComponentViewMore extends Component {
             label="Weight"
             name="weight"
             id="weight"
-            value={this.props.assignStructure.assignComponentViewMore.width}
+            value={this.props.assignStructure.assignComponentViewMore.weight}
           />
           <TextInput
             disabled

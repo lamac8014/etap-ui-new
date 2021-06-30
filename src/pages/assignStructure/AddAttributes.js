@@ -3,13 +3,58 @@ import FaIcon from "../../common/FaIcon";
 import IconButton from "../../common/forms/IconButton";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { Input } from "reactstrap";
+import { Table } from "react-bootstrap";
+import FormRow from "../../common/forms/FormRow";
 
-class AddAttributes extends Component {
+ class AddAttributes extends Component {
+	// constructor() {
+	// 	super();
+	// 	this.state = {
+	// 	  error: false,
+	// 	  errorType: "",
+	// 	  currentAttr: {},
+	// 	};
+	//   }
+	//   render() {
+	// 	return (
+	// 	  <>
+	// 		<FormRow>
+	// 		  <h4 className="card-title mr-auto ml-3 mb-4">{this.props.title}</h4>
+	// 		</FormRow>
+	// 		<Table bordered striped size="sm">
+	// 		  <thead>
+	// 			<tr>
+	// 			  <th>
+	// 				<strong>Description</strong>
+	// 			  </th>
+	// 			  <th>
+	// 				<strong>UoM</strong>
+	// 			  </th>
+	// 			  <th>
+	// 				<strong>Value</strong>
+	// 			  </th>
+	// 			</tr>
+	// 		  </thead>
+	// 		  <tbody>
+	// 			{this.props.bodyData.map((attribute) => (
+	// 			  <tr key={attribute.id}>
+	// 				<td>{attribute.name}</td>
+	// 				<td>{attribute.uom}</td>
+	// 				<td>{attribute.value ? attribute.value : 0}</td>
+	// 			  </tr>
+	// 			))}
+	// 		  </tbody>
+	// 		</Table>
+	// 	  </>
+	// 	);
+	//   }
+	// }
+	
 	render() {
 		return (
 			<>
 				<div className="col-sm-4">
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="Name"
@@ -20,16 +65,7 @@ class AddAttributes extends Component {
 					/>
 				</div>
 				<div className="col-sm-3">
-					{/* <Input
-					className="form-control"
-					placeholder="TypeOfInput"
-					name="typeOfInput"
-					//onChange={(obj) =>
-						//this.props.onTypeOfInputChange(obj, this.props.index)
-					//}
-					value={this.props.typeOfInputValue.obj}
-				/> */}
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="TypeOfInput"
@@ -38,12 +74,12 @@ class AddAttributes extends Component {
 						//onChange={(e) =>
 						//	this.props.onTypeOfInputChange(e, this.props.index)
 						//}
-						value={this.props.typeOfInputValue.label}
-					/>  
+						value={this.props.typeOfInputValue}
+					/>
 				</div>
 
 				<div className="col-sm-3">
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="UoM"

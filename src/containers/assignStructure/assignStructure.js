@@ -36,6 +36,7 @@ import {
   getStructureCodeList,
   getAssignStructDetailsByProjStrId,
 } from "../../actions/StructCompAction";
+import swal from "sweetalert";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -142,8 +143,16 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
     saveAssignStruct() {
-      dispatch(saveAssignStruct()).then(() => {
+      dispatch(saveAssignStruct()).then((response) => {
         dispatch({ type: RESET_ASSIGN_STRUCT_FORM });
+        swal(response.value.data.message, {
+					icon: "success",
+				});
+      })
+      .catch((err) => {
+        swal("failed to save", {
+          icon: "error",
+        });
       });
     },
     handleFileUpload(value) {
@@ -192,9 +201,17 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: RESET_ASSIGN_STRUCT_FORM });
     },
     saveAssignComp() {
-      dispatch(saveAssignComp()).then(() => {
+      dispatch(saveAssignComp()).then((response) => {
         dispatch({ type: RESET_ASSIGN_COMP_FORM });
         dispatch({ type: RESET_ASSIGN_STRUCT_FORM });
+        swal(response.value.data.message, {
+					icon: "success",
+				});
+      })
+      .catch((err) => {
+        swal("Failed to save", {
+          icon: "error",
+        });
       });
     },
     showAttributeValueModal(value) {

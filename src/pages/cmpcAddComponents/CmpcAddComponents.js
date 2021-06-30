@@ -343,12 +343,6 @@ class CmpcAddComponents extends Component {
             <hr />
             <SimpleRow className="d-flex justify-content-center">
               <Button
-                btnText="Complete"
-                onClick={() => { }}
-                type="success"
-                gradient
-              />
-              <Button
                 btnText="Discard"
                 onClick={() => { }}
                 type="danger"
