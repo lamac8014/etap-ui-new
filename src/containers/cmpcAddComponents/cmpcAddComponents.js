@@ -17,12 +17,18 @@ import {
 	ADD_DRNO_MORE_PAGE,
 	ADD_DRNO_MODAL,
 	ADD_DRNO_MORE_MODAL,
+	RESEST_CMPC_FORM,
 } from "../../actions/types";
 import swal from "sweetalert";
 import CmpcAddComponents from "../../pages/cmpcAddComponents/CmpcAddComponents";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
+		setInitialForm(){
+			dispatch({
+				type:RESEST_CMPC_FORM,
+			});
+		},
 		getAssignedStructureData(id, dispStructID, projStructId) {
 			dispatch(getAssignedStructureData(id));
 			dispatch({

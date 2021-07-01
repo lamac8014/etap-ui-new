@@ -344,7 +344,7 @@ class CmpcAddComponents extends Component {
             <SimpleRow className="d-flex justify-content-center">
               <Button
                 btnText="Discard"
-                onClick={() => { }}
+                onClick={this.props.setInitialForm}
                 type="danger"
                 gradient
               />

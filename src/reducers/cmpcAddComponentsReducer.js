@@ -13,6 +13,7 @@ import {
 	SET_DR_NUMBER,
 	ADD_DRNO_MODAL,
 	SET_ADD_MODE,
+	RESEST_CMPC_FORM,
 } from "../actions/types";
 
 const initialState = {
@@ -36,6 +37,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
+		case RESEST_CMPC_FORM:
+			return {
+				...state,
+				drNo: "",
+				removeFiles: [],
+				uploadData: [],
+				noOfComp: 0,
+				estWeight: 0,
+				dispStructId: 0,
+				projStructId: 0,
+			}
+
 		case `${GET_DISPATCH_STRUCTURE_DATA}_PENDING`:
 			return { ...state, isLoading: true };
 		case `${GET_DISPATCH_STRUCTURE_DATA}_REJECTED`:

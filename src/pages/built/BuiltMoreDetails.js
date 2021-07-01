@@ -32,7 +32,7 @@ class BuiltMoreDetails extends Component {
   render() {
     return (
       <PageContainer>
-        <SimpleCard title="Launching Girders : STR001">
+        <SimpleCard title={`TRESTLES : STR000001`}>
           {this.props.built.isLoading && <Loader />}
           {this.props.built.message && (
             <CustomAlert

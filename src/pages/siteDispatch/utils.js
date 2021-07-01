@@ -66,7 +66,18 @@ export const siteDispatchMetaDatatext = (
 		},
 	];
 };
-
+export const sortData = (getSiteDispatchDetails) => {
+	let tmpArr = [];
+	getSiteDispatchDetails &&
+	   getSiteDispatchDetails.map((siteDispatch) => {
+		let tmpObj = {
+			createdAt:siteDispatch.creatDate ? siteDispatch.creatDate:null,
+			updatedAt:siteDispatch.updatedDate ? siteDispatch.updatedDate:null
+		}
+		tmpArr.push(tmpObj);
+	});
+	return tmpArr;
+};
 export const componentMetaData = (setSelectedComponents) => {
 	return [
 		{
