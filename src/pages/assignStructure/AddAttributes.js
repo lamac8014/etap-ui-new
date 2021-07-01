@@ -3,13 +3,16 @@ import FaIcon from "../../common/FaIcon";
 import IconButton from "../../common/forms/IconButton";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { Input } from "reactstrap";
+import { Table } from "react-bootstrap";
+import FormRow from "../../common/forms/FormRow";
 
-class AddAttributes extends Component {
+ class AddAttributes extends Component {
+	
 	render() {
 		return (
 			<>
 				<div className="col-sm-4">
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="Name"
@@ -20,16 +23,7 @@ class AddAttributes extends Component {
 					/>
 				</div>
 				<div className="col-sm-3">
-					{/* <Input
-					className="form-control"
-					placeholder="TypeOfInput"
-					name="typeOfInput"
-					//onChange={(obj) =>
-						//this.props.onTypeOfInputChange(obj, this.props.index)
-					//}
-					value={this.props.typeOfInputValue.obj}
-				/> */}
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="TypeOfInput"
@@ -39,11 +33,11 @@ class AddAttributes extends Component {
 						//	this.props.onTypeOfInputChange(e, this.props.index)
 						//}
 						value={this.props.typeOfInputValue.label}
-					/>  
+					/>
 				</div>
 
 				<div className="col-sm-3">
-					<input
+					<Input
 						type="text"
 						className="form-control"
 						placeholder="UoM"
@@ -53,13 +47,6 @@ class AddAttributes extends Component {
 						value={this.props.uomValue}
 					/>
 				</div>
-				{/* <div className="col-sm-2">
-					<IconButton
-						iconname="faTimesCircle"
-						index={this.props.index}
-						onClick={() => this.props.onAttributeRemove(this.props.index)}
-					/>
-				</div> */}
 			</>
 		);
 	}

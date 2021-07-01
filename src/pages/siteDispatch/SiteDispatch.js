@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import FormContainer from "../../common/forms/FormContainer";
 
 import Loader from "../../common/Loader";
-import { siteDispatchMetaDatatext } from "./utils";
+import { siteDispatchMetaDatatext ,sortData} from "./utils";
 // import ConfirmModal from "../../common/ConfirmModal";
 import CustomDataTable from "../../common/DataTable";
 // import UpdateSiteDispatchModal from "./UpdateSiteDispatchModal";
@@ -10,6 +10,7 @@ import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import ViewMoreModal from "./ViewMoreModal";
 import { sortByFieldName } from "../../utils/common";
+import { sortDataByDate } from "../../utils/common";
 
 class SiteDispatch extends Component {
   constructor(props) {
@@ -57,9 +58,9 @@ class SiteDispatch extends Component {
                     );
                   }
                 )}
-                bodyData={sortByFieldName(
+                bodyData={sortByFieldName,sortDataByDate(sortData(
                   this.props.siteDispatch.siteDispatchDetails,
-                  "dcNumber"
+                  "dcNumber")
                 )}
                 // bodyData={[
                 // 	{

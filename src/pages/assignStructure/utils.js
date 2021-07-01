@@ -400,7 +400,7 @@ export const listAssignedComponentMetaData = (handleDelete, handleMore) => {
     },
     {
       text: "Tot. Weight",
-      dataField: "totalWeight",
+      dataField: "weight",
       style: { verticalAlign: "middle" },
     },
     {
@@ -454,6 +454,7 @@ export const transformAssignedComponentList = (assignComponentList) => {
         drawingNumber: assignComponent.drawingNo,
         oM: assignComponent.compStatus,
         modNo: assignComponent.compStatus,
+        weight:assignComponent.weight,
         id: i,
       };
       tmpArr.push(tmpObj);

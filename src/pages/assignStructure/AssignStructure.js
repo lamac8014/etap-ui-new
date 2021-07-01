@@ -346,14 +346,8 @@ class AssignStructure extends Component {
 						<hr />
 						<SimpleRow className="d-flex justify-content-center">
 							<Button
-								btnText="Complete"
-								onClick={() => { }}
-								type="success"
-								gradient
-							/>
-							<Button
 								btnText="Discard"
-								onClick={() => { }}
+								onClick={this.props.setInitialData}
 								type="danger"
 								gradient
 							/>

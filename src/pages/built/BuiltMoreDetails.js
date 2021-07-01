@@ -32,7 +32,7 @@ class BuiltMoreDetails extends Component {
   render() {
     return (
       <PageContainer>
-        <SimpleCard title="Launching Girders : STR001">
+        <SimpleCard title={`TRESTLES : STR000001`}>
           {this.props.built.isLoading && <Loader />}
           {this.props.built.message && (
             <CustomAlert
@@ -185,7 +185,7 @@ class BuiltMoreDetails extends Component {
                 attributeTwo: "17",
                 attributeThree: "18",
                 vendor: "Stigmata",
-                qr: "1620",
+                qrCode: "1620",
               },
               {
                 component: "LG",
@@ -195,7 +195,7 @@ class BuiltMoreDetails extends Component {
                 attributeTwo: "17",
                 attributeThree: "18",
                 vendor: "Stigmata",
-                qr: "1621",
+                qrCode: "1621",
               },
               {
                 component: "LG",
@@ -205,7 +205,7 @@ class BuiltMoreDetails extends Component {
                 attributeTwo: "17",
                 attributeThree: "18",
                 vendor: "Stigmata",
-                qr: "1622",
+                qrCode: "1622",
               },
             ]}
           />

@@ -139,12 +139,12 @@ export const structureTableMetaData = (handleEdit, handleViewMore) => {
     },
     {
       text: "Struct. Code",
-      dataField: "structId",
+      dataField: "strcutureCode",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Struct. Name",
-      selector: "structName",
+      selector: "structrueName",
       style: {  verticalalign:"middle"},
     },
     {
@@ -179,17 +179,17 @@ export const componentsMetaData = (onChangeValue) => {
   return [
     {
       text: "Component",
-      dataField: "component",
+      dataField: "componentName",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Comp Type",
-      dataField: "compType",
+      dataField: "componentType",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Comp ID",
-      dataField: "compType",
+      dataField: "compId",
       style: {  verticalalign:"middle"},
     },
     {
@@ -199,23 +199,23 @@ export const componentsMetaData = (onChangeValue) => {
     },
     {
       text: "Group",
-      dataField: "group",
+      dataField: "isGroup",
       style: {verticalalign:"middle"},
     },
 
     {
       text: "Dr No",
-      dataField: "drawingNum",
+      dataField: "drawingNo",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Length",
-      dataField: "length",
+      dataField: "leng",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Breadth",
-      dataField: "breadth",
+      dataField: "breath",
       style: {  verticalalign:"middle"},
     },
     {
@@ -235,12 +235,12 @@ export const componentsMetaData = (onChangeValue) => {
     },
     {
       text: "Type",
-      dataField: "type",
+      dataField: "makeType",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Tag",
-      dataField: "tag",
+      dataField: "isTag",
       style: {  verticalalign:"middle"},
     },
     {
