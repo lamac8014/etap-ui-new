@@ -56,7 +56,7 @@ class ViewScrap extends Component {
               (id) => this.props.handleViewMore(id),
               (id) => this.props.handleEdit(id)
             )}
-            bodyData={this.props.scrap.scrapData}
+            bodyData={this.props.scrap.workflowDetails}
           />
           {/* )} */}
         </SimpleCard>

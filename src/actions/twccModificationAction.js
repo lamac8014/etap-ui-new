@@ -38,6 +38,7 @@ export const updateComponentHistory = () => {
     isSite: twcc.isSite,
     isVendor: twcc.isVendor,
     osDispatchReqSubCont: {
+      serviceType: 4,
       dispreqId: twcc.currentStructure.dispatchRequirementId,
       dispatchNo: twcc.currentStructure.dcNumber,
       vendorStructures: [

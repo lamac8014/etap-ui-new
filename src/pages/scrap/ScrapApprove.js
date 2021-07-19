@@ -66,7 +66,7 @@ class ScrapApprove extends Component {
             )}
             bodyData={
               this.props.scrap.workflowDetails
-                ? sortDataByDate(this.props.scrap.workflowDetails)
+                ? (this.props.scrap.workflowDetails)
                 : []
             }
           />

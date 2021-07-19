@@ -30,7 +30,7 @@ class ViewMoreModal extends Component {
       <Modal
         title={`BUILT-ATTRIBUTES`}
         showModal={this.props.built.openViewMoreModal}
-        // handleSave={this.props.built.addComponent}
+        // handleSave={this.props.addComponent}
         handleClose={this.props.closeViewMoreModal}
         size="lg"
         isShowFooter={true}
@@ -41,31 +41,36 @@ class ViewMoreModal extends Component {
             label="DC No"
             labelSize="col-md-3"
             fieldSize="col-md-9"
-            name="dcNo"
-            id="dcNO"
-            onChange={(e) => this.props.handleChangedcNo(e.target.value)}
-            value={this.props.built.dcNo}
+            name="dispatchNo"
+            id="dispatchNo"
+            // onChange={(e) => this.props.handleChangedcNo(e.target.value)}
+            // value={this.props.built.dispatchNo}
+            value={this.props.built.asBuildStructure.dispatchNo}
+            placeholder="Auto fetch"
           />
 
-          <DateInput
+          <TextInput
             size="col-md-4"
             label="Structure Code"
             labelSize="col-md-4 pr-0"
             fieldSize="col-md-8"
             name="structCode"
             id="structCode"
-            onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
-            value={this.props.built.structCode}
+            // onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
+            // value={this.props.built.structCode}
+            value={this.props.built.asBuildStructure.strcutureCode}
+            placeholder="Auto fetch"
           />
           <TextInput
             size="col-md-4"
             label="Structure Name"
             labelSize="col-md-4 pr-0"
             fieldSize="col-md-8"
-            name="structName"
-            id="strcutName"
-            onChange={(e) => this.props.handleChangeStructName(e.target.value)}
-            value={this.props.built.structName}
+            name="structrueName"
+            id="structrueName"
+            // onChange={(e) => this.props.handleChangeStructName(e.target.value)}
+            value={this.props.built.asBuildStructure.structrueName}
+            placeholder="Auto fetch"
           />
         </SimpleRow>
         <SimpleRow>
@@ -90,7 +95,6 @@ class ViewMoreModal extends Component {
             id="reldate"
             onChange={(e) => this.props.handleChangeRelDate(e.target.value)}
             value={this.props.built.expRelDate}
-            placeholder="Auto Fetch"
           />
           <TextInput
             size="col-md-4"

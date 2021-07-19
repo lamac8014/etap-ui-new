@@ -1,5 +1,6 @@
 import { lazy } from "react";
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+const Summary = lazy(() => import("./containers/dashboard/summary"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ScrapApprove = lazy(() => import("./containers/scrap/scrapApprove"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -99,6 +100,12 @@ const RouteList = [
     path: "/notFound",
     name: "404",
     component: NotFound,
+  },
+  {
+    exact: true,
+    path: "/etrack/dashboard/summary",
+    name: "Summary",
+    component: Summary,
   },
   {
     exact: true,

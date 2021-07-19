@@ -7,6 +7,20 @@ const menus = {
       icon: "icon-navigation",
       children: [
         {
+          id: "dashboard",
+          title: "Dashboard",
+          type: "collapse",
+          icon: "feather icon-home",
+          children: [
+            {
+              id: "summary",
+              title: "Summary",
+              type: "item",
+              url: "/etrack/dashboard/summary",
+            }
+          ],
+        },
+        {
           id: "eTrack",
           title: "E-Track",
           type: "collapse",
@@ -143,11 +157,11 @@ const menus = {
                   url: "/etrack/lifeCycle/scrap",
                 },
                 // {
-                  //id: "scrapApprove",
-                  //title: "Scrap Approve",
-                  //type: "item",
-                  //icon: "feather icon-trash",
-                  //url: "/etrack/lifeCycle/scrapApprove",
+                //id: "scrapApprove",
+                //title: "Scrap Approve",
+                //type: "item",
+                //icon: "feather icon-trash",
+                //url: "/etrack/lifeCycle/scrapApprove",
                 // },
                 {
                   id: "surplus",

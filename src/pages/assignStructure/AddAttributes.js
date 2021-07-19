@@ -4,10 +4,7 @@ import IconButton from "../../common/forms/IconButton";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import { Input } from "reactstrap";
 import { Table } from "react-bootstrap";
-import FormRow from "../../common/forms/FormRow";
-
- class AddAttributes extends Component {
-	
+class AddAttributes extends Component {
 	render() {
 		return (
 			<>
@@ -47,6 +44,7 @@ import FormRow from "../../common/forms/FormRow";
 						value={this.props.uomValue}
 					/>
 				</div>
+
 			</>
 		);
 	}

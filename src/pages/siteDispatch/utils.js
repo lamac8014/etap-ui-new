@@ -21,6 +21,7 @@ export const siteDispatchMetaDatatext = (
 		{
 			text: "Structure Code",
 			dataField: "structId",
+			//  dataField:"structureCode",
 			style: { verticalAlign:"middle"},
 			formatter: (cell, row) => {
 				return (
@@ -71,6 +72,7 @@ export const sortData = (getSiteDispatchDetails) => {
 	getSiteDispatchDetails &&
 	   getSiteDispatchDetails.map((siteDispatch) => {
 		let tmpObj = {
+			...siteDispatch,
 			createdAt:siteDispatch.creatDate ? siteDispatch.creatDate:null,
 			updatedAt:siteDispatch.updatedDate ? siteDispatch.updatedDate:null
 		}

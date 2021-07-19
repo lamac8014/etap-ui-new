@@ -32,7 +32,8 @@ class BuiltMoreDetails extends Component {
   render() {
     return (
       <PageContainer>
-        <SimpleCard title={`TRESTLES : STR000001`}>
+        {/* <SimpleCard title={`${this.props.built.structrueName} : ${this.props.built.strcutureCode}`}>  */}
+        <SimpleCard title={`Trestles : STR000012`}>
           {this.props.built.isLoading && <Loader />}
           {this.props.built.message && (
             <CustomAlert
@@ -49,7 +50,40 @@ class BuiltMoreDetails extends Component {
             />
           )}
           <SimpleRow>
-            <SearchableDropDown
+          <TextInput
+            size="col-md-4"
+            label="DC No"
+            labelSize="col-md-3"
+            fieldSize="col-md-9"
+            name="dispatchNo"
+            id="dispatchNo"
+            // onChange={(e) => this.props.handleChangedcNo(e.target.value)}
+            // value={this.props.built.dispatchNo}
+            // value={this.props.built.structrueName}
+          />
+
+          <TextInput
+            size="col-md-4"
+            label="Structure Code"
+            labelSize="col-md-4 pr-0"
+            fieldSize="col-md-8"
+            name="structCode"
+            id="structCode"
+            // onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
+            // value={this.props.built.buildStructure.strcutureCode}
+          />
+          <TextInput
+            size="col-md-4"
+            label="Structure Name"
+            labelSize="col-md-4 pr-0"
+            fieldSize="col-md-8"
+            name="structrueName"
+            id="structrueName"
+            // onChange={(e) => this.props.handleChangeStructName(e.target.value)}
+            // value={this.props.built. buildStructure.structrueName}
+          />
+        </SimpleRow>
+            {/* <SearchableDropDown
               size="col-md-4"
               label="Actual WBS"
               labelSize="col-md-3"
@@ -170,9 +204,7 @@ class BuiltMoreDetails extends Component {
               // }
               //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
               onChange={() => {}}
-            />
-          </SimpleRow>
-          {/* {this.props.built.builtTypeList && ( */}
+            /> */}
           <CustomDataTable
             metaData={listBuiltDetailsMetaData()}
             // bodyData={this.props.procurement.siteDispatchDetails}

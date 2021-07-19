@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
             })
         },
         addComponent() {
-            dispatch(this.addComponent()).then(() => {
+            dispatch(addComponent()).then(() => {
                 dispatch({
                     type: ADD_STRUCTURE_COMPONENT,
                     payload: false,

@@ -59,6 +59,11 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 			dataField: "status",
 			style: {verticalAlign:"middle"},
 		},
+		{
+			text: " Dispatch Status",
+			dataField: "servicetypeid",
+			style: {verticalAlign:"middle"},
+		},
 		// {
 		//   name: "Created Date",
 		//   selector: "createdDateTime",

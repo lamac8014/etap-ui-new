@@ -34,9 +34,9 @@ class BuiltViewMore extends Component {
                         //   this.props.handleChangeStructureFamily(e.target.value)
                         // }
                         //  value={this.props.assignStructure.assignStructureViewMore.structrueName}
-                        // value={
-						// 	this.props.assignStructure.assignStructureViewMore.strcutureName
-						// }
+                        //  value={
+						//  	this.props.assignStructure.assignStructureViewMore.strcutureName
+						//  }
                         placeholder="Auto Fetch"
                     />
                     <TextInput disabled
@@ -64,7 +64,7 @@ class BuiltViewMore extends Component {
                         //   this.props.handleChangeStructureName(e.target.value)
                         // }
                         // value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
-                        // value={this.props.assignStructure.assignStructureViewMore.status}
+                        //  value={this.props.assignStructure.assignStructureViewMore.status}
                         placeholder="Auto Fetch"
                     />
                 </SimpleRow>

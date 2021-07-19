@@ -11,12 +11,13 @@ import DataTable from "../../common/DataTable";
 import IconTextButton from "../../common/forms/IconTextButton";
 import Button from "../../common/forms/Button";
 import AddAttributes from "./AddAttributes";
-import AssignStructureViewMore from "../../containers/assignStructure/assignStructureViewMore";
+// import AssignStructureViewMore from "../../containers/assignStructure/assignStructureViewMore";
+import StructAttriTable from "./StructureAttributesTable";
 class AddStructure extends Component {
 	constructor(props) {
 		super(props);
 	}
-
+	
 	render() {
 		return (
 			<Modal
@@ -218,9 +219,32 @@ class AddStructure extends Component {
 						}
 					/>
 				</SimpleRow>
-				
+				<h4>Structure Attributes :</h4>
+				<table className="table my-3">
+					<thead className="thead-light">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Capacity</th>
+							<th scope="col">UOM</th>
+							<th scope="col">value</th>
+						</tr>
+					</thead>
+					<tbody>
+						{this.props.assignStructure.assignStructureViewMore.structureAttributes &&
+							JSON.parse(
+								this.props.assignStructure.assignStructureViewMore.structureAttributes
+							).map((item, index) => (
+								<tr key={index}>
+									<th scope="row">{index + 1}</th>
+									<td>{item.name}</td>
+									<td>{item.uom}</td>
+									<td>{item.value}</td>
+								</tr>
+							))}
+					</tbody>
+				</table>
 
-				<label>Structure Attributes</label>
+				{/* <label>Structure Attributes</label>
 				<div className="form-group row location-row">
 					 {this.props.assignStructure.assignStructureViewMoreAttributes.map(
 						(e, i) => {
@@ -250,7 +274,7 @@ class AddStructure extends Component {
 							);
 						}
 					)} 
-				</div>
+				</div> */}
 			</Modal>
 		);
 	}

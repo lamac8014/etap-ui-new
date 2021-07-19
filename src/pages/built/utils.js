@@ -57,10 +57,10 @@ export const listBuiltTypeMetaData = (
               iconname="faList"
               onClick={() => handleMore(row.id)}
             />
-            {/* <IconButton
+            <IconButton
               iconname="faEye"
-              onClick={() => handleEdit(row.id)}
-            /> */}
+              onClick={() => handleViewMore(row.id)}
+            /> 
 
           </>
         );
