@@ -27,7 +27,7 @@ import fromSiteApprovalReducer from "./fromSiteApprovalReducer";
 import toSiteApprovalReducer from "./toSiteApprovalReducer";
 import createDispatchReducer from "./createDispatchReducer";
 import physicalVerificationReducer from "./physicalVerificationReducer";
-import fabricationcostReducer from "./fabricationCostReducer";
+import fabricationCostReducer from "./fabricationCostReducer";
 import builtReducer from "./builtReducer";
 import scrapPageReducer from "./scrapPageReducer";
 import cmpcReuseReducer from "./cmpcReuseReducer";
@@ -67,7 +67,7 @@ const rootReducer = combineReducers({
   createDispatch: createDispatchReducer,
   requirement: requirementReducer,
   physicalVerification: physicalVerificationReducer,
-  fabCost: fabricationcostReducer,
+  fabCost: fabricationCostReducer,
   built: builtReducer,
   cmpcReuse: cmpcReuseReducer,
   requirmentApproval: requirmentApprovalReducer,

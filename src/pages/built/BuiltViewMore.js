@@ -12,7 +12,7 @@ class BuiltViewMore extends Component {
     render() {
         return (
             <Modal
-                title={`Built Attributes - Details`}
+                title={`As built Details`}
                 showModal={this.props.showBuiltViewMoreModal}
                 handleClose={this.props.closeBuiltViewMoreModal}
                 size="lg"
@@ -25,46 +25,46 @@ class BuiltViewMore extends Component {
                 <h4>Structure Attributes :</h4>
                 <SimpleRow>
                     <TextInput disabled
-                        size="col-md-3"
-                        fieldSize="col-md-12"
+                        size="col-md-4"
+                        fieldSize="col-md-9"
                         label="Structure Name"
-						name="strcutureName"
-						id="strcutureName"
+                        name="strcutureName"
+                        id="strcutureName"
                         // onChange={e =>
                         //   this.props.handleChangeStructureFamily(e.target.value)
                         // }
                         //  value={this.props.assignStructure.assignStructureViewMore.structrueName}
-                        // value={
-						// 	this.props.assignStructure.assignStructureViewMore.strcutureName
-						// }
+                        //  value={
+                        //  	this.props.assignStructure.assignStructureViewMore.strcutureName
+                        //  }
                         placeholder="Auto Fetch"
                     />
                     <TextInput disabled
-                        size="col-md-3"
-                        fieldSize="col-md-12"
+                        size="col-md-4"
+                        fieldSize="col-md-9"
                         label="Structure Family"
-						name="structureFamily"
-						id="structureFamily"
+                        name="structureFamily"
+                        id="structureFamily"
                         // onChange={e =>
                         //   this.props.handleChangeStructureName(e.target.value)
                         // }
                         // value={
-						// 	this.props.assignStructure.assignStructureViewMore
-						// 		.strcutureTypeName
-						// }
+                        // 	this.props.assignStructure.assignStructureViewMore
+                        // 		.strcutureTypeName
+                        // }
                         placeholder="Auto Fetch"
                     />
                     <TextInput disabled
-                        size="col-md-3"
-                        fieldSize="col-md-12"
+                        size="col-md-4"
+                        fieldSize="col-md-9"
                         label="Structure Status"
-						name="structureStatus"
-						id="structureStatus"
+                        name="structureStatus"
+                        id="structureStatus"
                         // onChange={e =>
                         //   this.props.handleChangeStructureName(e.target.value)
                         // }
                         // value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
-                        // value={this.props.assignStructure.assignStructureViewMore.status}
+                        //  value={this.props.assignStructure.assignStructureViewMore.status}
                         placeholder="Auto Fetch"
                     />
                 </SimpleRow>

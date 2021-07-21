@@ -7,7 +7,7 @@ import BuiltMoreEdit from "../../containers/built/builtEdit";
 import ViewMoreModal from "../../containers/built/viewMoreModal";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
-import ViewMoreDetails from "./ViewMoreModal";
+// import ViewMoreModal from "./ViewMoreModal";
 
 class ViewAsBuilt extends Component {
     constructor(props) {
@@ -58,7 +58,7 @@ class ViewAsBuilt extends Component {
                             (structureName) => { this.props.redirectToBuiltMoreDetails(structureName) },
                             (id) => this.props.handleEdit(id),
                             (id) => this.props.handleMore(id),
-                            (id) => this.props.redirectBuiltDetails(id),
+                            // (id) => this.props.redirectBuiltDetails(id),
                             (id) => this.props.handleViewMore(id),
                         )}
                         bodyData= {this.props.built.asBuildStructure}

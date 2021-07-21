@@ -7,6 +7,20 @@ const menus = {
       icon: "icon-navigation",
       children: [
         {
+          id: "dashboard",
+          title: "Dashboard",
+          type: "collapse",
+          icon: "feather icon-home",
+          children: [
+            {
+              id: "summary",
+              title: "Summary",
+              type: "item",
+              url: "/etrack/dashboard/summary",
+            },
+          ],
+        },
+        {
           id: "eTrack",
           title: "E-Track",
           type: "collapse",
@@ -112,6 +126,14 @@ const menus = {
                   url: "/etrack/cost/fabCost",
                 },
                 {
+                  id: "fabCostPage",
+                  title: "Fabrication Cost 1",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  icon: "feather icon-tag",
+                  url: "/etrack/fabCostPage/fabCost",
+                },
+                {
                   id: "hireChange",
                   title: "Monthly Hire Change",
                   type: "item",
@@ -125,7 +147,7 @@ const menus = {
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-briefcase",
-                  url: "/etrack/requirementmgmt/approve",
+                  url: "/etrack//deprecitaionPage/bvDpr",
                 },
               ],
             },
@@ -143,11 +165,11 @@ const menus = {
                   url: "/etrack/lifeCycle/scrap",
                 },
                 // {
-                  //id: "scrapApprove",
-                  //title: "Scrap Approve",
-                  //type: "item",
-                  //icon: "feather icon-trash",
-                  //url: "/etrack/lifeCycle/scrapApprove",
+                //id: "scrapApprove",
+                //title: "Scrap Approve",
+                //type: "item",
+                //icon: "feather icon-trash",
+                //url: "/etrack/lifeCycle/scrapApprove",
                 // },
                 {
                   id: "surplus",

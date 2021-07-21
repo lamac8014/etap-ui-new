@@ -1,5 +1,10 @@
 import { lazy } from "react";
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
+const Summary = lazy(() => import("./containers/dashboard/summary"));
+const FabCostPage = lazy(() => import("./containers/fabCostPage/fabCost"));
+const FabCostPageMore = lazy(() => import("./containers/fabCostPage/fabCostMore"));
+const BvDpr = lazy(() => import("./containers/deprecitaionPage/bvDpr"));
+const BvDprMore = lazy(() => import("./containers/deprecitaionPage/bvDprMore"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ScrapApprove = lazy(() => import("./containers/scrap/scrapApprove"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -99,6 +104,12 @@ const RouteList = [
     path: "/notFound",
     name: "404",
     component: NotFound,
+  },
+  {
+    exact: true,
+    path: "/etrack/dashboard/summary",
+    name: "Summary",
+    component: Summary,
   },
   {
     exact: true,
@@ -315,6 +326,30 @@ const RouteList = [
     path: "/etrack/assignStructure/addDrNo",
     name: "addDrNo",
     component: AddDrNoPage,
+  },
+  {
+    exact: true,
+    path: "/etrack/fabCostPage/fabCost",
+    name: "FabCostPage",
+    component: FabCostPage,
+  },
+  {
+    exact: true,
+    path: "/etrack/fabCostPage/fabCostMore",
+    name: "FabCostPageMore",
+    component: FabCostPageMore,
+  },
+  {
+    exact: true,
+    path: "/etrack//deprecitaionPage/bvDpr",
+    name: "BvDpr",
+    component: BvDpr,
+  },
+  {
+    exact: true,
+    path: "/etrack//deprecitaionPage/bvDprMore",
+    name: "BvDprMore",
+    component: BvDprMore,
   },
 ];
 export default RouteList;

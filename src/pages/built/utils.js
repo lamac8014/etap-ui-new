@@ -57,10 +57,10 @@ export const listBuiltTypeMetaData = (
               iconname="faList"
               onClick={() => handleMore(row.id)}
             />
-            {/* <IconButton
-              iconname="faEye"
-              onClick={() => handleEdit(row.id)}
-            /> */}
+            <IconButton
+              iconname="faPen"
+              onClick={() => handleViewMore(row.id)}
+            /> 
 
           </>
         );
@@ -84,23 +84,6 @@ export const listBuiltTypeMetaData = (
 // };
 export const listBuiltDetailsMetaData = () => {
   return [
-    {
-			text: "",
-			dataField: "",
-			//style: {verticalAlign:"middle"},
-			formatter: (cell, row) => {
-				return (
-					<Input
-						// key={row.dispatchRequirementId}
-						type="checkbox"
-						style={{ marginTop:5,marginBottom:20,marginLeft:0}}
-						//  disabled={row.disabled}
-						// checked={row.checked}
-						// onChange={() => setSelectedStructures(row)}
-					/>
-				);
-			},
-		},
     {
       text: "Comp",
       dataField: "component",

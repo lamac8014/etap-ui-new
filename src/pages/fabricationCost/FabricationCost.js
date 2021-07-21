@@ -69,7 +69,7 @@ class AssignStructure extends Component {
                   this.props.setViewMoreModalFlag
                 )}
                 // bodyData={getComponentTableData(this.props.scr)}
-                bodyData={this.props.fabCost.buildCost}
+                 bodyData={this.props.fabCost.buildCost}
                 // progressPending={this.props.assignStructure.isLoading}
                 pagination={true}
                 // paginationTotalRows={

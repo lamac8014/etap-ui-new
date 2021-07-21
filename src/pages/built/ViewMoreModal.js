@@ -28,52 +28,57 @@ class ViewMoreModal extends Component {
   render() {
     return (
       <Modal
-        title={`BUILT-ATTRIBUTES`}
+        title={`As Built Details`}
         showModal={this.props.built.openViewMoreModal}
-        // handleSave={this.props.built.addComponent}
+        handleSave={this.props.addComponent}
         handleClose={this.props.closeViewMoreModal}
-        size="lg"
+        size="xl"
         isShowFooter={true}
       >
         <SimpleRow>
           <TextInput
-            size="col-md-4"
             label="DC No"
-            labelSize="col-md-3"
-            fieldSize="col-md-9"
-            name="dcNo"
-            id="dcNO"
+            size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
+            name="dispatchNo"
+            id="dispatchNo"
             onChange={(e) => this.props.handleChangedcNo(e.target.value)}
-            value={this.props.built.dcNo}
+            value={this.props.built.dispatchNo}
+            // value={this.props.built.asBuildStructure.dispatchNo}
+            placeholder="Auto fetch"
           />
 
-          <DateInput
-            size="col-md-4"
+          <TextInput
             label="Structure Code"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
+            size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             name="structCode"
             id="structCode"
             onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
             value={this.props.built.structCode}
+            // value={this.props.built.asBuildStructure.strcutureCode}
+            placeholder="Auto fetch"
           />
           <TextInput
             size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             label="Structure Name"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
-            name="structName"
-            id="strcutName"
+            name="structrueName"
+            id="structrueName"
             onChange={(e) => this.props.handleChangeStructName(e.target.value)}
-            value={this.props.built.structName}
+            value={this.props.built.asBuildStructure.structrueName}
+            placeholder="Auto fetch"
           />
         </SimpleRow>
         <SimpleRow>
           <TextInput
-            size="col-md-4"
             label="Actual WBS"
-            labelSize="col-md-3"
-            fieldSize="col-md-9"
+            size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             name="actualWbs"
             id="actualWbs"
             placeholder="Select WBS"
@@ -83,20 +88,19 @@ class ViewMoreModal extends Component {
 
           <DateInput
             size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             label="Expected Rel. Date"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
             name="reldate"
             id="reldate"
             onChange={(e) => this.props.handleChangeRelDate(e.target.value)}
             value={this.props.built.expRelDate}
-            placeholder="Auto Fetch"
           />
           <TextInput
-            size="col-md-4"
             label="Fabrication Year"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
+            size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             name="fabricationYear"
             id="fabricationYear"
             onChange={(e) => this.props.handleChangeFabYear(e.target.value)}
@@ -105,10 +109,10 @@ class ViewMoreModal extends Component {
         </SimpleRow>
         <SimpleRow>
           <SearchableDropDown
-            size="col-md-4"
             label="Reusability"
-            labelSize="col-md-3"
-            fieldSize="col-md-9"
+            size="col-md-4"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             name="reusability"
             id="reusability"
             onChange={(obj) => {this.props.handleChangeReuse(obj)}}
@@ -125,9 +129,12 @@ class ViewMoreModal extends Component {
 
           <InputGroupButton
             label="Upload Image"
+            // size="col-md-3"
+            // labelSize="col-md-4 pr-0"
+            // fieldSize="col-md-8"
             size="col-md-4"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             onChange={() => { }}
             value=""
             btnText={<FaIcon iconname="faFileImage" />}
@@ -137,8 +144,8 @@ class ViewMoreModal extends Component {
           <InputGroupButton
             label="Upload File"
             size="col-md-4"
-            labelSize="col-md-4"
-            fieldSize="col-md-8"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
             onChange={() => { }}
             value=""
             btnText={<FaIcon iconname="faFileUpload" />}
@@ -149,9 +156,9 @@ class ViewMoreModal extends Component {
         <SimpleRow>
           <TextInput
             size="col-md-4"
-            label="Weight"
-            labelSize="col-md-3 pr-0"
-            fieldSize="col-md-9"
+						fieldSize="col-md-8"
+						labelSize="col-sm-4"
+            label="Weight" 
             name="weight"
             id="weight"
             onChange={(e) => this.props.handleChangeWeight(e.target.value)}

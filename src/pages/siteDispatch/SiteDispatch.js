@@ -58,10 +58,11 @@ class SiteDispatch extends Component {
                     );
                   }
                 )}
-                bodyData={sortByFieldName,sortDataByDate(sortData(
-                  this.props.siteDispatch.siteDispatchDetails,
-                  "dcNumber")
-                )}
+                // bodyData={sortByFieldName(
+                //   this.props.siteDispatch.siteDispatchDetails,"dcNumber")
+                // }
+                 bodyData={sortDataByDate(sortData(this.props.siteDispatch.siteDispatchDetails)
+                 )}
                 // bodyData={[
                 // 	{
                 // 		mrNo: "1",

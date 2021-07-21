@@ -7,7 +7,11 @@ import {
   RESET_FABCOST_MODAL,
   GET_AS_BUILD_STRUCTURE_COST,
   ADD_STRUCTURE_COST,
-  GET_COMPONENT_DETAILS_COST
+  GET_COMPONENT_DETAILS_COST,
+  FAB_MORE_MODAL,
+  FAB_EDIT_MORE_MODAL,
+  FAB_MORE_PAGE,
+  SET_FAB_EDIT_MODE,
 } from "../actions/types";
 
 const initialState = {
@@ -22,10 +26,21 @@ const initialState = {
   fabCost: "",
   buildCost: [],
   compDetails: [],
+  showFabEditModal:false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FAB_MORE_MODAL:
+      return {
+        ...state,
+        showFabEditModal: action.payload,
+      }
+    case SET_FAB_EDIT_MODE:
+      return {
+        ...state,
+        isEditMode: action.payload,
+      }
     case SET_FABCOST_MODAL_FLAG:
       return { ...state, fabCostModalflag: action.payload };
     case FABCOST_VIEWMORE_FLAG:
