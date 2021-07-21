@@ -20,7 +20,8 @@ import {
 } from '../../actions/types';
 import { addComponent } from "../../actions/builtAction";
 import ViewMoreModal from '../../pages/built/ViewMoreModal';
-
+import { transformDropDownData } from "../../utils/dataTransformer";
+import swal from "sweetalert";
 const mapDispatchToProps = dispatch => {
     return {
         closeViewMoreModal() {
@@ -36,26 +37,30 @@ const mapDispatchToProps = dispatch => {
             })
         },
         addComponent() {
-            dispatch(addComponent()).then(() => {
-                dispatch({
-                    type: ADD_STRUCTURE_COMPONENT,
-                    payload: false,
+            dispatch(addComponent()).then((response) => {
+                swal(response.value.data.message, {
+                    icon: "success",
                 });
-            });
+            })
+                .catch((err) => {
+                    swal("failed to save", {
+                        icon: "error",
+                    });
+                });
         },
-        handleChangedcNo(value){
+        handleChangedcNo(value) {
             dispatch({
                 type: SET_DCNO,
                 payload: value,
             });
         },
-        handleChangeStructName(value){
+        handleChangeStructName(value) {
             dispatch({
                 type: SET_BUILD_STRUCT_NAME,
                 payload: value,
             });
         },
-        handleChangeStructCode(value){
+        handleChangeStructCode(value) {
             dispatch({
                 type: SET_BUILD_STRUCT_CODE,
                 payload: value,
@@ -103,12 +108,12 @@ const mapDispatchToProps = dispatch => {
                 payload: false,
             });
         },
-        handleUploadImage(){
+        handleUploadImage() {
             dispatch({
                 type: SET_IMAGE_UPLOAD,
                 payload: false,
             });
-        }    
+        }
     };
 };
 

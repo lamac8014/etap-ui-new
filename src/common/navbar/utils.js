@@ -17,7 +17,7 @@ const menus = {
               title: "Summary",
               type: "item",
               url: "/etrack/dashboard/summary",
-            }
+            },
           ],
         },
         {
@@ -126,6 +126,14 @@ const menus = {
                   url: "/etrack/cost/fabCost",
                 },
                 {
+                  id: "fabCostPage",
+                  title: "Fabrication Cost 1",
+                  type: "item",
+                  // icon: "feather icon-home",
+                  icon: "feather icon-tag",
+                  url: "/etrack/fabCostPage/fabCost",
+                },
+                {
                   id: "hireChange",
                   title: "Monthly Hire Change",
                   type: "item",
@@ -139,7 +147,7 @@ const menus = {
                   type: "item",
                   // icon: "feather icon-home",
                   icon: "feather icon-briefcase",
-                  url: "/etrack/requirementmgmt/approve",
+                  url: "/etrack//deprecitaionPage/bvDpr",
                 },
               ],
             },

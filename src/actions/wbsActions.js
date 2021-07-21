@@ -1,7 +1,7 @@
 import store from '../store';
 import axios from 'axios';
 import config from '../config';
-import { LIST_PROJECT_CODES,SAVE_WBS_DATA,LIST_WBS_DATA,SINGLE_WBS_DATA } from "./types";
+import { LIST_PROJECT_CODES, SAVE_WBS_DATA, LIST_WBS_DATA, SINGLE_WBS_DATA } from "./types";
 
 
 
@@ -22,22 +22,26 @@ export const wbsList = () => {
 export const singleWBS = (id) => {
     return {
         type: SINGLE_WBS_DATA,
-        payload: axios.get(config.BASE_URL + '/api/WBS/GetWBS/'+id)
+        payload: axios.get(config.BASE_URL + '/api/WBS/GetWBS/' + id)
     }
 }
 
 export const saveWBSData = () => {
     const wbs = store.getState().wbs;
     const wbsProjectName = wbs.wbsProjectName.value;
-    let wbsUploadedData=wbs.wbsUploadedData;
-    let result = wbsUploadedData.map(function(el) {
+    let wbsUploadedData = wbs.wbsUploadedData;
+    let result = wbsUploadedData.map(function (el) {
         var o = Object.assign({}, el);
         o.projectId = wbsProjectName;
-        return o;
+        return o; 
+        // o.segment=wbs.segment.value;
+        // o.subSegment=wbs.subSegment.value;
+        // o.element=wbs.element.value;
+        // o.workBreakDownCode=wbs.workBreakDownCode.value;       
       })
     return {
         type: SAVE_WBS_DATA,
-        payload: axios.post(config.BASE_URL + '/api/WBS/BulkUpload',result)
+        payload: axios.post(config.BASE_URL + '/api/WBS/BulkUpload', result)
     }
 }
 

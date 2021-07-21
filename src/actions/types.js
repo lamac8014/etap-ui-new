@@ -712,3 +712,9 @@ export const SET_CURRENT_STRUCTURE = "SET_CURRENT_STRUCTURE";
 export const SET_IS_SITE = "SET_IS_SITE";
 export const SET_IS_VENDOR = "SET_IS_VENDOR";
 export const SET_VENDOR_CODE = "SET_VENDOR_CODE";
+
+// fabCost sample page
+export const FAB_MORE_MODAL = "FAB_MORE_MODAL";
+export const FAB_EDIT_MORE_MODAL = "FAB_EDIT_MORE_MODAL";
+export const FAB_MORE_PAGE = "FAB_MORE_PAGE";
+export const SET_FAB_EDIT_MODE = "SET_FAB_EDIT_MODE";
