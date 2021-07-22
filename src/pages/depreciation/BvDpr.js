@@ -23,7 +23,7 @@ class BvDpr extends Component {
                                 projName:"abc",
                                 structureName: "Trestles",
                                 structureCode: "STR000012",
-                                currentValue:"100"
+                                currentValue:"73.4"
                             },
                         ]}
                     />
