@@ -45,7 +45,7 @@ class ViewMoreModal extends Component {
             id="dispatchNo"
             onChange={(e) => this.props.handleChangedcNo(e.target.value)}
             value={this.props.built.dispatchNo}
-            // value={this.props.built.asBuildStructure.dispatchNo}
+            //  value={this.props.built.buildStructure.dispatchNo}
             placeholder="Auto fetch"
           />
 
@@ -66,10 +66,11 @@ class ViewMoreModal extends Component {
 						fieldSize="col-md-8"
 						labelSize="col-sm-4"
             label="Structure Name"
-            name="structrueName"
-            id="structrueName"
+            name="strcutureName"
+            id="strcutureName"
             onChange={(e) => this.props.handleChangeStructName(e.target.value)}
-            value={this.props.built.asBuildStructure.structrueName}
+            value={this.props.built.structrueName}
+            // value={this.props.built.buildStructure.strcutureName}
             placeholder="Auto fetch"
           />
         </SimpleRow>
@@ -126,28 +127,40 @@ class ViewMoreModal extends Component {
             ]}
             placeholder="Select Reusability"
           />
-
+           <div style={{ display: "none" }}>
+            <ImageInput innerRef={this.imageRef} onChange={(e) => {this.props.handleUploadImage(e.target.files[0])
+            }} />
+          </div>
           <InputGroupButton
             label="Upload Image"
-            // size="col-md-3"
-            // labelSize="col-md-4 pr-0"
-            // fieldSize="col-md-8"
             size="col-md-4"
 						fieldSize="col-md-8"
 						labelSize="col-sm-4"
-            onChange={() => { }}
-            value=""
+            value={
+              this.props.built.currentImgFile
+                ? this.props.built.currentImgFile.name
+                : ""
+            }
             btnText={<FaIcon iconname="faFileImage" />}
             onClick={() => this.imageRef.current.click()}
             disabled
           />
+          <div style={{ display: "none" }}>
+           <FileInput 
+           innerRef={this.fileRef} 
+           onChange={(e) => {this.props.handleChangeFileUpload(e.target.files[0])
+          }} />
+          </div>
           <InputGroupButton
             label="Upload File"
             size="col-md-4"
 						fieldSize="col-md-8"
 						labelSize="col-sm-4"
-            onChange={() => { }}
-            value=""
+              value={
+                this.props.built.currentFile
+                  ? this.props.built.currentFile.name
+                  : ""
+              }
             btnText={<FaIcon iconname="faFileUpload" />}
             onClick={() => this.fileRef.current.click()}
             disabled
@@ -168,10 +181,6 @@ class ViewMoreModal extends Component {
           // }
           //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
           />
-          <div style={{ display: "none" }}>
-            <FileInput innerRef={this.fileRef} onChange={() => { }} />
-            <ImageInput innerRef={this.imageRef} onChange={() => { }} />
-          </div>
         </SimpleRow>
         <SimpleRow>
           <TextArea

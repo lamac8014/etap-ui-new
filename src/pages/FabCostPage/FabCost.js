@@ -11,8 +11,8 @@ class FabCost extends Component {
     constructor() {
         super();
     }
-    componentDidMount() {
-
+    componentDidMount = () => {
+        this.props.fabricationStructure();
     }
     render() {
         return (
@@ -23,13 +23,7 @@ class FabCost extends Component {
                         metaData={listFabCostData(
                             (id) => this.props.handleAddCost(id),
                         )}
-                        bodyData={[
-                            {
-                                dispatchNo: "DC0001",
-                                structureName: "Trestles",
-                                structureCode: "STR000012",
-                            },
-                        ]}
+                        bodyData={this.props.fabCost.fabricationCost}
                     />
                 </SimpleCard>
             </PageContainer >

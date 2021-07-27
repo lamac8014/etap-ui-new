@@ -224,7 +224,7 @@ class AddStructure extends Component {
 					<thead className="thead-light">
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Capacity</th>
+							<th scope="col">Attributes</th>
 							<th scope="col">UOM</th>
 							<th scope="col">value</th>
 						</tr>

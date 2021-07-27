@@ -67,6 +67,7 @@ class BuiltViewMore extends Component {
                         //  value={this.props.assignStructure.assignStructureViewMore.status}
                         placeholder="Auto Fetch"
                     />
+
                 </SimpleRow>
 
 

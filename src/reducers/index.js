@@ -36,7 +36,7 @@ import sbgReducer from "./sgbReducer";
 import cmpcReducer from "./cmpcModificationReducer";
 import cmpcAddReducer from "./cmpcAddComponentsReducer";
 import twccReducer from "./twccModificationReducer";
-
+import fabCostReducer from "./fabCostReducer";
 const rootReducer = combineReducers({
   config,
   Navigation,
@@ -75,6 +75,7 @@ const rootReducer = combineReducers({
   cmpc: cmpcReducer,
   cmpcAdd: cmpcAddReducer,
   twcc: twccReducer,
+  fabricationCost:fabCostReducer,
 });
 
 export default rootReducer;

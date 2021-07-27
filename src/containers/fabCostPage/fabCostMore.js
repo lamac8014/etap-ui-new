@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import FabCostMore from "../../pages/FabCostPage/FabCostMore";
+import {getFabricationCost} from "../../actions/fabCostActions";
 const mapDispatchToProps = (dispatch, props) => {
     return {
         // redirectToFabCostMoreDetails(id) {
@@ -7,10 +8,14 @@ const mapDispatchToProps = (dispatch, props) => {
         //       `/etrack/fabCostPage/fabCostMore${window.btoa(id)}`
         //     );
         // },
+        getFabricationCost(){
+            dispatch(getFabricationCost());
+        },
+
     }
 }
 const mapStateToProps = (state) => {
-    const fabCost = state.fabCost;
+    const fabCost = state.fabricationCost;
     return {
         fabCost,
     };

@@ -34,10 +34,6 @@ export const saveWBSData = () => {
         var o = Object.assign({}, el);
         o.projectId = wbsProjectName;
         return o; 
-        // o.segment=wbs.segment.value;
-        // o.subSegment=wbs.subSegment.value;
-        // o.element=wbs.element.value;
-        // o.workBreakDownCode=wbs.workBreakDownCode.value;       
       })
     return {
         type: SAVE_WBS_DATA,

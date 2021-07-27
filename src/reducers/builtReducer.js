@@ -20,7 +20,7 @@ import {
     SET_REUSE,
     BUILT_VIEW_MODAL,
     SET_VIEW_MORE_MODE,
-
+    SET_CURRENT_BUILT_INFO,
 } from '../actions/types';
 
 const initialState = {
@@ -35,15 +35,17 @@ const initialState = {
     structCode: "",
     dcNo: "",
     estWeight: "",
-    files: "",
-    imgUpload:"",
+    files: [],
+    imgUpload: [],
+    currentFile: {},
+    currentImgFile: {},
     actWbs: "",
     fabYear: "",
     expRelDate: "",
     rmark: "",
     reUse: "",
     viewMoreBuiltModal: [],
-
+    currentInfo: {},
 };
 
 export default function (state = initialState, action) {
@@ -64,8 +66,6 @@ export default function (state = initialState, action) {
                 ...state,
                 showBuiltEditMoreModal: action.payload
             }
-
-
         case SET_BUILT_EDIT_MODE:
             return {
                 ...state,
@@ -124,12 +124,14 @@ export default function (state = initialState, action) {
         case SET_BUILD_FILES:
             return {
                 ...state,
-                files: action.payload,
+                files: action.payload.docs,
+                currentFile: action.payload.file,
             };
         case SET_IMAGE_UPLOAD:
             return {
                 ...state,
-                imgUpload: action.payload,
+                imgUpload: action.payload.docs,
+                currentImgFile: action.payload.file,
             };
         case SET_FAB_YEAR:
             return {
@@ -177,7 +179,11 @@ export default function (state = initialState, action) {
                 ...state,
                 isEditMode: action.payload,
             }
-
+        case SET_CURRENT_BUILT_INFO:
+            return {
+                ...state,
+                currentInfo: action.payload
+            };
 
         default:
             return state;

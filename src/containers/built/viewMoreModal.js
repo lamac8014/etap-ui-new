@@ -102,16 +102,28 @@ const mapDispatchToProps = dispatch => {
                 payload: value,
             });
         },
-        handleUploadFile() {
+        handleChangeFileUpload(file) {
+            let built = store.getState().built;
+            let files = JSON.parse(JSON.stringify(built.files));
+            files.push(file);
             dispatch({
-                type: SET_BUILD_FILES,
-                payload: false,
+              type:SET_BUILD_FILES,
+              payload: {
+                docs: files,
+                file: file,
+              },
             });
-        },
-        handleUploadImage() {
+          },
+        handleUploadImage(file) {
+            let built = store.getState().built;
+            let imgUpload = JSON.parse(JSON.stringify(built.imgUpload));
+            imgUpload.push(file);
             dispatch({
-                type: SET_IMAGE_UPLOAD,
-                payload: false,
+              type:SET_IMAGE_UPLOAD,
+              payload: {
+                docs: imgUpload,
+                file: file,
+              },
             });
         }
     };

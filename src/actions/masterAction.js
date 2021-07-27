@@ -9,7 +9,8 @@ import {
   GET_BU_LIST,
   CREATE_PROJECT,
   UPDATE_PROJECT,
-  PROJ_STATUS
+  PROJ_STATUS,
+  OVER_ALL_LENGTH
 } from "./types";
 
 //Projects
@@ -53,6 +54,7 @@ export const getBUList = () => {
 
 export const createProj = () => {
   const proj = store.getState().proj;
+  const status=(proj.projStatus.value==="InActive")? false : true
   const data = {
     name: proj.projectName,
     jobCode: proj.jobCode,
@@ -62,6 +64,7 @@ export const createProj = () => {
     icId: proj.independentCompany.value,
     buId: proj.businessUnit.value,
     projectSiteLocationDetails: proj.locations,
+    isActive: status,
   };
   return {
     type: CREATE_PROJECT,
@@ -71,7 +74,7 @@ export const createProj = () => {
 
 export const updateProj = () => {
   const proj = store.getState().proj;
-  const status=(proj.projStatus.value==="InActive")?false:true
+  const status=(proj.projStatus.value==="InActive")? false : true
   const data = {
     id: proj.selectedProjId,
     name: proj.projectName,
@@ -82,6 +85,7 @@ export const updateProj = () => {
     icId: proj.independentCompany.value,
     buId: proj.businessUnit.value,
     projectSiteLocationDetails: proj.locations,
+    // isActive: true,
     isActive: status,
     isDelete: false,
   };

@@ -11,7 +11,7 @@ class FabCostMore extends Component {
         super();
     }
     componentDidMount() {
-
+        this.props.getFabricationCost();
     }
     render() {
         return (
@@ -46,33 +46,7 @@ class FabCostMore extends Component {
                     </SimpleRow>
                     <CustomDataTable
                         metaData={listTableData()}
-                        bodyData={[
-                            {
-                                comp: "Component 1",
-                                compWeight: "5",
-                                cost: "18181.81",
-                            },
-                            {
-                                comp: "Component 2",
-                                compWeight: "10",
-                                cost: "36363.6",
-                            },
-                            {
-                                comp: "Component 3",
-                                compWeight: "15",
-                                cost: "54545.45",
-                            },
-                            {
-                                comp: "Component 4",
-                                compWeight: "20",
-                                cost: "727272.27",
-                            },
-                            {
-                                comp: "Component 5",
-                                compWeight: "25",
-                                cost: "30909.09",
-                            },
-                        ]}
+                        bodyData={this.props.fabCost.fabricationComponentCost}
                     />
                 </SimpleCard>
             </PageContainer >

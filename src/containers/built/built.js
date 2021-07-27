@@ -9,7 +9,8 @@ import {
   BUILT_EDIT_MORE_PAGE,
   GET_AS_BUILD_STRUCTURE,
   BUILT_VIEW_PAGE,
-	BUILT_VIEW_MODAL
+  BUILT_VIEW_MODAL,
+  SET_CURRENT_BUILT_INFO,
 } from '../../actions/types';
 import ViewAsBuilt from '../../pages/built/ViewAsBuilt';
 

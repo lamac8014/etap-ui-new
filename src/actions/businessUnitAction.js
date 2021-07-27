@@ -42,7 +42,7 @@ export const updateBusinessUnitType = (id) => {
   //console.log("++++++++++++")
   //console.log(businessUnit)
   //console.log(buID)
-  //console.log(buStatus)
+  // console.log(buStatus)
   //console.log("++++++++++++")
   return {
     type: UPDATE_BUSINESS_UNIT,

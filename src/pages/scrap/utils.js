@@ -4,8 +4,8 @@ import IconButton from "../../common/forms/IconButton";
 export const listUsersMetaData = (handleViewMore, handleEdit) => {
   return [
     {
-      text: "DC No",
-      dataField: "dcNo",
+      text: "Project Name",
+      dataField: "fromProjectName",
       style: { verticalAlign:"middle"},
     },
     {
@@ -20,7 +20,7 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
     },
     {
       text: "No of Components",
-      dataField: "numberOfComponents",
+      dataField: "currentComponentsCount",
       style: { verticalAlign:"middle"},
     },
     {
@@ -33,13 +33,13 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
                 compKey={row.userId}
                 iconname="faEdit"
                 size="1x"
-                onClick={() => handleEdit(row.dispStructId)}
+                onClick={() => handleEdit(row.id)}
               />
               <IconButton
                 compKey={row.userId}
                 iconname="faList"
                 size="1x"
-                onClick={() => handleViewMore(row.dispStructId)}
+                onClick={() => handleViewMore(row.id)}
               />
             </>
           </div>
