@@ -46,9 +46,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     handleEdit(id) {
       const scrap = store.getState().scrap;
-      let scrapData = JSON.parse(JSON.stringify(scrap.scrapData));
-      let currentScrap = scrapData.filter((item) => {
-        return item.dispStructId === id;
+      let workflowDetails = JSON.parse(JSON.stringify(scrap.workflowDetails));
+      let currentScrap = workflowDetails.filter((item) => {
+        return item.id === id;
       })[0];
       dispatch({
         type: SET_CURRENT_SCRAP_DATA,

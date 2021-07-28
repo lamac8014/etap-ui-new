@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import ContentLoader from "../../common/ContentLoader";
 import FormContainer from "../../common/forms/FormContainer";
 import Loader from "../../common/Loader";
-import { cmpcViewPageMetaData } from "./utils";
+import { cmpcViewPageMetaData ,cmpcAddComponentData} from "./utils";
 import CustomDataTable from "../../common/DataTable";
 // import AssignVendorModal from "./AssignVendorModal";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -39,10 +39,12 @@ class CmpcViewPage extends Component {
                 metaData={cmpcViewPageMetaData((id, dispStrId) =>
                   this.props.redirectToAddComponents(id, dispStrId)
                 )}
-                bodyData={sortByFieldName(
-                  this.props.cmpcAdd.dispatchStructure,
-                  "dispatchNo"
-                )}
+                // bodyData={sortByFieldName(
+                //   this.props.cmpcAdd.dispatchStructure,
+                //   "dispatchNo"
+                // )}
+                bodyData={sortByFieldName(cmpcAddComponentData(this.props.cmpcAdd.dispatchStructure),"dispatchNo")
+                }
               />
             )}
           </SimpleCard>

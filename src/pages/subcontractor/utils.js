@@ -74,6 +74,7 @@ export const listVendorMetaData = (handleDelete, handleEdit) => {
     {
       text: "Status",
       dataField: "isStatus",
+      style: { verticalAlign:"middle"},
       formatter: (cell, row) => {
         return <>{row.isStatus ? "Active" : "InActive"}</>;
       },

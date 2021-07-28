@@ -124,6 +124,9 @@ class AddWorkBreak extends Component {
                 <Button
                   btnText="Save"
                   onClick={this.props.saveWBSData}
+                  disabled={
+                    this.props.wbs.wbsProjectName === "" || this.props.wbs.wbsUploadedData === ""
+                  }
                   type="primary"
                   gradient
                 />

@@ -4,14 +4,20 @@ import {
     FAB_MORE_MODAL,
     FAB_MORE_PAGE,
     FAB_EDIT_MORE_MODAL,
+    GET_FABRICATION_STRUCTURE,
 } from "../../actions/types";
-const mapDispatchToProps = (dispatch, props) => {
+import {fabricationStructure} from "../../actions/fabCostActions";
+
+const mapDispatchToProps = (dispatch) => {
     return {
         // redirectToFabCostMoreDetails(structureCode) {
         //     props.history.push(
         //       `/etrack/fabCostPage/fabCostMore${window.btoa(structureCode)}`
         //     );
         // },
+        fabricationStructure(){
+            dispatch(fabricationStructure());
+        },
         handleAddCost(id) {
             dispatch({
                 type: FAB_MORE_MODAL,
@@ -35,7 +41,7 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 const mapStateToProps = (state) => {
-    const fabCost = state.fabCost;
+    const fabCost = state.fabricationCost;
     return {
         fabCost,
     };

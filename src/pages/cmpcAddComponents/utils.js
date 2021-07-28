@@ -86,6 +86,19 @@ export const cmpcViewPageMetaData = (redirectToAddComponents) => {
 		// },
 	];
 };
+export const cmpcAddComponentData = (getDispatchStructureData) => {
+	let tempArr = [];
+	getDispatchStructureData && 
+	getDispatchStructureData.map((cmpcAdd) => {
+		let tmpObj = {
+			...cmpcAdd,
+			servicetypeid:cmpcAdd.servicetypeid === 1 ? "Fabrication" 
+			: cmpcAdd.servicetypeid === 2 ? "OutSourcing" : "ReUse",
+		};
+		tempArr.push(tmpObj);
+	});
+    return tempArr;
+};
 
 export const assignVendorTableMetaData = (handleDelete) => {
 	return [

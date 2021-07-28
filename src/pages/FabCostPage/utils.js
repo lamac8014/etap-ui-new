@@ -12,7 +12,7 @@ export const listFabCostData = (handleAddCost) => {
 
     {
       text: "Structure Name",
-      dataField: "structureName",
+      dataField: "structrueName",
       style: { verticalAlign: "middle" },
     },
     {
