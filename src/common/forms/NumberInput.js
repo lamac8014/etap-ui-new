@@ -2,25 +2,35 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import Col6 from "./Col6";
 class NumberInput extends Component {
-	render() {
-		return (
-			<Col6 size={this.props.size}>
-				<div className="form-group row">
-					<label className="col-sm-3 col-form-label">{this.props.label}</label>
-					<div className="col-sm-9">
-						<input
-							type="number"
-							name={this.props.name}
-							id={this.props.id}
-							value={this.props.value}
-							className="form-control"
-							onChange={(e) => this.props.onChange(e)}
-						/>
-					</div>
-				</div>
-			</Col6>
-		);
-	}
+  render() {
+    return (
+      <Col6 size={this.props.size}>
+        <div className="form-group row">
+          <label
+            className={`${
+              this.props.labelSize ? this.props.labelSize : "col-sm-3"
+            } col-form-label`}
+          >
+            {this.props.label}
+          </label>
+          <div
+            className={`${
+              this.props.fieldSize ? this.props.fieldSize : "col-sm-9"
+            }`}
+          >
+            <input
+              type="number"
+              name={this.props.name}
+              id={this.props.id}
+              value={this.props.value}
+              className="form-control"
+              onChange={(e) => this.props.onChange(e)}
+            />
+          </div>
+        </div>
+      </Col6>
+    );
+  }
 }
 
 export default NumberInput;

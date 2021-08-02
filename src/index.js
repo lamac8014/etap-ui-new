@@ -12,6 +12,7 @@ import "./index.scss";
 import "./assets/fonts/feather/css/feather.css";
 import "flag-icon-css/sass/flag-icon.scss";
 import "react-notifications/lib/notifications.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import reportWebVitals from "./reportWebVitals";
 
