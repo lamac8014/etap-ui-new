@@ -6,22 +6,22 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
     {
       text: "Project Name",
       dataField: "fromProjectName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Struct. Name",
       dataField: "structureName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Struct. Code",
       dataField: "structureCode",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "No of Components",
       dataField: "currentComponentsCount",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
@@ -31,16 +31,18 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
             <>
               <IconButton
                 compKey={row.userId}
-                iconname="faEdit"
-                size="1x"
-                onClick={() => handleEdit(row.id)}
-              />
-              <IconButton
-                compKey={row.userId}
                 iconname="faList"
                 size="1x"
                 onClick={() => handleViewMore(row.id)}
               />
+              {row.status !== "SCRAPPED" && (
+                <IconButton
+                  compKey={row.userId}
+                  iconname="faEdit"
+                  size="1x"
+                  onClick={() => handleEdit(row.id)}
+                />
+              )}
             </>
           </div>
         );
@@ -76,26 +78,26 @@ export const scrapApproveMetaData = (
     {
       text: "Struct. Name",
       dataField: "structureName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Struct. Code",
       dataField: "structureCode",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Struct. Type",
       dataField: "structureTypeName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Project",
       dataField: "fromProjectName",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
     },
     {
       text: "Actions",
-      style: { verticalAlign:"middle"},
+      style: { verticalAlign: "middle" },
       formatter: (cell, row) => {
         if (row.isAction == "1") {
           return (

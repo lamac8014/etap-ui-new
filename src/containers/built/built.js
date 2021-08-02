@@ -1,7 +1,6 @@
-import { connect } from 'react-redux';
-import store from '../../store';
-import { builtList } from '../../actions/builtAction';
-import {buildStructure} from "../../actions/builtAction";
+import { connect } from "react-redux";
+import store from "../../store";
+import { builtList, buildStructure } from "../../actions/builtAction";
 import {
   CHANGE_BUILT_MORE_MODAL_STATUS,
   BUILT_MORE_PAGE,
@@ -10,19 +9,21 @@ import {
   GET_AS_BUILD_STRUCTURE,
   BUILT_VIEW_PAGE,
   BUILT_VIEW_MODAL,
-  SET_CURRENT_BUILT_INFO,
-} from '../../actions/types';
-import ViewAsBuilt from '../../pages/built/ViewAsBuilt';
+  AS_BUILT_SET_CURRENT_STRUCTURE,
+} from "../../actions/types";
+import ViewAsBuilt from "../../pages/built/ViewAsBuilt";
 
-const mapDispatchToProps = (dispatch,props) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     builtList() {
       dispatch(builtList());
     },
 
-    redirectToBuiltMoreDetails(id) {
+    redirectToBuiltMoreDetails(id, dispatchNo, structureName, structureCode) {
       props.history.push(
-        `/etrack/built/asBuiltDetails/${window.btoa(id)}`
+        `/etrack/built/asBuiltDetails/${window.btoa(id)}/${window.btoa(
+          dispatchNo
+        )}/${window.btoa(structureName)}/${window.btoa(structureCode)}`
       );
     },
     buildStructure() {
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch,props) => {
       dispatch({
         type: CHANGE_BUILT_MORE_MODAL_STATUS,
         payload: true,
-      })
+      });
     },
     handleEdit(id) {
       dispatch({
@@ -47,22 +48,34 @@ const mapDispatchToProps = (dispatch,props) => {
       dispatch({
         type: CHANGE_BUILT_EDIT_MORE_MODAL_STATUS,
         payload: true,
-      })
+      });
     },
-    handleViewMore(id){
+    handleViewMore(id) {
+      let built = store.getState().built;
+      let asbuiltStructures = JSON.parse(
+        JSON.stringify(built.asBuildStructure)
+      );
+      let currentStructure = asbuiltStructures.find((item) => {
+        return item.dispReqStructId === id;
+      });
       dispatch({
-				type: BUILT_VIEW_PAGE,
-				payload: true,
-			});
-			dispatch({
-				type: BUILT_VIEW_MODAL,
-				payload: true,
-			});
-    }
+        type: AS_BUILT_SET_CURRENT_STRUCTURE,
+        payload: currentStructure,
+      });
+
+      dispatch({
+        type: BUILT_VIEW_PAGE,
+        payload: true,
+      });
+      dispatch({
+        type: BUILT_VIEW_MODAL,
+        payload: true,
+      });
+    },
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const built = store.getState().built;
   return {
     built,

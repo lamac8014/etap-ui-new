@@ -33,3 +33,12 @@ export const sortByFieldName = (data, field) => {
 
   return data;
 };
+
+export const parseDate = (dateValue) => {
+  let date = new Date(dateValue);
+  let dd = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  let mm =
+    date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  let yyyy = date.getFullYear();
+  return `${mm}/${dd}/${yyyy}`;
+};

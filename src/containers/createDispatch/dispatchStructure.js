@@ -39,10 +39,12 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
         this.transformSiteRequirement(structId, siteReqId);
       });
-      dispatch({
-        type: SET_CURRENT_REQ_INFO,
-        payload: currentReqInfo,
-      });
+      if (currentReqInfo) {
+        dispatch({
+          type: SET_CURRENT_REQ_INFO,
+          payload: currentReqInfo,
+        });
+      }
       // dispatch({
       //   type: CD_SET_CURRENT_REQUIREMENT,
       //   payload: JSON.parse(localStorage.getItem("currentRequirementInfo")),
@@ -87,16 +89,19 @@ const mapDispatchToProps = (dispatch, props) => {
             fromProjectId: currentReqInfo.fromProjectId,
             checked: false,
           };
-          if ((structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "AVAILABLE")) 
-           {
-           tmpArr.push(tmpObj);
-           }
+          if (
+            (structure.projectCurrentStatus === "READY TO REUSE" ||
+              structure.projectCurrentStatus === "NEW") &&
+            structure.projectStructureStatus === "AVAILABLE"
+          ) {
+            !tmpObj.disabled && tmpArr.push(tmpObj);
+          }
         });
       tmpArr = sort
         ? sortstructuresBasedOnAttributes(
-          tmpArr,
-          store.getState().createDispatch.chosenAttribute
-        )
+            tmpArr,
+            store.getState().createDispatch.chosenAttribute.value
+          )
         : tmpArr;
       dispatch({
         type: TRANSFORM_SITE_REQUIREMENTS,
@@ -108,14 +113,14 @@ const mapDispatchToProps = (dispatch, props) => {
     handleChangeReleaseFilter(obj, sort) {
       dispatch({
         type: SET_RELEASE_FILTER,
-        payload: obj.value,
+        payload: obj,
       });
       let createDisp = store.getState().createDispatch;
       let siteReqId = createDisp.siteReqId;
       let structId = createDisp.structId;
       let releaseFilter = createDisp.releaseFilter;
       dispatch(
-        getSiteReqDetailsById(structId, siteReqId, releaseFilter, true)
+        getSiteReqDetailsById(structId, siteReqId, releaseFilter.value, true)
       ).then(() => {
         // this.transformSiteRequirement(structId, siteReqId);
         let createDisp = store.getState().createDispatch;
@@ -155,18 +160,23 @@ const mapDispatchToProps = (dispatch, props) => {
               fromProjectId: currentReqInfo.fromProjectId,
               checked: false,
             };
-            
-            if ((structure.projectCurrentStatus === "IN USE" || structure.projectCurrentStatus === "READY TO REUSE" || structure.projectCurrentStatus === "NEW") && (structure.projectStructureStatus === "NOT AVAILABLE" || structure.projectStructureStatus === "AVAILABLE")) 
-            {
-              tmpArr.push(tmpObj);
+
+            if (
+              (structure.projectCurrentStatus === "IN USE" ||
+                structure.projectCurrentStatus === "READY TO REUSE" ||
+                structure.projectCurrentStatus === "NEW") &&
+              (structure.projectStructureStatus === "NOT AVAILABLE" ||
+                structure.projectStructureStatus === "AVAILABLE")
+            ) {
+              !tmpObj.disabled && tmpArr.push(tmpObj);
             }
           });
-            
+
         tmpArr = sort
           ? sortstructuresBasedOnAttributes(
-            tmpArr,
-            store.getState().createDispatch.chosenAttribute
-          )
+              tmpArr,
+              store.getState().createDispatch.chosenAttribute.value
+            )
           : tmpArr;
         dispatch({
           type: TRANSFORM_SITE_REQUIREMENTS,
@@ -181,7 +191,7 @@ const mapDispatchToProps = (dispatch, props) => {
         type: SET_IS_ATTRIBUTE_FILTER,
         payload: {
           flag: true,
-          chosenAttr: obj.value,
+          chosenAttr: obj,
         },
       });
       let createDisp = store.getState().createDispatch;
@@ -292,7 +302,6 @@ const mapDispatchToProps = (dispatch, props) => {
       totalStructures.map((item) => {
         totalQty += parseInt(item.quantity);
       });
-      console.log("******************total quantity", totalQty);
       if (totalQty <= currentReqInfo.quantity) {
         dispatch({
           type: SET_STRUCTURES_FOR_REUSE,
@@ -486,6 +495,78 @@ const mapDispatchToProps = (dispatch, props) => {
     resetMessage() {
       dispatch({
         type: RESET_MESSAGE,
+      });
+    },
+    discardChoices() {
+      const { structId, siteReqId } = store.getState().createDispatch;
+      dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
+        let createDisp = store.getState().createDispatch;
+        let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
+        let tmpArr = [];
+        let availability = "-",
+          availDate = "-",
+          disabled = false;
+        let currentDate = new Date();
+        siteReq &&
+          siteReq.map((structure, index) => {
+            if (structure.surPlusFromDate) {
+              let surplusDate = new Date(structure.surPlusFromDate);
+              if (currentDate.getTime() > surplusDate.getTime()) {
+                availability = "YES";
+                availDate = structure.surPlusFromDate.split("T")[0];
+                disabled = false;
+              }
+            } else {
+              availability = "-";
+              availDate = "-";
+              disabled = true;
+            }
+            let parsedAttr = JSON.parse(structure.projectStructureAttributes);
+            structure.projectStructureAttributes = parsedAttr;
+            parsedAttr.map((item) => {
+              structure[item.name] = item.value ? item.value : 0;
+            });
+            let currentReqInfo = createDisp.currentReqInfo;
+            let tmpObj = {
+              ...structure,
+              temp_id: index,
+              availability,
+              availDate,
+              disabled,
+              quantity: 1,
+              fromProjectId: currentReqInfo.fromProjectId,
+              checked: false,
+            };
+            if (
+              (structure.projectCurrentStatus === "READY TO REUSE" ||
+                structure.projectCurrentStatus === "NEW") &&
+              structure.projectStructureStatus === "AVAILABLE"
+            ) {
+              !tmpObj.disabled && tmpArr.push(tmpObj);
+            }
+          });
+        tmpArr = sortstructuresBasedOnAttributes(
+          tmpArr,
+          store.getState().createDispatch.chosenAttribute.value
+        );
+
+        dispatch({
+          type: TRANSFORM_SITE_REQUIREMENTS,
+          payload: tmpArr,
+          structId,
+          siteReqId,
+        });
+      });
+      dispatch({
+        type: SET_RELEASE_FILTER,
+        payload: "",
+      });
+      dispatch({
+        type: SET_IS_ATTRIBUTE_FILTER,
+        payload: {
+          flag: false,
+          chosenAttr: "",
+        },
       });
     },
     resetPage() {

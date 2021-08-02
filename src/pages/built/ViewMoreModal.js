@@ -1,22 +1,16 @@
 import React, { Component } from "react";
-import CustomDataTable from "../../common/DataTable";
-import { listBuiltDetailsMetaData } from "./utils";
-import Loader from "../../common/Loader";
-import PageContainer from "../../common/forms/PageContainer";
-import SimpleCard from "../../common/cards/SimpleCard";
-import CustomAlert from "../../common/forms/customAlert";
 import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import DateInput from "../../common/forms/DateInput";
 import InputGroupButton from "../../common/forms/InputGroupButton";
-import ButtonRow from "../../common/forms/ButtonRow";
-import Button from "../../common/forms/Button";
+
 import FaIcon from "../../common/FaIcon";
 import TextArea from "../../common/forms/TextArea";
 import FileInput from "../../common/forms/FileInput";
 import ImageInput from "../../common/forms/ImageInput";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
+import YearInput from "../../common/forms/YearInput";
 class ViewMoreModal extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +18,7 @@ class ViewMoreModal extends Component {
     this.imageRef = React.createRef();
   }
   componentDidMount = () => {
+    this.props.onModalLoad();
   };
   render() {
     return (
@@ -37,130 +32,168 @@ class ViewMoreModal extends Component {
       >
         <SimpleRow>
           <TextInput
+            disabled
             label="DC No"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
             name="dispatchNo"
             id="dispatchNo"
             onChange={(e) => this.props.handleChangedcNo(e.target.value)}
-            value={this.props.built.dispatchNo}
-            //  value={this.props.built.buildStructure.dispatchNo}
+            value={this.props.built.currentStructure.dispatchNo}
+            // value={this.props.built.asBuildStructure.dispatchNo}
             placeholder="Auto fetch"
           />
-
           <TextInput
+            disabled
+            size="col-md-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
+            label="Structure Name"
+            name="structrueName"
+            id="structrueName"
+            onChange={(e) => this.props.handleChangeStructName(e.target.value)}
+            value={this.props.built.currentStructure.structrueName}
+            placeholder="Auto fetch"
+          />
+          <TextInput
+            disabled
             label="Structure Code"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
             name="structCode"
             id="structCode"
             onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
-            value={this.props.built.structCode}
+            value={this.props.built.currentStructure.structureCode}
             // value={this.props.built.asBuildStructure.strcutureCode}
-            placeholder="Auto fetch"
-          />
-          <TextInput
-            size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
-            label="Structure Name"
-            name="strcutureName"
-            id="strcutureName"
-            onChange={(e) => this.props.handleChangeStructName(e.target.value)}
-            value={this.props.built.structrueName}
-            // value={this.props.built.buildStructure.strcutureName}
             placeholder="Auto fetch"
           />
         </SimpleRow>
         <SimpleRow>
-          <TextInput
-            label="Actual WBS"
+          <SearchableDropDown
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
-            name="actualWbs"
-            id="actualWbs"
-            placeholder="Select WBS"
-            onChange={(e) => this.props.handleChangeActualWbs(e.target.value)}
-            value={this.props.built.actWbs}
+            labelSize="col-md-4"
+            fieldSize="col-md-8"
+            label="WBS"
+            name="requiredWorkBreak"
+            selectOptions={this.props.built.wbsList}
+            onChange={(obj) => {
+              this.props.handleChangeWbs(obj);
+            }}
           />
-
+          <SearchableDropDown
+            size="col-md-4"
+            labelSize="col-md-4"
+            fieldSize="col-md-8"
+            label="Segment"
+            name="segment"
+            selectOptions={this.props.built.segmentList}
+            onChange={(obj) => {
+              this.props.handleChangeSegment(obj);
+            }}
+          />
+          <SearchableDropDown
+            size="col-md-4"
+            labelSize="col-md-4"
+            fieldSize="col-md-8"
+            label="Sub segment"
+            name="subSegment"
+            selectOptions={this.props.built.subSegmentList}
+            onChange={(obj) => {
+              this.props.handleChangeSubSegment(obj);
+            }}
+          />
+        </SimpleRow>
+        <SimpleRow>
+          <SearchableDropDown
+            size="col-md-4"
+            labelSize="col-md-4"
+            fieldSize="col-md-8"
+            label="Element"
+            name="element"
+            selectOptions={this.props.built.elementList}
+            onChange={(obj) => {
+              this.props.handleChangeElement(obj);
+            }}
+          />
           <DateInput
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
             label="Expected Rel. Date"
             name="reldate"
             id="reldate"
             onChange={(e) => this.props.handleChangeRelDate(e.target.value)}
             value={this.props.built.expRelDate}
           />
-          <TextInput
+          <YearInput
             label="Fabrication Year"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
             name="fabricationYear"
             id="fabricationYear"
-            onChange={(e) => this.props.handleChangeFabYear(e.target.value)}
+            onChange={(date) => {
+              this.props.handleChangeFabYear(date);
+            }}
             value={this.props.built.fabYear}
           />
         </SimpleRow>
+
         <SimpleRow>
           <SearchableDropDown
             label="Reusability"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
             name="reusability"
             id="reusability"
-            onChange={(obj) => {this.props.handleChangeReuse(obj)}}
+            onChange={(obj) => {
+              this.props.handleChangeReuse(obj);
+            }}
             // onChange={e =>
             //   this.props.handleChangeStructureFamily(e.target.value)
             // }
             value={this.props.built.reUse}
             selectOptions={[
-              { value: "1", label: "True" },
-              { value: "2", label: "False" },
+              { value: true, label: "Yes" },
+              { value: false, label: "No" },
             ]}
             placeholder="Select Reusability"
           />
-           <div style={{ display: "none" }}>
-            <ImageInput innerRef={this.imageRef} onChange={(e) => {this.props.handleUploadImage(e.target.files[0])
-            }} />
+          <div style={{ display: "none" }}>
+            <ImageInput
+              innerRef={this.imageRef}
+              onChange={(e) => {
+                this.props.handleUploadImage(e.target.files[0]);
+              }}
+            />
           </div>
           <InputGroupButton
             label="Upload Image"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
-            value={
-              this.props.built.currentImgFile
-                ? this.props.built.currentImgFile.name
-                : ""
-            }
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
+            value={this.props.built.imgUpload.name}
             btnText={<FaIcon iconname="faFileImage" />}
             onClick={() => this.imageRef.current.click()}
             disabled
           />
           <div style={{ display: "none" }}>
-           <FileInput 
-           innerRef={this.fileRef} 
-           onChange={(e) => {this.props.handleChangeFileUpload(e.target.files[0])
-          }} />
+            <FileInput
+              innerRef={this.fileRef}
+              onChange={(e) => {
+                this.props.handleChangeFileUpload(e.target.files[0]);
+              }}
+            />
           </div>
           <InputGroupButton
             label="Upload File"
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
-              value={
-                this.props.built.currentFile
-                  ? this.props.built.currentFile.name
-                  : ""
-              }
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
+            value={this.props.built.files.name}
             btnText={<FaIcon iconname="faFileUpload" />}
             onClick={() => this.fileRef.current.click()}
             disabled
@@ -169,18 +202,32 @@ class ViewMoreModal extends Component {
         <SimpleRow>
           <TextInput
             size="col-md-4"
-						fieldSize="col-md-8"
-						labelSize="col-sm-4"
-            label="Weight" 
+            fieldSize="col-md-8"
+            labelSize="col-sm-4"
+            label="Weight"
             name="weight"
             id="weight"
             onChange={(e) => this.props.handleChangeWeight(e.target.value)}
             value={this.props.built.estWeight}
-          // onChange={e =>
-          //   this.props.handleChangeStructureName(e.target.value)
-          // }
-          //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
+            // onChange={e =>
+            //   this.props.handleChangeStructureName(e.target.value)
+            // }
+            //value={this.props.assignStructure.assignStructureViewMore.strcutureTypeName}
           />
+          <div style={{ display: "none" }}>
+            <FileInput
+              innerRef={this.fileRef}
+              onChange={(event) => {
+                this.props.handleUploadFile(event.target.files[0]);
+              }}
+            />
+            <ImageInput
+              innerRef={this.imageRef}
+              onChange={(event) => {
+                this.props.handleUploadImage(event.target.files[0]);
+              }}
+            />
+          </div>
         </SimpleRow>
         <SimpleRow>
           <TextArea
@@ -197,7 +244,7 @@ class ViewMoreModal extends Component {
           />
         </SimpleRow>
       </Modal>
-    )
+    );
   }
 }
 

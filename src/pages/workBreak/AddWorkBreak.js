@@ -36,16 +36,15 @@ class AddWorkBreak extends Component {
   };
 
   handleOnRemoveFile = (data) => {
-    console.log("---------------------------");
-    console.log(data);
-    console.log("---------------------------");
+    //   console.log("---------------------------");
+    //   console.log(data);
+    //   console.log("---------------------------");
   };
 
   componentDidMount() {
     this.props.getProjectList();
   }
   filteredItems = (data) => {
-    console.log(data);
     return (
       data &&
       data.filter(
@@ -64,7 +63,7 @@ class AddWorkBreak extends Component {
           <SimpleCard>
             <FormRow>
               <SearchableDropDown
-                label="Project Code"
+                label="Project"
                 name="projectName"
                 labelSize="mx-2"
                 fieldSize="col-md-6"
@@ -125,7 +124,8 @@ class AddWorkBreak extends Component {
                   btnText="Save"
                   onClick={this.props.saveWBSData}
                   disabled={
-                    this.props.wbs.wbsProjectName === "" || this.props.wbs.wbsUploadedData === ""
+                    this.props.wbs.wbsProjectName === "" ||
+                    this.props.wbs.wbsUploadedData === ""
                   }
                   type="primary"
                   gradient

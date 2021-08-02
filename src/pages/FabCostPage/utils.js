@@ -1,9 +1,11 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 import { Input } from "reactstrap";
-export const listFabCostData = (handleAddCost) => {
+export const listFabCostData = (
+  handleAddCost,
+  redirectToFabCostMoreDetails
+) => {
   return [
-
     {
       text: "DC No",
       dataField: "dispatchNo",
@@ -23,11 +25,16 @@ export const listFabCostData = (handleAddCost) => {
         return (
           <>
             <a
-              href="/etrack/fabCostPage/fabCostMore"
-              target="_self"
-            // onClick={() => {
-            //   redirectToFabCostMoreDetails(row.structureCode);
-            // }}
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                redirectToFabCostMoreDetails(
+                  row.projectStructureId,
+                  row.dispatchNo,
+                  row.structrueName,
+                  row.structureCode
+                );
+              }}
             >
               {row.structureCode}
             </a>
@@ -44,37 +51,35 @@ export const listFabCostData = (handleAddCost) => {
             <IconButton
               iconname="faList"
               // onClick={() => handleViewMore(true)}
-              
             />
 
             <IconButton
               iconname="faEdit"
-              onClick={() => handleAddCost(row.id)}
+              onClick={() => handleAddCost(row.projectStructureId)}
             />
           </div>
         );
       },
     },
   ];
-
 };
 export const listTableData = () => {
   return [
     {
       text: "Component",
-      dataField: "comp",
+      dataField: "componentName",
       style: { verticalAlign: "middle" },
     },
 
     {
       text: " Component weight",
-      dataField: "compWeight",
+      dataField: "weight",
       style: { verticalAlign: "middle" },
     },
     {
       text: "Cost",
-      dataField: "cost",
+      dataField: "fabriacationCost",
       style: { verticalAlign: "middle" },
     },
-  ]
-}
+  ];
+};

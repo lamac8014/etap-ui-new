@@ -12775,7 +12775,7 @@
   "resolved" "https://registry.npmjs.org/react-csv/-/react-csv-2.0.3.tgz"
   "version" "2.0.3"
 
-"react-datepicker@^2.5.0":
+"react-datepicker@^2.16.0":
   "integrity" "sha512-TvcmSY27rn0JKvuJuIXNNS+niGQNdgtuG/CsBttVYhPOA9KmSw7c2PvQBPVEvzkyV+QPNJ8jN/KVJNj9uvopqA=="
   "resolved" "https://registry.npmjs.org/react-datepicker/-/react-datepicker-2.16.0.tgz"
   "version" "2.16.0"
