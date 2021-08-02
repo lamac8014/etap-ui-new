@@ -10,6 +10,7 @@ import {
   BUILT_VIEW_PAGE,
   BUILT_VIEW_MODAL,
   AS_BUILT_SET_CURRENT_STRUCTURE,
+  AS_BUILT_SET_WBS_LIST,
 } from "../../actions/types";
 import ViewAsBuilt from "../../pages/built/ViewAsBuilt";
 
@@ -61,6 +62,24 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch({
         type: AS_BUILT_SET_CURRENT_STRUCTURE,
         payload: currentStructure,
+      });
+      let wbsCodesList = JSON.parse(JSON.stringify(built.wbsCodesList));
+      let wbsList = [];
+      wbsCodesList.map((item) => {
+        let currentItem = wbsList.find(
+          (wbs) => wbs.value === item.workBreakDownCode
+        );
+        if (!currentItem) {
+          let tempObj = {
+            label: item.workBreakDownCode,
+            value: item.workBreakDownCode,
+          };
+          wbsList.push(tempObj);
+        }
+      });
+      dispatch({
+        type: AS_BUILT_SET_WBS_LIST,
+        payload: wbsList,
       });
 
       dispatch({

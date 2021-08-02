@@ -39,27 +39,7 @@ import swal from "sweetalert";
 const mapDispatchToProps = (dispatch) => {
   return {
     onModalLoad() {
-      dispatch(getWbsList()).then((response) => {
-        let built = store.getState().built;
-        let wbsCodesList = JSON.parse(JSON.stringify(built.wbsCodesList));
-        let wbsList = [];
-        wbsCodesList.map((item) => {
-          let currentItem = wbsList.find(
-            (wbs) => wbs.value === item.workBreakDownCode
-          );
-          if (!currentItem) {
-            let tempObj = {
-              label: item.workBreakDownCode,
-              value: item.workBreakDownCode,
-            };
-            wbsList.push(tempObj);
-          }
-        });
-        dispatch({
-          type: AS_BUILT_SET_WBS_LIST,
-          payload: wbsList,
-        });
-      });
+      dispatch(getWbsList()).then((response) => {});
     },
     handleChangeWbs(obj) {
       let built = store.getState().built;
