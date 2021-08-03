@@ -62,13 +62,13 @@ export const listTableData = () => {
   return [
     {
       text: "Component",
-      dataField: "comp",
+      dataField: "compId",
       style: { verticalAlign: "middle" },
     },
 
     {
       text: " Component weight",
-      dataField: "compWeight",
+      dataField: "weight",
       style: { verticalAlign: "middle" },
     },
     {

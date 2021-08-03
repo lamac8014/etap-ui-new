@@ -18,7 +18,7 @@ class FabCostMore extends Component {
             <PageContainer>
                 <SimpleCard title={`Trestles : STR000012`}>
                     <SimpleRow>
-                        <TextInput
+                        {/* <TextInput
                             size="col-md-4"
                             label="DC No"
                             labelSize="col-md-3"
@@ -42,7 +42,7 @@ class FabCostMore extends Component {
                             fieldSize="col-md-8"
                             name="structrueName"
                             id="structrueName"
-                        />
+                        /> */}
                     </SimpleRow>
                     <CustomDataTable
                         metaData={listTableData()}

@@ -9,7 +9,7 @@ const initialState = {
     isError: false,
     message: "",
     fabricationCost: [],
-    fabricationComponentCos:[],
+    fabricationComponentCost:[],
 };
 
 export default (state = initialState, action) => {

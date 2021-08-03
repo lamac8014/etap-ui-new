@@ -6,7 +6,7 @@ import {
     FAB_EDIT_MORE_MODAL,
     GET_FABRICATION_STRUCTURE,
 } from "../../actions/types";
-import {fabricationStructure} from "../../actions/fabCostActions";
+import {fabricationStructure, getFabricationCost} from "../../actions/fabCostActions";
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
         // },
         fabricationStructure(){
             dispatch(fabricationStructure());
+        },
+        getFabricationCost(){
+            dispatch(getFabricationCost());
         },
         handleAddCost(id) {
             dispatch({

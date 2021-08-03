@@ -5,6 +5,7 @@ const FabCostPage = lazy(() => import("./containers/fabCostPage/fabCost"));
 const FabCostPageMore = lazy(() => import("./containers/fabCostPage/fabCostMore"));
 const BvDpr = lazy(() => import("./containers/deprecitaionPage/bvDpr"));
 const BvDprMore = lazy(() => import("./containers/deprecitaionPage/bvDprMore"));
+const TwccApprove = lazy(() => import("./containers/twccApproveContainer/twccApprove"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ScrapApprove = lazy(() => import("./containers/scrap/scrapApprove"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -94,7 +95,7 @@ const ViewtwccModification = lazy(() =>
 const ViewtwccVerification = lazy(() =>
   import("./containers/twccVerification/twccVerification")
 );
-const AddDrNoPage = lazy(()=> 
+const AddDrNoPage = lazy(() =>
   import("./containers/assignStructure/addDrNoPage")
 );
 
@@ -350,6 +351,12 @@ const RouteList = [
     path: "/etrack//deprecitaionPage/bvDprMore",
     name: "BvDprMore",
     component: BvDprMore,
+  },
+  {
+    exact: true,
+    path: "/etrack/fabricationMgmt/twccApprove",
+    name: "TwccApprove",
+    component: TwccApprove,
   },
 ];
 export default RouteList;

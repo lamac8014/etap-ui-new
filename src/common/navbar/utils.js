@@ -109,6 +109,13 @@ const menus = {
                   // icon: "feather icon-home",
                   url: "/etrack/dispatch/twccVerification",
                 },
+                {
+                  id: "twcc approve",
+                  title: "Twcc Approve",
+                  type: "item",
+                  icon: "feather icon-info",
+                  url: "/etrack/fabricationMgmt/twccApprove",
+                },
               ],
             },
             {
