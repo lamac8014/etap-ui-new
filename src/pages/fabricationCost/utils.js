@@ -134,17 +134,17 @@ export const structureTableMetaData = (handleEdit, handleViewMore) => {
   return [
     {
       text: "Project",
-      dataField: "dcNo",
+      dataField: "projectName",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Struct. Code",
-      dataField: "strcutureCode",
+      dataField: "structureCode",
       style: {  verticalalign:"middle"},
     },
     {
       text: "Struct. Name",
-      selector: "structrueName",
+      dataField: "structrueName",
       style: {  verticalalign:"middle"},
     },
     {

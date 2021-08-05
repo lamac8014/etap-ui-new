@@ -23,7 +23,7 @@ export const listBvDprData = () => {
             return (
               <>
                 <a
-                  href="/etrack//deprecitaionPage/bvDprMore"
+                  href="/etrack/deprecitaionPage/bvDprMore"
                   target="_self"
                   // onClick={() => {
                   //   redirectToFabCostMoreDetails(row.structureCode);

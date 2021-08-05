@@ -20,7 +20,7 @@ const initialState = {
   cost: "",
   fabricationCost: [],
   componentsList: [],
-  fabricationComponentCos: [],
+  fabricationComponentCost: [],
   currentStructure: {},
   dcNo: "",
   structureName: "",

@@ -7,6 +7,7 @@ const FabCostPageMore = lazy(() =>
 );
 const BvDpr = lazy(() => import("./containers/deprecitaionPage/bvDpr"));
 const BvDprMore = lazy(() => import("./containers/deprecitaionPage/bvDprMore"));
+const TwccPhyVerificationApprove = lazy(() => import("./containers/physicalVerificationApproveContainer/twccPhysicalVerificationApprove"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ScrapApprove = lazy(() => import("./containers/scrap/scrapApprove"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -353,11 +354,12 @@ const RouteList = [
     name: "BvDprMore",
     component: BvDprMore,
   },
+ 
   {
     exact: true,
-    path: "/etrack/fabricationMgmt/twccApproval",
-    name: "TWCC Approve",
-    component: BvDprMore,
+    path: "/etrack/fabricationMgmt/twccPhysicalVerificationApprove",
+    name: "TwccPhyVerificationApprove",
+    component: TwccPhyVerificationApprove,
   },
 ];
 export default RouteList;
