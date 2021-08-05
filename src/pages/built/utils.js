@@ -5,10 +5,9 @@ export const listBuiltTypeMetaData = (
   redirectToBuiltMoreDetails,
   handleEdit,
   handleMore,
-  handleViewMore,
+  handleViewMore
 ) => {
   return [
-  
     {
       text: "DC No",
       dataField: "dispatchNo",
@@ -29,8 +28,14 @@ export const listBuiltTypeMetaData = (
           <>
             <a
               href="#"
-              onClick={() => {
-                redirectToBuiltMoreDetails(row.structureName);
+              onClick={(e) => {
+                e.preventDefault();
+                redirectToBuiltMoreDetails(
+                  row.projectStructureId,
+                  row.dispatchNo,
+                  row.structrueName,
+                  row.structureCode
+                );
               }}
             >
               {row.structureCode}
@@ -40,8 +45,14 @@ export const listBuiltTypeMetaData = (
       },
     },
     {
+      text: "Vendor Name",
+      dataField: "vendorName",
+      style: { verticalAlign: "middle" },
+      sortable: true,
+    },
+    {
       text: "Component Weight",
-      dataField: "weight",
+      dataField: "componentWeight",
       style: { verticalAlign: "middle" },
       sortable: true,
     },
@@ -52,16 +63,13 @@ export const listBuiltTypeMetaData = (
       formatter: (cell, row) => {
         return (
           <>
-
-            <IconButton
-              iconname="faList"
-              onClick={() => handleMore(row.id)}
-            />
-            <IconButton
-              iconname="faPen"
-              onClick={() => handleViewMore(row.id)}
-            /> 
-
+            <IconButton iconname="faList" onClick={() => handleMore(row.id)} />
+            {row.status !== "FABRICATION COMPLETED" && (
+              <IconButton
+                iconname="faEdit"
+                onClick={() => handleViewMore(row.dispReqStructId)}
+              />
+            )}
           </>
         );
       },
@@ -85,52 +93,77 @@ export const listBuiltTypeMetaData = (
 export const listBuiltDetailsMetaData = () => {
   return [
     {
-      text: "Comp",
-      dataField: "component",
+      text: "Component",
+      dataField: "componentName",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "ID",
-      dataField: "id",
+      text: "Component Type",
+      dataField: "compTypeName",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "DR No",
-      dataField: "drNo",
+      text: "Component ID",
+      dataField: "compId",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "Attr 1",
-      dataField: "attributeOne",
+      text: "Component No",
+      dataField: "componentNo",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "Attr 2",
-      dataField: "attributeTwo",
+      text: "Group",
+      dataField: "group",
       style: { verticalAlign: "middle" },
-      sortable: true,
+      formatter: (cell, row) => <span>{row.isGroup ? "Yes" : "No"}</span>,
+    },
+
+    {
+      text: "Drawing No",
+      dataField: "drawingNo",
+      style: { verticalAlign: "middle" },
     },
     {
-      text: "Attr 3",
-      dataField: "attributeThree",
+      text: "Length",
+      dataField: "leng",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "Vendor",
-      dataField: "vendor",
+      text: "Breadth",
+      dataField: "breath",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
     {
-      text: "QR",
+      text: "Height",
+      dataField: "height",
+      style: { verticalAlign: "middle" },
+    },
+    {
+      text: "Thickness",
+      dataField: "thickness",
+      style: { verticalAlign: "middle" },
+    },
+    {
+      text: "Weight",
+      dataField: "weight",
+      style: { verticalAlign: "middle" },
+    },
+    {
+      text: "Type",
+      dataField: "makeType",
+      style: { verticalAlign: "middle" },
+    },
+    {
+      text: "Tag",
+      dataField: "tag",
+      style: { verticalAlign: "middle" },
+      formatter: (cell, row) => <span>{row.isTag ? "Yes" : "No"}</span>,
+    },
+    {
+      text: "QR Code",
       dataField: "qrCode",
       style: { verticalAlign: "middle" },
-      sortable: true,
     },
   ];
 };

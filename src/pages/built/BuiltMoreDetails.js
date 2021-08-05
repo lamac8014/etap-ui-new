@@ -7,15 +7,8 @@ import SimpleCard from "../../common/cards/SimpleCard";
 import CustomAlert from "../../common/forms/customAlert";
 import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
-import DateInput from "../../common/forms/DateInput";
-import InputGroupButton from "../../common/forms/InputGroupButton";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
-import FaIcon from "../../common/FaIcon";
-import TextArea from "../../common/forms/TextArea";
-import FileInput from "../../common/forms/FileInput";
-import ImageInput from "../../common/forms/ImageInput";
-import SearchableDropDown from "../../common/forms/SearchableDropdown";
 
 class BuiltMoreDetails extends Component {
   constructor(props) {
@@ -25,15 +18,18 @@ class BuiltMoreDetails extends Component {
   }
 
   componentDidMount = () => {
-    let id = window.atob(this.props.match.params.siteReqId);
-    this.props.onPageLoad(id);
+    let id = window.atob(this.props.match.params.projectStrId);
+    let strName = window.atob(this.props.match.params.strName);
+    let dcNo = window.atob(this.props.match.params.dcNo);
+    let strCode = window.atob(this.props.match.params.strCode);
+    this.props.onPageLoad(id, dcNo, strName, strCode);
   };
 
   render() {
     return (
       <PageContainer>
         {/* <SimpleCard title={`${this.props.built.structrueName} : ${this.props.built.strcutureCode}`}>  */}
-        <SimpleCard title={`Trestles : STR000012`}>
+        <SimpleCard>
           {this.props.built.isLoading && <Loader />}
           {this.props.built.message && (
             <CustomAlert
@@ -50,40 +46,39 @@ class BuiltMoreDetails extends Component {
             />
           )}
           <SimpleRow>
-          <TextInput
-            size="col-md-4"
-            label="DC No"
-            labelSize="col-md-3"
-            fieldSize="col-md-9"
-            name="dispatchNo"
-            id="dispatchNo"
-            // onChange={(e) => this.props.handleChangedcNo(e.target.value)}
-            // value={this.props.built.dispatchNo}
-            // value={this.props.built.structrueName}
-          />
+            <TextInput
+              size="col-md-4"
+              label="DC No"
+              labelSize="col-md-3"
+              fieldSize="col-md-9"
+              name="dispatchNo"
+              id="dispatchNo"
+              value={this.props.built.dcNo}
+              disabled
+            />
 
-          <TextInput
-            size="col-md-4"
-            label="Structure Code"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
-            name="structCode"
-            id="structCode"
-            // onChange={(e) => this.props.handleChangeStructCode(e.target.value)}
-            // value={this.props.built.buildStructure.strcutureCode}
-          />
-          <TextInput
-            size="col-md-4"
-            label="Structure Name"
-            labelSize="col-md-4 pr-0"
-            fieldSize="col-md-8"
-            name="structrueName"
-            id="structrueName"
-            // onChange={(e) => this.props.handleChangeStructName(e.target.value)}
-            // value={this.props.built. buildStructure.structrueName}
-          />
-        </SimpleRow>
-            {/* <SearchableDropDown
+            <TextInput
+              size="col-md-4"
+              label="Structure Code"
+              labelSize="col-md-4 pr-0"
+              fieldSize="col-md-8"
+              name="structCode"
+              id="structCode"
+              value={this.props.built.structCode}
+              disabled
+            />
+            <TextInput
+              size="col-md-4"
+              label="Structure Name"
+              labelSize="col-md-4 pr-0"
+              fieldSize="col-md-8"
+              name="structrueName"
+              id="structrueName"
+              value={this.props.built.structName}
+              disabled
+            />
+          </SimpleRow>
+          {/* <SearchableDropDown
               size="col-md-4"
               label="Actual WBS"
               labelSize="col-md-3"
@@ -207,39 +202,7 @@ class BuiltMoreDetails extends Component {
             /> */}
           <CustomDataTable
             metaData={listBuiltDetailsMetaData()}
-            // bodyData={this.props.procurement.siteDispatchDetails}
-            bodyData={[
-              {
-                component: "LG",
-                id: "LG-1",
-                drNo: "ABC161",
-                attributeOne: "16",
-                attributeTwo: "17",
-                attributeThree: "18",
-                vendor: "Stigmata",
-                qrCode: "1620",
-              },
-              {
-                component: "LG",
-                id: "LG-2",
-                drNo: "ABC162",
-                attributeOne: "16",
-                attributeTwo: "17",
-                attributeThree: "18",
-                vendor: "Stigmata",
-                qrCode: "1621",
-              },
-              {
-                component: "LG",
-                id: "LG-3",
-                drNo: "ABC163",
-                attributeOne: "16",
-                attributeTwo: "17",
-                attributeThree: "18",
-                vendor: "Stigmata",
-                qrCode: "1622",
-              },
-            ]}
+            bodyData={this.props.built.componentsList}
           />
           {/* )} */}
           <ButtonRow>

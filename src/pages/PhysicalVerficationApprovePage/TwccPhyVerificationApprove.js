@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleRow from "../../common/forms/SimpleRow";
- import {listTwccApproveData} from "./utils"
+import { listTwccApproveData } from "./utils"
 import SimpleCard from "../../common/cards/SimpleCard";
 import CustomDataTable from "../../common/DataTable";
-class TwccApprove extends Component {
+class TwccPhyVerificationApprove extends Component {
     constructor() {
         super();
     }
     componentDidMount = () => {
+        this.props.getTwccPhyVerificationApproveData();
     }
     render() {
         return (
@@ -16,14 +17,10 @@ class TwccApprove extends Component {
                 <SimpleCard>
                     <CustomDataTable
                         metaData={listTwccApproveData()}
-                        bodyData={[
-                            {   
-                                inspectionId:"100",
-                                structureName: "Trestles",
-                                structureCode: "STR000012",
-                                site:"abc"
-                            },
-                        ]}
+                        bodyData=
+                        {
+                            this.props.twccPhyVerificationApprove.phyVerificationApproveStruct
+                        }
                     />
                 </SimpleCard>
             </PageContainer >
@@ -32,4 +29,4 @@ class TwccApprove extends Component {
     }
 
 }
-export default TwccApprove;
+export default TwccPhyVerificationApprove;

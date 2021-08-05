@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { getComponentList } from "../../actions/builtAction";
 import {
   getSiteReqDetailsById,
   createDispatch,
@@ -12,15 +13,20 @@ import {
   SET_SERVICE_TYPE_ID,
   SET_DISPATCH_ERROR,
   RESET_SELECTION,
+  SET_DCNO,
+  SET_BUILD_STRUCT_NAME,
+  SET_BUILD_STRUCT_CODE,
 } from "../../actions/types";
 import BuiltMoreDetails from "../../pages/built/BuiltMoreDetails";
 
 import store from "../../store";
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPageLoad(id) {
-      dispatch(getSiteReqDetailsById(id));
-      dispatch(setActiveItem(id));
+    onPageLoad(id, dcNo, strName, strCode) {
+      dispatch(getComponentList(id));
+      dispatch({ type: SET_DCNO, payload: dcNo });
+      dispatch({ type: SET_BUILD_STRUCT_NAME, payload: strName });
+      dispatch({ type: SET_BUILD_STRUCT_CODE, payload: strCode });
     },
     setSelectedStructures(value) {
       // dispatch({

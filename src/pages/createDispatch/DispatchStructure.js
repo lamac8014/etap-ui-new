@@ -132,7 +132,7 @@ class DispatchStructure extends Component {
                     { label: "SIXMONTHS", value: "SIXMONTHS" },
                   ]}
                   onChange={(obj) => this.props.handleChangeReleaseFilter(obj)}
-                // value={this.props.createDispatch.activeItem.planStartdate}
+                  value={this.props.createDispatch.releaseFilter}
                 />
                 <SearchableDropDown
                   label="Search By Attributes"
@@ -145,12 +145,12 @@ class DispatchStructure extends Component {
                   selectOptions={
                     this.props.createDispatch.currentReqInfo.structureAttributes
                       ? transformAttributeFilterValues(
-                        this.props.createDispatch.currentReqInfo
-                          .structureAttributes
-                      )
+                          this.props.createDispatch.currentReqInfo
+                            .structureAttributes
+                        )
                       : []
                   }
-                // value={this.props.createDispatch.activeItem.projectName}
+                  value={this.props.createDispatch.chosenAttribute}
                 />
               </SimpleRow>
             </>
@@ -189,7 +189,7 @@ class DispatchStructure extends Component {
                 }
               )}
               bodyData={this.props.createDispatch.transformedSiteReq}
-            // bodyData={tempArr}
+              // bodyData={tempArr}
             />
           )}
           <ButtonRow>
@@ -280,6 +280,12 @@ class DispatchStructure extends Component {
               gradient
               btnText="Dispatch"
               onClick={this.props.showConfirmationModal}
+            />
+            <Button
+              type="danger"
+              gradient
+              btnText="Discard"
+              onClick={this.props.discardChoices}
             />
           </ButtonRow>
         </SimpleCard>

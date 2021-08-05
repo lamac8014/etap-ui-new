@@ -32,17 +32,22 @@ export const listTwccApproveData = () => {
                 return (
                     <div>
                         <IconButton
-                            iconname="faList"
-
-                        />
-
-                        <IconButton
                             iconname="faEdit"
                         />
 
                         <IconButton
                             iconname="faEye"
                         />
+
+                        <IconButton
+                            type="success"
+                            iconname="faThumbsUp"
+                        />
+                        <IconButton
+                            type="danger"
+                            iconname="faThumbsDown"
+                        />
+
                     </div>
                 );
             },

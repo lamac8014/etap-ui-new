@@ -2,10 +2,12 @@ import { lazy } from "react";
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
 const Summary = lazy(() => import("./containers/dashboard/summary"));
 const FabCostPage = lazy(() => import("./containers/fabCostPage/fabCost"));
-const FabCostPageMore = lazy(() => import("./containers/fabCostPage/fabCostMore"));
+const FabCostPageMore = lazy(() =>
+  import("./containers/fabCostPage/fabCostMore")
+);
 const BvDpr = lazy(() => import("./containers/deprecitaionPage/bvDpr"));
 const BvDprMore = lazy(() => import("./containers/deprecitaionPage/bvDprMore"));
-const TwccApprove = lazy(() => import("./containers/twccApproveContainer/twccApprove"));
+const TwccPhyVerificationApprove = lazy(() => import("./containers/physicalVerificationApproveContainer/twccPhysicalVerificationApprove"));
 const ViewScrap = lazy(() => import("./containers/scrap/viewScrap"));
 const ScrapApprove = lazy(() => import("./containers/scrap/scrapApprove"));
 const ViewSurplus = lazy(() => import("./containers/surplus/viewSurplus"));
@@ -264,7 +266,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/built/asBuiltDetails/:siteReqId",
+    path: "/etrack/built/asBuiltDetails/:projectStrId/:dcNo/:strName/:strCode",
     name: "Structure Details",
     component: AsbuiltMore,
   },
@@ -312,13 +314,13 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/dispatch/twccModification",
+    path: "/etrack/fabricationMgmt/twccModification",
     name: "twccModification",
     component: ViewtwccModification,
   },
   {
     exact: true,
-    path: "/etrack/dispatch/twccVerification",
+    path: "/etrack/fabricationMgmt/twccVerification",
     name: "twccVerification",
     component: ViewtwccVerification,
   },
@@ -336,27 +338,28 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/fabCostPage/fabCostMore",
+    path: "/etrack/fabCostPage/fabCostMore/:projectStrId/:dcNo/:strName/:strCode",
     name: "FabCostPageMore",
     component: FabCostPageMore,
   },
   {
     exact: true,
-    path: "/etrack//deprecitaionPage/bvDpr",
+    path: "/etrack/deprecitaionPage/bvDpr",
     name: "BvDpr",
     component: BvDpr,
   },
   {
     exact: true,
-    path: "/etrack//deprecitaionPage/bvDprMore",
+    path: "/etrack/deprecitaionPage/bvDprMore",
     name: "BvDprMore",
     component: BvDprMore,
   },
+ 
   {
     exact: true,
-    path: "/etrack/fabricationMgmt/twccApprove",
-    name: "TwccApprove",
-    component: TwccApprove,
+    path: "/etrack/fabricationMgmt/twccPhysicalVerificationApprove",
+    name: "TwccPhyVerificationApprove",
+    component: TwccPhyVerificationApprove,
   },
 ];
 export default RouteList;
