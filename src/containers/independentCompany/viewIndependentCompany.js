@@ -22,6 +22,7 @@ import {
   IC_STATUS,
 } from "../../actions/types";
 import ViewIndependentCompany from "../../pages/independentCompany/ViewIndependentCompany";
+import swal from "sweetalert"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -80,18 +81,28 @@ const mapDispatchToProps = (dispatch) => {
 
     createIcbu() {
       dispatch(createIcbu()).then(() => {
+        swal("IC added successfully", {
+          icon: "success",
+        })
         dispatch({
           type: SHOW_ADD_ICBU_MODAL,
           payload: false,
         });
         dispatch({ type: RESET_ICBU_FORM });
         dispatch(icbuList());
+      }).catch(err => {
+        swal("Failed to add IC", {
+          icon: "error",
+        })
       });
     },
     //Edit Proj
     updateIcbu() {
       dispatch(updateIcbu())
         .then(() => {
+          swal("IC updated successfully", {
+            icon: "success",
+          })
           dispatch({
             type: SHOW_ADD_ICBU_MODAL,
             payload: false,

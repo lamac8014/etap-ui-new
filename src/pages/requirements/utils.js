@@ -138,7 +138,7 @@ export const listViewRequirementsMetaData = (
           return (
             <>
               <IconButton
-                iconname="faEdit"
+                iconname="faList"
                 onClick={() => handleMore(row.id)}
               />
               {row.status !== "REJECTED" && (
@@ -159,7 +159,7 @@ export const listViewRequirementsMetaData = (
           return (
             <>
               <IconButton
-                iconname="faEdit"
+                iconname="faList"
                 onClick={() => handleMore(row.id)}
               />
             </>

@@ -105,7 +105,7 @@ export default function (state = initialState, action) {
         icName: data.name,
         icDescription: data.description,
         icID: data.id,
-        icStatus:data.isActive,
+        icStatus:data.isActive ? {"label": "Active", "value": "Active"} : {"label": "InActive", "value": "InActive"},
       };
     case `${GET_IC_LIST}_PENDING`:
       return {
@@ -147,6 +147,7 @@ export default function (state = initialState, action) {
         icName: "",
         icDescription: "",
         icStatus:"",
+        isEditMode: false
       };
     case SHOW_ERR_MSG:
       return {
