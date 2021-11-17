@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => {
           payload: false,
         })
 
-      });;
+      }).catch((err) => console.log("Redis add struct", err))
     },
     updateStructureFamilyType() {
       dispatch(updateStructureFamilyType()).then(() => {

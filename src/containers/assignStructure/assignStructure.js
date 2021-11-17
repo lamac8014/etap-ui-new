@@ -150,7 +150,7 @@ const mapDispatchToProps = (dispatch) => {
 				});
       })
       .catch((err) => {
-        swal("failed to save", {
+        swal(err.response.data.message, {
           icon: "error",
         });
       });
@@ -209,7 +209,8 @@ const mapDispatchToProps = (dispatch) => {
 				});
       })
       .catch((err) => {
-        swal("Failed to save", {
+        console.log("redis err", err.response.data.message);
+        swal(err.response.data.message, {
           icon: "error",
         });
       });

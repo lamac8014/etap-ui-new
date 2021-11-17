@@ -21,8 +21,9 @@ const initialState = {
   structureFamilyTypeID: '',
   structureFamilyTypeStatus: '',
   isEditMode: false,
-  isLoading: false
-
+  isLoading: false,
+  isModalMsg: false,
+  message: '',
 };
 
 export default function (state = initialState, action) {
@@ -168,6 +169,13 @@ export default function (state = initialState, action) {
             ? action.payload.response.data.message
             : "Please check your form data and retry",
       };
+    case 'ADD_STRUCTURE_FAMILY_REJECTED': {
+      return {
+        ...state,
+        isModalMsg: true,
+        message: action.payload.response.data.message,
+      }
+    }
     default:
       return state;
   }

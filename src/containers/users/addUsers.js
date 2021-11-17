@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
 				dispatch(usersList());
 			})
 				.catch((err) => {
-					swal("User Add Failed", {
+					swal(err.response.data.message, {
 						icon: "error",
 					});
 				});

@@ -59,7 +59,7 @@ class AddStructureFamily extends Component {
         </SimpleRow>
 
         {this.props.structureFamily.isModalMsg && (
-          <p className="text-danger">{this.props.structureFamily.message}</p>
+          <p className="text-danger error-fix">{this.props.structureFamily.message}</p>
         )}
       </Modal>
     );

@@ -73,8 +73,9 @@ export const saveAssignStruct = () => {
   postData.append("estimatedWeight", scr.estimatedWeight);
   postData.append("compCount", scr.noOfComponents);
   postData.append("structureCode", scr.structureCode.label);
-  scr.structureCode.value &&
-    postData.append("projectStructureId", scr.structureCode.value);
+  scr.structureCode.value ?
+    postData.append("projectStructureId", scr.structureCode.value) : 
+    postData.append("projectStructureId", 0)
   scr.structAttri.map((attr) => {
     delete attr.id;
   });
@@ -103,9 +104,11 @@ export const saveAssignStruct = () => {
 export const saveAssignComp = () => {
   const scr = store.getState().scr;
   let tmpArr = [];
+  debugger;
   scr.uploadData.map((dt) => {
     tmpArr.push({
       compTypeName: dt.compTypeName,
+      compId: dt.compId ? dt.compId : null,
       componentName: dt.component,
       drawingNo: dt.drawingNo,
       componentNo: dt.componentNo,

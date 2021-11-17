@@ -63,7 +63,7 @@ export const updateStructureModify = () => {
 	uploadData &&
 		uploadData.map((item) => {
 			let tempObj = {
-				compId: item.compId,
+				compId: item.compId ? item.compId : null,
 				compTypeName: item.compTypeName,
 				componentName: item.componentName,
 				drawingNo: item.drawingNo,
