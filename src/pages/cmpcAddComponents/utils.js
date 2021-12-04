@@ -269,7 +269,7 @@ export const getComponentTableData = (scr) => {
 			tmpArr.push({
 				compType: data.compTypeName,
 				component: data.componentName,
-				group: data.isGroup,
+				group: data.isGroup.toString().toLowerCase() === "true" || data.isGroup.toString().toLowerCase() === "yes" ? "Yes" : "No",
 				compId: data.compId,
 				compNum: data.componentNo,
 				drawingNum: data.drawingNo,
@@ -279,7 +279,7 @@ export const getComponentTableData = (scr) => {
 				thickness: data.thickness,
 				weight: data.weight,
 				type: data.makeType,
-				tag: data.isTag,
+				tag: data.isTag.toString().toLowerCase() === "true" || data.isTag.toString().toLowerCase() === "yes" ? "Yes" : "No",
 				qrCode: data.qrCode,
 			});
 		});

@@ -179,8 +179,17 @@ class AssignStructure extends Component {
 								}
 								value={this.props.scr.estimatedWeight}
 							/>
-
-							 <InputGroupButton
+							{/*<Col6 size="col-md-4">
+								<Button
+									className=" float-right"
+									btnText="Add Dr No"
+									type="primary"
+									onClick={() => this.fileInputRef.current.click()}
+									gradient
+								/>
+							</Col6>*/}
+							
+							 {/*<InputGroupButton
 								size="col-md-4"
 								label="Dr.No"
 								labelSize="col-md-3"
@@ -191,7 +200,7 @@ class AssignStructure extends Component {
 								value={this.props.scr.drawingNum}
 								btnText={<FaIcon iconname="faFileAlt" />}
 								onClick={() => this.fileInputRef.current.click()}
-							/> 
+							/> */}
 						</SimpleRow>
 						<MultiFileInput
 							innerRef={this.fileInputRef}
@@ -218,16 +227,7 @@ class AssignStructure extends Component {
 							))}
 
 						</SimpleRow>
-						<a href="#">
-						<Button
-								btnText="Add Dr No"
-								type="primary"
-								size="col-md-10 offset-md-2"
-                                fieldSize="col-md-7"
-								onClick={()=> window.open("/etrack/assignStructure/addDrNo")}
-								gradient
-							/>
-					    </a>
+
 						{/* table */}
 						{this.props.scr.structAttri.length > 0 ? (
 							<>
@@ -250,13 +250,21 @@ class AssignStructure extends Component {
               /> */}
 							</>
 						) : null}
-						<ButtonRow position="center">
+						<ButtonRow position="right">
+							<IconTextButton
+								btnText="Add Dr No"
+								type="light"
+								iconname="faFileAlt"
+								onClick={() => this.fileInputRef.current.click()}
+								gradient
+							/>
 							<Button
 								btnText="Save"
 								onClick={this.props.saveAssignStruct}
 								type="primary"
 								gradient
 							/>
+
 						</ButtonRow>
 						<hr />
 
@@ -343,15 +351,7 @@ class AssignStructure extends Component {
                 btnType="primary"
               />
             </SimpleRow> */}
-						<hr />
-						<SimpleRow className="d-flex justify-content-center">
-							<Button
-								btnText="Discard"
-								onClick={this.props.setInitialData}
-								type="danger"
-								gradient
-							/>
-						</SimpleRow>
+						
 					</SimpleCard>
 				</PageContainer>
 			</>

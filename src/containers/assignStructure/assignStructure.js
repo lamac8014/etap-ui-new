@@ -123,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
             compTypeName: a.data[start + 1] ? a.data[start + 1] : "",
             compId: a.data[start + 2] ? a.data[start + 2] : "",
             componentNo: a.data[start + 3] ? a.data[start + 3] : "",
-            isGroup: a.data[start + 4] ? a.data[start + 4] : "",
+            isGroup: a.data[start + 4].toString().toLowerCase() === "true" ? "Yes" : "No",
             drawingNo: a.data[start + 5] ? a.data[start + 5] : "",
             leng: a.data[start + 6] ? parseFloat(a.data[start + 6]) : "",
             breath: a.data[start + 7] ? parseFloat(a.data[start + 7]) : "",
@@ -131,7 +131,7 @@ const mapDispatchToProps = (dispatch) => {
             thickness: a.data[start + 9] ? parseFloat(a.data[start + 9]) : "",
             weight: a.data[start + 10] ? parseFloat(a.data[start + 10]) : "",
             makeType: a.data[start + 11] ? a.data[start + 11] : "",
-            isTag: a.data[start + 12] ? a.data[start + 12] : "",
+            isTag: a.data[start + 12].toString().toLowerCase() === "true" ? "Yes" : "No",
             // isTag: a.data[start + 13] ? Boolean(a.data[start + 13]) : "",
           };
           wbsDataArr.push(wbsSampleObject);
@@ -150,10 +150,12 @@ const mapDispatchToProps = (dispatch) => {
 				});
       })
       .catch((err) => {
-        swal(err.response.data.message, {
+        err.response.status === 400 ? swal("Invalid or No data provided", {
+          icon: "error",
+        }) : swal("Something went wrong!", {
           icon: "error",
         });
-      });
+      })
     },
     handleFileUpload(value) {
       const scr = store.getState().scr;

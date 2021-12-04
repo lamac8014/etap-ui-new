@@ -15,6 +15,7 @@ import {
 } from '../../actions/types';
 import {createIcbu,updateIcbu,icbuList} from '../../actions/icbuAction';
 import AddIndependentCompany from '../../pages/independentCompany/AddIndependentCompany';
+import swal from "sweetalert"
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -22,24 +23,38 @@ const mapDispatchToProps = dispatch => {
             dispatch({ type: RESET_STRUCTURE_FORM });
         },
         createIcbu(){ 
-            (dispatch(createIcbu())).then(()=>{
+            (dispatch(createIcbu())).then((response)=>{
+                swal(response.value.data.message, {
+                    icon: "success",
+                  })
                 dispatch({
                     type: SHOW_ADD_ICBU_MODAL,
                     payload: false,
                 });
                 dispatch({ type: RESET_IC_FORM });
                 dispatch(icbuList());
+            }).catch(err => {
+                // console.log(err.response.data.message)
+                swal(err.response.data.message, {
+                    icon: "error",
+                  })
             })
         },
         updateIcbu() {
-            dispatch(updateIcbu()).then(() => {
+            dispatch(updateIcbu()).then((response) => {
+                swal(response.value.data.message, {
+                    icon: "success",
+                  })
                 dispatch({
                     type: SHOW_ADD_ICBU_MODAL,
                     payload: false,
                 });
                 dispatch({ type: RESET_IC_FORM });
                 dispatch(icbuList());
-            }).catch(() => {
+            }).catch((err) => {
+                swal(err.response.data.message, {
+                    icon: "error",
+                  })
                 dispatch({ type: SHOW_ICBU_MSG, payload: true });
             })
         },

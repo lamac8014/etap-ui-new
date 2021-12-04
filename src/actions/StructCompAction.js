@@ -69,7 +69,7 @@ export const saveAssignStruct = () => {
   const postData = new FormData();
   postData.append("structureId", scr.structName.value);
   postData.append("projectId", scr.projName.value);
-  postData.append("drawingNo", scr.drawingNum);
+  // postData.append("drawingNo", scr.drawingNum);
   postData.append("estimatedWeight", scr.estimatedWeight);
   postData.append("compCount", scr.noOfComponents);
   postData.append("structureCode", scr.structureCode.label);
@@ -104,22 +104,21 @@ export const saveAssignStruct = () => {
 export const saveAssignComp = () => {
   const scr = store.getState().scr;
   let tmpArr = [];
-  debugger;
   scr.uploadData.map((dt) => {
     tmpArr.push({
       compTypeName: dt.compTypeName,
       compId: dt.compId ? dt.compId : null,
-      componentName: dt.component,
+      componentName: dt.componentName,
       drawingNo: dt.drawingNo,
       componentNo: dt.componentNo,
-      isGroup: dt.isGroup === "yes" ? "true" : "false",
+      isGroup: dt.isGroup.toLowerCase() === "yes" || dt.isGroup.toLowerCase() === 'true' ? "true" : "false",
       leng: dt.leng,
       breath: dt.breath,
       height: dt.height,
       thickness: dt.thickness,
       weight: dt.weight,
       makeType: dt.makeType,
-      isTag: dt.isTag === "yes" ? "true" : "false",
+      isTag: dt.isTag === "yes"|| dt.isTag.toLowerCase() === 'true' ? "true" : "false",
       qrCode: dt.qrCode,
     });
   });

@@ -163,7 +163,7 @@ class CmpcAddComponents extends Component {
                 }}
                 value={this.props.cmpcAdd.estWeight}
               />
-              <InputGroupButton
+              {/*<InputGroupButton
                 size="col-md-4"
                 label="Dr.No"
                 labelSize="col-md-3"
@@ -174,7 +174,7 @@ class CmpcAddComponents extends Component {
                 value={this.props.cmpcAdd.drNo}
                 btnText={<FaIcon iconname="faFileAlt" />}
                 onClick={() => this.fileInputRef.current.click()}
-              />
+              />*/}
             </SimpleRow>
             <MultiFileInput
               innerRef={this.fileInputRef}
@@ -202,7 +202,7 @@ class CmpcAddComponents extends Component {
                   </Col6>
                 ))}
             </SimpleRow>
-            <AddDrNo showAddModal={this.props.cmpcAdd.showAddModal} />
+            {/*<AddDrNo showAddModal={this.props.cmpcAdd.showAddModal} />
             <Button
               btnText="Add Dr No"
               type="primary"
@@ -210,7 +210,7 @@ class CmpcAddComponents extends Component {
               fieldSize="col-md-7"
               onClick={(id) => { this.props.handleAddDrNo(id) }}
               gradient
-            />
+                />*/}
             {/* table */}
             {this.props.cmpcAdd.assignedStructureDetails.structureAttributes &&
               this.props.cmpcAdd.assignedStructureDetails.structureAttributes
@@ -235,7 +235,14 @@ class CmpcAddComponents extends Component {
               /> */}
                 </>
               ) : null}
-            <ButtonRow position="center">
+            <ButtonRow position="right">
+              <IconTextButton
+                btnText="Add Dr No"
+                type="light"
+                iconname="faFileAlt"
+                onClick={() => this.fileInputRef.current.click()}
+                gradient
+              />
               <Button
                 btnText="Save"
                 onClick={() => {
@@ -244,8 +251,9 @@ class CmpcAddComponents extends Component {
                 type="primary"
                 disabled={
                   this.props.cmpcAdd.noOfComp &&
-                    this.props.cmpcAdd.estWeight &&
-                    this.props.cmpcAdd.drNo
+                    this.props.cmpcAdd.estWeight 
+                    // &&
+                    // this.props.cmpcAdd.drNo
                     ? false
                     : true
                 }
@@ -340,15 +348,6 @@ class CmpcAddComponents extends Component {
                 btnType="primary"
               />
             </SimpleRow> */}
-            <hr />
-            <SimpleRow className="d-flex justify-content-center">
-              <Button
-                btnText="Discard"
-                onClick={this.props.setInitialForm}
-                type="danger"
-                gradient
-              />
-            </SimpleRow>
           </SimpleCard>
         </PageContainer>
       </>

@@ -16,6 +16,7 @@ import {
   componentList,
 } from "../../actions/componentAction";
 import AddComponent from "../../pages/component/AddComponent";
+import swal from "sweetalert"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -23,7 +24,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: RESET_STRUCTURE_FORM });
     },
     addComponentType() {
-      dispatch(addComponent()).then(() => {
+      dispatch(addComponent()).then((response) => {
+        swal(response.value.data.message, {
+          icon: "success"
+        })
         dispatch(componentList());
         dispatch({
           type: SET_COMPONENT_EDIT_MODE,
@@ -34,10 +38,17 @@ const mapDispatchToProps = (dispatch) => {
           type: CHANGE_ADD_COMPONENT_MODAL_STATUS,
           payload: false,
         });
+      }).catch((error) => {
+        swal(error.response.data.message, {
+          icon: "error"
+        })
       });
     },
     updateComponentType() {
-      dispatch(updateComponentType()).then(() => {
+      dispatch(updateComponentType()).then((response) => {
+        swal(response.value.data.message, {
+          icon: "success"
+        })
         dispatch(componentList());
         dispatch({
           type: SET_COMPONENT_EDIT_MODE,
@@ -48,7 +59,11 @@ const mapDispatchToProps = (dispatch) => {
           type: CHANGE_ADD_COMPONENT_MODAL_STATUS,
           payload: false,
         });
-      });
+      }).catch((error) => {
+        swal(error.response.data.message, {
+          icon: "error"
+          })
+          });
     },
     closeAddComponentModal() {
       dispatch({

@@ -10,7 +10,7 @@ export const getComponentTableData = (scr) => {
       tmpArr.push({
         compType: data.compTypeName,
         component: data.componentName,
-        group: data.isGroup ? "Yes" : "No",
+        group: data.isGroup.toString().toLowerCase() === "true" || data.isGroup.toString().toLowerCase() === "yes" ? "Yes" : "No",
         compId: data.compId,
         compNum: data.componentNo,
         drawingNum: data.drawingNo,
@@ -20,7 +20,7 @@ export const getComponentTableData = (scr) => {
         thickness: data.thickness,
         weight: data.weight,
         type: data.makeType,
-        tag: data.isTag ? "Yes" : "No",
+        tag: data.isTag.toString().toLowerCase() === "true" || data.isTag.toString().toLowerCase() === "yes" ? "Yes" : "No",
       });
     });
   return tmpArr;
@@ -56,7 +56,7 @@ export const getExcelData = (scr) => {
       tmpArr.push(dt.compTypeName);
       tmpArr.push(dt.compId);
       tmpArr.push(dt.componentNo);
-      tmpArr.push(dt.isGroup);
+      tmpArr.push(dt.isGroup.toString().toLowerCase() === "true" || dt.isGroup.toString().toLowerCase() === "yes" ? "Yes" : "No");
       tmpArr.push(dt.drawingNo);
       tmpArr.push(dt.leng);
       tmpArr.push(dt.breath);
@@ -64,7 +64,7 @@ export const getExcelData = (scr) => {
       tmpArr.push(dt.thickness);
       tmpArr.push(dt.weight);
       tmpArr.push(dt.makeType);
-      tmpArr.push(dt.isTag);
+      tmpArr.push(dt.isTag.toString().toLowerCase() === "true" || dt.isTag.toString().toLowerCase() === "yes" ? "Yes" : "No");
       dataArr.push(tmpArr);
     });
   } else {

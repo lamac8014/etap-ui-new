@@ -76,10 +76,10 @@ class ViewRequirementViewMore extends Component {
                 />
                 <TextInput
                   labelSize="col-md-3 pr-0"
-                  label="Required Wbs ID"
-                  name="requireWbsId"
-                  id="requireWbsId"
-                  value={req.requireWbsId}
+                  label="Required Wbs Name"
+                  name="requireWbsName"
+                  id="requireWbsName"
+                  value={req.requireWbsname}
                   disabled
                 />
               </SimpleRow>

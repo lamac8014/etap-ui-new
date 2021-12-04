@@ -57,6 +57,10 @@ const mapDispatchToProps = (dispatch, props) => {
         type: SET_STRUCTURE_NAME_VENDOR,
         payload: name,
       });
+      dispatch({
+        type: UPLOAD_WO_FILE,
+        paayload: null,
+      })
     },
     handleChangeWoFileUpload(file) {
       dispatch({
