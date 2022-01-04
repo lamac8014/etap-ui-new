@@ -18,6 +18,7 @@ import {
 	STRUCTURE_EDIT_PAGE,
 	STRUCT_STATUS,
 } from "../../actions/types";
+import swal from "sweetalert"
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -98,28 +99,46 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(addAttribute());
 		},
 		addStructure() {
-			dispatch(addStructure()).then(() => {
+			dispatch(addStructure()).then((response) => {
 				dispatch({
 					type: CHANGE_ADD_STRUCTURE_MODAL_STATUS,
 					payload:false,
 				});
+				swal(response.value.data.message, {
+					icon: "success",
+				});
 				dispatch({
 					type: RESET_STRUCTURE_FORM,
 				});
 				dispatch(structureList());
+			}).catch(err => {
+				err.response.status === 400 ? swal("Invalid or No data provided", {
+					icon: "error",
+				  }) : swal("Something went wrong!", {
+					icon: "error",
+				  });
 			});
 		},
 		updateStructure() {
-			dispatch(updateStructure()).then(() => {
+			dispatch(updateStructure()).then((response) => {
 				dispatch({
 					type: CHANGE_ADD_STRUCTURE_MODAL_STATUS,
 					payload: false,
 				});
+				swal(response.value.data.message, {
+					icon: "success",
+				});
 				dispatch({
 					type: RESET_STRUCTURE_FORM,
 				});
 				dispatch(structureList());
-			});
+			}).catch(err => {
+				err.response.status === 400 ? swal("Invalid or No data provided", {
+					icon: "error",
+				  }) : swal("Something went wrong!", {
+					icon: "error",
+				  });
+			});;
 		},
 		handleStructStatus(value) {
 			dispatch({
