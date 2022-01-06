@@ -421,8 +421,8 @@ const mapDispatchToProps = (dispatch, props) => {
       });
       dispatch({
         type: SET_SELECTED_ITEMS,
-        reuseResult: false,
-        fabOutResult: true,
+        reuseResult: true,
+        fabOutResult: false,
       });
     },
 
