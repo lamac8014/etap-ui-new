@@ -9,6 +9,7 @@ import {
 } from "./types";
 import { GET_AS_BUILD_STRUCTURE, ADD_STRUCTURE_COMPONENT } from "./types";
 import { parseDate } from "../utils/common";
+import { getUserDetails } from "../utils/auth";
 
 export const builtList = () => {
   return {
@@ -18,9 +19,10 @@ export const builtList = () => {
 };
 
 export const getWbsList = () => {
+  let id = getUserDetails().projectId
   return {
     type: AS_BUILT_LIST_WBS_CODES,
-    payload: axios.get(config.BASE_URL + "/api/WBS/GetWBS"),
+    payload: axios.get(config.BASE_URL + "/api/WBS/GetProjectWBSCodeList/" + id),
   };
 };
 

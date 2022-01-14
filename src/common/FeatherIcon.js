@@ -18,7 +18,7 @@ class FeatherIcon extends Component {
       <temp.comp
         color={this.props.color}
         size={this.props.size}
-        strokeWidth={1.5}
+        strokeWidth={1.7}
         className={this.props.className}
         {...this.props}
       />

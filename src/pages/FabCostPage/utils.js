@@ -3,7 +3,8 @@ import IconButton from "../../common/forms/IconButton";
 import { Input } from "reactstrap";
 export const listFabCostData = (
   handleAddCost,
-  redirectToFabCostMoreDetails
+  redirectToFabCostMoreDetails,
+  handleViewMore
 ) => {
   return [
     {
@@ -50,13 +51,13 @@ export const listFabCostData = (
           <div>
             <IconButton
               iconname="faList"
-              // onClick={() => handleViewMore(true)}
+              onClick={() => handleViewMore(row.projectStructureId)}
             />
 
-            <IconButton
+            {row.fabricationFlage.toLowerCase() === "false" && <IconButton
               iconname="faEdit"
               onClick={() => handleAddCost(row.projectStructureId)}
-            />
+            />}
           </div>
         );
       },
@@ -80,6 +81,11 @@ export const listTableData = () => {
       text: "Cost",
       dataField: "fabriacationCost",
       style: { verticalAlign: "middle" },
+      formatter: (cell, row) => {
+        return (
+            <p style={{margin: 0}}>&#8377; {row.fabriacationCost}</p>
+        );
+      },
     },
   ];
 };

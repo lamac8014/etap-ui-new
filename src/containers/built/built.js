@@ -32,6 +32,17 @@ const mapDispatchToProps = (dispatch, props) => {
     },
 
     handleMore(id) {
+      let built = store.getState().built;
+      let asbuiltStructures = JSON.parse(
+        JSON.stringify(built.asBuildStructure)
+      );
+      let currentStructure = asbuiltStructures.find((item) => {
+        return item.dispReqStructId === id;
+      });
+      dispatch({
+        type: AS_BUILT_SET_CURRENT_STRUCTURE,
+        payload: currentStructure,
+      });
       dispatch({
         type: BUILT_MORE_PAGE,
         payload: true,

@@ -4,28 +4,23 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import { listBvDprData } from "./utils"
 import SimpleCard from "../../common/cards/SimpleCard";
 import CustomDataTable from "../../common/DataTable";
+import ViewMoreBvDprModal from "./ViewMoreBvDprModal";
 class BvDpr extends Component {
-    constructor() {
-        super();
-    }
-    componentDidMount() {
 
-    }
+    componentDidMount() {
+        this.props.onPageLoad()
+    }   
     render() {
         return (
             <PageContainer>
+                <ViewMoreBvDprModal {...this.props}/>
                 <SimpleCard>
                     <CustomDataTable
                         metaData={listBvDprData(
+                            (cost,date, name, code) => this.props.redirectToFabCostMoreDetails(cost, date, name, code),
+                            (strCode) => {this.props.openViewMoreModal(strCode)}
                         )}
-                        bodyData={[
-                            {   
-                                projName:"abc",
-                                structureName: "Trestles",
-                                structureCode: "STR000012",
-                                currentValue:"73.4"
-                            },
-                        ]}
+                        bodyData={this.props.bvDpr.fabricationCostList}
                     />
                 </SimpleCard>
             </PageContainer >

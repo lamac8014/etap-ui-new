@@ -350,7 +350,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/deprecitaionPage/bvDprMore",
+    path: "/etrack/deprecitaionPage/bvDprMore/:cost/:date/:strname/:strcode",
     name: "BvDprMore",
     component: BvDprMore,
   },

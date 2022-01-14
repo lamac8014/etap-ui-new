@@ -7,6 +7,7 @@ import SimpleCard from "../../common/cards/SimpleCard";
 import CustomDataTable from "../../common/DataTable";
 // import FabCostModal from "./FabCostModal";
 import FabCostModal from "../../containers/fabCostPage/fabCostModal";
+import ViewMoreFabricationCost from "./ViewMoreFabricationCost";
 class FabCost extends Component {
   constructor() {
     super();
@@ -18,6 +19,7 @@ class FabCost extends Component {
     return (
       <PageContainer>
         <FabCostModal showFabEditModal={this.props.fabCost.showFabEditModal} />
+        <ViewMoreFabricationCost {...this.props}/>
         <SimpleCard>
           <CustomDataTable
             metaData={listFabCostData(
@@ -34,7 +36,8 @@ class FabCost extends Component {
                   structureName,
                   structureCode
                 );
-              }
+              },
+              (id) => {this.props.showFabCostViewMoreModal(id)}
             )}
             bodyData={this.props.fabCost.fabricationCost}
           />

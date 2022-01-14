@@ -9,6 +9,8 @@ import {
   RESET_FBCOST_MODAL,
   SET_PARAMS_DATA,
   GET_FABCOST_COMPONENT,
+  SET_SHOW_VIEW_MORE_MODAL,
+  RESET_COMPONENT_PAGE
 } from "../actions/types";
 
 const initialState = {
@@ -25,6 +27,8 @@ const initialState = {
   dcNo: "",
   structureName: "",
   structureCode: "",
+  showViewMoreModal: false,
+  
 };
 
 export default (state = initialState, action) => {
@@ -122,6 +126,10 @@ export default (state = initialState, action) => {
         structureName: action.payload.strName,
         structureCode: action.payload.strCode,
       };
+    case SET_SHOW_VIEW_MORE_MODAL:
+      return {...state, showViewMoreModal: action.payload}
+    case RESET_COMPONENT_PAGE:
+      return {...state, componentsList: [], dcNo: "", structureName: "", structureCode: ""}
     default:
       return state;
   }

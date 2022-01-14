@@ -11,6 +11,8 @@ import ImageInput from "../../common/forms/ImageInput";
 import SearchableDropDown from "../../common/forms/SearchableDropdown";
 import Modal from "../../common/Modal";
 import YearInput from "../../common/forms/YearInput";
+
+
 class ViewMoreModal extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class ViewMoreModal extends Component {
   render() {
     return (
       <Modal
-        title={`As Built Details`}
+        title={`Edit Built Details`}
         showModal={this.props.built.openViewMoreModal}
         handleSave={this.props.addComponent}
         handleClose={this.props.closeViewMoreModal}
