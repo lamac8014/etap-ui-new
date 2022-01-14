@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import swal from "sweetalert";
-import { addComponentCost } from "../../actions/fabCostActions";
+import { addComponentCost, fabricationStructure } from "../../actions/fabCostActions";
 import {
   FAB_MORE_MODAL,
   FAB_MORE_PAGE,
@@ -8,6 +8,7 @@ import {
   SET_COST,
   SET_CURRENT_FABCOST_STRUCTURE,
   RESET_FBCOST_MODAL,
+  TRANSFORM_FABRICATION_STRUCTURE,
 } from "../../actions/types";
 import FabCostModal from "../../pages/FabCostPage/FabCostModal";
 import store from "../../store";
@@ -47,6 +48,19 @@ const mapDispatchToProps = (dispatch, props) => {
           });
           swal(response.value.data.message, {
             icon: "success",
+          });
+          dispatch(fabricationStructure()).then((response) => {
+            let fabCost = store.getState().fabricationCost;
+            let fabricationStructure = JSON.parse(
+              JSON.stringify(fabCost.fabricationCost)
+            );
+            let fabricationCost = fabricationStructure.filter((item) => {
+              return item.status === "FABRICATION COMPLETED";
+            });
+            dispatch({
+              type: TRANSFORM_FABRICATION_STRUCTURE,
+              payload: fabricationCost,
+            });
           });
         })
         .catch((err) => {

@@ -90,7 +90,7 @@ export const getProjectStructureData = () => {
     type: SURPLUS_LIST_STRUCTURE_PROJECT_DATA,
     payload: axios.get(
       config.BASE_URL +
-        `/api/mobile/Receive/getReceiveDetails?projectId=${projectId}`
+        `/api/Surplus/getReceiveDetails?projectId=${projectId}`
     ),
   };
 };

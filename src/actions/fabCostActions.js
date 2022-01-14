@@ -25,7 +25,11 @@ export const addComponentCost = () => {
   let payload = {
     projStructId: parseInt(currentStructure.projectStructureId),
     cost: parseFloat(fabCost.cost),
+    dispatchRequirementId: currentStructure.dispatchRequirementId,
+    dispatchNo: currentStructure.dispatchNo
   };
+
+  // console.log(payload)
   return {
     type: ADD_COMPONENT_COST,
     payload: axios.put(

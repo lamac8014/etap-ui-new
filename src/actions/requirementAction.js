@@ -30,9 +30,11 @@ export const getProjectList = () => {
 };
 
 export const getWBSList = () => {
+  let id = getUserDetails().projectId
+
   return {
     type: LIST_WBS_CODES,
-    payload: axios.get(config.BASE_URL + "/api/WBS/GetWBS"),
+    payload: axios.get(config.BASE_URL + "/api/WBS/GetProjectWBSCodeList/" + id),
   };
 };
 

@@ -498,76 +498,7 @@ const mapDispatchToProps = (dispatch, props) => {
       });
     },
     discardChoices() {
-      const { structId, siteReqId } = store.getState().createDispatch;
-      dispatch(getSiteReqDetailsById(structId, siteReqId)).then(() => {
-        let createDisp = store.getState().createDispatch;
-        let siteReq = JSON.parse(JSON.stringify(createDisp.siteReqDetailsById));
-        let tmpArr = [];
-        let availability = "-",
-          availDate = "-",
-          disabled = false;
-        let currentDate = new Date();
-        siteReq &&
-          siteReq.map((structure, index) => {
-            if (structure.surPlusFromDate) {
-              let surplusDate = new Date(structure.surPlusFromDate);
-              if (currentDate.getTime() > surplusDate.getTime()) {
-                availability = "YES";
-                availDate = structure.surPlusFromDate.split("T")[0];
-                disabled = false;
-              }
-            } else {
-              availability = "-";
-              availDate = "-";
-              disabled = true;
-            }
-            let parsedAttr = JSON.parse(structure.projectStructureAttributes);
-            structure.projectStructureAttributes = parsedAttr;
-            parsedAttr.map((item) => {
-              structure[item.name] = item.value ? item.value : 0;
-            });
-            let currentReqInfo = createDisp.currentReqInfo;
-            let tmpObj = {
-              ...structure,
-              temp_id: index,
-              availability,
-              availDate,
-              disabled,
-              quantity: 1,
-              fromProjectId: currentReqInfo.fromProjectId,
-              checked: false,
-            };
-            if (
-              (structure.projectCurrentStatus === "READY TO REUSE" ||
-                structure.projectCurrentStatus === "NEW") &&
-              structure.projectStructureStatus === "AVAILABLE"
-            ) {
-              !tmpObj.disabled && tmpArr.push(tmpObj);
-            }
-          });
-        tmpArr = sortstructuresBasedOnAttributes(
-          tmpArr,
-          store.getState().createDispatch.chosenAttribute.value
-        );
-
-        dispatch({
-          type: TRANSFORM_SITE_REQUIREMENTS,
-          payload: tmpArr,
-          structId,
-          siteReqId,
-        });
-      });
-      dispatch({
-        type: SET_RELEASE_FILTER,
-        payload: "",
-      });
-      dispatch({
-        type: SET_IS_ATTRIBUTE_FILTER,
-        payload: {
-          flag: false,
-          chosenAttr: "",
-        },
-      });
+      props.history.push("/etrack/dispatch/twccDispatch");
     },
     resetPage() {
       dispatch({

@@ -1,12 +1,12 @@
 import React from "react";
 import IconButton from "../../common/forms/IconButton";
 import { Input } from "reactstrap";
-export const listBvDprData = () => {
+export const listBvDprData = (redirectToFabCostMoreDetails, showModal) => {
     return [
   
         {
           text: "Project",
-          dataField: "projName",
+          dataField: "projectName",
           style: { verticalAlign: "middle" },
         },
     
@@ -23,11 +23,12 @@ export const listBvDprData = () => {
             return (
               <>
                 <a
-                  href="/etrack/deprecitaionPage/bvDprMore"
+                  href="#"
                   target="_self"
-                  // onClick={() => {
-                  //   redirectToFabCostMoreDetails(row.structureCode);
-                  // }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    redirectToFabCostMoreDetails(row.fabricationCost, row.fabricationDate, row.structureName, row.structureCode);
+                  }}
                 >
                   {row.structureCode}
                 </a>
@@ -37,8 +38,13 @@ export const listBvDprData = () => {
         },
         {
             text: "Current Book Value",
-            dataField: "currentValue",
+            dataField: "currentBookValue",
             style: { verticalAlign: "middle" },
+            formatter: (cell, row) => {
+              return (
+                  <p style={{margin: 0}}>&#8377; {parseFloat(row.currentBookValue).toFixed(2)}</p>
+              );
+            },
           },
         {
             text: "Actions",
@@ -47,6 +53,7 @@ export const listBvDprData = () => {
               return (
                     <IconButton
                       iconname="faList"
+                      onClick={() => {showModal(row.structureCode)}}
                      /> 
                   
                 ) 
@@ -65,13 +72,23 @@ export const listBvDprMoreData = () => {
 
     {
       text: "Book Value",
-      dataField: "bookValue",
+      dataField: "prevAmount",
       style: { verticalAlign: "middle" },
+      formatter: (cell, row) => {
+        return (
+            <p style={{margin: 0}}>&#8377; {row.prevAmount}</p>
+        );
+      },
     },
     {
       text: "Current Book Value",
-      dataField: "currentBkValue",
+      dataField: "amount",
       style: { verticalAlign: "middle" },
+      formatter: (cell, row) => {
+        return (
+            <p style={{margin: 0}}>&#8377; {row.amount}</p>
+        );
+      },
     },
 
   ];

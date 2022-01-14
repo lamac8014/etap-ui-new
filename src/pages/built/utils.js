@@ -63,7 +63,7 @@ export const listBuiltTypeMetaData = (
       formatter: (cell, row) => {
         return (
           <>
-            <IconButton iconname="faList" onClick={() => handleMore(row.id)} />
+            <IconButton iconname="faList" onClick={() => handleMore(row.dispReqStructId)} />
             {row.status !== "FABRICATION COMPLETED" && (
               <IconButton
                 iconname="faEdit"

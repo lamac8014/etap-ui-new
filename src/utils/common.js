@@ -42,3 +42,9 @@ export const parseDate = (dateValue) => {
   let yyyy = date.getFullYear();
   return `${mm}/${dd}/${yyyy}`;
 };
+
+export const getMonthAndYear = date => {
+  let finalDateString = new Date(date).toLocaleString("default", {month: "long"})
+  finalDateString += `, ${new Date(date).getFullYear()}`
+  return finalDateString
+}

@@ -178,7 +178,7 @@ class SiteRequirementsModal extends Component {
                 size="col-md-4"
                 labelSize="col-md-5 pr-0"
                 fieldSize="col-md-7 pl-0"
-                label="Planned Start Date"
+                label="Planned Start Datse"
                 name="plannedStartDate"
                 id="plannedStartDate"
                 onChange={(e) =>

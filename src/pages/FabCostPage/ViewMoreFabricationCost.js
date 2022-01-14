@@ -3,8 +3,7 @@ import SimpleRow from "../../common/forms/SimpleRow";
 import TextInput from "../../common/forms/TextInput";
 import Modal from "../../common/Modal";
 import Loader from "../../common/Loader";
-import AssignStructureViewMore from "../../containers/assignStructure/assignStructureViewMore";
-class BuiltViewMore extends Component {
+class ViewMoreFabricationCost extends Component {
     constructor(props) {
         super(props);
     }
@@ -12,9 +11,9 @@ class BuiltViewMore extends Component {
     render() {
         return (
             <Modal
-                title={`As Built - Details`}
-                showModal={this.props.showBuiltViewMoreModal}
-                handleClose={this.props.closeBuiltViewMoreModal}
+                title={`Fabrication Cost - Details`}
+                showModal={this.props.fabCost.showViewMoreModal}
+                handleClose={this.props.closeFabCostViewMoreModal}
                 size="lg"
                 isShowFooter={false}
             >
@@ -30,7 +29,7 @@ class BuiltViewMore extends Component {
             // onChange={e =>
             //   this.props.handleChangeStructureName(e.target.value)
             // }
-            value={this.props.built.currentStructure.quantity}
+            value={this.props.fabCost.currentStructure.quantity}
           />
         </SimpleRow>
         <h4>Structure Attributes :</h4>
@@ -44,9 +43,9 @@ class BuiltViewMore extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.built.currentStructure.structureAttValue &&
+            {this.props.fabCost.currentStructure.structureAttValue &&
               JSON.parse(
-                this.props.built.currentStructure.structureAttValue
+                this.props.fabCost.currentStructure.structureAttValue
               ).map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
@@ -62,4 +61,4 @@ class BuiltViewMore extends Component {
     }
 }
 
-export default BuiltViewMore;
+export default ViewMoreFabricationCost;

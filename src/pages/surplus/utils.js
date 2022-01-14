@@ -29,15 +29,16 @@ export const listUsersMetaData = (handleViewMore, handleEdit) => {
         return (
           <div key={row.userId}>
             <>
-              <IconButton
-                iconname="faEdit"
-                size="1x"
-                onClick={() => handleEdit(row.dispatchRequirementId)}
-              />
+
               <IconButton
                 iconname="faList"
                 size="1x"
                 onClick={() => handleViewMore(row.dispatchRequirementId)}
+              />
+              <IconButton
+                iconname="faEdit"
+                size="1x"
+                onClick={() => handleEdit(row.dispatchRequirementId)}
               />
             </>
           </div>

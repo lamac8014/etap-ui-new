@@ -14,6 +14,9 @@ class FabCostMore extends Component {
     let strCode = window.atob(this.props.match.params.strCode);
     this.props.onPageLoad(id, dcNo, strName, strCode);
   }
+  componentWillUnmount(){
+    this.props.resetPage()
+  }
   render() {
     return (
       <PageContainer>
