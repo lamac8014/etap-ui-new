@@ -148,6 +148,13 @@ const menus = {
                   icon: "feather icon-briefcase",
                   url: "/etrack/deprecitaionPage/bvDpr",
                 },
+                {
+                  id: "fabApproval",
+                  title: "Fabrication Approval",
+                  type: "item",
+                  icon: "feather icon-navigation",
+                  url: "/etrack/cost/fabApproval",
+                },
               ],
             },
             {

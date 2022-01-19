@@ -173,7 +173,7 @@ export default function (state = initialState, action) {
 				estimatedWeight: 0,
 				structureCode: scr.structureCode !== null ? scr.structureCode : {},
 				structAttri: transformAttri(JSON.parse(scr.structureAttributes)),
-				files: transformDocs(scr.structureDocs),
+				// files: transformDocs(scr.structureDocs),
 				uploadData: [],
 				noOfComponents: 0,
 			};

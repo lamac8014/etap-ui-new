@@ -6,6 +6,8 @@ import {
   GET_FABRICATION_COST,
   ADD_COMPONENT_COST,
   GET_FABCOST_COMPONENT,
+  GET_FABRICATIONCOST_APPROVAL_DATA,
+  APPROVE_FABRICATION_STRUCTURE
 } from "./types";
 import { getUserDetails } from "../utils/auth";
 
@@ -57,3 +59,29 @@ export const getComponentList = (projectStrId) => {
     ),
   };
 };
+
+
+export const getFabricationCostApprovalData = () => {
+  const roleName = getUserDetails().roleName
+  return {
+    type: GET_FABRICATIONCOST_APPROVAL_DATA,
+    payload: axios.get(`${config.BASE_URL}/api/FabricationManagement/getFabrication?role_name=${roleName}`)
+  }
+}
+
+export const approveFabrication = () => {
+  const fabCostApprove = store.getState().fabCostApprove
+  let currentStructure = JSON.parse(JSON.stringify(fabCostApprove.currentStructure))
+  let roleName = getUserDetails().roleName
+  let data = {
+    "fabCost_id": currentStructure.id,
+    "mode": fabCostApprove.approveMode,
+    "role_name": roleName,
+  }
+
+  // console.log(data)
+  return {
+    type: APPROVE_FABRICATION_STRUCTURE,
+    payload: axios.post(`${config.BASE_URL}/api/FabricationManagement/FabricationApprove`, data)
+  }
+}

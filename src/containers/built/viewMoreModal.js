@@ -163,7 +163,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addComponent())
         .then((response) => {
           dispatch(buildStructure());
-          swal(response.value.data.message, {
+          swal("Project Structure Updated Successfully", {
             icon: "success",
           });
           dispatch({
@@ -175,7 +175,7 @@ const mapDispatchToProps = (dispatch) => {
           });
         })
         .catch((err) => {
-          swal("failed to save", {
+          swal("Project Structure Update Failed", {
             icon: "error",
           });
         });

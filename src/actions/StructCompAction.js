@@ -69,7 +69,7 @@ export const saveAssignStruct = () => {
   const postData = new FormData();
   postData.append("structureId", scr.structName.value);
   postData.append("projectId", scr.projName.value);
-  // postData.append("drawingNo", scr.drawingNum);
+  postData.append("drawingNo", "");
   postData.append("estimatedWeight", scr.estimatedWeight);
   postData.append("compCount", scr.noOfComponents);
   postData.append("structureCode", scr.structureCode.label);

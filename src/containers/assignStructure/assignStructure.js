@@ -145,7 +145,7 @@ const mapDispatchToProps = (dispatch) => {
     saveAssignStruct() {
       dispatch(saveAssignStruct()).then((response) => {
         dispatch({ type: RESET_ASSIGN_STRUCT_FORM });
-        swal(response.value.data.message, {
+        swal("Structure Component assigned successfully", {
 					icon: "success",
 				});
       })
