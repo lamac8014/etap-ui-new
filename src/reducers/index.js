@@ -39,6 +39,7 @@ import twccReducer from "./twccModificationReducer";
 import fabCostReducer from "./fabCostReducer";
 import twccPhyVerificationApproveReducer from "./twccPhyVerificationApproveReducer";
 import bvDprReducer from "./bvDprReducer";
+import fabCostApprovalReducer from "./fabCostApprovalReducer";
 const rootReducer = combineReducers({
   config,
   Navigation,
@@ -79,7 +80,8 @@ const rootReducer = combineReducers({
   twcc: twccReducer,
   fabricationCost:fabCostReducer,
   twccPhyVerificationApprove : twccPhyVerificationApproveReducer,
-  bvDpr: bvDprReducer
+  bvDpr: bvDprReducer,
+  fabCostApprove: fabCostApprovalReducer
 });
 
 export default rootReducer;

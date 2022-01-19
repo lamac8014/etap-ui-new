@@ -43,7 +43,7 @@ class AddStructure extends Component {
 						//   this.props.handleChangeStructureName(e.target.value)
 						// }
 						value={
-							this.props.assignStructure.assignStructureViewMore.structureId
+							this.props.assignStructure.assignStructureViewMore.structureCode
 						}
 					/>
 					<TextInput

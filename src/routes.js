@@ -100,6 +100,9 @@ const ViewtwccVerification = lazy(() =>
 const AddDrNoPage = lazy(() =>
   import("./containers/assignStructure/addDrNoPage")
 );
+const FabricationCostApproval = lazy(() =>
+  import("./containers/fabCostApproval/fabricationCostApproval")
+);
 
 const RouteList = [
   {
@@ -360,6 +363,12 @@ const RouteList = [
     path: "/etrack/fabricationMgmt/twccPhysicalVerificationApprove",
     name: "TwccPhyVerificationApprove",
     component: TwccPhyVerificationApprove,
+  },
+  {
+    exact: true,
+    path: "/etrack/cost/fabApproval",
+    name: "FabApproval",
+    component: FabricationCostApproval,
   },
 ];
 export default RouteList;

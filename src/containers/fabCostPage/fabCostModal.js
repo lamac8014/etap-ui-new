@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, props) => {
           dispatch({
             type: RESET_FBCOST_MODAL,
           });
-          swal(response.value.data.message, {
+          swal("Structure Cost Updated Successfully", {
             icon: "success",
           });
           dispatch(fabricationStructure()).then((response) => {

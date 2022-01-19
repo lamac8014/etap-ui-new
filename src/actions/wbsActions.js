@@ -2,6 +2,7 @@ import store from '../store';
 import axios from 'axios';
 import config from '../config';
 import { LIST_PROJECT_CODES, SAVE_WBS_DATA, LIST_WBS_DATA, SINGLE_WBS_DATA } from "./types";
+import { getUserDetails } from '../utils/auth';
 
 
 
@@ -13,9 +14,11 @@ export const projectCodesList = () => {
 }
 
 export const wbsList = () => {
+    const wbs = store.getState().wbs
+    let projectId = JSON.parse(JSON.stringify(wbs.wbsProjectName)).value;
     return {
         type: LIST_WBS_DATA,
-        payload: axios.get(config.BASE_URL + '/api/WBS/GetWBS')
+        payload: axios.get(config.BASE_URL + "/api/WBS/GetProjectWBSCodeList/" + projectId)
     }
 }
 
