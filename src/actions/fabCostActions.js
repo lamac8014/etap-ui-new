@@ -76,7 +76,7 @@ export const approveFabrication = () => {
   let data = {
     "fabCost_id": currentStructure.id,
     "mode": fabCostApprove.approveMode,
-    "role_name": roleName,
+    "role_name": roleName === "SITE" ? "SITE-FAA" : roleName,
   }
 
   // console.log(data)

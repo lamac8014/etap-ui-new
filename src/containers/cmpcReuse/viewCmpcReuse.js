@@ -181,7 +181,19 @@ const mapDispatchToProps = (dispatch, props) => {
 				});
 		},
 		resetMessage() {
-			dispatch({ type: RESET_MESSAGE });
+			let cmpc = store.getState().cmpcReuse;
+			let cmpcList = JSON.parse(JSON.stringify(cmpc.transformedCmpcList));
+			cmpcList.map(item => item.checked = false)
+			dispatch({ type: CMPC_SET_SELECTED_ITEMS, payload: [], cmpcList });
+			dispatch({type: SET_MODIFICATION, payload: null})
+			dispatch({
+				type: SET_MODIFICATION_CHECKED,
+				payload: {
+					isWithMod: false,
+					isWithoutMod: false,
+					isReject: false
+				},
+			});
 		},
 	};
 };

@@ -69,7 +69,7 @@ class ComponentPage extends Component {
 							onChange={(e) =>
 								this.props.handleChangeDispatchDate(e.target.value)
 							}
-							// value={this.props.requirement.activeItem.planStartdate}
+							value={this.props.siteDispatch.dispatchDate}
 						/>
 						<div style={{ display: "none" }}>
 							<FileInput
@@ -86,7 +86,7 @@ class ComponentPage extends Component {
 							labelSize="col-md-3 offset-md-1"
 							fieldSize="col-md-6"
 							value={
-								this.props.siteDispatch.woFile
+								this.props.siteDispatch.woFile 
 									? this.props.siteDispatch.woFile.name
 									: ""
 							}

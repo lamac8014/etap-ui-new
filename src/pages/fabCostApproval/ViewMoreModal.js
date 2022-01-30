@@ -43,9 +43,9 @@ class ViewMoreModal extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.fabCostApprove.currentStructure.StructureAttributeValue &&
+            {this.props.fabCostApprove.currentStructure.structureAttributeValue &&
               JSON.parse(
-                this.props.fabCostApprove.currentStructure.StructureAttributeValue
+                this.props.fabCostApprove.currentStructure.structureAttributeValue
               ).map((item, index) => (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>

@@ -25,7 +25,7 @@ const initialState = {
 	transformedCmpcList: [],
 	selectedItems: [],
 	currentAttributes: [],
-	isModification: false,
+	isModification: null,
 	viewMoreModalFlag: false,
 	isModChecked: {
 		isWithMod: false,

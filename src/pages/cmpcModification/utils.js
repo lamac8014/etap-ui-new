@@ -169,6 +169,17 @@ export const transformAssignedStructureList = (assignStructureList) => {
   return tmpArr;
 };
 
+export const getComponentTableData = (scr) => {
+	let tmpArr = [];
+	let data = scr.uploadData;
+	data &&
+		data.map((data) => {
+      data.isGroup = data.isGroup.toString().toLowerCase() === "true" || data.isGroup.toString().toLowerCase() === "yes" ? "Yes" : "No"
+      data.isTag= data.isTag.toString().toLowerCase() === "true" || data.isTag.toString().toLowerCase() === "yes" ? "Yes" : "No"
+		});
+	return data;
+};
+
 export const componentMetaData = (handleMore) => {
   return [
     {

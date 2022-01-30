@@ -79,6 +79,55 @@ class SiteRequirementsModal extends Component {
     }
   };
 
+  showErrorMessage = (message) => {
+    NotificationManager.error(message, "", 5000);
+  };
+
+  validateSaveAction = (item, saveCallback) => {
+    let message = "", approveSaveAction= true
+        if(item.wbsName === ""){
+          message = "Please select \"WBS\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.segmentName === ""){
+          message = "Please select \"Segment\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.subSegmentName === ""){
+          message = "Please select \"Sub Segment\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.elementName === ""){
+          message = "Please select \"Element\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.planReleasedate === ""){
+          message = "Please select \"Planned Release Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.planStartdate === ""){
+          message = "Please select \"Planned Start Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        else if(item.requireByDate === ""){
+          message = "Please select \"Require By Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+        }
+        if(approveSaveAction){
+          saveCallback();
+        }else{
+          this.showErrorMessage(message)
+
+        }
+
+      
+    // }else{
+    //   this.showErrorMessage("Please add atleast one requirement")
+    //   approveSaveAction = false
+    // }
+    
+  }
+
   render() {
     return (
       <>
@@ -87,7 +136,7 @@ class SiteRequirementsModal extends Component {
           <Modal
             title="Site Requirements"
             showModal={this.props.showModal}
-            handleSave={this.props.onRequirementModalSave}
+            handleSave={() => {this.validateSaveAction(this.props.requirement.activeItem, this.props.onRequirementModalSave)}}
             handleClose={this.props.showModalClose}
             size="xl"
             isShowFooter={true}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { componentMetaData, getExcelData } from "./utils";
+import { componentMetaData, getComponentTableData, getExcelData } from "./utils";
 import CustomDataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
@@ -152,7 +152,8 @@ class ViewAssignComponent extends Component {
             </Col6>
             <CustomDataTable
               metaData={componentMetaData((id) => this.props.handleEdit(id))}
-              bodyData={this.props.cmpc.uploadData}
+              bodyData={getComponentTableData(this.props.cmpc)}
+              // bodyData={(this.props.cmpc.uploadData)}
             />
           </FormRow>
           <SimpleRow>

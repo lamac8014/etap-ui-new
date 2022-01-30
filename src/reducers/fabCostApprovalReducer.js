@@ -27,7 +27,7 @@ export default (state = initialstate, action) => {
         case `${GET_FABRICATIONCOST_APPROVAL_DATA}_REJECTED`:
             return { ...state, isLoading: false, errorMessage: action.payload.response.data.message }
         case `${GET_FABRICATIONCOST_APPROVAL_DATA}_FULFILLED`:
-            return { ...state, isLoading: false, fabCostApproveData: action.payload.data }
+            return { ...state, isLoading: false, fabCostApproveData: action.payload.data.length > 0 ? action.payload.data : [] }
         case SET_SHOW_APPROVE_MODAL:
             return { ...state, showApproveModal: true, showRejectModal: false }
         case SET_SHOW_REJECT_MODAL:

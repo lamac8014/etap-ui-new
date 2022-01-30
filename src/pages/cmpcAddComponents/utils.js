@@ -296,7 +296,7 @@ export const getExcelData = (scr) => {
 			tmpArr.push(dt.compTypeName);
 			tmpArr.push(dt.compId);
 			tmpArr.push(dt.componentNo);
-			tmpArr.push(dt.isGroup);
+			tmpArr.push(dt.isGroup.toString().toLowerCase() === "true" || dt.isGroup.toLowerCase() === "yes" ? "Yes" : "No");
 			tmpArr.push(dt.drawingNo);
 			tmpArr.push(dt.leng);
 			tmpArr.push(dt.breath);
@@ -304,7 +304,7 @@ export const getExcelData = (scr) => {
 			tmpArr.push(dt.thickness);
 			tmpArr.push(dt.weight);
 			tmpArr.push(dt.makeType);
-			tmpArr.push(dt.isTag);
+			tmpArr.push(dt.isTag.toString().toLowerCase() === "true" || dt.isTag.toLowerCase() === "yes" ? "Yes" : "No");
 			tmpArr.push(dt.qrCode);
 			dataArr.push(tmpArr);
 		});
