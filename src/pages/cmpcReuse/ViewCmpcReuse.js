@@ -103,10 +103,11 @@ class ViewCmpcReuse extends Component {
 							}}
 							type="success"
 							gradient
+							disabled={this.props.cmpcReuse.isModification === null || this.props.cmpcReuse.selectedItems.length === 0 ? true : false}
 						/>
 						<Button
 							btnText="Discard"
-							onClick={() => {}}
+							onClick={this.props.resetMessage}
 							type="danger"
 							gradient
 						/>

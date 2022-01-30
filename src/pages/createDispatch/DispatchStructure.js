@@ -23,8 +23,12 @@ import DispatchStructureViewMore from "./DispatchStructureViewMore";
 import ButtonRow from "../../common/forms/ButtonRow";
 import GetQuantityModal from "./GetQuantityModal";
 import ConfirmationModal from "./ConfirmationModal";
-import { createDispatch } from "../../actions/createDispatchActions";
-import store from "../../store";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+
+
 class DispatchStructure extends Component {
   constructor(props) {
     super(props);
@@ -52,10 +56,16 @@ class DispatchStructure extends Component {
     this.props.resetPage();
   }
 
+  showErrorMessage = (message) => {
+    NotificationManager.error(message, "", 5000);
+  };
+
   render() {
     return (
       <PageContainer>
         <SimpleCard>
+        <NotificationContainer />
+
           {/* {this.props.createDispatch.message && (
             <CustomAlert
               type={this.props.createDispatch.isSuccess ? "success" : "error"}
@@ -279,7 +289,9 @@ class DispatchStructure extends Component {
               type="success"
               gradient
               btnText="Dispatch"
-              onClick={this.props.showConfirmationModal}
+              onClick={ () => {
+                this.props.createDispatch.dispatchStructures.length > 0 ? this.props.showConfirmationModal() : this.showErrorMessage("Please add atleast one structure for dispatch.")
+              } }
             />
             <Button
               type="danger"

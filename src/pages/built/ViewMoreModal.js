@@ -22,6 +22,7 @@ class ViewMoreModal extends Component {
   componentDidMount = () => {
     this.props.onModalLoad();
   };
+
   render() {
     return (
       <Modal
@@ -31,6 +32,14 @@ class ViewMoreModal extends Component {
         handleClose={this.props.closeViewMoreModal}
         size="xl"
         isShowFooter={true}
+        disableSave={
+          this.props.built.currentStructure.structureId === undefined || 
+          this.props.built.wbsItem.elementName === undefined ||
+          this.props.built.expRelDate === "" ||
+          this.props.built.fabYear === "" ||
+          this.props.built.reUse.value === undefined ||
+          this.props.built.estWeight === "" ? true : false
+        }
       >
         <SimpleRow>
           <TextInput

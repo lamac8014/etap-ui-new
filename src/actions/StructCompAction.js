@@ -118,7 +118,7 @@ export const saveAssignComp = () => {
       thickness: dt.thickness,
       weight: dt.weight,
       makeType: dt.makeType,
-      isTag: dt.isTag === "yes"|| dt.isTag.toLowerCase() === 'true' ? "true" : "false",
+      isTag:  dt.isTag.toLowerCase() === "yes"|| dt.isTag.toLowerCase() === 'true' ? "true" : "false",
       qrCode: dt.qrCode,
     });
   });

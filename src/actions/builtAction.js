@@ -49,8 +49,9 @@ export const addComponent = () => {
       wbs.element === built.wbsItem.elementName
     );
   });
-  console.log(built.wbsItem, actualWbs);
+  // console.log(built.wbsItem, actualWbs);
 
+  built.expRelDate = built.expRelDate.replace("-", "/")
   let headers = {
     "Content-Type": "multipart/form-data",
   };
@@ -76,10 +77,13 @@ export const addComponent = () => {
   data.append("remarks", built.rmark);
   data.append("actualWeight", parseFloat(built.estWeight));
   data.append("reusuability", built.reUse.value);
+  data.append("expReleaseDate", new Date(built.expRelDate));
+
+  
   return {
     type: ADD_STRUCTURE_COMPONENT,
     payload: axios.post(
-      `${config.BASE_URL}/api/FabricationManagement/addStructureComponentForasbuild`,
+      `${config.BASE_URL}/api/FabricationManagement/addStructureComponentForasbuild/sdfsdfsdfsdfsdfs`,
       data,
       headers
     ),

@@ -14,6 +14,10 @@ import CustomDataTable from "../../common/DataTable";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
 import AddRequirementViewMore from "./AddRequirementViewmore";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 class AddRequirement extends Component {
   constructor(props) {
@@ -32,12 +36,73 @@ class AddRequirement extends Component {
     this.props.resetRequirement();
   }
 
+  showErrorMessage = (message) => {
+    NotificationManager.error(message, "", 5000);
+  };
+
+  validateSaveAction = (requirement, saveCallback) => {
+    let message = "", item = {}, approveSaveAction= true
+    if(requirement.savedRequirementList.length > 0){
+      for(let index= 0; index< requirement.savedRequirementList.length; index++){
+        item = requirement.savedRequirementList[index]
+        if(item.quantity === ""){
+          message = "Please enter \"Quantity\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.planReleasedate === ""){
+          message = "Please select \"Planned Release Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.planStartdate === ""){
+          message = "Please select \"Planned Start Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.requireByDate === ""){
+          message = "Please select \"Require By Date\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.wbsName === ""){
+          message = "Please select \"WBS\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.segmentName === ""){
+          message = "Please select \"Segment\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.subSegmentName === ""){
+          message = "Please select \"Sub Segment\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+        if(item.elementName === ""){
+          message = "Please select \"Element\" for structure \"" + item.structName + "\""
+          approveSaveAction = false
+          break
+        }
+      }
+      this.showErrorMessage(message)
+    }else{
+      this.showErrorMessage("Please add atleast one requirement")
+      approveSaveAction = false
+    }
+    if(approveSaveAction){
+      saveCallback();
+    }
+  }
+
   render() {
     // const subprop = this.props.addRequirement;
 
     return (
       <>
         <PageContainer>
+        <NotificationContainer />
           <SimpleCard>
             <SimpleRow>
               <TextInput
@@ -132,7 +197,7 @@ class AddRequirement extends Component {
             <ButtonRow position="center">
               <Button
                 btnText="SAVE"
-                onClick={this.props.saveRequirement}
+                onClick={() => this.validateSaveAction(this.props.requirement, this.props.saveRequirement)}
                 type="success"
                 gradient
               />

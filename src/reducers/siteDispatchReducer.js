@@ -126,8 +126,9 @@ export default (state = initialState, action) => {
 				uploadedFile: null,
 				activeItem: {},
 				structureListCode: [],
-				componentData: [],
+				// componentData: [],
 				selectedComponents: [],
+				woFile:""
 			};
 		case SET_SHOW_VIEW_MORE:
 			return {

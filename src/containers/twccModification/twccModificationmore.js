@@ -64,8 +64,16 @@ const mapDispatchToProps = (dispatch) => {
 		updateComponentHistory() {
 			dispatch(updateComponentHistory())
 				.then((response) => {
-					swal("Success", {
+					swal("Structure updated successfully", {
 						icon: "success",
+					});
+					dispatch({
+						type: SET_EDIT_MODAL_FLAG,
+						payload: false,
+					});
+					dispatch({
+						type: SET_CURRENT_STRUCTURE,
+						payload: {},
 					});
 				})
 				.catch((err) => {
