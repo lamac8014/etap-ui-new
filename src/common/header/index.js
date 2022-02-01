@@ -92,7 +92,7 @@ class Header extends Component {
                   <MainSearch />
                 </li> */}
                 <li>
-                  <UserProfile logout={() => logout(this.props.history)} />
+                  <UserProfile />
                 </li>
               </ul>
             </React.Fragment>

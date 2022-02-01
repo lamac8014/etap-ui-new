@@ -12,14 +12,6 @@ class AttributeTable extends Component {
       currentStructureData: [],
     };
   }
-  componentDidMount() {
-    this.setState({
-      userDetails: JSON.parse(localStorage.getItem("userDetails")),
-    });
-  }
-  componentWillUnmount() {
-    this.setState({ userDetails: {}, currentStructureData: [] });
-  }
   render() {
     return (
       <Card>

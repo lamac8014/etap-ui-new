@@ -20,6 +20,7 @@ import paginationFactory, {
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import "react-bootstrap-table/dist/react-bootstrap-table-all.min.css";
 import Button from "./forms/Button";
+import FaIcon from "./FaIcon";
 
 const { SearchBar } = Search;
 
@@ -90,6 +91,7 @@ class DataTable extends Component {
                 </Col>
                 <Col sm={6} className="text-right">
                   <span>
+                    
                     <span className="p-r-5"> Search:</span>
                     <SearchBar {...toolkitprops.searchProps} />
                     {this.props.showButton && (
@@ -132,6 +134,22 @@ class DataTable extends Component {
           <CardHeader>
             <h5>{this.props.title}</h5>
           </CardHeader>
+        )}
+        {this.props.showColorKey && (
+          <div className="">
+            <span className="mt-4 mr-4 d-flex align-items-center float-right">
+            <FaIcon
+              iconname="faCircle"
+              className={this.props.className}
+              size="2x"
+              color={this.props.iconColor}
+            />
+            &nbsp;
+            :
+            &nbsp;
+            {this.props.keyText}
+          </span>
+          </div>
         )}
         <CardBody>
           <PaginationProvider pagination={paginationFactory(options)}>

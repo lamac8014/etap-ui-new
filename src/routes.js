@@ -85,6 +85,10 @@ const ModifyComponents = lazy(() =>
   import("./containers/cmpcModification/modifyComponents")
 );
 
+const TwccModificationComponents = lazy(() =>
+  import("./containers/twccModification/twccModificationComponents")
+);
+
 const CmpcViewPage = lazy(() =>
   import("./containers/cmpcAddComponents/cmpcViewPage")
 );
@@ -320,6 +324,12 @@ const RouteList = [
     path: "/etrack/fabricationMgmt/twccModification",
     name: "twccModification",
     component: ViewtwccModification,
+  },
+  {
+    exact: true,
+    path: "/etrack/fabricationMgmt/twccModification/:dispStructId/:structName/:structCode/:project",
+    name: "TWCC Modify Components",
+    component: TwccModificationComponents,
   },
   {
     exact: true,

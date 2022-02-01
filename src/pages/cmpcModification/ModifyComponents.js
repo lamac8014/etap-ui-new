@@ -153,6 +153,12 @@ class ViewAssignComponent extends Component {
             <CustomDataTable
               metaData={componentMetaData((id) => this.props.handleEdit(id))}
               bodyData={getComponentTableData(this.props.cmpc)}
+              rowStyle={(row, rowIndex) => {
+                return row.alreadyModified ? {backgroundColor: "#FCE8D8"} : {}
+              }}
+              showColorKey
+              iconColor= "#FCE8D8"
+              keyText="Already modified"
               // bodyData={(this.props.cmpc.uploadData)}
             />
           </FormRow>

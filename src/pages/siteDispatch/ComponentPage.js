@@ -111,9 +111,8 @@ class ComponentPage extends Component {
 							}
 						/>
 						<Button
-							type="danger"
+							type="secondary"
 							onClick={this.props.resetDispatchDetails}
-							gradient
 							btnText="Cancel"
 						/>
 					</ButtonRow>

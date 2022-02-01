@@ -48,7 +48,7 @@ class SiteRequirementsModal extends Component {
         this.setState({ error: false, errorMsg: "" });
         this.props.handleChangeRequirementAttributeValue(e.target.value, index);
       } else {
-        NotificationManager.error(
+        NotificationManager.warning(
           "The Input type is Numeric",
           // <p className="text-white">Error</p>,
           "",
@@ -63,7 +63,7 @@ class SiteRequirementsModal extends Component {
         this.setState({ error: false, errorMsg: "" });
         this.props.handleChangeRequirementAttributeValue(e.target.value, index);
       } else {
-        NotificationManager.error(
+        NotificationManager.warning(
           "The Input type is Alphabetic",
           // <p className="text-white">Error</p>,
           "",
@@ -80,7 +80,7 @@ class SiteRequirementsModal extends Component {
   };
 
   showErrorMessage = (message) => {
-    NotificationManager.error(message, "", 5000);
+    NotificationManager.warning(message, "", 5000);
   };
 
   validateSaveAction = (item, saveCallback) => {

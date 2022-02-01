@@ -18,13 +18,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     authenticateUser(e) {
       e.preventDefault();
       dispatch(authenticateUser()).then((res) => {
-        dispatch({ type: RESET_LOGIN_DETAILS });
         dispatch({
           type: SET_TOKEN,
           payload: res.value.data,
         });
         setAuthTokens(res.value.data);
         ownProps.history.push("/etrack/structure/assignStructure");
+        dispatch({ type: RESET_LOGIN_DETAILS });
+
       });
     },
     handleUsernameChange({ value }) {

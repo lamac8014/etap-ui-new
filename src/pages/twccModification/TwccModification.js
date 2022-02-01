@@ -5,6 +5,7 @@ import DataTable from "../../common/DataTable";
 import PageContainer from "../../common/forms/PageContainer";
 import SimpleCard from "../../common/cards/SimpleCard";
 import ViewMoretwccModification from "../../containers/twccModification/twccModificationmore";
+import ViewMoreModal from "./ViewMoreModal";
 
 class ViewtwccModification extends Component {
 	constructor(props) {
@@ -27,6 +28,7 @@ class ViewtwccModification extends Component {
 					<ViewMoretwccModification
 						showScrapViewMoreModel={this.props.twcc.showEditModal}
 					/>
+					<ViewMoreModal {...this.props}/>
 
 					{/* {this.props.users.scrapList && ( */}
 					<DataTable
@@ -34,7 +36,18 @@ class ViewtwccModification extends Component {
 							// (id) => this.setState({ activeId: id, showDeleteModal: true }),
 							(id) => {
 								this.props.showEditModal(id);
-							}
+							},
+							(id) => {
+								this.props.showViewMoreModal(id)
+							},
+							(dispStrId,  name, code, proj ) => {
+								this.props.redirectToComponentPage(
+									dispStrId,
+									name,
+									code,
+									proj,
+								);
+							},
 						)}
 						bodyData={this.props.twcc.twccModificationData}
 					/>

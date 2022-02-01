@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch, props) => {
             item.height = item.modStageHeight;
             item.thickness = item.modStageThikness;
             item.weight = item.modStageWeight;
+            item.alreadyModified= true
           }
         });
         dispatch({
@@ -161,7 +162,7 @@ const mapDispatchToProps = (dispatch, props) => {
             componentType: a.data[start + 1] ? a.data[start + 1] : "",
             compId: a.data[start + 2] ? a.data[start + 2] : "",
             componentNo: a.data[start + 3] ? a.data[start + 3] : "",
-            isGroup: a.data[start + 4] !== "" ? Boolean(a.data[start + 4]) : "",
+            isGroup: a.data[start + 4] !== "" ? (a.data[start + 4]) : "",
             drawingNo: a.data[start + 5] ? a.data[start + 5] : "",
             leng: a.data[start + 6] ? parseFloat(a.data[start + 6]) : "",
             breath: a.data[start + 7] ? parseFloat(a.data[start + 7]) : "",
@@ -169,7 +170,7 @@ const mapDispatchToProps = (dispatch, props) => {
             thickness: a.data[start + 9] ? parseFloat(a.data[start + 9]) : "",
             weight: a.data[start + 10] ? parseFloat(a.data[start + 10]) : "",
             makeType: a.data[start + 11] ? a.data[start + 11] : "",
-            isTag: a.data[start + 12] ? Boolean(a.data[start + 12]) : "",
+            isTag: a.data[start + 12] ? (a.data[start + 12]) : "",
             isModified: a.data[start + 13] ? a.data[start + 13] : "",
           };
           uploadData.push(componentObject);
