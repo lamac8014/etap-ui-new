@@ -23,7 +23,7 @@ class SiteRequirementStructure extends Component {
   // }
 
   showErrorMessage = (message) => {
-    NotificationManager.error(message, "", 5000);
+    NotificationManager.warning(message, "", 5000);
   };
 
   validateSaveAction = (structId, quantity, saveCallBack, itemId) => {

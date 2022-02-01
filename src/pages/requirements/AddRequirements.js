@@ -37,7 +37,7 @@ class AddRequirement extends Component {
   }
 
   showErrorMessage = (message) => {
-    NotificationManager.error(message, "", 5000);
+    NotificationManager.warning(message, "", 5000);
   };
 
   validateSaveAction = (requirement, saveCallback) => {
@@ -194,17 +194,16 @@ class AddRequirement extends Component {
               />
             </SimpleRow>
             <hr />
-            <ButtonRow position="center">
+            <ButtonRow position="right">
               <Button
-                btnText="SAVE"
+                btnText="Save"
                 onClick={() => this.validateSaveAction(this.props.requirement, this.props.saveRequirement)}
-                type="success"
+                type="primary"
                 gradient
               />
               <Button
-                btnText="DISCARD"
-                type="danger"
-                gradient
+                btnText="Discard"
+                type="secondary"
                 onClick={this.props.resetRequirement}
               />
             </ButtonRow>

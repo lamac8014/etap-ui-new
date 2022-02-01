@@ -6,9 +6,11 @@ import {
 	SET_CURRENT_STRUCTURE,
 	SET_EDIT_MODAL_FLAG,
 	TRANSFORM_TABLE_DATA,
+	TWCCMOD_SET_SHOW_VIEW_MORE_MODAL,
 } from "../../actions/types";
 // import ViewScrap from '../../pages/scrap/ViewScrap';
 import ViewtwccModification from "../../pages/twccModification/TwccModification";
+import { nanoid } from "nanoid";
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
@@ -21,6 +23,10 @@ const mapDispatchToProps = (dispatch, props) => {
 				let modifiedData = twccModificationData.filter((item) => {
 					return item.status === "CMPC MODIFIED";
 				});
+
+				modifiedData.map(item => {
+					item.tempId = nanoid();
+				})
 				dispatch({
 					type: TRANSFORM_TABLE_DATA,
 					payload: modifiedData,
@@ -33,7 +39,7 @@ const mapDispatchToProps = (dispatch, props) => {
 				JSON.stringify(twcc.twccModificationData)
 			);
 			let currentStr = twccModificationData.filter((item) => {
-				return item.dispStructureId === dispStrId;
+				return item.tempId === dispStrId;
 			});
 			dispatch({
 				type: SET_CURRENT_STRUCTURE,
@@ -43,6 +49,47 @@ const mapDispatchToProps = (dispatch, props) => {
 				type: SET_EDIT_MODAL_FLAG,
 				payload: true,
 			});
+		},
+		showViewMoreModal(id){
+			let twcc = store.getState().twcc;
+			let twccModificationData = JSON.parse(
+				JSON.stringify(twcc.twccModificationData)
+			);
+			let currentStr = twccModificationData.filter((item) => {
+				return item.tempId === id;
+			});
+			dispatch({
+				type: SET_CURRENT_STRUCTURE,
+				payload: currentStr.length > 0 ? currentStr[0] : {},
+			});
+			dispatch({
+				type: TWCCMOD_SET_SHOW_VIEW_MORE_MODAL,
+				payload: true,
+			})
+		},
+		hideViewMoreModal(){
+			dispatch({
+				type: TWCCMOD_SET_SHOW_VIEW_MORE_MODAL,
+				payload: false,
+			})
+			dispatch({
+				type: SET_CURRENT_STRUCTURE,
+				payload: {},
+			});
+		},
+		redirectToComponentPage(
+			dispStrId,
+			name,
+			code,
+			proj,
+		) {
+			props.history.push(
+				`/etrack/fabricationMgmt/twccModification/${window.btoa(
+					dispStrId
+				)}/${window.btoa(
+					name
+				)}/${window.btoa(code)}/${window.btoa(proj)}`
+			);
 		},
 	};
 };

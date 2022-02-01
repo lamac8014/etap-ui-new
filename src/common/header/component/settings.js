@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { logout } from "../../../utils/auth";
 // import avatar from "../../../assets/images/user/avatar-1.jpg";
 
@@ -14,7 +14,7 @@ class UserProfile extends Component {
 
   componentDidMount = () => {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
-    this.setState({
+    userDetails && this.setState({
       name: `${userDetails.firstName} ${userDetails.lastName}`,
     });
   };
@@ -34,7 +34,10 @@ class UserProfile extends Component {
                 to="#"
                 className="dud-logout"
                 title="Logout"
-                onClick={() => logout(this.props.history)}
+                onClick={() => {
+                  logout()
+                  this.props.history.push("/");
+                }}
               >
                 <i className="feather icon-log-out" />
               </Link>
@@ -68,4 +71,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+export default withRouter(UserProfile);

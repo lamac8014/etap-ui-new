@@ -4,6 +4,7 @@ import LoginCard from "../../common/cards/LoginCard";
 import SimpleRow from "../../common/forms/SimpleRow";
 import Col6 from "../../common/forms/Col6";
 import { InputGroup, InputGroupAddon, Input, Form } from "reactstrap";
+import Spinner from "../../common/Spinner";
 
 export default class Login extends Component {
   componentDidMount() {
@@ -56,12 +57,14 @@ export default class Login extends Component {
                             {this.props.auth.loginMessage}
                           </p>
                         )}
+                        {this.props.auth.isLoginLoading && <Spinner /> }
                         <Button
                           onClick={(e) => this.props.authenticateUser(e)}
                           className="w-100 shadow-sm mt-5 mb-3"
                           btnText={<h6 className="text-light mb-0">Sign In</h6>}
                           type="primary"
                           gradient
+                          disabled={this.props.auth.isLoginLoading ? true : false}
                         />
                       </Form>
                       <div className="mb-2 mt-3 d-flex justify-content-between align-items-center">

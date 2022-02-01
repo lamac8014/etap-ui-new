@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FormRow from "../../common/forms/FormRow";
 import InputGroupButton from "../../common/forms/InputGroupButton";
-import NumberInput from "../../common/forms/NumberInput";
+import PrefixInput from "../../common/forms/PrefixInput";
 import Modal from "../../common/Modal";
 
 class FabCostModal extends Component {
@@ -21,11 +21,12 @@ class FabCostModal extends Component {
         disableSave={this.props.fabCost.cost ? false : true}
       >
         <FormRow>
-          <NumberInput
+          <PrefixInput
             label="Fabrication Cost"
             size="col-md-12 "
             labelSize="col-md-4"
             fieldSize="col-md-8"
+            prefixSymbolCode="&#8377;." 
             value={this.props.fabCost.cost}
             onChange={(e) => this.props.handleChangeFabcost(e.target.value)}
           />

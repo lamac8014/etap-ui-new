@@ -19,11 +19,11 @@ export const setAuthTokens = (userDetails) => {
     JSON.stringify(userDetails.refreshToken)
   );
 };
-export const logout = ( history ) => {
+export const logout = (  ) => {
   localStorage.removeItem("userDetails");
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  history.push("/");
+  localStorage.clear()
 };
 export const setNewTokens = (access, refresh) => {
   localStorage.setItem("accessToken", JSON.stringify(access));

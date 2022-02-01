@@ -128,6 +128,19 @@ const mapDispatchToProps = (dispatch, props) => {
         });
     },
     resetDispatchDetails() {
+      let siteDispatch = store.getState().siteDispatch;
+      let componentData = JSON.parse(
+        JSON.stringify(siteDispatch.componentData)
+      );
+      componentData.map(item => {
+        if(item.checked && !item.disabled){
+          item.checked = false;
+        }
+      })
+      dispatch({
+        type: TRANSFORM_COMPONENT_DATA,
+        payload: componentData,
+      });
       dispatch({
         type: RESET_UPDATE_SITE_DISPATCH_MODAL,
 			});

@@ -46,7 +46,7 @@ import {
           ...state,
           isLoginError: true,
           loginMessage: action.payload.response.data.errors
-            ? action.payload.response.data.errors.Password[0]
+            ? Object.values(action.payload.response.data.errors)[0]
             : action.payload.response.data.message,
           isLoginLoading: false,
         };
@@ -62,6 +62,7 @@ import {
           username: "",
           password: "",
           isLoginError: false,
+          isLoginLoading: false
         };
       case `${SET_PAGE_ACCESS}_FULFILLED`:
         return {

@@ -3,6 +3,7 @@ import axios from "axios";
 import config from "../config";
 import {
   GET_TWCC_MODIFICATION_TABLE_DATA,
+  TWCC_GET_COMPONENT_DATA,
   TWCC_GET_VENDOR_CODE,
   UPDATE_COMPONENT_HISTORY,
 } from "./types";
@@ -17,6 +18,16 @@ export const getTwccModificationData = () => {
     ),
   };
 };
+
+export const getComponentData = (id) => {
+  return {
+    type: TWCC_GET_COMPONENT_DATA,
+    payload: axios.get(
+      `${config.BASE_URL}/api/SiteDispatchReuse/GetStructrueComponent?id=${id}`
+    ),
+  };
+};
+
 
 export const getVendorCodeList = () => {
   return {
