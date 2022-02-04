@@ -51,7 +51,7 @@ class PieChartCard extends PureComponent {
                             color={`${this.props.data.datasets[0].backgroundColor[index]}`}
                           />
                           {item}
-                          <p className="float-right ml-5 f-w-400 ">
+                          <p className="float-right  f-w-400 ">
                             {this.props.data.datasets[0].data[index]
                               ? this.props.data.datasets[0].data[index]
                               : 0}

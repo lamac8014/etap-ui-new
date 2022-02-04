@@ -1,14 +1,17 @@
 import { connect } from "react-redux";
+import {getDashboardData } from "../../actions/dashboardActions"
 import Summary from "../../pages/dashBoard/Summary";
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        getDashBoardDetails(){
+            dispatch(getDashboardData());
+        }
     }
 }
 const mapStateToProps = (state) => {
-    const summary = state.summary;
+    const dashboard = state.dashboard;
     return {
-        summary,
+        dashboard,
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Summary);
