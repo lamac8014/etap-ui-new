@@ -8,197 +8,170 @@ import { Pie } from "react-chartjs-2";
 import Card from "../../common/cards/SimpleCard";
 import PieChartCard from "../../common/cards/PieChartCard";
 // import BarChart from "../../commom/cards/BarChartCard";
-import { Bar,HorizontalBar} from "react-chartjs-2";
+import { Bar, HorizontalBar } from "react-chartjs-2";
+import * as Icons from "react-feather"
+import IconInfoCard from "../../common/cards/IconInfoCard";
 class Summary extends Component {
     constructor() {
         super();
     }
     componentDidMount() {
-
+        this.props.getDashBoardDetails()
     }
     render() {
-        const data = {
-            labels: [
-                'Total Comp',
-                'Total Comp Assigned',
-            ],
-            datasets: [{
-                label: 'Dataset',
-                data: [50, 100],
-                backgroundColor: [
-                    'rgb(255, 205, 86)',
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                ],
-                hoverOffset: 4
-            }]
-        };
-        const data2 = {
-            labels: [
-                'Total Comp Scanned',
-                'Total Comp yet to Scan',
-            ],
-            datasets: [{
-                label: 'Dataset 2',
-                data: [10, 50],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 3
-            }]
-        };
-        const data3 = {
-            labels: [
-                'Total Comp',
-                'Total Comp yet to Scan',
-            ],
-            datasets: [{
-                label: 'Dataset 3',
-                data: [100, 20],
-                backgroundColor: [
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgb(255, 99, 132)',
-                ],
-                hoverOffset: 3
-            }]
-        };
-        const data4 = {
-            labels: [
-                'To show Total Surplus',
-                'Total Scrapped',
-            ],
-            datasets: [{
-                label: 'Dataset 4',
-                data: [50, 90],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 3
-            }]
-        };
-        const dataHorBar = {
-            labels: ["Project_1","Project_2","Project_3","Project_4","Project_5"],
-            datasets: [
-                {
-                  label: 'Components Scanned',
-                  backgroundColor: '#2E5984',
-                  borderColor: '#91BAD6',
-                  borderWidth:1,
-                  hoverBackgroundColor: 'rgba(188, 210, 232)',
-                  hoverBorderColor: 'rgba(188, 210, 232)',
-                  data: [500,2000,4000,6000,3000,7000]
-                },
-                {
-                  label: 'Components yet to scan',
-                  backgroundColor: '#73A5C6',
-                  borderColor: '#91BAD6',
-                  borderWidth:1,
-                  hoverBackgroundColor: 'rgba(188, 210, 232)',
-                  hoverBorderColor: 'rgba(188, 210, 232)',
-                  data: [1000,2500,4500,6200,3600,7000]
-                }
-              ]
-        };
         return (
             <PageContainer>
-                <SimpleRow>
-                    <SearchableDropDown
-                        size="col-md-4"
-                        labelSize="col-sm-3"
-                        fieldSize="col-sm-9"
-                        placeholder="BU"
-                        // label="BU"
-                        // name=""
-                        // id=""
-                        selectOptions={[
-                            { value: "1", label: "one" },
-                            { value: "2", label: "two" },
-                        ]}
-                    />
-                    <SearchableDropDown
-                        size="col-md-4"
-                        labelSize="col-md-3 pr-0"
-                        fieldSize="col-md-9 "
-                        // label="Project"
-                        placeholder="Project"
-                        // name=""
-                        // id=""
-                        selectOptions={[
-                            { value: "1", label: "one" },
-                            { value: "2", label: "two" },
-                        ]}
-                    />
-                    <DateInput
-                        size="col-md-4"
-                        labelSize="col-md-3 pr-0"
-                        fieldSize="col-md-9 "
-                        placeholder="Month"
-                    // label="Month"
-                    // name=""
-                    // id=""
-                    />
+                <SimpleRow className="px-3 mt-3 mb-3">
+                    <Col6 size="pr-3" style={{width: "20%"}}>
+                    <IconInfoCard 
+                            icon={<Icons.Package size={28} strokeWidth="3" color="#FFA169"/>}
+                            text="Total Structures"
+                            value={this.props.dashboard.dashBoardDetails.totStructure} />
+                    </Col6>
+                    <Col6 size="pr-3" style={{width: "20%"}}>
+                        <IconInfoCard 
+                            icon={<Icons.Clipboard size={28} strokeWidth="3" color="#877BFF"/>}
+                            text="Total Requirement"
+                            value={this.props.dashboard.dashBoardDetails.totRequirement} />
+                    </Col6>
+                    <Col6 size="pr-3" style={{width: "20% "}}>
+                        <IconInfoCard 
+                            icon={<Icons.Layers size={28} strokeWidth="3" color="#7BC1FF"/>}
+                            text="Fabrication"
+                            value={this.props.dashboard.dashBoardDetails.fabrication} />
+                    </Col6>
+                    <Col6 size="pr-3" style={{width: "20% "}}>
+                        <IconInfoCard 
+                            icon={<Icons.Users size={28} strokeWidth="3" color="#71C875"/>}
+                            text="Outsourcing"
+                            value={this.props.dashboard.dashBoardDetails.outsourcing}/>
+                    </Col6>
+                    <Col6 size="nil" style={{width: "20% "}}>
+                        <IconInfoCard 
+                            textColor="text-c-red"
+                            icon={<Icons.Repeat size={28} strokeWidth="3" color="#F75656"/>}
+                            text="Reuse"
+                            value={this.props.dashboard.dashBoardDetails.reuse} />
+                    </Col6>
+                    
                 </SimpleRow>
-
                 <Card>
+                    {/* <Card>
+                        <HorizontalBar
+                            data={dataHorBar}
+                            //  width={100}
+                            height={90}
+                        />
+                    </Card> */}
+
                     <SimpleRow>
                         <Col6>
                             <PieChartCard
-                                // isLoading={this.props.assignStructure.pieChartLoading}
+                                isLoading={this.props.dashboard.isLoading}
                                 height={150}
                                 responsive={true}
-                                data={data}
+                                data={{
+                                    labels: [
+                                        'Total Comp',
+                                        'Total Comp Assigned',
+                                    ],
+                                    datasets: [{
+                                        label: 'Dataset',
+                                        data: this.props.dashboard.dashBoardDetails.totalComp !== 0 && this.props.dashboard.dashBoardDetails.assignComp !== 0 ? [this.props.dashboard.dashBoardDetails.totalComp, this.props.dashboard.dashBoardDetails.assignComp] : [],
+                                        backgroundColor: [
+                                            'rgb(255, 205, 86)',
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                        ],
+                                        hoverOffset: 4
+                                    }]
+                                }}
                                 title="Total Component Vs Total Component Assigned "
 
                             />
                         </Col6>
                         <Col6>
                             <PieChartCard
-                                // isLoading={this.props.assignStructure.pieChartLoading}
+                                isLoading={this.props.dashboard.isLoading}
                                 height={150}
                                 responsive={true}
-                                data={data2}
+                                data={{
+                                    labels: [
+                                        'Total Comp Scanned',
+                                        'Total Comp yet to Scan',
+                                    ],
+                                    datasets: [{
+                                        label: 'Dataset 2',
+                                        data: this.props.dashboard.dashBoardDetails.scanned !== 0 && this.props.dashboard.dashBoardDetails.yetToscan !== 0 ? [this.props.dashboard.dashBoardDetails.scanned, this.props.dashboard.dashBoardDetails.yetToscan] : [],
+                                        backgroundColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)'
+                                        ],
+                                        hoverOffset: 3
+                                    }]
+                                }}
                                 title="Total Component Scanned Vs Total Component yet to Scan"
 
                             />
                         </Col6>
                     </SimpleRow>
-                {/* </Card>
+                    {/* </Card>
                 <Card> */}
-                <br/>
+                    <br />
                     <SimpleRow>
                         <Col6>
                             <PieChartCard
-                                // isLoading={this.props.assignStructure.pieChartLoading}
+                                isLoading={this.props.dashboard.isLoading}
                                 height={150}
                                 responsive={true}
-                                data={data3}
+                                data={{
+                                    labels: [
+                                        'Total Comp',
+                                        'Total Comp yet to Scan',
+                                    ],
+                                    datasets: [{
+                                        label: 'Dataset 3',
+                                        data: this.props.dashboard.dashBoardDetails.totalComp !== 0 && this.props.dashboard.dashBoardDetails.yetToscan !== 0 ? [this.props.dashboard.dashBoardDetails.totalComp, this.props.dashboard.dashBoardDetails.yetToscan] : [],
+                                        backgroundColor: [
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                            'rgb(255, 99, 132)',
+                                        ],
+                                        hoverOffset: 3
+                                    }]
+                                }}
                                 title=" Total components Vs Tot Components yet to be scanned "
 
                             />
                         </Col6>
                         <Col6>
                             <PieChartCard
-                                // isLoading={this.props.assignStructure.pieChartLoading}
+                                isLoading={this.props.dashboard.isLoading}
                                 height={150}
                                 responsive={true}
-                                data={data4}
-                                title="To show Total Surplus and Total Scrapped "
+                                data={{
+                                    labels: [
+                                        'Total Surplus',
+                                        'Total Scrapped',
+                                    ],
+                                    datasets: [{
+                                        label: 'Dataset 4',
+                                        data: this.props.dashboard.dashBoardDetails.surpls !== 0 && this.props.dashboard.dashBoardDetails.scrap !== 0 ? [this.props.dashboard.dashBoardDetails.surpls, this.props.dashboard.dashBoardDetails.scrap] : [],
+                                        backgroundColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)'
+                                        ],
+                                        hoverOffset: 3
+                                    }]
+                                }}
+                                title="Total Surplus Vs Total Scrapped "
                             />
                         </Col6>
                     </SimpleRow>
                 </Card>
-                <Card>
-                     <HorizontalBar 
-                     data={dataHorBar}
-                    //  width={100}
-                     height={90}
-                    />
-                </Card>
+
             </PageContainer >
         );
 

@@ -33,7 +33,7 @@ export const assignComponentList = (projStructId) => {
 export const assignStructureFetch = (id) => {
   const assignStructure = store.getState().assignStructure;
   const data = assignStructure.assignStructureList[id];
-  console.log(`Structure Data: ${JSON.stringify(data)}`);
+  // console.log(`Structure Data: ${JSON.stringify(data)}`);
   return {
     type: GET_ASSIGN_STRUCTURE_DATA_SINGLE,
     payload: data,

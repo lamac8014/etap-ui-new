@@ -77,13 +77,13 @@ export const addComponent = () => {
   data.append("remarks", built.rmark);
   data.append("actualWeight", parseFloat(built.estWeight));
   data.append("reusuability", built.reUse.value);
-  data.append("expReleaseDate", new Date(built.expRelDate));
+  data.append("expReleaseDate", built.expRelDate);
 
   
   return {
     type: ADD_STRUCTURE_COMPONENT,
     payload: axios.post(
-      `${config.BASE_URL}/api/FabricationManagement/addStructureComponentForasbuild/sdfsdfsdfsdfsdfs`,
+      `${config.BASE_URL}/api/FabricationManagement/addStructureComponentForasbuild`,
       data,
       headers
     ),

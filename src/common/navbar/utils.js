@@ -6,26 +6,33 @@ const menus = {
       type: "group",
       icon: "icon-navigation",
       children: [
-        {
-          id: "dashboard",
-          title: "Dashboard",
-          type: "collapse",
-          icon: "feather icon-home",
-          children: [
-            {
-              id: "summary",
-              title: "Summary",
-              type: "item",
-              url: "/etrack/dashboard/summary",
-            },
-          ],
-        },
+        // {
+        //   id: "dashboard",
+        //   title: "Dashboard",
+        //   type: "collapse",
+        //   icon: "feather icon-home",
+        //   children: [
+        //     {
+        //       id: "summary",
+        //       title: "Summary",
+        //       type: "item",
+        //       url: "/etrack/dashboard/summary",
+        //     },
+        //   ],
+        // },
         {
           id: "eTrack",
           title: "E-Track",
           type: "collapse",
           icon: "feather icon-box",
           children: [
+            {
+              id: "summary",
+              title: "Dashboard",
+              type: "item",
+              icon: "feather icon-pie-chart",
+              url: "/etrack/dashboard/summary",
+            },
             {
               id: "structMgmt",
               title: "Structure Mgmt",
