@@ -23,20 +23,20 @@ export const fabApproveMetaData = (
             text: "Structure Code",
             dataField: "structureCode",
             style: { verticalAlign: "middle" },
-            formatter: (cell, row) => {
-                return (
-                  <>
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      {row.structureCode}
-                    </a>
-                  </>
-                );
-              },
+            // formatter: (cell, row) => {
+            //     return (
+            //       <>
+            //         <a
+            //           href="#"
+            //           onClick={(e) => {
+            //             e.preventDefault();
+            //           }}
+            //         >
+            //           {row.structureCode}
+            //         </a>
+            //       </>
+            //     );
+            //   },
         },
         {
             text: "Status",
