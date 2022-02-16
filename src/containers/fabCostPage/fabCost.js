@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     redirectToFabCostMoreDetails(id, dispatchNo, structureName, structureCode) {
       props.history.push(
-        `/etrack/fabCostPage/fabCostMore/${window.btoa(id)}/${window.btoa(
+        `/etrack/fabCostPage/fabCost/${window.btoa(id)}/${window.btoa(
           dispatchNo
         )}/${window.btoa(structureName)}/${window.btoa(structureCode)}`
       );

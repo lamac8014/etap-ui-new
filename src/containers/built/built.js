@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
     redirectToBuiltMoreDetails(id, dispatchNo, structureName, structureCode) {
       props.history.push(
-        `/etrack/built/asBuiltDetails/${window.btoa(id)}/${window.btoa(
+        `/etrack/fabricationMgmt/builtDetails/${window.btoa(id)}/${window.btoa(
           dispatchNo
         )}/${window.btoa(structureName)}/${window.btoa(structureCode)}`
       );

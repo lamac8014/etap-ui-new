@@ -26,7 +26,7 @@ import { getSelectedValue } from "../utils/dataTransformer";
 
 const initialState = {
   businessUnitType: "",
-  businessUnitTypeList: "",
+  businessUnitTypeList: [],
   isAddBusinessUnitMsg: false,
   businessUnitName: "",
   businessUnitStatus: "",

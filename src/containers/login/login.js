@@ -10,7 +10,7 @@ import {
   RESET_LOGIN_DETAILS,
   SET_ROLE_BASED_ROUTE_ACCESS,
 } from "../../actions/types";
-import { setAuthTokens, isUserLoggedIn } from "../../utils/auth";
+import { setAuthTokens, isUserLoggedIn, getHomePageforCurrentRole, getUserDetails } from "../../utils/auth";
 import { setRoleBasedRoutes } from "../../utils/pageAccess";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -18,12 +18,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     authenticateUser(e) {
       e.preventDefault();
       dispatch(authenticateUser()).then((res) => {
+        const homePage = getHomePageforCurrentRole(res.value.data.roleName)
+
         dispatch({
           type: SET_TOKEN,
           payload: res.value.data,
         });
         setAuthTokens(res.value.data);
-        ownProps.history.push("/etrack/structure/assignStructure");
+        ownProps.history.push(homePage);
         dispatch({ type: RESET_LOGIN_DETAILS });
 
       });
@@ -42,7 +44,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     checkAuthStatus() {
       if (isUserLoggedIn()) {
-        ownProps.history.replace("/etrack/structure/assignStructure");
+        const roleName = getUserDetails().roleName
+        const homePage = getHomePageforCurrentRole(roleName)
+
+        ownProps.history.replace(homePage);
       }
     },
   };
