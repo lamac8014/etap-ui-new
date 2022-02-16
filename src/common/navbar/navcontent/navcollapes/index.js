@@ -11,6 +11,8 @@ import {
   navCollapseToggle,
   navContentLeave,
 } from "../../../../actions/navigationActions";
+import { getUserDetails, isUserAuthorised } from "../../../../utils/auth";
+import accessMapData from "../../../../utils/pageAccess";
 
 class NavCollapse extends Component {
   componentDidMount() {
@@ -30,15 +32,41 @@ class NavCollapse extends Component {
   }
   render() {
     const { isOpen, isTrigger } = this.props;
+    const role = getUserDetails().roleName
+
+    const isUserAuthorisedCollapse = (collapse, userRole) => {
+      if(collapse.children && collapse.children.length > 0){
+        let count = 0
+        collapse.children.map(item => {
+          const exactPath = item.url.split("/:")[0];
+    
+          // if(accessMapData.userPageMapping[exactPath].find(role => {return role === accessMapData.userRoles.ALL}) !== undefined){
+          //   return true
+          // }
+        
+          // console.log("inside auth checked")
+          // console.log(exactPath, userRole)
+          let roles = accessMapData.userPageMapping[exactPath];
+          // console.log(roles)
+          count = roles.find(role => { return role === userRole }) ? count+=1 : count;
+        })
+
+        return count === 0 ? false : true
+      }
+    }
 
     let navItems = "";
-    if (this.props.collapse.children) {
+    if (this.props.collapse.children && this.props.collapse.children.length) {
       const collapses = this.props.collapse.children;
       navItems = Object.keys(collapses).map((item) => {
         item = collapses[item];
+
+        // console.log("current item")
+        // console.log(item)
+        
         switch (item.type) {
           case "collapse":
-            return (
+            return isUserAuthorisedCollapse(item, role) ? (
               <LoopNavCollapse
                 key={item.id}
                 collapse={item}
@@ -50,9 +78,9 @@ class NavCollapse extends Component {
                 chaildLiA={this.props.chaildLiA}
                 subUi={this.props.subUi}
               />
-            );
+            ) : ""
           case "item":
-            return (
+            return isUserAuthorised(item.url, role) ? (
               <NavItem
                 {...this.props}
                 LiClass={this.props.chaildLi}
@@ -61,11 +89,13 @@ class NavCollapse extends Component {
                 key={item.id}
                 item={item}
               />
-            );
+            ) : ""
           default:
             return false;
         }
       });
+
+
     }
 
     let itemTitle = this.props.collapse.title;
@@ -132,7 +162,7 @@ class NavCollapse extends Component {
           <NavIcon items={this.props.collapse} />
           {itemTitle}
         </Link>
-        <ul className={this.props.subUi ? this.props.subUi : null}>
+        <ul className={this.props.subUi ? this.props.subUi  : null}>
           {navItems}
         </ul>
       </Fragment>
@@ -156,8 +186,10 @@ class NavCollapse extends Component {
         </li>
       );
     } else {
-      mainContent = <li className={navItemClass.join(" ")}>{subContent}</li>;
+      mainContent = <li className={navItemClass.join(" ") }>{subContent}</li>;
     }
+    
+
     return mainContent;
   }
 }

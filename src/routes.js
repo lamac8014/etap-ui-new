@@ -1,4 +1,7 @@
 import { lazy } from "react";
+// import UnAuthorised from "./pages/maintenance/UnAuthorised";
+import UnAuthorised from "./pages/maintenance/UnAuthorised";
+
 // const SamplePage = lazy(() => import("./pages/samplePage/SamplePage"));
 const Summary = lazy(() => import("./containers/dashboard/summary"));
 const FabCostPage = lazy(() => import("./containers/fabCostPage/fabCost"));
@@ -114,6 +117,12 @@ const RouteList = [
     path: "/notFound",
     name: "404",
     component: NotFound,
+  },
+  {
+    exact: true,
+    path: "/unauthorised",
+    name: "404",
+    component: UnAuthorised,
   },
   {
     exact: true,
@@ -273,7 +282,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/built/asBuiltDetails/:projectStrId/:dcNo/:strName/:strCode",
+    path: "/etrack/fabricationMgmt/builtDetails/:projectStrId/:dcNo/:strName/:strCode",
     name: "Structure Details",
     component: AsbuiltMore,
   },
@@ -351,7 +360,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/fabCostPage/fabCostMore/:projectStrId/:dcNo/:strName/:strCode",
+    path: "/etrack/fabCostPage/fabCost/:projectStrId/:dcNo/:strName/:strCode",
     name: "FabCostPageMore",
     component: FabCostPageMore,
   },
@@ -363,7 +372,7 @@ const RouteList = [
   },
   {
     exact: true,
-    path: "/etrack/deprecitaionPage/bvDprMore/:cost/:date/:strname/:strcode",
+    path: "/etrack/deprecitaionPage/bvDpr/:cost/:date/:strname/:strcode",
     name: "BvDprMore",
     component: BvDprMore,
   },

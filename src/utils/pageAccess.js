@@ -1,55 +1,66 @@
-import { privateRoutes } from "./globalConst";
-import store from "../store";
-import { accessLevels } from "./globalConst";
-let tmpArr = [];
-
-export const setRoleBasedRoutes = () => {
-    const auth = store.getState().auth;
-    const access = auth.pageAccess;
-    access && access.map(acc => {
-        privateRoutes.map(val => {
-            if(val.name == acc.pageDetail.description) {
-                accessLevels.map(item => {
-                    setAccessObj(val.routes[item.static], acc.pageDetail[item.api])
-                })
-            }
-        })
-    })
-    return tmpArr;
+const userRoles = {
+    ADMIN: "Admin",
+    SITE: "SITE",
+    CMPC: "CMPC",
+    TWCC: "TWCC",
+    PROCUREMENT: "PROCUREMENT",
+    PM: "PM",
+    QA: "QA",
+    FAA: "FAA",
+    VENDOR: "VENDOR",
+    BU: "BU",
+    IC: "IC",
+    PROJECTS: "PROJECTS",
+    ALL: "ALL"
 }
 
-const setAccessObj = (routes, accessLevel) => {
-    routes && routes!== null && routes.map(route => {
-        if(accessLevel === true) {
-            tmpArr.push({
-                routeName: route,
-                allowed: true
-            })
-        } else {
-            tmpArr.push({
-                routeName: route,
-                allowed: false
-            })
-        }
-    })
+
+const userPageMapping = {
+    "/etrack/dashboard/summary": [userRoles.ADMIN, userRoles.TWCC],
+
+    "/etrack/structure/assignStructure": [userRoles.ADMIN, userRoles.CMPC],
+    "/etrack/structure/modify":[userRoles.ADMIN, userRoles.CMPC],
+    "/etrack/structure/modifyComponent":[userRoles.ADMIN, userRoles.CMPC],
+    "/etrack/structure/viewStructure":[userRoles.ADMIN, userRoles.SITE],
+    "/etrack/structure/viewComponent":[userRoles.ADMIN, userRoles.SITE],
+
+    "/etrack/requirementmgmt/create":[userRoles.ADMIN, userRoles.SITE],
+    "/etrack/requirementmgmt/requirmentApprove": [userRoles.ADMIN, userRoles.SITE, userRoles.BU, userRoles.CMPC, userRoles.TWCC],
+
+    "/etrack/fabricationMgmt/builtDetails": [userRoles.ADMIN, userRoles.SITE],
+    "/etrack/fabricationMgmt/twccModification": [userRoles.ADMIN, userRoles.TWCC],
+    "/etrack/fabricationMgmt/twccVerification": [userRoles.ADMIN, userRoles.TWCC],
+    "/etrack/fabricationMgmt/twccPhysicalVerificationApprove": [userRoles.ADMIN, userRoles.TWCC],
+
+    "/etrack/fabCostPage/fabCost":[userRoles.ADMIN, userRoles.FAA],
+    "/etrack/deprecitaionPage/bvDpr":[userRoles.ADMIN, userRoles.FAA],
+    "/etrack/cost/fabApproval":[userRoles.ADMIN, userRoles.SITE, userRoles.PM, userRoles.TWCC, userRoles.FAA],
+
+    "/etrack/lifeCycle/scrap":[userRoles.ADMIN,  userRoles.PROCUREMENT],
+    "/etrack/lifeCycle/surplus":[userRoles.ADMIN, userRoles.TWCC, userRoles.QA, userRoles.PM],
+    "/etrack/lifeCycle/surplusDeclaration":[userRoles.ADMIN, userRoles.SITE],
+    "/etrack/lifeCycle/cmpcReuse":[userRoles.ADMIN, userRoles.CMPC],
+
+    "/etrack/dispatch/twccDispatch":[userRoles.ADMIN, userRoles.TWCC],
+    "/etrack/dispatch/dispatchStrt":[userRoles.ADMIN, userRoles.TWCC],
+    "/etrack/dispatch/procurement":[userRoles.ADMIN, userRoles.PROCUREMENT],
+    "/etrack/dispatch/vendor":[userRoles.ADMIN, userRoles.VENDOR],
+    "/etrack/dispatch/vendorComp":[userRoles.ADMIN, userRoles.VENDOR],
+    "/etrack/dispatch/cmpcAdd":[userRoles.ADMIN, userRoles.CMPC],
+
+    "/etrack/masters/ic":[userRoles.ADMIN],
+    "/etrack/masters/sbg": [userRoles.ADMIN],
+    "/etrack/masters/bu": [userRoles.ADMIN],
+    "/etrack/masters/project": [userRoles.ADMIN],
+    "/etrack/masters/wbs": [userRoles.ADMIN],
+    "/etrack/masters/users": [userRoles.ADMIN],
+    "/etrack/masters/structureFmly": [userRoles.ADMIN],
+    "/etrack/masters/structure": [userRoles.ADMIN],
+    "/etrack/masters/component": [userRoles.ADMIN],
+    "/etrack/masters/viewSubContractors": [userRoles.ADMIN],
 }
 
-export const getRoutePermission = (route) => {
-    const allowedRoutes = store.getState().auth.allowedRoutes;
-    let isAllowed = false;
-    allowedRoutes && allowedRoutes.map(item => {
-        if(item.routeName === route && item.allowed === true) {
-            isAllowed = true;
-        }
-    })
-    return isAllowed;
-}
+const accessMapData = {userPageMapping, userRoles}
 
-export const getPageAccess = (pageName) => {
-    const pageAccess = store.getState().auth.pageAccess;
-    return pageAccess.filter(page => page.pageDetail.description === pageName)
-}
 
-export const getNavAccess = () => {
-    
-}
+export default accessMapData

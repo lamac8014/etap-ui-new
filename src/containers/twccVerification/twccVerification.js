@@ -116,6 +116,27 @@ const mapDispatchToProps = (dispatch, props) => {
 		savePhysicalVerification() {
 			dispatch(savePhysicalVerification())
 				.then((response) => {
+					dispatch(getPhysicalVerificationDetails()).then((response) => {
+						const physicalVerification = store.getState().physicalVerification;
+						let phyVerificationDetails = JSON.parse(
+							JSON.stringify(physicalVerification.physicalVerificationDetails)
+						);
+						let payload = [];
+						phyVerificationDetails.map((item, index) => {
+							let tempObj = {
+								...item,
+								temp_id: index,
+								checked: false,
+							};
+							payload.push(tempObj);
+						});
+		
+						dispatch({
+							type: TRANSFORM_PHYSICAL_VERIFICATION_DATA,
+							payload,
+						});
+					});
+					
 					let message = store.getState().physicalVerification.message;
 					swal(message, {
 						icon: "success",

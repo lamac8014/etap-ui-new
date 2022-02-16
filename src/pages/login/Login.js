@@ -7,8 +7,13 @@ import { InputGroup, InputGroupAddon, Input, Form } from "reactstrap";
 import Spinner from "../../common/Spinner";
 
 export default class Login extends Component {
+  constructor(){
+    super()
+    this.userNameRef = React.createRef();
+  }
   componentDidMount() {
     this.props.checkAuthStatus();
+    this.userNameRef.current.focus();
   }
   render() {
     return (
@@ -29,6 +34,7 @@ export default class Login extends Component {
                             </span>
                           </InputGroupAddon>
                           <Input
+                            innerRef={this.userNameRef}
                             type="email"
                             placeholder="Username"
                             onChange={(e) =>

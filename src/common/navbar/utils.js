@@ -139,14 +139,14 @@ const menus = {
                   icon: "feather icon-tag",
                   url: "/etrack/fabCostPage/fabCost",
                 },
-                {
-                  id: "hireChange",
-                  title: "Monthly Hire Change",
-                  type: "item",
-                  // icon: "feather icon-home",
-                  icon: "feather icon-list",
-                  url: "/etrack/cost/hire",
-                },
+                // {
+                //   id: "hireChange",
+                //   title: "Monthly Hire Change",
+                //   type: "item",
+                //   // icon: "feather icon-home",
+                //   icon: "feather icon-list",
+                //   url: "/etrack/cost/hire",
+                // },
                 {
                   id: "bvDpr",
                   title: "BV. & DPR",

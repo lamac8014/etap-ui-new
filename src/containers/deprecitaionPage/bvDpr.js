@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch,props) => {
         },
         redirectToFabCostMoreDetails(cost, date, name, code) {
             props.history.push(
-              `/etrack/deprecitaionPage/bvDprMore/${window.btoa(cost)}/${window.btoa(date)}/${window.btoa(name)}/${window.btoa(code)}`
+              `/etrack/deprecitaionPage/bvDpr/${window.btoa(cost)}/${window.btoa(date)}/${window.btoa(name)}/${window.btoa(code)}`
             );
         },
         openViewMoreModal(id){

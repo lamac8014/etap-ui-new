@@ -2,6 +2,8 @@ import axios from "axios";
 import store from "../store";
 import { SET_TOKEN } from "../actions/types";
 import config from '../config';
+import accessMapData from "./pageAccess";
+import homePageRoleMap from "./homePageConfig";
 
 export const isUserLoggedIn = () => {
   if (localStorage.getItem("refreshToken")) {
@@ -10,6 +12,25 @@ export const isUserLoggedIn = () => {
     return false;
   }
 };
+
+export const isUserAuthorised = (path, userRole) => {
+  const exactPath = path.split("/:")[0];
+
+  // if(accessMapData.userPageMapping[exactPath].find(role => {return role === accessMapData.userRoles.ALL}) !== undefined){
+  //   return true
+  // }
+
+  // console.log("inside auth checked")
+  // console.log(exactPath, userRole)
+  let roles = accessMapData.userPageMapping[exactPath];
+  // console.log(roles)
+  return roles.find(role => { return role === userRole }) ? true : false;
+}
+
+export const getHomePageforCurrentRole = (role) => {
+
+  return homePageRoleMap[role];
+}
 
 export const setAuthTokens = (userDetails) => {
   localStorage.setItem("userDetails", JSON.stringify(userDetails));
