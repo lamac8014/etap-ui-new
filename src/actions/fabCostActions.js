@@ -77,6 +77,7 @@ export const approveFabrication = () => {
     "fabCost_id": currentStructure.id,
     "mode": fabCostApprove.approveMode,
     "role_name": roleName === "SITE" ? "SITE-FAA" : roleName,
+    "role_hierarchy": null
   }
 
   // console.log(data)
