@@ -3,6 +3,7 @@ import { Card } from "reactstrap";
 import DataTable from "../../common/DataTable";
 import ButtonRow from "../../common/forms/ButtonRow";
 import Button from "../../common/forms/Button";
+import { getUserDetails } from "../../utils/auth";
 
 class AttributeTable extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class AttributeTable extends Component {
       <Card>
         <div className="card-body">
           <>
-            {this.state.userDetails.roleName === "CMPC" &&
+            {getUserDetails().roleName === "CMPC" &&
               this.props.status === "BU APPROVED" && (
                 <ButtonRow>
                   {this.props.requirement.editAttributes ? (

@@ -128,14 +128,15 @@ export const getRequirementsList = () => {
 
 export const requirementAction = (id, action) => {
   let auth = store.getState().auth;
-  const ROLE_NAME = auth.token.roleName;
+  const ROLE_NAME = getUserDetails().roleName;
   let requirementList = store.getState().requirement.requirementsList;
   let singleRequirement = requirementList[id];
   const body = {
     siteReqId: singleRequirement.id,
     mode: action,
-    role_name: auth.token.roleName,
+    role_name: ROLE_NAME,
   };
+
 
   return {
     type: ACTION_REQUIREMENT,

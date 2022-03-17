@@ -86,7 +86,9 @@ class AddRequirement extends Component {
           break
         }
       }
-      this.showErrorMessage(message)
+      if(message !== ""){
+        this.showErrorMessage(message)
+      }
     }else{
       this.showErrorMessage("Please add atleast one requirement")
       approveSaveAction = false
